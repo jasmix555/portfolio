@@ -1,0 +1,219 @@
+.navbar {
+  margin: 0.6rem 0.8rem;
+  background: #fff;
+  padding: 0.1rem 0.2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  gap: 0.4rem;
+  border: solid 0.2px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  .box {
+    margin: 0.2rem 0.1rem;
+    transition: 200ms ease-in-out;
+    padding: 0.1rem 0.5rem;
+    border-radius: 6px;
+    text-align: center;
+    color: rgb(146, 146, 146);
+    &:hover {
+      background: #e0e0e0;
+      color: #2d2d2d;
+    }
+  }
+  .active {
+    background: #e0e0e0;
+    color: #2d2d2d;
+  }
+}
+
+.body {
+  background-color: #ffffff;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  .bg {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    width: 200%;
+    height: 200vh;
+    background: transparent
+      url("http://assets.iceable.com/img/noise-transparent.png") repeat 0 0;
+    background-repeat: repeat;
+    animation: bg-animation 0.2s infinite;
+    opacity: 0.9;
+    visibility: visible;
+  }
+}
+
+@keyframes bg-animation {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -5%);
+  }
+  20% {
+    transform: translate(-10%, 5%);
+  }
+  30% {
+    transform: translate(5%, -10%);
+  }
+  40% {
+    transform: translate(-5%, 15%);
+  }
+  50% {
+    transform: translate(-10%, 5%);
+  }
+  60% {
+    transform: translate(15%, 0);
+  }
+  70% {
+    transform: translate(0, 10%);
+  }
+  80% {
+    transform: translate(-15%, 0);
+  }
+  90% {
+    transform: translate(10%, 5%);
+  }
+  100% {
+    transform: translate(5%, 0);
+  }
+}
+
+.wrapper {
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  pointer-events: none;
+  .content {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+  }
+}
+
+.progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: #696969;
+  transform-origin: 0%;
+  z-index: 1000;
+}
+
+.gridColSpan2 {
+  grid-column: span 2;
+}
+
+.gridRowSpan2 {
+  grid-row: span 2;
+  height: 100% !important;
+  background: #838080 !important;
+}
+
+.testimonialGrid {
+  padding-block: 2rem;
+  width: min(97%, 90vw);
+  display: grid;
+  flex-wrap: wrap;
+  margin-inline: auto;
+  gap: 1.5rem;
+  grid-auto-columns: 1fr;
+  grid-template-areas:
+    "one"
+    "two"
+    "three"
+    "four"
+    "five";
+
+  .testimonial {
+    padding: 0.4rem 0.8rem;
+    background: #c8c8c8;
+    border-radius: 5px;
+    min-height: 22rem;
+    height: 100%;
+    color: #fefefe;
+    font-size: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+
+    &:nth-child(1) {
+      grid-area: one;
+    }
+    &:nth-child(2) {
+      grid-area: two;
+    }
+    &:nth-child(3) {
+      grid-area: three;
+    }
+    &:nth-child(4) {
+      grid-area: four;
+    }
+    &:nth-child(5) {
+      grid-area: five;
+    }
+  }
+}
+
+@media screen and (min-width: 33em) {
+  .testimonialGrid {
+    grid-template-areas:
+      "one one"
+      "two three"
+      "five five"
+      "four four"
+      "six six";
+  }
+}
+
+@media screen and (min-width: 38em) {
+  .testimonialGrid {
+    grid-template-areas:
+      "one one"
+      "two five"
+      "three five"
+      "four four"
+      "six six";
+  }
+}
+
+@media screen and (min-width: 54em) {
+  .testimonialGrid {
+    grid-template-areas:
+      "one one two"
+      "three three four"
+      "five five six";
+  }
+}
+
+@media screen and (min-width: 75em) {
+  .testimonialGrid {
+    grid-template-areas:
+      "one one two five"
+      "three three four five"
+      "three three six five";
+  }
+}
