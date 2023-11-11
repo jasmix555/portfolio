@@ -62,8 +62,6 @@ export default function Portfolio() {
     };
   }, []);
 
-  1;
-
   return (
     <>
       <ScrollBar />
@@ -89,17 +87,15 @@ interface ColumnProps {
   images: string[];
   y: any;
 }
-
 const Column = ({ images, y }: ColumnProps) => {
   return (
     <motion.div className={styles.column} style={{ y }}>
-      {images.map((src: string, i: number) => {
-        return (
-          <div key={i} className={styles.imageContainer}>
-            <Image src={`/images/${src}`} alt="image" fill />
-          </div>
-        );
-      })}
+      {images.map((src: string, i: number) => (
+        <div key={i} className={styles.imageContainer}>
+          // Example Image component in Column
+          <Image src={`/images/${src}`} alt="image" fill />
+        </div>
+      ))}
     </motion.div>
   );
 };

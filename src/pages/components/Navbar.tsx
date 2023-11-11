@@ -24,14 +24,15 @@ function Navbar({ sectionIds }: { sectionIds: string[] }) {
       return false;
     });
 
-    setActiveSection(activeSectionId || null);
+    // Use the state updater function to ensure correct state update
+    setActiveSection((prevActiveSection: string | null) => {
+      return activeSectionId !== undefined && activeSectionId !== null
+        ? activeSectionId
+        : prevActiveSection;
+    });
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Your existing handleScroll logic
-    };
-
     window.addEventListener("scroll", handleScroll);
 
     // Initially, determine the active section when the component is mounted.
@@ -52,17 +53,20 @@ function Navbar({ sectionIds }: { sectionIds: string[] }) {
       zIndex={1000}
       className={style.navbar}
     >
-      {sectionIds.map((id) => (
-        <Text
-          key={id}
-          cursor={"pointer"}
-          className={`${style.box} ${activeSection === id ? style.active : ""}`}
-          onClick={() => handleClick(id)}
-          fontSize={"1.6rem"}
-        >
-          {id}
-        </Text>
-      ))}
+      {sectionIds &&
+        sectionIds.map((id) => (
+          <Text
+            key={id}
+            cursor={"pointer"}
+            className={`${style.box} ${
+              activeSection === id ? style.active : ""
+            }`}
+            onClick={() => handleClick(id)}
+            fontSize={"1.6rem"}
+          >
+            {id}
+          </Text>
+        ))}
     </Flex>
   );
 }

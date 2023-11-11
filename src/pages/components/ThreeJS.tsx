@@ -13,9 +13,17 @@ export default function ThreeJS() {
         NET({
           el: vantaRef.current,
           THREE, // Pass THREE as an object
-          color: 0xf7f7f7,
-          backgroundColor: 0x1e181e,
-          spacing: 12.0,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.0,
+          minWidth: 200.0,
+          scale: 1.0,
+          scaleMobile: 1.0,
+          color: 0xffffff,
+          backgroundColor: 0x8c8c8c,
+          points: 15.0,
+          spacing: 18.0,
         })
       );
     }

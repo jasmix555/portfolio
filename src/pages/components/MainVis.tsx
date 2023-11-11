@@ -13,7 +13,6 @@ export default function MainVis() {
           position={"absolute"}
           w={"100vw"}
           h={"100vh"}
-          bgColor={"whiteAlpha.200"}
           top={0}
           left={0}
           zIndex={"-1"}
