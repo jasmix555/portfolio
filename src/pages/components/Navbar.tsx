@@ -1,5 +1,5 @@
 import { Text, Flex } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import style from "@/styles/portfolio.module.scss";
 
 function Navbar({ sectionIds }: { sectionIds: string[] }) {
@@ -10,7 +10,7 @@ function Navbar({ sectionIds }: { sectionIds: string[] }) {
     element?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     const scrollY = window.scrollY;
 
     // Determine the active section based on scroll position
@@ -24,13 +24,12 @@ function Navbar({ sectionIds }: { sectionIds: string[] }) {
       return false;
     });
 
-    // Use the state updater function to ensure correct state update
     setActiveSection((prevActiveSection: string | null) => {
       return activeSectionId !== undefined && activeSectionId !== null
         ? activeSectionId
         : prevActiveSection;
     });
-  };
+  }, [sectionIds]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -41,7 +40,7 @@ function Navbar({ sectionIds }: { sectionIds: string[] }) {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [sectionIds, handleScroll]); // Add handleScroll to the dependency array
+  }, [sectionIds, handleScroll]);
 
   return (
     <Flex

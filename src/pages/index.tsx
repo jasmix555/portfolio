@@ -92,7 +92,6 @@ const Column = ({ images, y }: ColumnProps) => {
     <motion.div className={styles.column} style={{ y }}>
       {images.map((src: string, i: number) => (
         <div key={i} className={styles.imageContainer}>
-          // Example Image component in Column
           <Image src={`/images/${src}`} alt="image" fill />
         </div>
       ))}
