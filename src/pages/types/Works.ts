@@ -2,7 +2,7 @@ const works = [
   {
     title: "SpaceLang",
     link: "team-project2023-9rrxwr8ry-jasmix555s-projects.vercel.app",
-    description: "流行してる料理や新しい料理の経験を簡単で探せるアプリ",
+    description: "",
     thumbnail: "",
     tags: ["Next.Js", "SASS", "Firebase", "Figma"],
     category: "App",
@@ -14,7 +14,7 @@ const works = [
 
   {
     title: "Foodera",
-    link: "foodera-i4mz3d1k8-jasmix555s-projects.vercel.app",
+    link: "https://foodera-nine.vercel.app/",
     description: "流行してる料理や新しい料理の経験を簡単で探せるアプリ",
     thumbnail: "",
     tags: ["PUG", "SASS", "JavaScript", "Illustrator", "Figma"],
@@ -27,7 +27,7 @@ const works = [
 
   {
     title: "Sakamachi (酒街)",
-    link: "oh-matchly-kvqov15on-jasmix555s-projects.vercel.app",
+    link: "https://oh-matchly.vercel.app/",
     description: "数少ない深夜営業の居酒屋探しが楽になる",
     thumbnail: "",
     tags: ["PUG", "SASS", "JavaScript", "Illustrator", "Figma"],
@@ -79,3 +79,5 @@ const works = [
     awards: "",
   },
 ];
+
+export default works;

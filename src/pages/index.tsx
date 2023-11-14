@@ -11,6 +11,7 @@ import MainVis from "./components/MainVis";
 import Contact from "./components/Contact";
 import About from "./components/About";
 import ScrollBar from "./components/ScrollBar";
+import Head from "next/head";
 
 const images = [
   "1.jpg",
@@ -64,6 +65,11 @@ export default function Portfolio() {
 
   return (
     <>
+      <Head>
+        <title>Jason Ng's Portfolio</title>
+        <meta name="description" content="Portfolio" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <ScrollBar />
       <Background />
       <Navbar sectionIds={["Top", "About", "Archive", "Contact"]} />
