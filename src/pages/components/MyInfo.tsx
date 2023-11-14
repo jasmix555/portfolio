@@ -12,7 +12,7 @@ export default function MyInfo() {
         <div>
           <p>Birthdate : 2001/11/02</p>
           <p>Nationality : Indonesian</p>
-          <p>Birthdate : 2001/11/02</p>
+          <p>Languages : 🇮🇩 🇺🇸 🇯🇵 </p>
           <p>Birthdate : 2001/11/02</p>
         </div>
       </div>
