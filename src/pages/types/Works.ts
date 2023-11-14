@@ -1,7 +1,7 @@
 const works = [
   {
     title: "SpaceLang",
-    link: "team-project2023-9rrxwr8ry-jasmix555s-projects.vercel.app",
+    link: "https://team-project2023-9rrxwr8ry-jasmix555s-projects.vercel.app/",
     description: "",
     thumbnail: "",
     tags: ["Next.Js", "SASS", "Firebase", "Figma"],
