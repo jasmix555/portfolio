@@ -1,4 +1,4 @@
-import style from "@/styles/about.module.scss";
+import style from "@/styles/About.module.scss";
 import types from "../types/About";
 
 export default function MyInfo() {

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import works from "../types/Works";
-import style from "@/styles/archive.module.scss";
-import { div } from "three/examples/jsm/nodes/Nodes.js";
+import style from "@/styles/Archive.module.scss";
 
 export default function Works() {
   return (
