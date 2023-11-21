@@ -66,7 +66,7 @@ export default function Portfolio() {
   return (
     <>
       <Head>
-        <title>Jason Ng's Portfolio</title>
+        <title>Jason Ng Portfolio</title>
         <meta name="description" content="Portfolio" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
