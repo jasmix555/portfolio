@@ -79,5 +79,3 @@ const works = [
     awards: "",
   },
 ];
-
-export default works;
