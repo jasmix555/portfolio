@@ -1,6 +1,7 @@
 import Link from "next/link";
 import works from "../types/Works";
 import style from "@/styles/Archive.module.scss";
+import Image from "next/image";
 
 export default function Works() {
   return (
@@ -28,7 +29,15 @@ export default function Works() {
       {works.map((work) => (
         <div className={`${style.Contents} ${style.work}`}>
           <div className={style.overlay}>
-            <div className={style.thumbnail}>{work.thumbnail}</div>
+            <div
+              className={style.thumbnail}
+              style={{
+                backgroundImage: `url(${work.thumbnail})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            ></div>
             <div
               className={`${style.title} ${style.fontL} ${style.overlayTitle}`}
             >
@@ -37,11 +46,11 @@ export default function Works() {
           </div>
 
           <div className={style.innerContents}>
-            <div className={`${style.dateCreated} ${style.fontS}`}>
+            <div className={`${style.title} ${style.fontL}`}>{work.title}</div>
+            <div className={`${style.dateCreated} ${style.fontM}`}>
               {work.dateCreated}
             </div>
-            <div className={`${style.title} ${style.fontL}`}>{work.title}</div>
-            <div className={`${style.description} ${style.fontM}`}>
+            <div className={`${style.description} ${style.fontL}`}>
               {work.description}
             </div>
             <div className={`${style.category} ${style.fontM}`}>
