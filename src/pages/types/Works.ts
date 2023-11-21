@@ -16,7 +16,7 @@ const works = [
     title: "Foodera",
     link: "https://foodera-nine.vercel.app/",
     description: "流行してる料理や新しい料理の経験を簡単で探せるアプリ",
-    thumbnail: "",
+    thumbnail: "/works/foodera.svg",
     tags: ["PUG", "SASS", "JavaScript", "Illustrator", "Figma"],
     category: "App",
     method: ["2年生", "学校", "個人開発"],

@@ -61,7 +61,7 @@ export default function Works() {
             </div>
             <div>
               <Link href={work.link} className={`${style.link}`}>
-                LINK
+                <span>もっと見る</span>
               </Link>
             </div>
           </div>

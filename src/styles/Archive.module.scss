@@ -87,13 +87,20 @@
     transition: 200ms ease-in-out;
     overflow: hidden; /* Add this line */
     white-space: nowrap; /* Add this line */
+    span {
+      transition: 200ms ease-in-out;
+    }
     &:hover {
       background: #eee;
       color: #333;
       width: auto; /* Add this line */
+      span {
+        display: inline-block;
+        margin-right: 2rem;
+      }
     }
     &::after {
-      content: " ->";
+      content: "→";
       position: absolute;
       right: -20px;
       transition: all 0.3s ease-in-out;
