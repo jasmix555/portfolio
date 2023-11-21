@@ -15,6 +15,7 @@ const about = {
     {
       name: "HTML5",
       icon: SiHtml5,
+      bar: 90,
     },
     {
       name: "SASS",
