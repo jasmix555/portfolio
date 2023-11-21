@@ -41,8 +41,8 @@
     .title {
       font-size: clamp(1.6rem, 2vw, 2.2rem);
       position: absolute;
-      top: 1.4rem;
-      left: 1.8rem;
+      top: 0.6rem;
+      left: 1rem;
     }
 
     &:nth-child(1) {
@@ -106,12 +106,13 @@
 .skillWrapper {
   width: 100%;
   .skillContent {
-    border: solid 1px tomato;
+    margin: 0 auto;
+    width: min(90%, 90vw);
     padding: 1rem;
     font-size: clamp(1.8rem, 2vw, 4rem);
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
+    justify-content: center;
     gap: 2rem;
 
     .skill {
@@ -119,6 +120,11 @@
       padding: 1.2rem;
       border-radius: 50%;
       display: block;
+      transition: 150ms ease-in-out;
+      &:hover {
+        background: #fefefe;
+        color: #2d2d2d;
+      }
     }
   }
 }

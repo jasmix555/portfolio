@@ -11,11 +11,12 @@ export default function MyInfo() {
       </div>
       <div className={style.testimonial + " " + style.gridRowSpan2}>
         <div className={style.title}>
-          <p>Birthdate : 2001/11/02</p>
-          <p>Nationality : Indonesian</p>
-          <p>Languages :🇺🇸 🇮🇩 🇯🇵</p>
-          <p>Birthdate : 2001/11/02</p>
+          <h1>My Info</h1>
         </div>
+        <p>Birthdate : 2001/11/02</p>
+        <p>Nationality : Indonesian</p>
+        <p>Languages :🇺🇸 🇮🇩 🇯🇵</p>
+        <p>Birthdate : 2001/11/02</p>
       </div>
       <div className={style.testimonial + " " + style.gridRowSpan2}>
         <div className={style.skillWrapper}>
@@ -23,8 +24,10 @@ export default function MyInfo() {
             <h1>My Skills</h1>
           </div>
           <div className={style.skillContent}>
-            {types.skills.map((skill) => (
-              <div className={style.skill}>{<skill.icon />}</div>
+            {types.skills.map((skill, idx) => (
+              <div key={idx} className={style.skill}>
+                {<skill.icon />}
+              </div>
             ))}
           </div>
         </div>
