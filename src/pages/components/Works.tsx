@@ -1,7 +1,6 @@
 import Link from "next/link";
 import works from "../types/Works";
-import style from "@/styles/Archive.module.scss";
-import Image from "next/image";
+import style from "@/styles/archive.module.scss";
 
 export default function Works() {
   return (
