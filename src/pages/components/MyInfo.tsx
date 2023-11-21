@@ -1,5 +1,63 @@
 import style from "@/styles/About.module.scss";
-import types from "../types/About";
+
+import {
+  SiHtml5,
+  SiSass,
+  SiJavascript,
+  SiNextdotjs,
+  SiAdobeillustrator,
+  SiAdobephotoshop,
+  SiFigma,
+  SiNotion,
+  SiGithub,
+} from "react-icons/si";
+
+const about = {
+  skills: [
+    {
+      name: "HTML5",
+      icon: SiHtml5,
+      bar: 90,
+    },
+    {
+      name: "SASS",
+      icon: SiSass,
+    },
+    {
+      name: "JavaScript",
+      icon: SiJavascript,
+    },
+    {
+      name: "Next.js",
+      icon: SiNextdotjs,
+    },
+    {
+      name: "Adobe Illustrator",
+      icon: SiAdobeillustrator,
+    },
+    {
+      name: "Adobe Photoshop",
+      icon: SiAdobephotoshop,
+    },
+    {
+      name: "Figma",
+      icon: SiFigma,
+    },
+    {
+      name: "Notion",
+      icon: SiNotion,
+    },
+    {
+      name: "GitHub",
+      icon: SiGithub,
+    },
+  ],
+  hobbies: [
+    {
+      name: "Drums",
+    },
+  ],
+};
 
 export default function MyInfo() {
   return (
@@ -24,7 +82,7 @@ export default function MyInfo() {
             <h1>My Skills</h1>
           </div>
           <div className={style.skillContent}>
-            {types.skills.map((skill, idx) => (
+            {about.skills.map((skill, idx) => (
               <div key={idx} className={style.skill}>
                 {<skill.icon />}
               </div>
