@@ -57,6 +57,14 @@
       color: #777777;
     }
 
+    &:hover .thumbnail {
+      transform: scale(1.05);
+    }
+
+    &:hover .innerContents {
+      opacity: 1;
+    }
+
     @media screen and (max-width: 500px) {
       min-height: 20rem;
     }
@@ -69,6 +77,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    transition: 150ms ease-in-out;
   }
 
   .innerContents {
@@ -85,10 +94,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  }
-
-  .work:hover .innerContents {
-    opacity: 1;
   }
 
   .link {
