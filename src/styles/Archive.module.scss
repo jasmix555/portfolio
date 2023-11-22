@@ -38,10 +38,10 @@
       opacity: 1;
       transition: opacity 0.3s ease;
       position: absolute;
-      background: #909090d0;
+      background: #333333d0;
       font-size: clamp(0.8rem, 5vw, 1.8rem);
       font-weight: 700;
-      color: #fefefe;
+      color: #f2f2f2;
       width: 100%;
       bottom: 0;
       left: 0;
@@ -52,13 +52,12 @@
   .work {
     background: #eee;
     min-height: 35.8rem;
-    height: 100%;
     position: relative;
     overflow: hidden;
     transition: 200ms ease-in-out;
     border-radius: 6px;
     color: rgb(146, 146, 146);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add your box shadow here */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 
     &:hover {
       background: #e0e0e0;

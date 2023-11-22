@@ -47,7 +47,7 @@ const works = [
     link: "https://click.ecc.ac.jp/ecc/json/Chittle/",
     description:
       "食品ロスを増やさないためにサイズを小さくした調味料の販売に力を入れているサイト",
-    thumbnail: "/works/chittle.png",
+    thumbnail: "/works/chittle.jpg",
     tags: ["HTML", "CSS", "JavaScript", "Illustrator", "Figma"],
     category: "Website",
     method: ["1年生", "学校", "個人開発"],
