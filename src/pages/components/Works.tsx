@@ -120,11 +120,7 @@ export default function Works() {
                   backgroundRepeat: "no-repeat",
                 }}
               ></div>
-              <div
-                className={`${style.title} ${style.fontL} ${style.overlayTitle}`}
-              >
-                {work.title}
-              </div>
+              <div className={` ${style.overlayTitle}`}>{work.title}</div>
             </div>
 
             <div className={style.innerContents}>
