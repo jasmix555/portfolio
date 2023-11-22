@@ -1,6 +1,20 @@
 import Link from "next/link";
+import { useState } from "react";
 import style from "@/styles/Archive.module.scss";
-// import works from "../types/Works";
+import Modal from "./Modal";
+
+type Work = {
+  title: string;
+  link: string;
+  description: string;
+  thumbnail: string;
+  tags: string[];
+  category: string;
+  method: string[];
+  role: string[];
+  dateCreated: string;
+  awards: string;
+};
 
 const works = [
   {
@@ -85,17 +99,34 @@ const works = [
 ];
 
 export default function Works() {
+  const [modal, setModal] = useState(false);
+  const [selectedWork, setSelectedWork] = useState<Work | null>(null);
+
+  const openModal = (work: Work) => {
+    setSelectedWork(work);
+    setModal(true);
+  };
+
+  const closeModal = () => {
+    setSelectedWork(null);
+    setModal(false);
+  };
+
   return (
     <div className={style.wrapper}>
       <div className={style.workWrapper}>
         <div className={style.header}>
           <h2>
-            {/* This is a collection of my works over the years.
-          <br />I have been working as a Front End Engineer for 2 years now.
-          <br />
-          I have working on websites and web applications.
-          <br />I have also worked on a wide range of technologies from React,
-          HTML , SASS , Javascript and Typescript. */}
+            This is a collection of projects during my college life.
+            <br />
+            I have working on websites and web applications.
+            <br />
+            Aiming to be an Full-stack engineer,
+            <br />I have worked on a wide range of technologies from
+            <br />
+            Next.Js, HTML , SASS and Javascript.
+            <br />
+            <br />
             フルスタックエンジニアになることを目指して、
             <br />
             Next.jsの学習に取り組んでいます。
@@ -148,15 +179,17 @@ export default function Works() {
               <div className={`${style.awards} ${style.fontS}`}>
                 {work.awards}
               </div>
-              <div>
-                <Link href={work.link} className={`${style.link}`}>
-                  <span>もっと見る</span>
-                </Link>
-              </div>
+              <button
+                className={`${style.modalBtn}`}
+                onClick={() => openModal(work)}
+              >
+                <span>もっと知る</span>
+              </button>
             </div>
           </div>
         ))}
       </div>
+      <Modal selectedWork={selectedWork} closeModal={closeModal} />
     </div>
   );
 }
