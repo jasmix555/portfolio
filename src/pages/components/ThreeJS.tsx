@@ -20,10 +20,10 @@ export default function ThreeJS() {
           minWidth: 200.0,
           scale: 1.0,
           scaleMobile: 1.0,
-          color: 0xffffff,
-          backgroundColor: 0x8c8c8c,
-          points: 15.0,
-          spacing: 18.0,
+          color: 0xffffff, //
+          backgroundColor: 0x1e1c1e, //
+          points: 10.0,
+          spacing: 20.0,
         })
       );
     }

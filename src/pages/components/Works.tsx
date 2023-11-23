@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import style from "@/styles/Archive.module.scss";
 import Modal from "./Modal";
 
@@ -73,7 +73,7 @@ const works = [
     title: "XCO Landing Page",
     link: "https://click.ecc.ac.jp/ecc/json/XCO-LP/",
     description: "いらない服を持ってる人同士が服を交換をするアプリ",
-    thumbnail: "/works/xco.png",
+    thumbnail: "/works/xco.jpg",
     tags: ["HTML", "CSS", "JavaScript"],
     category: "Landing Page",
     method: ["1年生", "学校", "チーム開発"],

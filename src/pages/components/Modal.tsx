@@ -10,24 +10,6 @@ type Props = {
 };
 
 const Modal = ({ selectedWork, closeModal }: Props) => {
-  useEffect(() => {
-    const body = document.querySelector("body");
-    if (body) {
-      if (selectedWork) {
-        body.style.overflow = "hidden";
-      } else {
-        body.style.overflow = "visible";
-      }
-    }
-
-    return () => {
-      // Cleanup function to restore the original overflow value
-      if (body) {
-        body.style.overflow = "visible";
-      }
-    };
-  }, [selectedWork]);
-
   return (
     <AnimatePresence>
       {selectedWork && (
