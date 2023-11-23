@@ -1,24 +1,40 @@
 // Modal.js
+import { motion, AnimatePresence } from "framer-motion";
 import style from "@/styles/Modal.module.scss";
+import { FaXmark } from "react-icons/fa6";
 
 type Props = {
   selectedWork: any;
   closeModal: () => void;
 };
 
-export default function Modal({ selectedWork, closeModal }: Props) {
-  if (!selectedWork) return null;
-
+const Modal = ({ selectedWork, closeModal }: Props) => {
   return (
-    <div className={style.modalWrapper}>
-      <div className={style.modalBackground} onClick={closeModal}></div>
-      <div className={style.modalContent}>
-        {/* Add your modal content here */}
-        <h2>{selectedWork.title}</h2>
-        {/* Display other details about the selected work */}
-        {/* ... */}
-        <button onClick={closeModal}>Close</button>
-      </div>
-    </div>
+    <AnimatePresence>
+      {selectedWork && (
+        <motion.div
+          className={style.modalWrapper}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <motion.div
+            className={style.modalContent}
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+          >
+            <h2>{selectedWork.title}</h2>
+            {/* Add other modal content here */}
+            <button onClick={closeModal} className={style.closeBtn}>
+              <FaXmark />
+            </button>
+          </motion.div>
+          <div className={style.modalBackground} onClick={closeModal}></div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
-}
+};
+
+export default Modal;

@@ -18,13 +18,24 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 101;
 }
 
 .modalContent {
   background-color: white;
-  padding: 20px;
+  border-radius: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 90vw;
+  height: 90vh;
+  padding: 1rem 2rem;
   z-index: 102;
-  /* Add more styling for the modal content */
+  position: relative;
+}
+
+.closeBtn {
+  font-size: 3rem;
+  position: absolute;
+  top: 1.2rem;
+  right: 1.4rem;
 }

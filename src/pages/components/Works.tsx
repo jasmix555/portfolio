@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useState } from "react";
 import style from "@/styles/Archive.module.scss";
 import Modal from "./Modal";
@@ -71,7 +70,20 @@ const works = [
   },
 
   {
-    title: "Nemu-Nemu Kun LP",
+    title: "XCO Landing Page",
+    link: "https://click.ecc.ac.jp/ecc/json/XCO-LP/",
+    description: "いらない服を持ってる人同士が服を交換をするアプリ",
+    thumbnail: "/works/xco.png",
+    tags: ["HTML", "CSS", "JavaScript"],
+    category: "Landing Page",
+    method: ["1年生", "学校", "チーム開発"],
+    role: ["エンジニア", "デザイナー"],
+    dateCreated: "2023/02 ~ 2023/02",
+    awards: "",
+  },
+
+  {
+    title: "Nemu-Nemu Kun Landing Page",
     link: "https://click.ecc.ac.jp/ecc/json/Nemu-Nemu-Kun/",
     description:
       "睡眠時間を確保できるように、就寝時間の管理とサポートをするアプリ",
@@ -79,7 +91,7 @@ const works = [
     tags: ["HTML", "CSS", "JavaScript"],
     category: "Landing Page",
     method: ["1年生", "学校", "チーム開発"],
-    role: ["メインエンジニア"],
+    role: ["エンジニア"],
     dateCreated: "2022/09 ~ 2022/09",
     awards: "",
   },
@@ -92,7 +104,7 @@ const works = [
     tags: ["HTML", "CSS", "AdobeXD", "Illustrator"],
     category: "Website",
     method: ["1年生", "学校", "個人開発"],
-    role: ["メインエンジニア"],
+    role: ["メインエンジニア", "メインデザイナー"],
     dateCreated: "2022/07 ~ 2022/08",
     awards: "",
   },
