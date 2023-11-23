@@ -4,20 +4,21 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  overflow: hidden; /* Add overflow: hidden here */
 }
 
 .modalBackground {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 101;
 }
@@ -26,11 +27,12 @@
   background-color: white;
   border-radius: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  width: 90vw;
-  height: 90vh;
+  width: 90%;
+  height: 90%;
   padding: 1rem 2rem;
   z-index: 102;
   position: relative;
+  overflow-y: auto; /* Add overflow-y: auto to enable scrolling inside the modal */
 }
 
 .closeBtn {

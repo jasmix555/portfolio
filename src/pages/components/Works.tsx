@@ -21,7 +21,7 @@ const works = [
     link: "https://team-project2023-9rrxwr8ry-jasmix555s-projects.vercel.app/",
     description: "",
     thumbnail: "",
-    tags: ["Next.Js", "SASS", "Firebase", "Figma"],
+    tags: ["Next.Js", "SCSS", "Firebase", "Figma"],
     category: "App",
     method: ["2年生", "学校", "チーム開発"],
     role: ["メインエンジニア", "デザイナー"],
@@ -34,7 +34,7 @@ const works = [
     link: "https://foodera-nine.vercel.app/",
     description: "流行してる料理や新しい料理の経験を簡単で探せるアプリ",
     thumbnail: "/works/foodera.jpg",
-    tags: ["PUG", "SASS", "JavaScript", "Illustrator", "Figma"],
+    tags: ["PUG", "SCSS", "JavaScript", "Illustrator", "Figma"],
     category: "App",
     method: ["2年生", "学校", "個人開発"],
     role: ["メインエンジニア", "メインデザイナー"],
@@ -47,7 +47,7 @@ const works = [
     link: "https://oh-matchly.vercel.app/",
     description: "数少ない深夜営業の居酒屋探しが楽になる",
     thumbnail: "/works/sakamachi.jpg",
-    tags: ["PUG", "SASS", "JavaScript", "Illustrator", "Figma"],
+    tags: ["PUG", "SCSS", "JavaScript", "Illustrator", "Figma"],
     category: "App",
     method: ["2年生", "学校", "チーム開発"],
     role: ["メインエンジニア", "デザイナー"],
@@ -61,7 +61,7 @@ const works = [
     description:
       "食品ロスを増やさないためにサイズを小さくした調味料の販売に力を入れているサイト",
     thumbnail: "/works/chittle.jpg",
-    tags: ["HTML", "CSS", "JavaScript", "Illustrator", "Figma"],
+    tags: ["HTML", "SCSS", "JavaScript", "Illustrator", "Figma"],
     category: "Website",
     method: ["1年生", "学校", "個人開発"],
     role: ["メインエンジニア", "デザイナー"],
@@ -163,7 +163,9 @@ export default function Works() {
                   backgroundRepeat: "no-repeat",
                 }}
               ></div>
-              <div className={` ${style.overlayTitle}`}>{work.title}</div>
+              <div className={` ${style.overlayTitle} ${style.fontL}`}>
+                {work.title}
+              </div>
             </div>
 
             <div className={style.innerContents}>
@@ -192,7 +194,7 @@ export default function Works() {
                 {work.awards}
               </div>
               <button
-                className={`${style.modalBtn}`}
+                className={`${style.modalBtn} ${style.fontM}`}
                 onClick={() => openModal(work)}
               >
                 <span>もっと知る</span>

@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import style from "@/styles/Modal.module.scss";
 import { FaXmark } from "react-icons/fa6";
+import { useEffect } from "react";
 
 type Props = {
   selectedWork: any;
@@ -9,11 +10,29 @@ type Props = {
 };
 
 const Modal = ({ selectedWork, closeModal }: Props) => {
+  useEffect(() => {
+    const body = document.querySelector("body");
+    if (body) {
+      if (selectedWork) {
+        body.style.overflow = "hidden";
+      } else {
+        body.style.overflow = "visible";
+      }
+    }
+
+    return () => {
+      // Cleanup function to restore the original overflow value
+      if (body) {
+        body.style.overflow = "visible";
+      }
+    };
+  }, [selectedWork]);
+
   return (
     <AnimatePresence>
       {selectedWork && (
         <motion.div
-          className={style.modalWrapper}
+          className={`${style.modalWrapper} body`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
