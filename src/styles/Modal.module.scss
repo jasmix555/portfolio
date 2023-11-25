@@ -1,5 +1,3 @@
-/* Modal.module.scss */
-
 .modalWrapper {
   position: fixed;
   top: 0;
@@ -11,33 +9,77 @@
   align-items: center;
   z-index: 1000;
   overflow: hidden; /* Add overflow: hidden here */
-}
+  .modalBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 101;
+  }
 
-.modalBackground {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 101;
-}
+  .modalContent {
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    height: 95%;
+    padding: 1rem 2rem;
+    z-index: 102;
+    position: relative;
+    overflow-y: auto; /* Add overflow-y: auto to enable scrolling inside the modal */
 
-.modalContent {
-  background-color: white;
-  border-radius: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  width: 90%;
-  height: 90%;
-  padding: 1rem 2rem;
-  z-index: 102;
-  position: relative;
-  overflow-y: auto; /* Add overflow-y: auto to enable scrolling inside the modal */
-}
+    .link {
+      position: absolute;
+      right: 1.6rem;
+      bottom: 1.8rem;
+      font-weight: 600;
+      border: #eee 1px solid;
+      border-radius: 0.6rem;
+      padding: 0.2rem 0.8rem;
+      transition: 200ms ease-in-out;
+      overflow: hidden; /* Add this line */
+      white-space: nowrap; /* Add this line */
+      font-size: 2.4rem;
+      span {
+        transition: 200ms ease-in-out;
+        display: block;
+        cursor: pointer;
+      }
+      &:hover {
+        background: #333;
+        color: #eee;
+        width: auto; /* Add this line */
+        span {
+          display: inline-block;
+          margin-right: 3rem;
+        }
+      }
+      &::after {
+        content: "→";
+        position: absolute;
+        right: -20px;
+        transition: all 0.3s ease-in-out;
+      }
+      &:hover::after {
+        right: 10px;
+      }
+    }
+  }
 
-.closeBtn {
-  font-size: 3rem;
-  position: absolute;
-  top: 1.2rem;
-  right: 1.4rem;
+  .closeBtn {
+    font-size: 3rem;
+    position: absolute;
+    top: 1.2rem;
+    right: 1.4rem;
+    cursor: pointer;
+    transition: 150ms ease-in-out;
+    i {
+      color: #333;
+    }
+    &:hover {
+      opacity: 0.6;
+    }
+  }
 }

@@ -102,7 +102,7 @@ export default function MyInfo() {
       </div>
       <div className={style.testimonial}>
         <div className={style.title}>
-          <h1>My Name</h1>
+          <h1>My Info</h1>
         </div>
       </div>
     </div>

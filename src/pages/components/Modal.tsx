@@ -2,7 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import style from "@/styles/Modal.module.scss";
 import { FaXmark } from "react-icons/fa6";
-import { useEffect } from "react";
+import Link from "next/link";
 
 type Props = {
   selectedWork: any;
@@ -26,10 +26,13 @@ const Modal = ({ selectedWork, closeModal }: Props) => {
             exit={{ scale: 0.8, opacity: 0 }}
           >
             <h2>{selectedWork.title}</h2>
-            {/* Add other modal content here */}
+            <div></div>
             <button onClick={closeModal} className={style.closeBtn}>
               <FaXmark />
             </button>
+            <Link href={selectedWork.link} className={style.link}>
+              <span>見に行く</span>
+            </Link>
           </motion.div>
           <div className={style.modalBackground} onClick={closeModal}></div>
         </motion.div>

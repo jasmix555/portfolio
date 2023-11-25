@@ -5,7 +5,7 @@ import Modal from "./Modal";
 type Work = {
   title: string;
   link: string;
-  description: string;
+  summary: string;
   thumbnail: string;
   tags: string[];
   category: string;
@@ -18,8 +18,8 @@ type Work = {
 const works = [
   {
     title: "SpaceLang",
-    link: "https://team-project2023-9rrxwr8ry-jasmix555s-projects.vercel.app/",
-    description: "",
+    link: "https://team-project2023.vercel.app/",
+    summary: "",
     thumbnail: "",
     tags: ["Next.Js", "SCSS", "Firebase", "Figma"],
     category: "App",
@@ -32,7 +32,7 @@ const works = [
   {
     title: "Foodera",
     link: "https://foodera-nine.vercel.app/",
-    description: "流行してる料理や新しい料理の経験を簡単で探せるアプリ",
+    summary: "流行してる料理や新しい料理の経験を簡単で探せるアプリ",
     thumbnail: "/works/foodera.jpg",
     tags: ["PUG", "SCSS", "JavaScript", "Illustrator", "Figma"],
     category: "App",
@@ -45,7 +45,7 @@ const works = [
   {
     title: "Sakamachi (酒街)",
     link: "https://oh-matchly.vercel.app/",
-    description: "数少ない深夜営業の居酒屋探しが楽になる",
+    summary: "数少ない深夜営業の居酒屋探しが楽になる",
     thumbnail: "/works/sakamachi.jpg",
     tags: ["PUG", "SCSS", "JavaScript", "Illustrator", "Figma"],
     category: "App",
@@ -58,7 +58,7 @@ const works = [
   {
     title: "Chittle",
     link: "https://click.ecc.ac.jp/ecc/json/Chittle/",
-    description:
+    summary:
       "食品ロスを増やさないためにサイズを小さくした調味料の販売に力を入れているサイト",
     thumbnail: "/works/chittle.jpg",
     tags: ["HTML", "SCSS", "JavaScript", "Illustrator", "Figma"],
@@ -72,7 +72,7 @@ const works = [
   {
     title: "XCO Landing Page",
     link: "https://click.ecc.ac.jp/ecc/json/XCO-LP/",
-    description: "いらない服を持ってる人同士が服を交換をするアプリ",
+    summary: "いらない服を持ってる人同士が服を交換をするアプリ",
     thumbnail: "/works/xco.jpg",
     tags: ["HTML", "CSS", "JavaScript"],
     category: "Landing Page",
@@ -85,8 +85,7 @@ const works = [
   {
     title: "Nemu-Nemu Kun Landing Page",
     link: "https://click.ecc.ac.jp/ecc/json/Nemu-Nemu-Kun/",
-    description:
-      "睡眠時間を確保できるように、就寝時間の管理とサポートをするアプリ",
+    summary: "睡眠時間を確保できるように、就寝時間の管理とサポートをするアプリ",
     thumbnail: "/works/nemu.png",
     tags: ["HTML", "CSS", "JavaScript"],
     category: "Landing Page",
@@ -99,7 +98,7 @@ const works = [
   {
     title: "+62Resto",
     link: "https://click.ecc.ac.jp/ecc/json/+62Resto/",
-    description: "インドネシア料理テーマカフェサイト",
+    summary: "インドネシア料理テーマカフェサイト",
     thumbnail: "/works/62resto.png",
     tags: ["HTML", "CSS", "AdobeXD", "Illustrator"],
     category: "Website",
@@ -128,7 +127,7 @@ export default function Works() {
     <div className={style.wrapper}>
       <div className={style.workWrapper}>
         <div className={style.header}>
-          <h2>
+          <p>
             This is a collection of projects during my college life.
             <br />
             I have working on websites and web applications.
@@ -148,7 +147,7 @@ export default function Works() {
             視覚的に魅力的なWebインターフェースを実現する
             <br />
             ことが得意です。
-          </h2>
+          </p>
         </div>
 
         {works.map((work, idx) => (
@@ -175,8 +174,8 @@ export default function Works() {
               <div className={`${style.dateCreated} ${style.fontM}`}>
                 {work.dateCreated}
               </div>
-              <div className={`${style.description} ${style.fontL}`}>
-                {work.description}
+              <div className={`${style.summary} ${style.fontL}`}>
+                {work.summary}
               </div>
               <div className={`${style.category} ${style.fontM}`}>
                 {work.category}
