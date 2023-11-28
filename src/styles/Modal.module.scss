@@ -9,6 +9,27 @@
   align-items: center;
   z-index: 1000;
   overflow: hidden; /* Add overflow: hidden here */
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 1px);
+    background: transparent;
+    background: #0000000f;
+    overflow: hidden;
+    z-index: 100;
+  }
+
+  h2 {
+    font-size: clamp(2.4rem, 2vw, 2.4rem);
+    padding: 1.2rem 0;
+    border-bottom: solid 1px #333;
+    width: clamp(20rem, 50vw, 20rem);
+  }
+
   .modalBackground {
     position: fixed;
     top: 0;
@@ -29,6 +50,33 @@
     z-index: 102;
     position: relative;
     overflow-y: auto; /* Add overflow-y: auto to enable scrolling inside the modal */
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tags {
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2.4rem;
+        .tag {
+          padding: 0.4rem 0.8rem;
+          border-radius: 0.6rem;
+          background: #eee;
+          font-size: clamp(1.4rem, 2vw, 1.8rem);
+          font-weight: 600;
+          color: #333;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1.2rem;
+          i {
+            font-size: 2.4rem;
+          }
+        }
+      }
+    }
 
     .link {
       position: absolute;

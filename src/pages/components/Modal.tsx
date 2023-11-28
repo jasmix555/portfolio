@@ -6,15 +6,16 @@ import Link from "next/link";
 
 type Props = {
   selectedWork: any;
+  about: any;
   closeModal: () => void;
 };
 
-const Modal = ({ selectedWork, closeModal }: Props) => {
+const Modal = ({ selectedWork, closeModal, about }: Props) => {
   return (
     <AnimatePresence>
       {selectedWork && (
         <motion.div
-          className={`${style.modalWrapper} body`}
+          className={`${style.modalWrapper} body scroll-lock`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -26,7 +27,59 @@ const Modal = ({ selectedWork, closeModal }: Props) => {
             exit={{ scale: 0.8, opacity: 0 }}
           >
             <h2>{selectedWork.title}</h2>
-            <div></div>
+            <div
+              className={style.thumbnail}
+              style={{
+                backgroundImage: `url(${selectedWork.thumbnail})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                width: "40%",
+                height: "40%",
+              }}
+            ></div>
+            <div className={style.dateCreated}>
+              <h2>Duration</h2>
+              <p>{selectedWork.totalTime}</p>
+            </div>
+            <div>
+              <h2>Summary</h2>
+              <p>{selectedWork.summary}</p>
+            </div>
+            <div>
+              <h2>Category</h2>
+              <p>{selectedWork.category.join(", ")}</p>
+            </div>
+            <div className={style.method1}>
+              <h2>During</h2>
+              <p>{selectedWork.method[0]}</p>
+            </div>
+            <div className={style.method3}>
+              <h2>制作人数</h2>
+              <p>{selectedWork.method[2]}</p>
+            </div>
+            <div className={style.role}>
+              <h2>Role</h2>
+              <p>{selectedWork.role.join(", ")}</p>
+            </div>
+            <div className={`${style.tags} ${style.fontS}`}>
+              <h2>Skillset</h2>
+              <div className={style.skills}>
+                {selectedWork.tags.map((tag: any, tagIdx: number) => (
+                  <div key={tagIdx} className={style.tag}>
+                    {/* Render the icon based on the tag name */}
+                    {about.skills.map((skill: any) =>
+                      skill.name === tag ? (
+                        <span key={skill.name} className={style.icon}>
+                          <skill.icon />
+                        </span>
+                      ) : null
+                    )}
+                    <span className={style.tagText}>{tag}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
             <button onClick={closeModal} className={style.closeBtn}>
               <FaXmark />
             </button>

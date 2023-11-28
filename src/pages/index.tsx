@@ -73,7 +73,10 @@ export default function Portfolio() {
       <ScrollBar />
       <Background />
       <Navbar sectionIds={["Top", "About", "Archive", "Contact"]} />
-      <div style={{ display: "flex", flexDirection: "column" }}>
+      <div
+        className="main-wrap"
+        style={{ display: "flex", flexDirection: "column" }}
+      >
         <MainVis />
         <About />
         <div ref={gallery} className={styles.gallery}>

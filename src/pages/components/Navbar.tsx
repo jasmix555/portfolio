@@ -1,4 +1,3 @@
-import { Text, Flex } from "@chakra-ui/react";
 import React, { useEffect, useState, useCallback } from "react";
 import style from "@/styles/portfolio.module.scss";
 
@@ -43,30 +42,37 @@ function Navbar({ sectionIds }: { sectionIds: string[] }) {
   }, [sectionIds, handleScroll]);
 
   return (
-    <Flex
-      position={"fixed"}
-      top={"0.8rem"}
-      left={"0.2rem"}
-      w={"auto"}
-      flexDir={"row"}
-      zIndex={1000}
+    <div
+      style={{
+        position: "fixed",
+        top: "0.8rem",
+        left: "0.2rem",
+        width: "auto",
+        flexDirection: "row",
+        zIndex: 1000,
+        display: "flex",
+      }}
       className={style.navbar}
     >
       {sectionIds &&
         sectionIds.map((id) => (
-          <Text
+          <div
             key={id}
-            cursor={"pointer"}
+            style={{
+              cursor: "pointer",
+              fontSize: "1.6rem",
+              marginRight: "1rem",
+              textDecoration: "none",
+            }}
             className={`${style.box} ${
               activeSection === id ? style.active : ""
             }`}
             onClick={() => handleClick(id)}
-            fontSize={"1.6rem"}
           >
             {id}
-          </Text>
+          </div>
         ))}
-    </Flex>
+    </div>
   );
 }
 

@@ -1,6 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import style from "@/styles/Archive.module.scss";
 import Modal from "./Modal";
+import {
+  SiHtml5,
+  SiCss3,
+  SiSass,
+  SiJavascript,
+  SiNextdotjs,
+  SiPug,
+  SiAdobeillustrator,
+  SiAdobephotoshop,
+  SiFigma,
+  SiNotion,
+  SiGithub,
+  SiFirebase,
+  SiAdobexd,
+} from "react-icons/si";
 
 type Work = {
   title: string;
@@ -8,11 +23,74 @@ type Work = {
   summary: string;
   thumbnail: string;
   tags: string[];
-  category: string;
+  category: string[];
   method: string[];
   role: string[];
   dateCreated: string;
   awards: string;
+};
+
+const about = {
+  skills: [
+    {
+      name: "HTML",
+      icon: SiHtml5,
+      bar: 90,
+    },
+    {
+      name: "SCSS",
+      icon: SiSass,
+    },
+    {
+      name: "CSS",
+      icon: SiCss3,
+    },
+    {
+      name: "JavaScript",
+      icon: SiJavascript,
+    },
+    {
+      name: "Pug",
+      icon: SiPug,
+    },
+    {
+      name: "Next.js",
+      icon: SiNextdotjs,
+    },
+    {
+      name: "Illustrator",
+      icon: SiAdobeillustrator,
+    },
+    {
+      name: "Photoshop",
+      icon: SiAdobephotoshop,
+    },
+    {
+      name: "XD",
+      icon: SiAdobexd,
+    },
+    {
+      name: "Figma",
+      icon: SiFigma,
+    },
+    {
+      name: "Notion",
+      icon: SiNotion,
+    },
+    {
+      name: "GitHub",
+      icon: SiGithub,
+    },
+    {
+      name: "Firebase",
+      icon: SiFirebase,
+    },
+  ],
+  hobbies: [
+    {
+      name: "Drums",
+    },
+  ],
 };
 
 const works = [
@@ -21,12 +99,15 @@ const works = [
     link: "https://team-project2023.vercel.app/",
     summary: "",
     thumbnail: "",
-    tags: ["Next.Js", "SCSS", "Firebase", "Figma"],
-    category: "App",
-    method: ["2年生", "学校", "チーム開発"],
+    tags: ["Next.js", "SCSS", "Firebase", "Figma"],
+    category: ["App", "Language", "Education"],
+    method: ["2年生", "学校", "チーム制作"],
     role: ["メインエンジニア", "デザイナー"],
     dateCreated: "2023/10 ~ 現在",
+    totalTime: "40 Hours",
     awards: "",
+    description: "",
+    information: "",
   },
 
   {
@@ -34,12 +115,15 @@ const works = [
     link: "https://foodera-nine.vercel.app/",
     summary: "流行してる料理や新しい料理の経験を簡単で探せるアプリ",
     thumbnail: "/works/foodera.jpg",
-    tags: ["PUG", "SCSS", "JavaScript", "Illustrator", "Figma"],
-    category: "App",
-    method: ["2年生", "学校", "個人開発"],
+    tags: ["Pug", "SCSS", "JavaScript", "Illustrator", "Figma"],
+    category: ["App", "Food", "Restaurant"],
+    method: ["2年生", "学校", "個人制作"],
     role: ["メインエンジニア", "メインデザイナー"],
     dateCreated: "2023/05 ~ 2023/06",
+    totalTime: "32 Hours",
     awards: "",
+    description: "",
+    information: "",
   },
 
   {
@@ -47,26 +131,32 @@ const works = [
     link: "https://oh-matchly.vercel.app/",
     summary: "数少ない深夜営業の居酒屋探しが楽になる",
     thumbnail: "/works/sakamachi.jpg",
-    tags: ["PUG", "SCSS", "JavaScript", "Illustrator", "Figma"],
-    category: "App",
-    method: ["2年生", "学校", "チーム開発"],
+    tags: ["Pug", "SCSS", "JavaScript", "Illustrator", "Figma"],
+    category: ["App", "Food", "Restaurant"],
+    method: ["2年生", "学校", "チーム制作"],
     role: ["メインエンジニア", "デザイナー"],
     dateCreated: "2023/04 ~ 2023/06",
+    totalTime: "18 Hours",
     awards: "",
+    description: "",
+    information: "",
   },
 
   {
     title: "Chittle",
     link: "https://click.ecc.ac.jp/ecc/json/Chittle/",
     summary:
-      "食品ロスを増やさないためにサイズを小さくした調味料の販売に力を入れているサイト",
+      "食品ロスを増やさないためサイズを小さくした調味料の販売に力を入れているサイト",
     thumbnail: "/works/chittle.jpg",
     tags: ["HTML", "SCSS", "JavaScript", "Illustrator", "Figma"],
-    category: "Website",
-    method: ["1年生", "学校", "個人開発"],
+    category: ["Website", "Food", "Seasoning"],
+    method: ["1年生", "学校", "個人制作"],
     role: ["メインエンジニア", "デザイナー"],
     dateCreated: "2022/12 ~ 2023/01",
+    totalTime: "15 Hours",
     awards: "",
+    description: "",
+    information: "",
   },
 
   {
@@ -74,25 +164,31 @@ const works = [
     link: "https://click.ecc.ac.jp/ecc/json/XCO-LP/",
     summary: "いらない服を持ってる人同士が服を交換をするアプリ",
     thumbnail: "/works/xco.jpg",
-    tags: ["HTML", "CSS", "JavaScript"],
-    category: "Landing Page",
-    method: ["1年生", "学校", "チーム開発"],
+    tags: ["HTML", "CSS", "JavaScript", "Illustrator"],
+    category: ["Landing Page", "App", "Clothes", "Exchange"],
+    method: ["1年生", "学校", "チーム制作"],
     role: ["エンジニア", "デザイナー"],
     dateCreated: "2023/02 ~ 2023/02",
+    totalTime: "7 Hours",
     awards: "",
+    description: "",
+    information: "",
   },
 
   {
     title: "Nemu-Nemu Kun Landing Page",
     link: "https://click.ecc.ac.jp/ecc/json/Nemu-Nemu-Kun/",
     summary: "睡眠時間を確保できるように、就寝時間の管理とサポートをするアプリ",
-    thumbnail: "/works/nemu.png",
+    thumbnail: "/works/nemu.jpg",
     tags: ["HTML", "CSS", "JavaScript"],
-    category: "Landing Page",
-    method: ["1年生", "学校", "チーム開発"],
+    category: ["Landing Page", "App", "Sleep", "Health"],
+    method: ["1年生", "学校", "チーム制作"],
     role: ["エンジニア"],
     dateCreated: "2022/09 ~ 2022/09",
+    totalTime: "4 Hours",
     awards: "",
+    description: "",
+    information: "",
   },
 
   {
@@ -100,12 +196,15 @@ const works = [
     link: "https://click.ecc.ac.jp/ecc/json/+62Resto/",
     summary: "インドネシア料理テーマカフェサイト",
     thumbnail: "/works/62resto.png",
-    tags: ["HTML", "CSS", "AdobeXD", "Illustrator"],
-    category: "Website",
-    method: ["1年生", "学校", "個人開発"],
+    tags: ["HTML", "CSS", "XD", "Illustrator"],
+    category: ["Website", "Food", "Restaurant"],
+    method: ["1年生", "学校", "個人制作"],
     role: ["メインエンジニア", "メインデザイナー"],
     dateCreated: "2022/07 ~ 2022/08",
+    totalTime: "9 Hours",
     awards: "",
+    description: "",
+    information: "",
   },
 ];
 
@@ -178,7 +277,7 @@ export default function Works() {
                 {work.summary}
               </div>
               <div className={`${style.category} ${style.fontM}`}>
-                {work.category}
+                {work.category.join(", ")}
               </div>
               <div className={`${style.method} ${style.fontS}`}>
                 {work.method.join(", ")}
@@ -189,6 +288,7 @@ export default function Works() {
               <div className={`${style.tags} ${style.fontS}`}>
                 {work.tags.join(", ")}
               </div>
+
               <div className={`${style.awards} ${style.fontS}`}>
                 {work.awards}
               </div>
@@ -202,7 +302,11 @@ export default function Works() {
           </div>
         ))}
       </div>
-      <Modal selectedWork={selectedWork} closeModal={closeModal} />
+      <Modal
+        selectedWork={selectedWork}
+        about={about}
+        closeModal={closeModal}
+      />
     </div>
   );
 }

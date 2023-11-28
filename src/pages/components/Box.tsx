@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { Box, Text, Wrap } from "@chakra-ui/react";
 
 type BoxProps = {
   id: string;
@@ -19,27 +18,35 @@ function BoxComponent({
   bgc,
 }: BoxProps) {
   return (
-    <Wrap
+    <div
       id={id}
-      w={"100vw"}
-      minH={height ? height : "100vh"}
-      position={"relative"}
-      background={bgc}
+      style={{
+        scrollSnapAlign: "start",
+        scrollSnapStop: "always",
+        width: "100vw",
+        minHeight: height ? height : "100vh",
+        position: "relative",
+        backgroundColor: bgc,
+      }}
     >
-      <Box w={"100%"} h={"100%"}>
-        <Text
-          textAlign={"right"}
-          p={"1rem 1.4rem"}
-          top={"1rem"}
-          right={"2rem"}
-          textDecor={"underline"}
-          color={txtColor}
+      <div style={{ width: "100%", height: "100%" }}>
+        <p
+          style={{
+            textAlign: "right",
+            textDecoration: "underline",
+            top: "1rem",
+            right: "2rem",
+            color: txtColor,
+            position: "absolute",
+            padding: "1rem 1.4rem",
+            fontSize: "1.2rem",
+          }}
         >
           {heading}
-        </Text>
+        </p>
         {children}
-      </Box>
-    </Wrap>
+      </div>
+    </div>
   );
 }
 

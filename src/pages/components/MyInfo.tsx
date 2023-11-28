@@ -10,6 +10,9 @@ import {
   SiFigma,
   SiNotion,
   SiGithub,
+  SiPug,
+  SiCss3,
+  SiFirebase,
 } from "react-icons/si";
 
 const about = {
@@ -17,6 +20,15 @@ const about = {
     {
       name: "HTML5",
       icon: SiHtml5,
+      bar: 90,
+    },
+    {
+      name: "Pug",
+      icon: SiPug,
+    },
+    {
+      name: "CSS3",
+      icon: SiCss3,
       bar: 90,
     },
     {
@@ -32,11 +44,11 @@ const about = {
       icon: SiNextdotjs,
     },
     {
-      name: "Adobe Illustrator",
+      name: "Illustrator",
       icon: SiAdobeillustrator,
     },
     {
-      name: "Adobe Photoshop",
+      name: "Photoshop",
       icon: SiAdobephotoshop,
     },
     {
@@ -50,6 +62,10 @@ const about = {
     {
       name: "GitHub",
       icon: SiGithub,
+    },
+    {
+      name: "Firebase",
+      icon: SiFirebase,
     },
   ],
   hobbies: [
