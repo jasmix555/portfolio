@@ -15,7 +15,7 @@ const Modal = ({ selectedWork, closeModal, about }: Props) => {
     <AnimatePresence>
       {selectedWork && (
         <motion.div
-          className={`${style.modalWrapper} body scroll-lock`}
+          className={`${style.modalWrapper} ${style.scrollLock} `}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -27,43 +27,42 @@ const Modal = ({ selectedWork, closeModal, about }: Props) => {
             exit={{ scale: 0.8, opacity: 0 }}
           >
             <h2>{selectedWork.title}</h2>
-            <div
-              className={style.thumbnail}
-              style={{
-                backgroundImage: `url(${selectedWork.thumbnail})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                width: "40%",
-                height: "40%",
-              }}
-            ></div>
-            <div className={style.dateCreated}>
-              <h2>Duration</h2>
-              <p>{selectedWork.totalTime}</p>
-            </div>
-            <div>
-              <h2>Summary</h2>
-              <p>{selectedWork.summary}</p>
-            </div>
-            <div>
-              <h2>Category</h2>
-              <p>{selectedWork.category.join(", ")}</p>
-            </div>
-            <div className={style.method1}>
-              <h2>During</h2>
-              <p>{selectedWork.method[0]}</p>
-            </div>
-            <div className={style.method3}>
-              <h2>制作人数</h2>
-              <p>{selectedWork.method[2]}</p>
-            </div>
-            <div className={style.role}>
-              <h2>Role</h2>
-              <p>{selectedWork.role.join(", ")}</p>
+            <div className={style.wrapper}>
+              <div
+                className={style.thumbnail}
+                style={{
+                  backgroundImage: `url(${selectedWork.thumbnail})`,
+                }}
+              ></div>
+              <div className={style.contentWrapper}>
+                <div className={`${style.content} ${style.dateCreated}`}>
+                  <h2>Duration</h2>
+                  <p>{selectedWork.totalTime}</p>
+                </div>
+                <div className={`${style.content}`}>
+                  <h2>Summary</h2>
+                  <p>{selectedWork.summary}</p>
+                </div>
+                <div className={`${style.content}`}>
+                  <h2>Category</h2>
+                  <p>{selectedWork.category.join(", ")}</p>
+                </div>
+                <div className={`${style.content} ${style.method1}`}>
+                  <h2>During</h2>
+                  <p>{selectedWork.method[0]}</p>
+                </div>
+                <div className={`${style.content} ${style.method2}`}>
+                  <h2>Creation Team</h2>
+                  <p>{selectedWork.method[2]}</p>
+                </div>
+                <div className={`${style.content} ${style.role}`}>
+                  <h2>Role</h2>
+                  <p>{selectedWork.role.join(", ")}</p>
+                </div>
+              </div>
             </div>
             <div className={`${style.tags} ${style.fontS}`}>
-              <h2>Skillset</h2>
+              <h2>SkillSet</h2>
               <div className={style.skills}>
                 {selectedWork.tags.map((tag: any, tagIdx: number) => (
                   <div key={tagIdx} className={style.tag}>

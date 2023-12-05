@@ -27,19 +27,23 @@ function BoxComponent({
         minHeight: height ? height : "100vh",
         position: "relative",
         backgroundColor: bgc,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        paddingTop: " 6rem ",
       }}
     >
       <div style={{ width: "100%", height: "100%" }}>
         <p
           style={{
-            textAlign: "right",
             textDecoration: "underline",
             top: "1rem",
-            right: "2rem",
+            left: "2rem",
             color: txtColor,
             position: "absolute",
             padding: "1rem 1.4rem",
             fontSize: "1.2rem",
+            zIndex: 1,
           }}
         >
           {heading}

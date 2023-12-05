@@ -169,7 +169,7 @@ const works = [
     method: ["1年生", "学校", "チーム制作"],
     role: ["エンジニア", "デザイナー"],
     dateCreated: "2023/02 ~ 2023/02",
-    totalTime: "7 Hours",
+    totalTime: "13 Hours",
     awards: "",
     description: "",
     information: "",
@@ -185,7 +185,7 @@ const works = [
     method: ["1年生", "学校", "チーム制作"],
     role: ["エンジニア"],
     dateCreated: "2022/09 ~ 2022/09",
-    totalTime: "4 Hours",
+    totalTime: "8 Hours",
     awards: "",
     description: "",
     information: "",
@@ -270,25 +270,12 @@ export default function Works() {
               <div className={`${style.title} ${style.fontL}`}>
                 {work.title}
               </div>
-              <div className={`${style.dateCreated} ${style.fontM}`}>
-                {work.dateCreated}
-              </div>
               <div className={`${style.summary} ${style.fontL}`}>
                 {work.summary}
               </div>
               <div className={`${style.category} ${style.fontM}`}>
                 {work.category.join(", ")}
               </div>
-              <div className={`${style.method} ${style.fontS}`}>
-                {work.method.join(", ")}
-              </div>
-              <div className={`${style.role} ${style.fontS}`}>
-                {work.role.join(", ")}
-              </div>
-              <div className={`${style.tags} ${style.fontS}`}>
-                {work.tags.join(", ")}
-              </div>
-
               <div className={`${style.awards} ${style.fontS}`}>
                 {work.awards}
               </div>

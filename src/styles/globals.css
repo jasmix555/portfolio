@@ -352,7 +352,3 @@ video {
   color: #000;
   text-shadow: none;
 }
-
-body :has(.scroll-lock) {
-  overflow: hidden;
-}

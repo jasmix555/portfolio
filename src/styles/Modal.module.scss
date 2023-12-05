@@ -2,33 +2,13 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  overflow: hidden; /* Add overflow: hidden here */
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: calc(100% + 1px);
-    background: transparent;
-    background: #0000000f;
-    overflow: hidden;
-    z-index: 100;
-  }
-
-  h2 {
-    font-size: clamp(2.4rem, 2vw, 2.4rem);
-    padding: 1.2rem 0;
-    border-bottom: solid 1px #333;
-    width: clamp(20rem, 50vw, 20rem);
-  }
+  overflow: hidden;
 
   .modalBackground {
     position: fixed;
@@ -38,82 +18,7 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 101;
-  }
-
-  .modalContent {
-    background-color: white;
-    border-radius: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    width: 90%;
-    height: 95%;
-    padding: 1rem 2rem;
-    z-index: 102;
-    position: relative;
-    overflow-y: auto; /* Add overflow-y: auto to enable scrolling inside the modal */
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-
-    .tags {
-      .skills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2.4rem;
-        .tag {
-          padding: 0.4rem 0.8rem;
-          border-radius: 0.6rem;
-          background: #eee;
-          font-size: clamp(1.4rem, 2vw, 1.8rem);
-          font-weight: 600;
-          color: #333;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 1.2rem;
-          i {
-            font-size: 2.4rem;
-          }
-        }
-      }
-    }
-
-    .link {
-      position: absolute;
-      right: 1.6rem;
-      bottom: 1.8rem;
-      font-weight: 600;
-      border: #eee 1px solid;
-      border-radius: 0.6rem;
-      padding: 0.2rem 0.8rem;
-      transition: 200ms ease-in-out;
-      overflow: hidden; /* Add this line */
-      white-space: nowrap; /* Add this line */
-      font-size: 2.4rem;
-      span {
-        transition: 200ms ease-in-out;
-        display: block;
-        cursor: pointer;
-      }
-      &:hover {
-        background: #333;
-        color: #eee;
-        width: auto; /* Add this line */
-        span {
-          display: inline-block;
-          margin-right: 3rem;
-        }
-      }
-      &::after {
-        content: "→";
-        position: absolute;
-        right: -20px;
-        transition: all 0.3s ease-in-out;
-      }
-      &:hover::after {
-        right: 10px;
-      }
-    }
+    overflow: hidden;
   }
 
   .closeBtn {
@@ -130,4 +35,131 @@
       opacity: 0.6;
     }
   }
+}
+
+.contentWrapper {
+  width: min(97%, 90vw);
+  // display: grid;
+  // flex-wrap: wrap;
+  // margin-inline: auto;
+  // gap: 1.5rem;
+  // grid-auto-columns: 1fr;
+  // display: flex;
+  // flex-wrap: wrap;
+
+  .content {
+    width: 40rem;
+    h2 {
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      border-bottom: solid 1px #333;
+    }
+  }
+}
+
+.modalContent {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: min(90%, 90vw);
+  height: 95%;
+  padding: 1rem 2rem;
+  z-index: 102;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .thumbnail {
+    border: solid 1px tomato;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 60rem;
+    height: 40rem;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tags {
+    // width: 100%;
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.4rem;
+      .tag {
+        padding: 0.4rem 0.8rem;
+        border-radius: 0.6rem;
+        background: #eee;
+        font-weight: 600;
+        color: #333;
+        gap: 1.2rem;
+        transition: 200ms ease-in-out;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        span {
+          font-size: clamp(1.4rem, 2vw, 1.8rem);
+        }
+        .icon {
+          display: inline-block;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        &:hover {
+          background: #333;
+          color: #eee;
+        }
+      }
+    }
+  }
+
+  .link {
+    position: absolute;
+    right: 1.6rem;
+    bottom: 1.8rem;
+    font-weight: 600;
+    border: #eee 1px solid;
+    border-radius: 0.6rem;
+    padding: 0.2rem 0.8rem;
+    transition: 200ms ease-in-out;
+    overflow: hidden; /* Add this line */
+    white-space: nowrap; /* Add this line */
+    font-size: 2.4rem;
+    text-decoration: none;
+    color: #333;
+
+    span {
+      transition: 200ms ease-in-out;
+      display: block;
+      cursor: pointer;
+    }
+    &:hover {
+      background: #333;
+      color: #eee;
+      width: auto; /* Add this line */
+      span {
+        display: inline-block;
+        margin-right: 3rem;
+      }
+    }
+    &::after {
+      content: "→";
+      position: absolute;
+      right: -20px;
+      transition: all 0.3s ease-in-out;
+    }
+    &:hover::after {
+      right: 10px;
+    }
+  }
+}
+
+.scrollLock {
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
 }

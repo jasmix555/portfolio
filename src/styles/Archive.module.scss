@@ -102,7 +102,7 @@
     transition: opacity 0.3s ease;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   .modalBtn {
@@ -170,4 +170,17 @@
   .workWrapper {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+.modalWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: hidden;
 }
