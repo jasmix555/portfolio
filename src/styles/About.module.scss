@@ -4,8 +4,8 @@
 
 .gridRowSpan2 {
   grid-row: span 2;
-  height: 100% !important;
-  background: #838080 !important;
+  height: 100%;
+  background: #838080;
 }
 
 .testimonialGrid {
@@ -24,6 +24,11 @@
 
   .testimonial {
     padding: 0.4rem 0.8rem;
+    &.gridRowSpan2 {
+      grid-row: span 2;
+      height: 100%;
+      background: #838080;
+    }
     background: #c8c8c8;
     border-radius: 5px;
     min-height: 22rem;
@@ -33,10 +38,10 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     justify-content: center;
     position: relative;
+
     .title {
       position: absolute;
       top: 0.6rem;
@@ -108,7 +113,7 @@
   width: 100%;
   .skillContent {
     margin: 0 auto;
-    width: min(90%, 90vw);
+    width: min(96%, 90vw);
     padding: 1rem;
     font-size: clamp(1.8rem, 2vw, 4rem);
     display: flex;
