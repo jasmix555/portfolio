@@ -63,12 +63,11 @@
   justify-content: center;
 
   .thumbnail {
-    border: solid 1px tomato;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    width: 60rem;
-    height: 40rem;
+    width: 40%;
+    min-height: 30rem;
   }
 
   &::-webkit-scrollbar {
@@ -88,7 +87,7 @@
         font-weight: 600;
         color: #333;
         gap: 1.2rem;
-        transition: 200ms ease-in-out;
+        transition: 150ms ease-in-out;
         align-items: center;
         display: flex;
         justify-content: center;
