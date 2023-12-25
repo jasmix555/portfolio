@@ -114,6 +114,13 @@ function About() {
           <div className={style.title}>
             <h1>My Hobbies</h1>
           </div>
+          <p>Drums</p>
+          <p>Working Out</p>
+        </motion.div>
+        <motion.div className={style.testimonial}>
+          <div className={style.title}>
+            <h1>My Name</h1>
+          </div>
         </motion.div>
         <motion.div className={style.testimonial}>
           <div className={style.title}>
