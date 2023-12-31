@@ -37,7 +37,7 @@ export default function MainVis() {
               transform={"translate(-50%,-50%)"}
               zIndex={1}
             >
-              <Heading fontSize={"3rem"}>Hi I'm Jason Ng</Heading>
+              <Heading fontSize={"3rem"}>Hi I&apos;m Jason Ng</Heading>
               <Text fontSize={"1.8rem"}>
                 An Aspiring Front End Engineer
                 <br />
