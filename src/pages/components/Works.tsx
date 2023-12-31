@@ -16,6 +16,7 @@ import {
   SiFirebase,
   SiAdobexd,
 } from "react-icons/si";
+import AnimatedDiv from "./AnimatedDiv";
 
 type Work = {
   title: string;
@@ -225,7 +226,7 @@ export default function Works() {
   return (
     <div className={style.wrapper}>
       <div className={style.workWrapper}>
-        <div className={style.header}>
+        <AnimatedDiv className={style.header}>
           <p>
             This is a collection of projects during my college life.
             <br />
@@ -247,10 +248,10 @@ export default function Works() {
             <br />
             ことが得意です。
           </p>
-        </div>
+        </AnimatedDiv>
 
         {works.map((work, idx) => (
-          <div key={idx} className={`${style.Contents} ${style.work}`}>
+          <AnimatedDiv key={idx} className={`${style.Contents} ${style.work}`}>
             <div className={style.overlay}>
               <div
                 className={style.thumbnail}
@@ -286,7 +287,7 @@ export default function Works() {
                 <span>もっと知る</span>
               </button>
             </div>
-          </div>
+          </AnimatedDiv>
         ))}
       </div>
       <Modal
