@@ -15,7 +15,7 @@ const Modal = ({ selectedWork, closeModal, about }: Props) => {
     <AnimatePresence>
       {selectedWork && (
         <motion.div
-          className={`${style.modalWrapper} ${style.scrollLock} `}
+          className={`${style.modalWrapper} `}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -59,24 +59,24 @@ const Modal = ({ selectedWork, closeModal, about }: Props) => {
                   <h2>Role</h2>
                   <p>{selectedWork.role.join(", ")}</p>
                 </div>
-              </div>
-            </div>
-            <div className={`${style.tags} ${style.fontS}`}>
-              <h2>SkillSet</h2>
-              <div className={style.skills}>
-                {selectedWork.tags.map((tag: any, tagIdx: number) => (
-                  <div key={tagIdx} className={style.tag}>
-                    {/* Render the icon based on the tag name */}
-                    {about.skills.map((skill: any) =>
-                      skill.name === tag ? (
-                        <span key={skill.name} className={style.icon}>
-                          <skill.icon />
-                        </span>
-                      ) : null
-                    )}
-                    <span className={style.tagText}>{tag}</span>
+                <div className={`${style.content}`}>
+                  <h2>SkillSet</h2>
+                  <div className={style.skills}>
+                    {selectedWork.tags.map((tag: any, tagIdx: number) => (
+                      <div key={tagIdx} className={style.tag}>
+                        {/* Render the icon based on the tag name */}
+                        {about.skills.map((skill: any) =>
+                          skill.name === tag ? (
+                            <span key={skill.name} className={style.icon}>
+                              <skill.icon />
+                            </span>
+                          ) : null
+                        )}
+                        <span className={style.tagText}>{tag}</span>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
             </div>
             <button onClick={closeModal} className={style.closeBtn}>

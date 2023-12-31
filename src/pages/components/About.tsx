@@ -71,11 +71,6 @@ const about = {
       icon: SiFirebase,
     },
   ],
-  hobbies: [
-    {
-      name: "Drums",
-    },
-  ],
 };
 
 function About() {
@@ -83,20 +78,17 @@ function About() {
     <BoxComponent heading="About" id={"About"} bgc={"#f5f5f5"} height={"100vh"}>
       <div className={style.testimonialGrid}>
         <motion.div className={style.testimonial}>
-          <div className={style.title}>
-            <h1>Jason Ng</h1>
-          </div>
+          <h1>Jason Ng</h1>
         </motion.div>
-        <motion.div className={style.testimonial + " " + style.gridRowSpan2}>
+        <motion.div className={style.testimonial}>
           <div className={style.title}>
             <h1>My Info</h1>
           </div>
           <p>Birthdate: 2001/11/02</p>
           <p>Nationality: Indonesian</p>
           <p>Languages:🇺🇸 🇮🇩 🇯🇵</p>
-          <p>Birthdate: 2001/11/02</p>
         </motion.div>
-        <motion.div className={style.testimonial + " " + style.gridRowSpan2}>
+        <motion.div className={style.testimonial}>
           <div className={style.skillWrapper}>
             <div className={style.title}>
               <h1>My Skills</h1>
@@ -118,9 +110,11 @@ function About() {
           <p>Working Out</p>
         </motion.div>
         <motion.div className={style.testimonial}>
-          <div className={style.title}>
-            <h1>My Name</h1>
-          </div>
+          <p>
+            新しいことを探求するのが好きで、好奇心が強く、満足するまで諦めません！
+            <br />
+            何かに興味を持ったら、それが理解できるまで調べないと、じっとしていられなくなります。
+          </p>
         </motion.div>
         <motion.div className={style.testimonial}>
           <div className={style.title}>

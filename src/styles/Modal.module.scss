@@ -18,7 +18,6 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 101;
-    overflow: hidden;
   }
 
   .closeBtn {
@@ -35,51 +34,108 @@
       opacity: 0.6;
     }
   }
-}
 
-.contentWrapper {
-  width: min(97%, 90vw);
+  .modalContent {
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: min(90%, 90vw);
+    height: 95%;
+    padding: 1rem 2rem;
+    z-index: 102;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
 
-  .content {
-    width: 40rem;
-    h2 {
-      font-size: clamp(1.2rem, 2vw, 1.6rem);
-      border-bottom: solid 1px #333;
+    .thumbnail {
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 80%;
+      min-height: 20vh;
+      height: 30rem;
+      margin: 0 auto;
+
+      @media screen and (max-width: 768px) {
+        /* Adjust styles for screens with a maximum width of 768 pixels */
+        width: 100%;
+        min-height: 30vh;
+        height: auto;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .link {
+      position: fixed;
+      right: 9rem;
+      bottom: 4rem;
+      font-weight: 600;
+      background: #fcfcfc;
+      border: #eee 1px solid;
+      border-radius: 0.6rem;
+      padding: 0.2rem 0.8rem;
+      transition: 200ms ease-in-out;
+      overflow: hidden; /* Add this line */
+      white-space: nowrap; /* Add this line */
+      font-size: clamp(1.4rem, 2vw, 1.8rem);
+      text-decoration: none;
+      color: #333;
+
+      @media screen and (max-width: 768px) {
+        right: 4rem;
+      }
+
+      span {
+        transition: 200ms ease-in-out;
+        display: block;
+        cursor: pointer;
+      }
+      &:hover {
+        background: #333;
+        color: #eee;
+        width: auto; /* Add this line */
+        span {
+          display: inline-block;
+          margin-right: 3rem;
+        }
+      }
+      &::after {
+        content: "→";
+        position: absolute;
+        right: -20px;
+        transition: all 0.3s ease-in-out;
+      }
+      &:hover::after {
+        right: 10px;
+      }
     }
   }
 }
 
-.modalContent {
-  background-color: white;
-  border-radius: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  width: min(90%, 90vw);
-  height: 95%;
-  padding: 1rem 2rem;
-  z-index: 102;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.contentWrapper {
+  width: min(97%, 90vw);
+  padding: 3rem 0;
 
-  .thumbnail {
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 40%;
-    min-height: 30rem;
-  }
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  .tags {
-    // width: 100%;
+  .content {
+    width: 100%;
+    h2 {
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      border-bottom: solid 1px #333;
+    }
+    p {
+      font-size: clamp(1.4rem, 2vw, 2.4rem);
+      margin: 1.2rem 0;
+      font-weight: 500;
+    }
     .skills {
       display: flex;
       flex-wrap: wrap;
       gap: 2.4rem;
+      padding: 1.2rem 0;
       .tag {
         padding: 0.4rem 0.8rem;
         border-radius: 0.6rem;
@@ -107,51 +163,4 @@
       }
     }
   }
-
-  .link {
-    position: absolute;
-    right: 1.6rem;
-    bottom: 1.8rem;
-    font-weight: 600;
-    border: #eee 1px solid;
-    border-radius: 0.6rem;
-    padding: 0.2rem 0.8rem;
-    transition: 200ms ease-in-out;
-    overflow: hidden; /* Add this line */
-    white-space: nowrap; /* Add this line */
-    font-size: 2.4rem;
-    text-decoration: none;
-    color: #333;
-
-    span {
-      transition: 200ms ease-in-out;
-      display: block;
-      cursor: pointer;
-    }
-    &:hover {
-      background: #333;
-      color: #eee;
-      width: auto; /* Add this line */
-      span {
-        display: inline-block;
-        margin-right: 3rem;
-      }
-    }
-    &::after {
-      content: "→";
-      position: absolute;
-      right: -20px;
-      transition: all 0.3s ease-in-out;
-    }
-    &:hover::after {
-      right: 10px;
-    }
-  }
-}
-
-.scrollLock {
-  overflow: hidden;
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
 }
