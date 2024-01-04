@@ -21,8 +21,6 @@ function BoxComponent({
     <div
       id={id}
       style={{
-        scrollSnapAlign: "start",
-        scrollSnapStop: "always",
         width: "100vw",
         minHeight: height ? height : "100vh",
         position: "relative",

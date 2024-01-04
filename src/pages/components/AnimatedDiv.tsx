@@ -4,12 +4,17 @@ import { useInView } from "react-intersection-observer";
 interface AnimatedDivProps {
   className?: string;
   children: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
-export default function AnimatedDiv({ children, className }: AnimatedDivProps) {
+export default function AnimatedDiv({
+  children,
+  className,
+  style,
+}: AnimatedDivProps) {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0, // Adjust the threshold as needed (from 0 to 1)
+    threshold: 0.2, // Adjust the threshold as needed (from 0 to 1)
   });
 
   const variants = {
@@ -19,11 +24,11 @@ export default function AnimatedDiv({ children, className }: AnimatedDivProps) {
 
   return (
     <motion.div
+      style={style}
       ref={ref}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
       variants={variants}
-      exit={{ opacity: 0 }}
       className={className}
     >
       {children}

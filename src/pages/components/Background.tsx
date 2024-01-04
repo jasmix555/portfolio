@@ -1,53 +1,34 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import style from "@/styles/portfolio.module.scss";
 
 export default function Background() {
-  const containerVariants = {
-    start: {
-      opacity: 1,
-    },
-    end: {
-      opacity: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeInOut",
-        delay: 1.5,
-      },
-    },
-  };
-
-  const circleVariants = {
-    start: {
-      y: "0%",
-    },
-    end: {
-      y: "100%",
-      transition: {
-        duration: 0.5,
-        ease: "easeInOut",
-        delay: 0.5,
-      },
-    },
-  };
-
-  const circleTransition = {
-    loop: Infinity,
-    duration: 0.5,
-    ease: "linear",
-  };
-
   return (
-    <motion.div
-      className={style.body}
-      variants={containerVariants}
-      initial="start"
-      animate="end"
-    >
+    // <AnimatePresence mode="wait">
+    <div>
       <motion.div
-        className={style.bg}
-        variants={circleVariants}
-        transition={circleTransition}
+        className={style.slideIn}
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 0 }}
+        exit={{ scaleX: 1 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       ></motion.div>
-    </motion.div>
+
+      <motion.div
+        className={style.slideInOne}
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 0 }}
+        exit={{ scaleX: 1 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+      ></motion.div>
+
+      <motion.div
+        className={style.slideOut}
+        initial={{ scaleX: 1 }}
+        animate={{ scaleX: 0 }}
+        exit={{ scaleX: 0 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+      ></motion.div>
+    </div>
+    // </AnimatePresence>
   );
 }
