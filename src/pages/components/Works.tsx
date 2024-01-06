@@ -230,8 +230,6 @@ export default function Works() {
           <p>
             This is a collection of projects during my college life.
             <br />
-            I have working on websites and web applications.
-            <br />
             Aiming to be an Full-stack engineer,
             <br />I have worked on a wide range of technologies from
             <br />
