@@ -7,4 +7,9 @@
   pointer-events: none;
   z-index: 9999;
   mix-blend-mode: difference;
+
+  //when mobile device, display none
+  @media (max-width: 768px) {
+    display: none;
+  }
 }

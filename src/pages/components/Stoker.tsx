@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import styles from "@/styles/Stoker.module.scss";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
-export default function index({}) {
+export default function Stoker() {
   const cursorSize = 15;
   const mouse = {
     x: useMotionValue(0),
@@ -30,14 +30,16 @@ export default function index({}) {
   }, []);
 
   return (
-    <div className={styles.cursorContainer}>
-      <motion.div
-        style={{
-          left: smoothMouse.x,
-          top: smoothMouse.y,
-        }}
-        className={styles.cursor}
-      ></motion.div>
-    </div>
+    <>
+      <div className={styles.cursorContainer}>
+        <motion.div
+          style={{
+            left: smoothMouse.x,
+            top: smoothMouse.y,
+          }}
+          className={styles.cursor}
+        ></motion.div>
+      </div>
+    </>
   );
 }
