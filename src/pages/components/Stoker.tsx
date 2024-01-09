@@ -1,42 +1,42 @@
-import style from "@/styles/Stoker.module.scss";
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+"use client";
+import { useEffect } from "react";
+import styles from "@/styles/Stoker.module.scss";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
-export default function Stoker() {
-  const [stoker, setStoker] = useState({ x: 0, y: 0 });
+export default function index({}) {
+  const cursorSize = 15;
+  const mouse = {
+    x: useMotionValue(0),
+    y: useMotionValue(0),
+  };
+
+  const smoothOptions = { damping: 20, stiffness: 300, mass: 0.5 };
+  const smoothMouse = {
+    x: useSpring(mouse.x, smoothOptions),
+    y: useSpring(mouse.y, smoothOptions),
+  };
+
+  const manageMouseMove = (e: MouseEvent) => {
+    const { clientX, clientY } = e;
+    mouse.x.set(clientX - cursorSize / 2);
+    mouse.y.set(clientY - cursorSize / 2);
+  };
 
   useEffect(() => {
-    const mouseMove = (e: MouseEvent) => {
-      setStoker({
-        x: e.clientX,
-        y: e.clientY,
-      });
-    };
-
-    window.addEventListener("mousemove", mouseMove);
-
+    window.addEventListener("mousemove", manageMouseMove);
     return () => {
-      window.removeEventListener("mousemove", mouseMove);
+      window.removeEventListener("mousemove", manageMouseMove);
     };
   }, []);
 
-  const variants = {
-    default: {
-      x: stoker.x - 10,
-      y: stoker.y - 10,
-      transition: {
-        duration: 0.1,
-      },
-    },
-  };
-
   return (
-    <div className={style.wrapper}>
+    <div className={styles.cursorContainer}>
       <motion.div
-        className={style.stoker}
-        variants={variants}
-        initial="default"
-        animate="default"
+        style={{
+          left: smoothMouse.x,
+          top: smoothMouse.y,
+        }}
+        className={styles.cursor}
       ></motion.div>
     </div>
   );

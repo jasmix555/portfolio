@@ -21,7 +21,7 @@ html::-webkit-scrollbar {
 }
 
 .slide-in {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -31,7 +31,7 @@ html::-webkit-scrollbar {
 }
 
 .slide-in-one {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -41,7 +41,7 @@ html::-webkit-scrollbar {
 }
 
 .slide-out {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
