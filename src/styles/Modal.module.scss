@@ -27,9 +27,8 @@
     right: 1.4rem;
     cursor: pointer;
     transition: 150ms ease-in-out;
-    i {
-      color: #333;
-    }
+    background: none;
+    border: none;
     &:hover {
       opacity: 0.6;
     }

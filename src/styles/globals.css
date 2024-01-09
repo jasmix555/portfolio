@@ -26,8 +26,8 @@ html::-webkit-scrollbar {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: #0f0f0f;
-  transform-origin: right;
+  background: #4e4e4e;
+  transform-origin: bottom;
 }
 
 .slide-in-one {
@@ -37,7 +37,7 @@ html::-webkit-scrollbar {
   width: 100vw;
   height: 100vh;
   background: #333;
-  transform-origin: right;
+  transform-origin: bottom;
 }
 
 .slide-out {
@@ -46,6 +46,6 @@ html::-webkit-scrollbar {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: #333;
-  transform-origin: left;
+  background: #4e4e4e;
+  transform-origin: top;
 }

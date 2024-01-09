@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { motion, AnimatePresence } from "framer-motion";
+import Stoker from "./components/Stoker";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -10,6 +11,8 @@ export default function App({ Component, pageProps }: AppProps) {
     <AnimatePresence mode="wait">
       <motion.div key={router.pathname}>
         <Component {...pageProps} />
+
+        <Stoker />
 
         <motion.div
           className="slide-in"
