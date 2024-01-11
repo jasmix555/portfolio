@@ -80,13 +80,11 @@ function About() {
           <h1>Jason Ng</h1>
         </AnimatedDiv>
         <AnimatedDiv className={style.testimonial}>
-          <div className={style.title}>
-            <h1>My Info</h1>
+          <div className={style.portrait}>
+            <div className={style.image}></div>
           </div>
-          <p>Birthdate: 2001/11/02</p>
-          <p>Nationality: Indonesian</p>
-          <p>Languages:🇺🇸 🇮🇩 🇯🇵</p>
         </AnimatedDiv>
+
         <AnimatedDiv className={style.testimonial}>
           <div className={style.skillWrapper}>
             <div className={style.title}>
@@ -103,6 +101,15 @@ function About() {
         </AnimatedDiv>
         <AnimatedDiv className={style.testimonial}>
           <div className={style.title}>
+            <h1>My Info</h1>
+          </div>
+          <p>Birthdate: 2001/11/02</p>
+          <p>Nationality: Indonesian</p>
+          <p>Languages:🇺🇸 🇮🇩 🇯🇵</p>
+        </AnimatedDiv>
+
+        <AnimatedDiv className={style.testimonial}>
+          <div className={style.title}>
             <h1>My Hobbies</h1>
           </div>
           <p>Drums</p>
@@ -114,11 +121,6 @@ function About() {
             <br />
             何かに興味を持ったら、それが理解できるまで調べないと、じっとしていられなくなります。
           </p>
-        </AnimatedDiv>
-        <AnimatedDiv className={style.testimonial}>
-          <div className={style.title}>
-            <h1>My Name</h1>
-          </div>
         </AnimatedDiv>
       </div>
     </BoxComponent>
