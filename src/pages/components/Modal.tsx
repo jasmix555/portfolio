@@ -47,22 +47,26 @@ const Modal = ({ selectedWork, closeModal, about }: Props) => {
                   <h2>Category</h2>
                   <p>{selectedWork.category.join(", ")}</p>
                 </div>
-                <div className={`${style.content} ${style.method1}`}>
+                <div className={`${style.content}`}>
                   <h2>During</h2>
-                  <p>{selectedWork.method[0]}</p>
+                  <p>{selectedWork.when[0]}</p>
                 </div>
-                <div className={`${style.content} ${style.method2}`}>
+                <div className={`${style.content}`}>
+                  <h2>Goal</h2>
+                  <p>{selectedWork.when[1]}</p>
+                </div>
+                <div className={`${style.content}`}>
                   <h2>Creation Team</h2>
-                  <p>{selectedWork.method[2]}</p>
+                  <p>{selectedWork.when[2]}</p>
                 </div>
                 <div className={`${style.content} ${style.role}`}>
                   <h2>Role</h2>
                   <p>{selectedWork.role.join(", ")}</p>
                 </div>
                 <div className={`${style.content}`}>
-                  <h2>SkillSet</h2>
+                  <h2>Method</h2>
                   <div className={style.skills}>
-                    {selectedWork.tags.map((tag: any, tagIdx: number) => (
+                    {selectedWork.method.map((tag: any, tagIdx: number) => (
                       <div key={tagIdx} className={style.tag}>
                         {/* Render the icon based on the tag name */}
                         {about.skills.map((skill: any) =>
@@ -83,7 +87,7 @@ const Modal = ({ selectedWork, closeModal, about }: Props) => {
               <FaXmark />
             </button>
             <Link href={selectedWork.link} className={style.link}>
-              <span>見に行く</span>
+              <span>Link</span>
             </Link>
           </motion.div>
           <div className={style.modalBackground} onClick={closeModal}></div>

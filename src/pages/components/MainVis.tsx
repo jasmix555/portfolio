@@ -1,5 +1,4 @@
 import React from "react";
-import { Box, Heading, Text, Wrap } from "@chakra-ui/react";
 import BoxComponent from "./Box";
 import ThreeJS from "./ThreeJS";
 import { motion } from "framer-motion";
@@ -7,7 +6,13 @@ import { motion } from "framer-motion";
 export default function MainVis() {
   return (
     <BoxComponent heading="Top" id={"Top"} txtColor={"white"}>
-      <Wrap display={"flex"} justifyContent={"center"} alignItems={"center"}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <ThreeJS />
         <div
           style={{
@@ -28,7 +33,7 @@ export default function MainVis() {
             style={{
               color: "white",
               background: "#333",
-              padding: "1.5rem 3rem",
+              padding: "2rem 5rem",
               borderRadius: "10px",
               textAlign: "center",
               width: "fit-content",
@@ -58,7 +63,7 @@ export default function MainVis() {
             </p>
           </div>
         </motion.div>
-      </Wrap>
+      </div>
     </BoxComponent>
   );
 }

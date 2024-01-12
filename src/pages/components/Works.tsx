@@ -23,9 +23,9 @@ type Work = {
   link: string;
   summary: string;
   thumbnail: string;
-  tags: string[];
-  category: string[];
   method: string[];
+  category: string[];
+  when: string[];
   role: string[];
   dateCreated: string;
   awards: string;
@@ -100,12 +100,28 @@ const works = [
     link: "https://team-project2023.vercel.app/",
     summary: "現地のスラングを学ぶ人へ向けた言語習得アプリ",
     thumbnail: "",
-    tags: ["Next.js", "SCSS", "Firebase", "Figma"],
+    method: ["Next.js", "SCSS", "Firebase", "Figma"],
     category: ["App", "Language", "Education"],
-    method: ["2年生", "学校", "チーム制作"],
+    when: ["2年生", "学校", "チーム制作"],
     role: ["メインエンジニア", "デザイナー"],
     dateCreated: "2023/10 ~ 現在",
-    totalTime: "40 Hours",
+    totalTime: "53 Hours",
+    awards: "",
+    description: "",
+    information: "",
+  },
+
+  {
+    title: "Attendance",
+    link: "https://attendance-checker-three.vercel.app/",
+    summary: "従業員の出退勤を管理するウェブアプリ",
+    thumbnail: "",
+    method: ["Next.js", "SCSS", "Firebase", "Figma"],
+    category: ["App", "Attendance", "Company", "Management"],
+    when: ["2年生", "就活課題", "個人制作"],
+    role: ["メインエンジニア", "メインデザイナー"],
+    dateCreated: "2023/12 ~ 2023/12",
+    totalTime: "28 Hours",
     awards: "",
     description: "",
     information: "",
@@ -116,9 +132,9 @@ const works = [
     link: "https://foodera-nine.vercel.app/",
     summary: "流行してる料理や新しい料理の経験を簡単で探せるアプリ",
     thumbnail: "/works/foodera.jpg",
-    tags: ["Pug", "SCSS", "JavaScript", "Illustrator", "Figma"],
+    method: ["Pug", "SCSS", "JavaScript", "Illustrator", "Figma"],
     category: ["App", "Food", "Restaurant"],
-    method: ["2年生", "学校", "個人制作"],
+    when: ["2年生", "学校", "個人制作"],
     role: ["メインエンジニア", "メインデザイナー"],
     dateCreated: "2023/05 ~ 2023/06",
     totalTime: "32 Hours",
@@ -130,11 +146,11 @@ const works = [
   {
     title: "Sakamachi (酒街)",
     link: "https://oh-matchly.vercel.app/",
-    summary: "数少ない深夜営業の居酒屋探しが楽になる",
+    summary: "数少ない深夜営業の居酒屋探しが楽になるアプリ",
     thumbnail: "/works/sakamachi.jpg",
-    tags: ["Pug", "SCSS", "JavaScript", "Illustrator", "Figma"],
+    method: ["Pug", "SCSS", "JavaScript", "Illustrator", "Figma"],
     category: ["App", "Food", "Restaurant"],
-    method: ["2年生", "学校", "チーム制作"],
+    when: ["2年生", "学校", "チーム制作"],
     role: ["メインエンジニア", "デザイナー"],
     dateCreated: "2023/04 ~ 2023/06",
     totalTime: "18 Hours",
@@ -149,9 +165,9 @@ const works = [
     summary:
       "食品ロスを増やさないためサイズを小さくした調味料の販売に力を入れているサイト",
     thumbnail: "/works/chittle.jpg",
-    tags: ["HTML", "SCSS", "JavaScript", "Illustrator", "Figma"],
+    method: ["HTML", "SCSS", "JavaScript", "Illustrator", "Figma"],
     category: ["Website", "Food", "Seasoning"],
-    method: ["1年生", "学校", "個人制作"],
+    when: ["1年生", "学校", "個人制作"],
     role: ["メインエンジニア", "デザイナー"],
     dateCreated: "2022/12 ~ 2023/01",
     totalTime: "15 Hours",
@@ -165,9 +181,9 @@ const works = [
     link: "https://click.ecc.ac.jp/ecc/json/XCO-LP/",
     summary: "いらない服を持ってる人同士が服を交換をするアプリ",
     thumbnail: "/works/xco.jpg",
-    tags: ["HTML", "CSS", "JavaScript", "Illustrator"],
+    method: ["HTML", "CSS", "JavaScript", "Illustrator"],
     category: ["Landing Page", "App", "Clothes", "Exchange"],
-    method: ["1年生", "学校", "チーム制作"],
+    when: ["1年生", "学校", "チーム制作"],
     role: ["エンジニア", "デザイナー"],
     dateCreated: "2023/02 ~ 2023/02",
     totalTime: "13 Hours",
@@ -181,9 +197,9 @@ const works = [
     link: "https://click.ecc.ac.jp/ecc/json/Nemu-Nemu-Kun/",
     summary: "睡眠時間を確保できるように、就寝時間の管理とサポートをするアプリ",
     thumbnail: "/works/nemu.jpg",
-    tags: ["HTML", "CSS", "JavaScript"],
+    method: ["HTML", "CSS", "JavaScript"],
     category: ["Landing Page", "App", "Sleep", "Health"],
-    method: ["1年生", "学校", "チーム制作"],
+    when: ["1年生", "学校", "チーム制作"],
     role: ["エンジニア"],
     dateCreated: "2022/09 ~ 2022/09",
     totalTime: "8 Hours",
@@ -197,9 +213,9 @@ const works = [
     link: "https://click.ecc.ac.jp/ecc/json/+62Resto/",
     summary: "インドネシア料理テーマカフェサイト",
     thumbnail: "/works/62resto.png",
-    tags: ["HTML", "CSS", "XD", "Illustrator"],
+    method: ["HTML", "CSS", "XD", "Illustrator"],
     category: ["Website", "Food", "Restaurant"],
-    method: ["1年生", "学校", "個人制作"],
+    when: ["1年生", "学校", "個人制作"],
     role: ["メインエンジニア", "メインデザイナー"],
     dateCreated: "2022/07 ~ 2022/08",
     totalTime: "9 Hours",
@@ -282,7 +298,7 @@ export default function Works() {
                 className={`${style.modalBtn} ${style.fontM}`}
                 onClick={() => openModal(work)}
               >
-                <span>もっと知る</span>
+                <span>View More</span>
               </button>
             </div>
           </AnimatedDiv>
