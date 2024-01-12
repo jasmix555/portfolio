@@ -98,7 +98,7 @@ const works = [
   {
     title: "SpaceLang",
     link: "https://team-project2023.vercel.app/",
-    summary: "",
+    summary: "現地のスラングを学ぶ人へ向けた言語習得アプリ",
     thumbnail: "",
     tags: ["Next.js", "SCSS", "Firebase", "Figma"],
     category: ["App", "Language", "Education"],
