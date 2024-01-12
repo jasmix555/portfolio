@@ -107,6 +107,13 @@ function About() {
           <p>Nationality: Indonesian</p>
           <p>Languages:🇺🇸 🇮🇩 🇯🇵</p>
         </AnimatedDiv>
+        <AnimatedDiv className={style.testimonial}>
+          <p>
+            新しいことを探求するのが好きで、好奇心が強く、満足するまで諦めません！
+            <br />
+            何かに興味を持ったら、それが理解できるまで調べないと、じっとしていられなくなります。
+          </p>
+        </AnimatedDiv>
 
         <AnimatedDiv className={style.testimonial}>
           <div className={style.title}>
@@ -114,13 +121,6 @@ function About() {
           </div>
           <p>Drums</p>
           <p>Working Out</p>
-        </AnimatedDiv>
-        <AnimatedDiv className={style.testimonial}>
-          <p>
-            新しいことを探求するのが好きで、好奇心が強く、満足するまで諦めません！
-            <br />
-            何かに興味を持ったら、それが理解できるまで調べないと、じっとしていられなくなります。
-          </p>
         </AnimatedDiv>
       </div>
     </BoxComponent>

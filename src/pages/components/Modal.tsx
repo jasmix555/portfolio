@@ -28,13 +28,29 @@ const Modal = ({ selectedWork, closeModal, about }: Props) => {
           >
             <h2>{selectedWork.title}</h2>
             <div className={style.wrapper}>
-              <div
-                className={style.thumbnail}
-                style={{
-                  backgroundImage: `url(${selectedWork.thumbnail})`,
-                }}
-              ></div>
+              <div className={style.image}>
+                <div
+                  className={style.thumbnail}
+                  style={{
+                    backgroundImage: `url(${selectedWork.thumbnail})`,
+                  }}
+                >
+                  <div
+                    className={selectedWork.awards ? style.awards : " "}
+                  ></div>
+                </div>
+              </div>
               <div className={style.contentWrapper}>
+                <div className={style.content}>
+                  <h2>Links</h2>
+                  <div className={style.links}>
+                    {selectedWork.link.map((link: any, linkIdx: number) => (
+                      <Link key={linkIdx} href={link}>
+                        {link}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
                 <div className={`${style.content} ${style.dateCreated}`}>
                   <h2>Duration</h2>
                   <p>{selectedWork.totalTime}</p>

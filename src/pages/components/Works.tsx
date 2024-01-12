@@ -20,7 +20,7 @@ import AnimatedDiv from "./AnimatedDiv";
 
 type Work = {
   title: string;
-  link: string;
+  link: string[];
   summary: string;
   thumbnail: string;
   method: string[];
@@ -97,7 +97,10 @@ const about = {
 const works = [
   {
     title: "SpaceLang",
-    link: "https://team-project2023.vercel.app/",
+    link: [
+      "https://team-project2023.vercel.app/",
+      "https://github.com/jasmix555/space-lang",
+    ],
     summary: "現地のスラングを学ぶ人へ向けた言語習得アプリ",
     thumbnail: "",
     method: ["Next.js", "SCSS", "Firebase", "Figma"],
@@ -108,12 +111,15 @@ const works = [
     totalTime: "53 Hours",
     awards: false,
     description: "",
-    information: "",
+    learning: "",
   },
 
   {
     title: "Attendance",
-    link: "https://attendance-checker-three.vercel.app/",
+    link: [
+      "https://attendance-checker-three.vercel.app/",
+      "https://github.com/jasmix555/attendance_checker ",
+    ],
     summary: "従業員の出退勤を管理するウェブアプリ",
     thumbnail: "",
     method: ["Next.js", "SCSS", "Firebase", "Figma"],
@@ -124,12 +130,15 @@ const works = [
     totalTime: "28 Hours",
     awards: false,
     description: "",
-    information: "",
+    learning: "",
   },
 
   {
     title: "Foodera",
-    link: "https://foodera-nine.vercel.app/",
+    link: [
+      "https://foodera-nine.vercel.app/",
+      "https://github.com/jasmix555/Foodera",
+    ],
     summary: "流行してる料理や新しい料理の経験を簡単で探せるアプリ",
     thumbnail: "/works/foodera.jpg",
     method: ["Pug", "SCSS", "JavaScript", "Illustrator", "Figma"],
@@ -140,12 +149,15 @@ const works = [
     totalTime: "32 Hours",
     awards: false,
     description: "",
-    information: "",
+    learning: "",
   },
 
   {
     title: "Sakamachi (酒街)",
-    link: "https://oh-matchly.vercel.app/",
+    link: [
+      "https://oh-matchly.vercel.app/",
+      "https://github.com/jasmix555/Oh_Matchly",
+    ],
     summary: "数少ない深夜営業の居酒屋探しが楽になるアプリ",
     thumbnail: "/works/sakamachi.jpg",
     method: ["Pug", "SCSS", "JavaScript", "Illustrator", "Figma"],
@@ -156,12 +168,15 @@ const works = [
     totalTime: "18 Hours",
     awards: true,
     description: "",
-    information: "",
+    learning: "",
   },
 
   {
     title: "Chittle",
-    link: "https://click.ecc.ac.jp/ecc/json/Chittle/",
+    link: [
+      "https://click.ecc.ac.jp/ecc/json/Chittle/",
+      "https://github.com/jasmix555/Chittle",
+    ],
     summary:
       "食品ロスを増やさないためサイズを小さくした調味料の販売に力を入れているサイト",
     thumbnail: "/works/chittle.jpg",
@@ -173,12 +188,15 @@ const works = [
     totalTime: "15 Hours",
     awards: false,
     description: "",
-    information: "",
+    learning: "",
   },
 
   {
     title: "XCO Landing Page",
-    link: "https://click.ecc.ac.jp/ecc/json/XCO-LP/",
+    link: [
+      "https://click.ecc.ac.jp/ecc/json/XCO-LP/",
+      "https://github.com/jasmix555/XCO0-LP",
+    ],
     summary: "いらない服を持ってる人同士が服を交換をするアプリ",
     thumbnail: "/works/xco.jpg",
     method: ["HTML", "CSS", "JavaScript", "Illustrator"],
@@ -189,12 +207,15 @@ const works = [
     totalTime: "13 Hours",
     awards: false,
     description: "",
-    information: "",
+    learning: "",
   },
 
   {
     title: "Nemu-Nemu Kun Landing Page",
-    link: "https://click.ecc.ac.jp/ecc/json/Nemu-Nemu-Kun/",
+    link: [
+      "https://click.ecc.ac.jp/ecc/json/Nemu-Nemu-Kun/",
+      "https://github.com/jasmix555/Nemu-Nemu-Kun",
+    ],
     summary: "睡眠時間を確保できるように、就寝時間の管理とサポートをするアプリ",
     thumbnail: "/works/nemu.jpg",
     method: ["HTML", "CSS", "JavaScript"],
@@ -205,12 +226,15 @@ const works = [
     totalTime: "8 Hours",
     awards: false,
     description: "",
-    information: "",
+    learning: "",
   },
 
   {
     title: "+62Resto",
-    link: "https://click.ecc.ac.jp/ecc/json/+62Resto/",
+    link: [
+      "https://click.ecc.ac.jp/ecc/json/+62Resto/",
+      "https://github.com/jasmix555/62Resto",
+    ],
     summary: "インドネシア料理テーマカフェサイト",
     thumbnail: "/works/62resto.png",
     method: ["HTML", "CSS", "XD", "Illustrator"],
@@ -221,7 +245,7 @@ const works = [
     totalTime: "9 Hours",
     awards: false,
     description: "",
-    information: "",
+    learning: "",
   },
 ];
 
