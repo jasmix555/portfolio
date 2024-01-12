@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_2" data-name=" レイヤー 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 471.39 696.95">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: -.16em;
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8 {
+        stroke-width: 0px;
+      }
+
+      .cls-9 {
+        letter-spacing: -.14em;
+      }
+
+      .cls-10 {
+        letter-spacing: -.19em;
+      }
+
+      .cls-11 {
+        letter-spacing: -.08em;
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient-4);
+      }
+
+      .cls-4 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-5 {
+        fill: url(#linear-gradient-3);
+      }
+
+      .cls-6 {
+        fill: url(#linear-gradient-5);
+      }
+
+      .cls-7 {
+        fill: url(#linear-gradient-6);
+      }
+
+      .cls-12 {
+        letter-spacing: -.14em;
+      }
+
+      .cls-13 {
+        font-size: 40px;
+      }
+
+      .cls-13, .cls-14 {
+        font-family: ToppanBunkyuMidashiGothicStdN-ExtraBold-83pv-RKSJ-H, 'Toppan Bunkyu Midashi Gothic';
+        font-weight: 700;
+      }
+
+      .cls-15 {
+        letter-spacing: -.06em;
+      }
+
+      .cls-8 {
+        fill: #2e584d;
+      }
+
+      .cls-14 {
+        font-size: 54px;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="126.68" y1="-1972.72" x2="306.35" y2="-1388.79" gradientTransform="translate(0 1937.02)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e00000"/>
+      <stop offset="1" stop-color="#111b3a"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="797.83" y1="-1454.45" x2="573.36" y2="-1782.52" gradientTransform="translate(908.92 1937.02) rotate(-180) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f80"/>
+      <stop offset="1" stop-color="#ffeb4f"/>
+      <stop offset="1" stop-color="#ffeb4f"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-3" x1="364.04" y1="-1426.86" x2="108.15" y2="-1858.67" gradientTransform="translate(0 1937.02)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f18800"/>
+      <stop offset=".54" stop-color="#ffc837"/>
+      <stop offset=".75" stop-color="#ffff71"/>
+      <stop offset=".88" stop-color="#ffe354"/>
+      <stop offset="1" stop-color="#ffaf1d"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-4" x1="329.39" y1="-1414.81" x2="207.75" y2="-1620.08" gradientTransform="translate(0 1937.02)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f17b00"/>
+      <stop offset="1" stop-color="#ffbb2a"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-5" x1="59.2" y1="-1818.43" x2="376.51" y2="-1501.12" gradientTransform="translate(0 1937.02)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e16900"/>
+      <stop offset=".74" stop-color="#ffeb5c"/>
+      <stop offset=".84" stop-color="#ffd443"/>
+      <stop offset=".95" stop-color="#fff3a0"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-6" x1="99.64" y1="-1828.38" x2="397.13" y2="-1422.46" gradientTransform="translate(0 1937.02)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffee85"/>
+      <stop offset="0" stop-color="#ffee85"/>
+      <stop offset=".14" stop-color="#f8bc51"/>
+      <stop offset=".28" stop-color="#fee87f"/>
+      <stop offset=".48" stop-color="#f39829"/>
+      <stop offset=".65" stop-color="#fcd66c"/>
+      <stop offset="1" stop-color="#f18b1c"/>
+    </linearGradient>
+  </defs>
+  <g id="_レイヤー_3" data-name=" レイヤー 3">
+    <polygon class="cls-8" points="398.67 26.55 398.67 696.95 237.88 606.35 77.07 696.95 77.07 26.55 398.67 26.55"/>
+    <path class="cls-2" d="M398.67,166.4v340.23c-41.53,29.97-92.54,47.63-147.68,47.63-67.4,0-128.63-26.39-173.93-69.38V166.4h321.61Z"/>
+    <path class="cls-4" d="M46.43,297.26c0-105.73,85.71-191.44,191.45-191.44s191.45,85.71,191.45,191.44-85.71,191.45-191.45,191.45S46.43,403,46.43,297.26h0Z"/>
+    <path class="cls-5" d="M237.87,63.75C108.91,63.75,4.36,168.3,4.36,297.26s104.55,233.51,233.51,233.51,233.51-104.55,233.51-233.51S366.84,63.75,237.87,63.75ZM237.87,478.36c-100.02,0-181.1-81.08-181.1-181.1S137.86,116.17,237.87,116.17s181.1,81.08,181.1,181.1-81.08,181.1-181.1,181.1h0Z"/>
+    <path class="cls-3" d="M462.65,360.75l-50.08-15.65c-20.98,76.8-91.24,133.26-174.7,133.26-62.17,0-117.01-31.33-149.62-79.06l-42.2,31.13c42.18,60.64,112.36,100.35,191.83,100.35,106.96,0,197.12-71.92,224.78-170.03h-.01Z"/>
+    <path class="cls-6" d="M237.87,84.13c-117.71,0-213.13,95.42-213.13,213.14s95.42,213.13,213.13,213.13,213.13-95.42,213.13-213.14-95.42-213.14-213.13-213.14h0ZM237.87,487.4c-105.01,0-190.14-85.13-190.14-190.14S132.86,107.12,237.87,107.12s190.14,85.13,190.14,190.14-85.13,190.14-190.14,190.14h0Z"/>
+    <path class="cls-7" d="M237.87,72.72c-124.01,0-224.54,100.53-224.54,224.54s100.53,224.55,224.54,224.55,224.55-100.53,224.55-224.55-100.53-224.54-224.55-224.54h0ZM237.87,495.32c-109.38,0-198.05-88.67-198.05-198.06S128.49,99.21,237.87,99.21s198.06,88.67,198.06,198.05-88.67,198.06-198.06,198.06Z"/>
+  </g>
+  <g>
+    <text class="cls-13" transform="translate(194.06 295.82)"><tspan x="0" y="0">2023</tspan></text>
+    <text class="cls-13" transform="translate(96.06 237.94)"><tspan x="0" y="0">作品展示</tspan><tspan class="cls-11" x="160" y="0">会＋</tspan><tspan x="233.28" y="0">E展</tspan></text>
+  </g>
+  <text class="cls-14" transform="translate(103.18 386.07)"><tspan class="cls-1" x="0" y="0">コ</tspan><tspan class="cls-15" x="45.25" y="0">ン</tspan><tspan class="cls-12" x="95.74" y="0">セ</tspan><tspan class="cls-10" x="142.45" y="0">プ</tspan><tspan class="cls-9" x="186.3" y="0">ト</tspan><tspan x="232.74" y="0">賞</tspan></text>
+</svg>

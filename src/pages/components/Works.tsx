@@ -28,7 +28,7 @@ type Work = {
   when: string[];
   role: string[];
   dateCreated: string;
-  awards: string;
+  awards: boolean;
 };
 
 const about = {
@@ -106,7 +106,7 @@ const works = [
     role: ["メインエンジニア", "デザイナー"],
     dateCreated: "2023/10 ~ 現在",
     totalTime: "53 Hours",
-    awards: "",
+    awards: false,
     description: "",
     information: "",
   },
@@ -122,7 +122,7 @@ const works = [
     role: ["メインエンジニア", "メインデザイナー"],
     dateCreated: "2023/12 ~ 2023/12",
     totalTime: "28 Hours",
-    awards: "",
+    awards: false,
     description: "",
     information: "",
   },
@@ -138,7 +138,7 @@ const works = [
     role: ["メインエンジニア", "メインデザイナー"],
     dateCreated: "2023/05 ~ 2023/06",
     totalTime: "32 Hours",
-    awards: "",
+    awards: false,
     description: "",
     information: "",
   },
@@ -154,7 +154,7 @@ const works = [
     role: ["メインエンジニア", "デザイナー"],
     dateCreated: "2023/04 ~ 2023/06",
     totalTime: "18 Hours",
-    awards: "",
+    awards: true,
     description: "",
     information: "",
   },
@@ -171,7 +171,7 @@ const works = [
     role: ["メインエンジニア", "デザイナー"],
     dateCreated: "2022/12 ~ 2023/01",
     totalTime: "15 Hours",
-    awards: "",
+    awards: false,
     description: "",
     information: "",
   },
@@ -187,7 +187,7 @@ const works = [
     role: ["エンジニア", "デザイナー"],
     dateCreated: "2023/02 ~ 2023/02",
     totalTime: "13 Hours",
-    awards: "",
+    awards: false,
     description: "",
     information: "",
   },
@@ -203,7 +203,7 @@ const works = [
     role: ["エンジニア"],
     dateCreated: "2022/09 ~ 2022/09",
     totalTime: "8 Hours",
-    awards: "",
+    awards: false,
     description: "",
     information: "",
   },
@@ -219,7 +219,7 @@ const works = [
     role: ["メインエンジニア", "メインデザイナー"],
     dateCreated: "2022/07 ~ 2022/08",
     totalTime: "9 Hours",
-    awards: "",
+    awards: false,
     description: "",
     information: "",
   },
@@ -267,13 +267,11 @@ export default function Works() {
         {works.map((work, idx) => (
           <AnimatedDiv key={idx} className={`${style.Contents} ${style.work}`}>
             <div className={style.overlay}>
+              <div className={work.awards ? style.awards : " "}></div>
               <div
                 className={style.thumbnail}
                 style={{
                   backgroundImage: `url(${work.thumbnail})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
                 }}
               ></div>
               <div className={` ${style.overlayTitle} ${style.fontL}`}>
@@ -290,9 +288,6 @@ export default function Works() {
               </div>
               <div className={`${style.category} ${style.fontM}`}>
                 {work.category.join(", ")}
-              </div>
-              <div className={`${style.awards} ${style.fontS}`}>
-                {work.awards}
               </div>
               <button
                 className={`${style.modalBtn} ${style.fontM}`}
