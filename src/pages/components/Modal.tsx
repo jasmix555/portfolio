@@ -26,7 +26,6 @@ const Modal = ({ selectedWork, closeModal, about }: Props) => {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
           >
-            <h2>{selectedWork.title}</h2>
             <div className={style.wrapper}>
               <div className={style.image}>
                 <div
@@ -41,44 +40,44 @@ const Modal = ({ selectedWork, closeModal, about }: Props) => {
                 </div>
               </div>
               <div className={style.contentWrapper}>
-                <div className={style.content}>
-                  <h2>Links</h2>
-                  <div className={style.links}>
-                    {selectedWork.link.map((link: any, linkIdx: number) => (
-                      <Link key={linkIdx} href={link}>
-                        {link}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-                <div className={`${style.content} ${style.dateCreated}`}>
-                  <h2>Duration</h2>
-                  <p>{selectedWork.totalTime}</p>
-                </div>
+                <h1>{selectedWork.title}</h1>
                 <div className={`${style.content}`}>
                   <h2>Summary</h2>
                   <p>{selectedWork.summary}</p>
                 </div>
-                <div className={`${style.content}`}>
-                  <h2>Category</h2>
-                  <p>{selectedWork.category.join(", ")}</p>
+
+                <div className={style.details}>
+                  <div className={`${style.content} ${style.dateCreated}`}>
+                    <h2>Duration</h2>
+                    <p>{selectedWork.totalTime}</p>
+                  </div>
+
+                  <div className={`${style.content}`}>
+                    <h2>Category</h2>
+                    <p>{selectedWork.category.join(", ")}</p>
+                  </div>
+
+                  <div className={`${style.content}`}>
+                    <h2>During</h2>
+                    <p>{selectedWork.when[0]}</p>
+                  </div>
+
+                  <div className={`${style.content}`}>
+                    <h2>Goal</h2>
+                    <p>{selectedWork.when[1]}</p>
+                  </div>
+
+                  <div className={`${style.content}`}>
+                    <h2>Creation Team</h2>
+                    <p>{selectedWork.when[2]}</p>
+                  </div>
+
+                  <div className={`${style.content} ${style.role}`}>
+                    <h2>Role</h2>
+                    <p>{selectedWork.role.join(", ")}</p>
+                  </div>
                 </div>
-                <div className={`${style.content}`}>
-                  <h2>During</h2>
-                  <p>{selectedWork.when[0]}</p>
-                </div>
-                <div className={`${style.content}`}>
-                  <h2>Goal</h2>
-                  <p>{selectedWork.when[1]}</p>
-                </div>
-                <div className={`${style.content}`}>
-                  <h2>Creation Team</h2>
-                  <p>{selectedWork.when[2]}</p>
-                </div>
-                <div className={`${style.content} ${style.role}`}>
-                  <h2>Role</h2>
-                  <p>{selectedWork.role.join(", ")}</p>
-                </div>
+
                 <div className={`${style.content}`}>
                   <h2>Method</h2>
                   <div className={style.skills}>
@@ -97,14 +96,22 @@ const Modal = ({ selectedWork, closeModal, about }: Props) => {
                     ))}
                   </div>
                 </div>
+
+                <div className={style.content}>
+                  <h2>Links</h2>
+                  <div className={style.links}>
+                    {selectedWork.link.map((link: any, linkIdx: number) => (
+                      <Link key={linkIdx} href={link}>
+                        {link}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
             <button onClick={closeModal} className={style.closeBtn}>
               <FaXmark />
             </button>
-            <Link href={selectedWork.link} className={style.link}>
-              <span>Link</span>
-            </Link>
           </motion.div>
           <div className={style.modalBackground} onClick={closeModal}></div>
         </motion.div>

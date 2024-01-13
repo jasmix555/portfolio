@@ -1,5 +1,4 @@
 import BoxComponent from "./Box";
-// import MyInfo from "./MyInfo";
 import style from "@/styles/About.module.scss";
 import {
   SiHtml5,

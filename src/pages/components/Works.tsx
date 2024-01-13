@@ -29,6 +29,7 @@ type Work = {
   role: string[];
   dateCreated: string;
   awards: boolean;
+  learning?: string;
 };
 
 const about = {
@@ -317,7 +318,7 @@ export default function Works() {
                 className={`${style.modalBtn} ${style.fontM}`}
                 onClick={() => openModal(work)}
               >
-                <span>View More</span>
+                <span>Read Details</span>
               </button>
             </div>
           </AnimatedDiv>
