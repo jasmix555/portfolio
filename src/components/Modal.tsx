@@ -101,7 +101,7 @@ const Modal = ({ selectedWork, closeModal, about }: Props) => {
                     <div className={style.links}>
                       {selectedWork.link.map((link: any, linkIdx: number) => (
                         <Link key={linkIdx} href={link}>
-                          {link}
+                          {selectedWork.page[linkIdx]}
                         </Link>
                       ))}
                     </div>

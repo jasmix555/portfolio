@@ -20,6 +20,7 @@ import AnimatedDiv from "./AnimatedDiv";
 
 type Work = {
   title: string;
+  page: string[];
   link: string[];
   summary: string;
   thumbnail: string;
@@ -100,6 +101,7 @@ const about = {
 const works = [
   {
     title: "SpaceLang",
+    page: ["Web Application Link", "GitHub Link"],
     link: [
       "https://team-project2023.vercel.app/",
       "https://github.com/jasmix555/space-lang",
@@ -121,6 +123,7 @@ const works = [
 
   {
     title: "Attendance",
+    page: ["Web Application Link", "GitHub Link"],
     link: [
       "https://attendance-checker-three.vercel.app/",
       "https://github.com/jasmix555/attendance_checker ",
@@ -145,6 +148,7 @@ const works = [
 
   {
     title: "Sakamachi (酒街)",
+    page: ["Web Application Link", "GitHub Link"],
     link: [
       "https://oh-matchly.vercel.app/",
       "https://github.com/jasmix555/Oh_Matchly",
@@ -169,6 +173,7 @@ const works = [
 
   {
     title: "Foodera",
+    page: ["Web Application Link", "GitHub Link"],
     link: [
       "https://foodera-nine.vercel.app/",
       "https://github.com/jasmix555/Foodera",
@@ -193,6 +198,7 @@ const works = [
 
   {
     title: "Chittle",
+    page: ["Website Link", "GitHub Link"],
     link: [
       "https://click.ecc.ac.jp/ecc/json/Chittle/",
       "https://github.com/jasmix555/Chittle",
@@ -218,6 +224,7 @@ const works = [
 
   {
     title: "XCO Landing Page",
+    page: ["Website Link", "GitHub Link"],
     link: [
       "https://click.ecc.ac.jp/ecc/json/XCO-LP/",
       "https://github.com/jasmix555/XCO0-LP",
@@ -242,6 +249,7 @@ const works = [
 
   {
     title: "Nemu-Nemu Kun Landing Page",
+    page: ["Website Link", "GitHub Link"],
     link: [
       "https://click.ecc.ac.jp/ecc/json/Nemu-Nemu-Kun/",
       "https://github.com/jasmix555/Nemu-Nemu-Kun",
@@ -265,6 +273,7 @@ const works = [
 
   {
     title: "+62Resto",
+    page: ["Website Link", "GitHub Link"],
     link: [
       "https://click.ecc.ac.jp/ecc/json/+62Resto/",
       "https://github.com/jasmix555/62Resto",
