@@ -108,6 +108,20 @@ const Modal = ({ selectedWork, closeModal, about }: Props) => {
                   </div>
                 </div>
               </div>
+              <div className={style.contentWrapper}>
+                <div className={style.content}>
+                  <h2>Learnt</h2>
+                  <p>{selectedWork.learnt}</p>
+                </div>
+                <div className={style.content}>
+                  <h2>Regrets</h2>
+                  <p>{selectedWork.regret}</p>
+                </div>
+                <div className={style.content}>
+                  <h2>Growth</h2>
+                  <p>{selectedWork.growth}</p>
+                </div>
+              </div>
             </div>
             <button onClick={closeModal} className={style.closeBtn}>
               <FaXmark />
