@@ -28,6 +28,13 @@ const Modal = ({ selectedWork, closeModal, about }: Props) => {
           >
             <div className={style.wrapper}>
               <div className={style.header}>
+                <h1>{selectedWork.title}</h1>
+                <div className={`${style.content}`}>
+                  <h2>Summary</h2>
+                  <p>{selectedWork.summary}</p>
+                </div>
+              </div>
+              <div className={style.visual}>
                 <div
                   className={style.thumbnail}
                   style={{
@@ -38,43 +45,36 @@ const Modal = ({ selectedWork, closeModal, about }: Props) => {
                     className={selectedWork.awards ? style.awards : " "}
                   ></div>
                 </div>
-                <div className={style.contentWrapper}>
-                  <h1>{selectedWork.title}</h1>
-                  <div className={`${style.content}`}>
-                    <h2>Summary</h2>
-                    <p>{selectedWork.summary}</p>
-                  </div>
 
+                <div className={style.details}>
                   <div className={`${style.content}`}>
                     <h2>Category</h2>
                     <p>{selectedWork.category.join(", ")}</p>
                   </div>
 
-                  <div className={style.details}>
-                    <div className={`${style.content} ${style.dateCreated}`}>
-                      <h2>Duration</h2>
-                      <p>{selectedWork.totalTime}</p>
-                    </div>
+                  <div className={style.content}>
+                    <h2>Duration</h2>
+                    <p>{selectedWork.totalTime}</p>
+                  </div>
 
-                    <div className={`${style.content}`}>
-                      <h2>During</h2>
-                      <p>{selectedWork.when[0]}</p>
-                    </div>
+                  <div className={`${style.content}`}>
+                    <h2>During</h2>
+                    <p>{selectedWork.when[0]}</p>
+                  </div>
 
-                    <div className={`${style.content}`}>
-                      <h2>Goal</h2>
-                      <p>{selectedWork.when[1]}</p>
-                    </div>
+                  <div className={`${style.content}`}>
+                    <h2>Goal</h2>
+                    <p>{selectedWork.when[1]}</p>
+                  </div>
 
-                    <div className={`${style.content}`}>
-                      <h2>Creation Team</h2>
-                      <p>{selectedWork.when[2]}</p>
-                    </div>
+                  <div className={`${style.content}`}>
+                    <h2>Creation Team</h2>
+                    <p>{selectedWork.when[2]}</p>
+                  </div>
 
-                    <div className={`${style.content} ${style.role}`}>
-                      <h2>Role</h2>
-                      <p>{selectedWork.role.join(", ")}</p>
-                    </div>
+                  <div className={`${style.content} ${style.role}`}>
+                    <h2>Role</h2>
+                    <p>{selectedWork.role.join(", ")}</p>
                   </div>
 
                   <div className={`${style.content}`}>
@@ -108,7 +108,8 @@ const Modal = ({ selectedWork, closeModal, about }: Props) => {
                   </div>
                 </div>
               </div>
-              <div className={style.contentWrapper}>
+
+              <div className={style.information}>
                 <div className={style.content}>
                   <h2>Learnt</h2>
                   <p>{selectedWork.learnt}</p>
@@ -123,10 +124,12 @@ const Modal = ({ selectedWork, closeModal, about }: Props) => {
                 </div>
               </div>
             </div>
+
             <button onClick={closeModal} className={style.closeBtn}>
               <FaXmark />
             </button>
           </motion.div>
+
           <div className={style.modalBackground} onClick={closeModal}></div>
         </motion.div>
       )}
