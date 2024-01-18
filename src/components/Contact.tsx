@@ -7,7 +7,7 @@ function Contact() {
   return (
     <BoxComponent heading="Contact" bgc={"#f5f5f5"} id={"Contact"}>
       <div className={style.wrapper}>
-        <Link href={"https://www.instagram.com/jason_._._._._ng/"}>
+        <Link href={"https://www.instagram.com/jason_ng555/"}>
           <SiInstagram />
         </Link>
         <Link href={"https://github.com/jasmix555"}>

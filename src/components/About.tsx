@@ -78,10 +78,9 @@ function About() {
         <AnimatedDiv className={style.testimonial}>
           <h1>Jason Ng</h1>
         </AnimatedDiv>
-        <AnimatedDiv className={style.testimonial}>
-          <div className={style.portrait}>
-            <div className={style.image}></div>
-          </div>
+
+        <AnimatedDiv className={`${style.testimonial} `}>
+          <div className={style.portrait}></div>
         </AnimatedDiv>
 
         <AnimatedDiv className={style.testimonial}>
@@ -98,6 +97,7 @@ function About() {
             </div>
           </div>
         </AnimatedDiv>
+
         <AnimatedDiv className={style.testimonial}>
           <div className={style.title}>
             <h1>My Info</h1>
@@ -106,6 +106,7 @@ function About() {
           <p>Nationality: Indonesian</p>
           <p>Languages:🇺🇸 🇮🇩 🇯🇵</p>
         </AnimatedDiv>
+
         <AnimatedDiv className={style.testimonial}>
           <p>
             新しいことを探求するのが好きで、好奇心が強く、満足するまで諦めません！
