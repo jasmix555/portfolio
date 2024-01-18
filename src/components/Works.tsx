@@ -126,7 +126,7 @@ const works = [
       "https://github.com/jasmix555/attendance_checker ",
     ],
     summary: "従業員の出退勤を管理するウェブアプリ",
-    thumbnail: "",
+    thumbnail: "/works/attendance.png",
     method: ["Next.js", "SCSS", "Firebase", "Figma"],
     category: ["App", "Attendance", "Company", "Management"],
     when: ["2年生", "就活課題", "個人制作"],
