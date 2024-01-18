@@ -1,11 +1,11 @@
-import Navbar from "./components/Navbar";
-import Archive from "./components/Archive";
-import MainVis from "./components/MainVis";
-import Contact from "./components/Contact";
-import About from "./components/About";
-import ScrollBar from "./components/ScrollBar";
+import Navbar from "../components/Navbar";
+import Archive from "../components/Archive";
+import MainVis from "../components/MainVis";
+import Contact from "../components/Contact";
+import About from "../components/About";
+import ScrollBar from "../components/ScrollBar";
 import Head from "next/head";
-import Project from "./components/Project";
+import Project from "../components/Project";
 
 export default function Portfolio() {
   return (
