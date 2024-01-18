@@ -356,7 +356,7 @@ export default function Works() {
                 className={`${style.modalBtn} ${style.fontM}`}
                 onClick={() => openModal(work)}
               >
-                <span>Read Details</span>
+                <span>Details</span>
               </button>
             </div>
           </AnimatedDiv>

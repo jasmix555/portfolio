@@ -45,15 +45,15 @@ const Modal = ({ selectedWork, closeModal, about }: Props) => {
                     <p>{selectedWork.summary}</p>
                   </div>
 
+                  <div className={`${style.content}`}>
+                    <h2>Category</h2>
+                    <p>{selectedWork.category.join(", ")}</p>
+                  </div>
+
                   <div className={style.details}>
                     <div className={`${style.content} ${style.dateCreated}`}>
                       <h2>Duration</h2>
                       <p>{selectedWork.totalTime}</p>
-                    </div>
-
-                    <div className={`${style.content}`}>
-                      <h2>Category</h2>
-                      <p>{selectedWork.category.join(", ")}</p>
                     </div>
 
                     <div className={`${style.content}`}>
