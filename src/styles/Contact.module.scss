@@ -2,33 +2,37 @@
   width: 100%;
   height: 100%;
   display: flex;
+  gap: 3rem;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
-  cursor: pointer;
 
-  @media screen and (max-width: 768px) {
-    gap: 5rem;
-    flex-direction: column;
-  }
-
-  a {
-    color: #333;
-    padding: 2rem;
-    border: 2px solid #333;
-    border-radius: 50%;
-    transition: 150ms ease-in-out;
-    svg {
-      transition: 150ms ease-in-out;
-      width: 3rem;
-      height: 3rem;
-      vertical-align: middle;
+  .icons {
+    display: flex;
+    gap: 3rem;
+    cursor: pointer;
+    @media screen and (max-width: 768px) {
+      gap: 5rem;
+      flex-direction: column;
     }
-    &:hover {
-      background: #333;
-      color: #eee;
+    a {
+      color: #333;
+      padding: 2rem;
+      border: 2px solid #333;
+      border-radius: 50%;
+      transition: 150ms ease-in-out;
       svg {
-        scale: 1.2;
+        transition: 150ms ease-in-out;
+        width: 3rem;
+        height: 3rem;
+        vertical-align: middle;
+      }
+      &:hover {
+        background: #333;
+        color: #eee;
+        svg {
+          scale: 1.2;
+        }
       }
     }
   }

@@ -89,14 +89,17 @@ const about = {
 
 function About() {
   return (
-    <BoxComponent heading="About" id={"About"} bgc={"#f5f5f5"} height={"100vh"}>
+    <BoxComponent heading="About" id={"About"} height={"100vh"}>
       <div className={style.testimonialGrid}>
         <AnimatedDiv className={style.testimonial}>
           <h1>Jason Ng</h1>
         </AnimatedDiv>
 
         <AnimatedDiv className={`${style.testimonial} `}>
-          <div className={style.portrait}></div>
+          <div className={style.portrait}>
+            {/* <div className={`${style.img} ${style.one}`}></div> */}
+            <div className={`${style.img} ${style.two}`}></div>
+          </div>
         </AnimatedDiv>
 
         <AnimatedDiv className={style.testimonial}>

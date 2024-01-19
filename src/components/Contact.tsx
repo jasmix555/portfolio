@@ -22,11 +22,18 @@ function Contact() {
   return (
     <BoxComponent heading="Contact" bgc={"#f5f5f5"} id={"Contact"}>
       <div className={style.wrapper}>
-        {contacts.map((e, idx) => (
-          <Link href={e.link} key={idx}>
-            <e.icon />
-          </Link>
-        ))}
+        <div className={style.icons}>
+          {contacts.map((e, idx) => (
+            <Link href={e.link} key={idx}>
+              <e.icon />
+            </Link>
+          ))}
+        </div>
+
+        <div className={style.contact}>
+          <Link href={"Jasmix555@gmail.com"}>Mail: Jasmix555@gmail.com</Link>
+          <p>Phone: 080 4157 9265</p>
+        </div>
       </div>
     </BoxComponent>
   );

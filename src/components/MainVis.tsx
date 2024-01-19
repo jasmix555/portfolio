@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function MainVis() {
   return (
-    <BoxComponent heading="Top" id={"Top"} txtColor={"white"}>
+    <BoxComponent heading="Top" id={"Top"}>
       <div
         style={{
           display: "flex",
