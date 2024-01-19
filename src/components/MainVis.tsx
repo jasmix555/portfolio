@@ -9,14 +9,14 @@ export default function MainVis() {
     <BoxComponent heading="Top" id={"Top"}>
       <div className={style.mainVis}>
         <ThreeJS />
-        <div>
-          <AnimatedDiv delay={0.6}>Hi I&apos;m Jason Ng</AnimatedDiv>
-          <AnimatedDiv delay={0.7}>
+        <AnimatedDiv delay={0.6}>
+          <h1>Hi I&apos;m Jason Ng</h1>
+          <p>
             An Aspiring Front End Engineer
             <br />
             and this is my Portfolio.
-          </AnimatedDiv>
-        </div>
+          </p>
+        </AnimatedDiv>
       </div>
     </BoxComponent>
   );
