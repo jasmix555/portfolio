@@ -13,60 +13,76 @@ import {
   SiPug,
   SiCss3,
   SiFirebase,
+  SiAdobexd,
 } from "react-icons/si";
 import AnimatedDiv from "./AnimatedDiv";
 
 const about = {
   skills: [
     {
-      name: "HTML5",
+      name: "HTML",
       icon: SiHtml5,
-      bar: 90,
+      bar: 95,
     },
     {
-      name: "Pug",
-      icon: SiPug,
-    },
-    {
-      name: "CSS3",
-      icon: SiCss3,
-      bar: 90,
-    },
-    {
-      name: "SASS",
+      name: "SCSS",
       icon: SiSass,
+      bar: 80,
+    },
+    {
+      name: "CSS",
+      icon: SiCss3,
+      bar: 95,
     },
     {
       name: "JavaScript",
       icon: SiJavascript,
+      bar: 50,
+    },
+    {
+      name: "Pug",
+      icon: SiPug,
+      bar: 80,
     },
     {
       name: "Next.js",
       icon: SiNextdotjs,
+      bar: 60,
     },
     {
       name: "Illustrator",
       icon: SiAdobeillustrator,
+      bar: 80,
     },
     {
       name: "Photoshop",
       icon: SiAdobephotoshop,
+      bar: 80,
+    },
+    {
+      name: "XD",
+      icon: SiAdobexd,
+      bar: 60,
     },
     {
       name: "Figma",
       icon: SiFigma,
+      bar: 90,
     },
     {
       name: "Notion",
       icon: SiNotion,
+      bar: 80,
     },
     {
       name: "GitHub",
       icon: SiGithub,
+      bar: 70,
     },
     {
       name: "Firebase",
       icon: SiFirebase,
+      bar: 50,
     },
   ],
 };

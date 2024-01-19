@@ -40,60 +40,67 @@ const about = {
     {
       name: "HTML",
       icon: SiHtml5,
-      bar: 90,
+      bar: 95,
     },
     {
       name: "SCSS",
       icon: SiSass,
+      bar: 80,
     },
     {
       name: "CSS",
       icon: SiCss3,
+      bar: 95,
     },
     {
       name: "JavaScript",
       icon: SiJavascript,
+      bar: 50,
     },
     {
       name: "Pug",
       icon: SiPug,
+      bar: 80,
     },
     {
       name: "Next.js",
       icon: SiNextdotjs,
+      bar: 60,
     },
     {
       name: "Illustrator",
       icon: SiAdobeillustrator,
+      bar: 80,
     },
     {
       name: "Photoshop",
       icon: SiAdobephotoshop,
+      bar: 80,
     },
     {
       name: "XD",
       icon: SiAdobexd,
+      bar: 60,
     },
     {
       name: "Figma",
       icon: SiFigma,
+      bar: 90,
     },
     {
       name: "Notion",
       icon: SiNotion,
+      bar: 80,
     },
     {
       name: "GitHub",
       icon: SiGithub,
+      bar: 70,
     },
     {
       name: "Firebase",
       icon: SiFirebase,
-    },
-  ],
-  hobbies: [
-    {
-      name: "Drums",
+      bar: 50,
     },
   ],
 };
@@ -115,7 +122,6 @@ const works = [
     dateCreated: "2023/10 ~ 現在",
     totalTime: "83 Hours",
     awards: false,
-    description: "",
     learnt: "",
     regret: "",
     growth: "",
@@ -137,7 +143,6 @@ const works = [
     dateCreated: "2023/12 ~ 2023/12",
     totalTime: "43 Hours",
     awards: false,
-    description: "",
     learnt:
       "FirebaseとNext.jsを利用して、時間とユーザーの状態に焦点を当てたアプリを扱うのは初めてでした。また、このアプリの作成期限を2週間に設定し、何に重点を置くべきかに焦点を当てることができました。",
     regret:
@@ -162,7 +167,6 @@ const works = [
     dateCreated: "2023/04 ~ 2023/06",
     totalTime: "31 Hours",
     awards: true,
-    description: "",
     learnt:
       "チームメンバーと共にアプリを開発するためのコーディング環境を構築する方法を学びました。各エンジニアが独自のコーディングの好みを持っているため、他のメンバーとのコーディングスタイルを合わせることが挑戦でした。",
     regret:
@@ -187,7 +191,6 @@ const works = [
     dateCreated: "2023/05 ~ 2023/06",
     totalTime: "47 Hours",
     awards: false,
-    description: "",
     learnt:
       "このプロジェクトを通じて、アプリのコンポーネントや部品を作成するスキルを磨くことができ、これにより以前よりもコードをよりクリーンに書くことができるようになりました。PugとSassの学習は、コーディングの経験をよりスムーズでクリーンにしました。",
     regret:
@@ -213,7 +216,6 @@ const works = [
     dateCreated: "2022/12 ~ 2023/01",
     totalTime: "19 Hours",
     awards: false,
-    description: "",
     learnt:
       "レスポンシブなウェブサイトを作成し、ユーザーがコンピュータとモバイルの両方でウェブサイトを使用できるようにする方法を学びました。これはコーディングとデザインの両面での課題であり、レスポンシブデザインを使用する際にユーザーが違和感を感じないように心掛けました。",
     regret:
@@ -238,7 +240,6 @@ const works = [
     dateCreated: "2023/02 ~ 2023/02",
     totalTime: "15 Hours",
     awards: false,
-    description: "",
     learnt:
       "ユーザーにアニメーションとイラストを使用して、ランディングページがユーザーを引き込み、このアプリについてもっと知りたくなるようなフローを作成する方法を学びました。",
     regret:
@@ -263,7 +264,6 @@ const works = [
     dateCreated: "2022/09 ~ 2022/09",
     totalTime: "12 Hours",
     awards: false,
-    description: "",
     learnt:
       "このランディングページを作成することで、ユーザーにこのアプリをもっと知りたくなったり試してみたくなるような主な目的を持つランディングページを初めて作成しました。また、JavaScriptを使用してウェブサイトにアニメーションを組み込むことも初めての経験でした。",
     regret: "特にありませんでした。",
@@ -287,7 +287,6 @@ const works = [
     dateCreated: "2022/07 ~ 2022/08",
     totalTime: "9 Hours",
     awards: false,
-    description: "",
     learnt:
       "ウェブサイトのデザインとコーディングを初めて経験しました。シンプルなデザインとコードを作成する方法を学び、ユーザーがウェブサイトを閲覧する際に迷子にならないように管理する方法を身につけました。",
     regret:
