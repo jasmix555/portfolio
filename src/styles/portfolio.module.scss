@@ -51,6 +51,8 @@
   left: 0;
   z-index: -1;
   pointer-events: none;
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
 
   .content {
     margin: 0;
