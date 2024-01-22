@@ -22,7 +22,7 @@ const about = {
     {
       name: "HTML",
       icon: SiHtml5,
-      bar: 95,
+      bar: 90,
     },
     {
       name: "Pug",
@@ -32,12 +32,12 @@ const about = {
     {
       name: "SCSS",
       icon: SiSass,
-      bar: 80,
+      bar: 75,
     },
     {
       name: "CSS",
       icon: SiCss3,
-      bar: 95,
+      bar: 90,
     },
     {
       name: "JavaScript",
