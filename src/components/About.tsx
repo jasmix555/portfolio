@@ -25,6 +25,11 @@ const about = {
       bar: 95,
     },
     {
+      name: "Pug",
+      icon: SiPug,
+      bar: 80,
+    },
+    {
       name: "SCSS",
       icon: SiSass,
       bar: 80,
@@ -39,15 +44,11 @@ const about = {
       icon: SiJavascript,
       bar: 50,
     },
-    {
-      name: "Pug",
-      icon: SiPug,
-      bar: 80,
-    },
+
     {
       name: "Next.js",
       icon: SiNextdotjs,
-      bar: 60,
+      bar: 45,
     },
     {
       name: "Illustrator",
@@ -62,12 +63,12 @@ const about = {
     {
       name: "XD",
       icon: SiAdobexd,
-      bar: 60,
+      bar: 70,
     },
     {
       name: "Figma",
       icon: SiFigma,
-      bar: 90,
+      bar: 80,
     },
     {
       name: "Notion",
@@ -77,7 +78,7 @@ const about = {
     {
       name: "GitHub",
       icon: SiGithub,
-      bar: 70,
+      bar: 60,
     },
     {
       name: "Firebase",
@@ -107,7 +108,20 @@ function About() {
             <div className={style.skillContent}>
               {about.skills.map((skill, idx) => (
                 <div key={idx} className={style.skill}>
-                  {<skill.icon />}
+                  <div className={style.tags}>
+                    <span className={style.name}>
+                      {<skill.icon />}
+                      {skill.name}
+                    </span>
+                    <span>{skill.bar}%</span>
+                  </div>
+                  <div className={style.progressBarContainer}>
+                    <div className={style.progressBarBackground}></div>
+                    <div
+                      className={style.progressBar}
+                      style={{ width: `${skill.bar}%` }}
+                    ></div>
+                  </div>
                 </div>
               ))}
             </div>
