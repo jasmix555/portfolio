@@ -26,26 +26,15 @@ const about = {
       bar: 90,
     },
     {
-      name: "Pug",
-      icon: SiPug,
-      bar: 80,
-    },
-    {
       name: "SCSS",
       icon: SiSass,
       bar: 75,
-    },
-    {
-      name: "CSS",
-      icon: SiCss3,
-      bar: 90,
     },
     {
       name: "JavaScript",
       icon: SiJavascript,
       bar: 50,
     },
-
     {
       name: "Next.js",
       icon: SiNextdotjs,
@@ -60,11 +49,6 @@ const about = {
       name: "Photoshop",
       icon: SiAdobephotoshop,
       bar: 80,
-    },
-    {
-      name: "XD",
-      icon: SiAdobexd,
-      bar: 70,
     },
     {
       name: "Figma",
@@ -128,9 +112,11 @@ function About() {
           <div className={style.title}>
             <h1>My Info</h1>
           </div>
-          <p>Birthdate: 2001/11/02</p>
-          <p>Nationality: Indonesian</p>
-          <p>Languages:🇺🇸 🇮🇩 🇯🇵</p>
+          <div>
+            <p>Birthdate: 2001/11/02</p>
+            <p>Nationality: Indonesian</p>
+            <p>Languages:🇺🇸 🇮🇩 🇯🇵</p>
+          </div>
         </AnimatedDiv>
 
         <AnimatedDiv className={style.testimonial}>
