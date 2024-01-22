@@ -14,6 +14,7 @@ import {
   SiCss3,
   SiFirebase,
   SiAdobexd,
+  SiSlack,
 } from "react-icons/si";
 import AnimatedDiv from "./AnimatedDiv";
 
@@ -68,11 +69,6 @@ const about = {
     {
       name: "Figma",
       icon: SiFigma,
-      bar: 80,
-    },
-    {
-      name: "Notion",
-      icon: SiNotion,
       bar: 80,
     },
     {
