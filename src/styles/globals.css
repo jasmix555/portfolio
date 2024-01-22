@@ -1,6 +1,10 @@
 :root {
   font-family: "Inter", sans-serif;
   font-size: 62.5%;
+
+  --black: #313638;
+  --white: #f5f5f5;
+  --gray: #373737;
 }
 
 html {

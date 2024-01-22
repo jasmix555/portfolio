@@ -7,9 +7,11 @@ type BoxProps = {
   txtColor?: string;
   height?: string;
   bgc?: string;
+  width?: string;
 };
 
 function BoxComponent({
+  width,
   id,
   children,
   heading,
@@ -21,7 +23,7 @@ function BoxComponent({
     <div
       id={id}
       style={{
-        width: "100vw",
+        width: width ? width : "100vw",
         minHeight: height ? height : "100vh",
         position: "relative",
         backgroundColor: bgc,

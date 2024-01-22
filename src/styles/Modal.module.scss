@@ -196,8 +196,8 @@
     padding: 0.4rem 0.8rem;
     border-radius: 0.6rem;
     font-weight: 600;
-    color: #333;
-    border: 1px solid #333;
+    color: var(--black);
+    border: 1px solid var(--gray);
     gap: 1.2rem;
     transition: 150ms ease-in-out;
     align-items: center;
@@ -217,14 +217,32 @@
 
     &:hover {
       background: #333;
-      color: #eee;
+      color: var(--white);
     }
   }
 }
 
 .information {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 3rem;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
   .content {
-    padding: 1.2rem 0;
+    height: 100%;
+    background: #f2f2f2;
+    border-radius: 3px;
+    padding: 1.2rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 
     &:nth-child(2),
     &:nth-child(1) {

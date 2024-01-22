@@ -2,7 +2,7 @@ import { cubicBezier, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 interface AnimatedDivProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   delay?: number;
   index?: number; // Add index prop
   className?: any;
