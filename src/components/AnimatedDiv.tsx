@@ -9,6 +9,7 @@ interface AnimatedDivProps {
   translate?: number;
   transition?: number;
   style?: any;
+  onClick?: any;
 }
 
 export default function AnimatedDiv({
@@ -19,6 +20,7 @@ export default function AnimatedDiv({
   translate,
   transition,
   style,
+  onClick,
 }: AnimatedDivProps) {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -49,6 +51,7 @@ export default function AnimatedDiv({
       animate={inView ? "visible" : "hidden"}
       variants={variants}
       className={className}
+      onClick={onClick}
     >
       {children}
     </motion.div>

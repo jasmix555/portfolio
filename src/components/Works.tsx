@@ -336,7 +336,7 @@ export default function Works() {
         </AnimatedDiv>
 
         {works.map((work, idx) => (
-          <AnimatedDiv key={idx} className={`${style.Contents} ${style.work}`}>
+          <AnimatedDiv key={idx} className={` ${style.work}`} index={idx}>
             <div className={style.overlay}>
               <div className={work.awards ? style.awards : " "}></div>
               <div

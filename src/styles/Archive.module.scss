@@ -64,21 +64,23 @@
     border-radius: 3px;
     color: rgb(146, 146, 146);
 
-    &:hover .overlayTitle,
-    &:hover .awards {
-      opacity: 0;
-    }
-    &:hover {
+    &:hover,
+    &:focus {
       background: #e0e0e0;
       color: #777777;
-    }
 
-    &:hover .thumbnail {
-      transform: scale(1.05);
-    }
+      .overlayTitle,
+      .awards {
+        opacity: 0;
+      }
 
-    &:hover .innerContents {
-      opacity: 1;
+      .thumbnail {
+        transform: scale(1.05);
+      }
+
+      .innerContents {
+        opacity: 1;
+      }
     }
 
     @media screen and (max-width: 500px) {
