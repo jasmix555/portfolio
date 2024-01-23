@@ -21,7 +21,7 @@
       &::after {
         content: attr(data-name);
         position: absolute;
-        top: 0;
+        top: 90%;
         left: 50%;
         transform: translateX(-50%);
         width: fit-content;

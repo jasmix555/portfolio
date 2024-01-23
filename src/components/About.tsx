@@ -21,7 +21,7 @@ const about = {
       items: [
         { name: "HTML", icon: SiHtml5, duration: "1.5 years" },
         { name: "SCSS", icon: SiSass, duration: "1.2 year" },
-        { name: "JavaScript", icon: SiJavascript, duration: " months" },
+        { name: "JavaScript", icon: SiJavascript, duration: "9 months" },
         { name: "Next.js", icon: SiNextdotjs, duration: "4 months" },
       ],
     },
