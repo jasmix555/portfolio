@@ -345,9 +345,7 @@ export default function Works() {
                   backgroundImage: `url(${work.thumbnail})`,
                 }}
               ></div>
-              <div className={` ${style.overlayTitle} ${style.fontL}`}>
-                {work.title}
-              </div>
+              <div className={` ${style.overlayTitle}`}>{work.title}</div>
             </div>
 
             <div className={style.innerContents}>
