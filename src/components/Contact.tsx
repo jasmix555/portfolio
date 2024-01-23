@@ -32,8 +32,8 @@ function Contact() {
       <div className={style.wrapper}>
         <div className={style.icons}>
           {contacts.map((e, idx) => (
-            <div data-name={`${e.text}`} className={style.box}>
-              <Link href={e.link} key={idx}>
+            <div key={idx} data-name={`${e.text}`} className={style.box}>
+              <Link href={e.link}>
                 <e.icon />
               </Link>
             </div>
