@@ -16,49 +16,30 @@ import AnimatedDiv from "./AnimatedDiv";
 const about = {
   skills: [
     {
-      name: "HTML",
-      icon: SiHtml5,
-      bar: 90,
+      category: "Coding/Programming",
+      items: [
+        { name: "HTML", icon: SiHtml5, duration: "2 years" },
+        { name: "SCSS", icon: SiSass, duration: "1.5 year" },
+        { name: "JavaScript", icon: SiJavascript, duration: "1 year" },
+        { name: "Next.js", icon: SiNextdotjs, duration: "4 months" },
+      ],
     },
+
     {
-      name: "SCSS",
-      icon: SiSass,
-      bar: 75,
+      category: "Design",
+      items: [
+        { name: "Illustrator", icon: SiAdobeillustrator, duration: "2 years" },
+        { name: "Photoshop", icon: SiAdobephotoshop, duration: "2 years" },
+        { name: "Figma", icon: SiFigma, duration: "1.5 year" },
+      ],
     },
+
     {
-      name: "JavaScript",
-      icon: SiJavascript,
-      bar: 50,
-    },
-    {
-      name: "Next.js",
-      icon: SiNextdotjs,
-      bar: 45,
-    },
-    {
-      name: "Illustrator",
-      icon: SiAdobeillustrator,
-      bar: 80,
-    },
-    {
-      name: "Photoshop",
-      icon: SiAdobephotoshop,
-      bar: 80,
-    },
-    {
-      name: "Figma",
-      icon: SiFigma,
-      bar: 80,
-    },
-    {
-      name: "GitHub",
-      icon: SiGithub,
-      bar: 60,
-    },
-    {
-      name: "Firebase",
-      icon: SiFirebase,
-      bar: 50,
+      category: "Server",
+      items: [
+        { name: "GitHub", icon: SiGithub, duration: "1 year" },
+        { name: "Firebase", icon: SiFirebase, duration: "3 months" },
+      ],
     },
   ],
 };
@@ -76,30 +57,26 @@ function About() {
         </AnimatedDiv>
 
         <AnimatedDiv className={`${style.testimonial} ${style.gridRowSpan2}`}>
-          <div className={style.skillWrapper}>
-            <div className={style.title}>
-              <h1>My Skills</h1>
-            </div>
-            <div className={style.skillContent}>
-              {about.skills.map((skill, idx) => (
-                <div key={idx} className={style.skill}>
-                  <div className={style.tags}>
-                    <span className={style.name}>
-                      {<skill.icon />}
-                      {skill.name}
-                    </span>
-                    <span>{skill.bar}%</span>
-                  </div>
-                  <div className={style.progressBarContainer}>
-                    <div className={style.progressBarBackground}></div>
-                    <div
-                      className={style.progressBar}
-                      style={{ width: `${skill.bar}%` }}
-                    ></div>
-                  </div>
+          <div className={style.title}>
+            <h1>My Skills</h1>
+          </div>
+          <div className={style.categoryWrapper}>
+            {about.skills.map((category, idx) => (
+              <div className={style.content} key={idx}>
+                <h2 className={style.category}>{category.category}</h2>
+                <div className={style.skillsWrapper}>
+                  {category.items.map((item, idx) => (
+                    <div key={idx} className={style.skills}>
+                      <div className={style.tag}>
+                        <item.icon />
+                        <p className={style.name}>{item.name}</p>
+                      </div>
+                      <p className={style.duration}>{item.duration}</p>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </AnimatedDiv>
 

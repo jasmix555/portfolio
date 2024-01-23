@@ -13,7 +13,7 @@
   display: grid;
   flex-wrap: wrap;
   margin-inline: auto;
-  gap: 1.3rem;
+  gap: 2rem;
   grid-auto-columns: 1fr;
   grid-template-areas:
     "one"
@@ -49,6 +49,7 @@
     justify-content: center;
     position: relative;
     text-align: left;
+
     p {
       padding: 0 2rem;
     }
@@ -126,70 +127,95 @@
   }
 }
 
-.skillContent {
+// .skillContent {
+//   display: grid;
+//   grid-template-columns: repeat(4, 1fr);
+//   gap: 2rem;
+//   padding: 2.2rem 0;
+
+//   .skill {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 1.2rem;
+//     border-radius: 3px;
+//     padding: 1rem 2rem;
+//     transition: 150ms ease-in-out;
+
+//     .name {
+//       display: flex;
+//       align-items: center;
+//       gap: 1rem;
+//     }
+
+//     .tags {
+//       display: flex;
+//       align-items: center;
+//       gap: 1rem;
+//       justify-content: space-between;
+//     }
+//     .progressBarContainer {
+//       position: relative;
+//       width: 100%;
+//       height: 10px;
+
+//       .progressBarBackground {
+//         position: absolute;
+//         top: 0;
+//         left: 0;
+//         height: 8px;
+//         width: 100%;
+//         background-color: #bfbfbf; /* Set the background color of the progress bar */
+//         border-radius: 3px;
+//       }
+//       .progressBar {
+//         position: absolute;
+//         top: 0;
+//         left: 0;
+//         height: 8px;
+//         background-color: #707578; /* Set the color of the progress bar */
+//         border-radius: 3px;
+//       }
+//     }
+
+//     &:hover {
+//       background: var(--black);
+//       color: var(--white);
+//       .progressBar {
+//         background-color: #707578;
+//       }
+//     }
+//   }
+
+//   @media (max-width: 1490px) {
+//     grid-template-columns: repeat(3, 1fr);
+//   }
+
+//   @media (max-width: 1110px) {
+//     grid-template-columns: repeat(2, 1fr);
+//   }
+// }
+
+.categoryWrapper {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
-  padding: 2.2rem 0;
-
-  .skill {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
+  .content {
+    padding: 0.5rem 1rem;
     border-radius: 3px;
-    padding: 1rem 2rem;
-    transition: 150ms ease-in-out;
 
-    .name {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+    .category {
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      padding: 0.5rem 0;
     }
-
-    .tags {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      justify-content: space-between;
-    }
-    .progressBarContainer {
-      position: relative;
-      width: 100%;
-      height: 10px;
-
-      .progressBarBackground {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 8px;
-        width: 100%;
-        background-color: #bfbfbf; /* Set the background color of the progress bar */
-        border-radius: 3px;
-      }
-      .progressBar {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 8px;
-        background-color: #707578; /* Set the color of the progress bar */
-        border-radius: 3px;
+    .skillsWrapper {
+      border: var(--black) 2px solid;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      .tag {
+        display: flex;
+        align-items: center;
       }
     }
-
-    &:hover {
-      background: var(--black);
-      color: var(--white);
-      .progressBar {
-        background-color: #707578;
-      }
-    }
-  }
-
-  @media (max-width: 1490px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media (max-width: 1110px) {
-    grid-template-columns: repeat(2, 1fr);
   }
 }

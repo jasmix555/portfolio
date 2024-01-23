@@ -36,10 +36,10 @@ function BoxComponent({
       <p
         style={{
           textDecoration: "underline",
+          position: "absolute",
           top: "1rem",
           left: "2rem",
           color: txtColor,
-          position: "absolute",
           padding: "1rem 1.4rem",
           fontSize: "1.2rem",
           zIndex: 1,
