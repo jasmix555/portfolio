@@ -10,6 +10,7 @@ import {
   SiFigma,
   SiGithub,
   SiFirebase,
+  SiVercel,
 } from "react-icons/si";
 import AnimatedDiv from "./AnimatedDiv";
 
@@ -20,7 +21,7 @@ const about = {
       items: [
         { name: "HTML", icon: SiHtml5, duration: "1.5 years" },
         { name: "SCSS", icon: SiSass, duration: "1.2 year" },
-        { name: "JavaScript", icon: SiJavascript, duration: "8 months" },
+        { name: "JavaScript", icon: SiJavascript, duration: " months" },
         { name: "Next.js", icon: SiNextdotjs, duration: "4 months" },
       ],
     },
@@ -35,11 +36,15 @@ const about = {
     },
 
     {
-      category: "Server",
+      category: "Hosting",
       items: [
         { name: "GitHub", icon: SiGithub, duration: "1 year" },
-        { name: "Firebase", icon: SiFirebase, duration: "3 months" },
+        { name: "Vercel", icon: SiVercel, duration: "4 months" },
       ],
+    },
+    {
+      category: "Backend",
+      items: [{ name: "Firebase", icon: SiFirebase, duration: "3 months" }],
     },
   ],
 };
