@@ -32,7 +32,9 @@ function Contact() {
       </div>
       <footer className={style.footer}>
         <div className={style.contact}>
-          <Link href={"Jasmix555@gmail.com"}>Mail: Jasmix555@gmail.com</Link>
+          <Link href={"mailto:Jasmix555@gmail.com"}>
+            Mail: Jasmix555@gmail.com
+          </Link>
           <p>Phone: 080 4157 9265</p>
         </div>
         <p>© 2024 Jason Ng</p>
