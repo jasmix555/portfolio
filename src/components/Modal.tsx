@@ -82,7 +82,6 @@ const Modal = ({ selectedWork, closeModal, about }: Props) => {
                     <div className={style.skills}>
                       {selectedWork.method.map((tag: any, tagIdx: number) => (
                         <div key={tagIdx} className={style.tag}>
-                          {/* Render the icon based on the tag name */}
                           {about.skills.map((skill: any) =>
                             skill.name === tag ? (
                               <span key={skill.name} className={style.icon}>
@@ -123,11 +122,10 @@ const Modal = ({ selectedWork, closeModal, about }: Props) => {
                   <p>{selectedWork.growth}</p>
                 </div>
               </div>
+              <button onClick={closeModal} className={style.closeBtn}>
+                <FaXmark />
+              </button>
             </div>
-
-            <button onClick={closeModal} className={style.closeBtn}>
-              <FaXmark />
-            </button>
           </motion.div>
 
           <div className={style.modalBackground} onClick={closeModal}></div>

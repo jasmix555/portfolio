@@ -8,13 +8,8 @@ import {
   SiAdobeillustrator,
   SiAdobephotoshop,
   SiFigma,
-  SiNotion,
   SiGithub,
-  SiPug,
-  SiCss3,
   SiFirebase,
-  SiAdobexd,
-  SiSlack,
 } from "react-icons/si";
 import AnimatedDiv from "./AnimatedDiv";
 

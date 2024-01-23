@@ -19,7 +19,7 @@
       color: #333;
       padding: 2rem;
       border: 2px solid #333;
-      border-radius: 50%;
+      border-radius: 15px;
       transition: 150ms ease-in-out;
       svg {
         transition: 150ms ease-in-out;
@@ -46,14 +46,5 @@
   background: var(--gray);
   padding: 2rem;
   color: var(--white);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  .contact {
-    display: flex;
-    flex-direction: column;
-    a {
-      color: var(--white);
-    }
-  }
+  text-align: center;
 }

@@ -1,9 +1,13 @@
 import BoxComponent from "./Box";
 import style from "@/styles/Contact.module.scss";
 import Link from "next/link";
-import { SiWantedly, SiGithub, SiInstagram } from "react-icons/si";
+import { SiWantedly, SiGithub, SiInstagram, SiGmail } from "react-icons/si";
 
 const contacts = [
+  {
+    icon: SiGmail,
+    link: "mailto:Jasmix555@gmail.com",
+  },
   {
     icon: SiInstagram,
     link: "https://www.instagram.com/jason_ng555/",
@@ -31,12 +35,6 @@ function Contact() {
         </div>
       </div>
       <footer className={style.footer}>
-        <div className={style.contact}>
-          <Link href={"mailto:Jasmix555@gmail.com"}>
-            Mail: Jasmix555@gmail.com
-          </Link>
-          <p>Phone: 080 4157 9265</p>
-        </div>
         <p>© 2024 Jason Ng</p>
       </footer>
     </BoxComponent>
