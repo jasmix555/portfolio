@@ -60,7 +60,7 @@
 
   .work {
     background: #eee;
-    min-height: 35.8rem;
+    min-height: 45rem;
     position: relative;
     overflow: hidden;
     transition: 200ms ease-in-out;
@@ -87,7 +87,7 @@
     }
 
     @media screen and (max-width: 500px) {
-      min-height: 20rem;
+      min-height: 22rem;
     }
   }
 
