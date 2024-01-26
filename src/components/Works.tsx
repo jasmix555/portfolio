@@ -120,7 +120,7 @@ const works = [
     when: ["2年生", "学校", "チーム制作"],
     role: ["メインエンジニア", "デザイナー"],
     dateCreated: "2023/10 ~ 現在",
-    totalTime: "83 Hours",
+    totalTime: "103 Hours",
     awards: false,
     learnt: "",
     regret: "",
@@ -269,30 +269,6 @@ const works = [
     regret: "特にありませんでした。",
     growth:
       "ユーザーにアプリケーションを引き込むランディングページを作成するスキルを向上させました。また、JavaScriptを使用してウェブサイトにアニメーションを組み込むことで、新しい技術や手法を学ぶ機会を得ました。",
-  },
-
-  {
-    title: "+62Resto",
-    page: ["Website Link", "GitHub Link"],
-    link: [
-      "https://click.ecc.ac.jp/ecc/json/+62Resto/",
-      "https://github.com/jasmix555/62Resto",
-    ],
-    summary: "インドネシア料理テーマカフェサイト",
-    thumbnail: "/works/62resto.png",
-    method: ["HTML", "CSS", "XD", "Illustrator"],
-    category: ["Website", "Food", "Restaurant"],
-    when: ["1年生", "学校", "個人制作"],
-    role: ["メインエンジニア", "メインデザイナー"],
-    dateCreated: "2022/07 ~ 2022/08",
-    totalTime: "9 Hours",
-    awards: false,
-    learnt:
-      "ウェブサイトのデザインとコーディングを初めて経験しました。シンプルなデザインとコードを作成する方法を学び、ユーザーがウェブサイトを閲覧する際に迷子にならないように管理する方法を身につけました。",
-    regret:
-      "コーディングの方法が少し乱雑だったと感じ、ウェブサイト全体が清潔なデザインを持つ方法を学ぶ時間が足りなかったことを後悔しています。",
-    growth:
-      "ウェブサイトのデザインとコーディングにおいて基本的なスキルを向上させました。また、次回のプロジェクトではコードをより整理された形で管理する方法を学ぶ機会が得られました。",
   },
 ];
 
