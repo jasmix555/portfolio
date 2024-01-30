@@ -1,9 +1,23 @@
+import { useState, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 import BoxComponent from "./Box";
 import style from "@/styles/Project.module.scss";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default function Project() {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+  });
+
+  const [autoplay, setAutoplay] = useState(false);
+
+  useEffect(() => {
+    if (inView) {
+      setAutoplay(true);
+    }
+  }, [inView]);
+
   return (
     <BoxComponent
       heading="Project"
@@ -11,15 +25,15 @@ export default function Project() {
       bgc={"#f5f5f5"}
       height={"100vh"}
     >
-      <div className={style.wrapper}>
+      <div ref={ref} className={style.wrapper}>
         <Carousel
           swipeable={true}
           infiniteLoop={true}
-          autoPlay={true}
           emulateTouch={true}
           stopOnHover={true}
           showStatus={false}
           interval={4000}
+          autoPlay={autoplay}
         >
           <div>
             <img src="/projects/1.png" />
