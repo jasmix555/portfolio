@@ -122,9 +122,12 @@ const works = [
     dateCreated: "2023/10 ~ 現在",
     totalTime: "103 Hours",
     awards: false,
-    learnt: "",
-    regret: "",
-    growth: "",
+    learnt:
+      "このプロジェクトでは、Next.jsとFirebaseを初めて使用しました。フレームワークを使用することが生のJavaScriptでコードを書くよりも効率的であることを学びました。また、初めてのチームでの主要なエンジニアとしての経験もあり、その役割の重さと責任を実感しました。エンジニアとしてだけでなく、デザイナーとしてもプロジェクトに取り組み、チームメンバーと共にページの作成に貢献しました。アイデアを共有し、リーダーとして私はアイデアをどのように実装し、組み合わせてユーザーが本当に使いたいと思う優れたアプリケーションを作成するかについての決定を行いました。",
+    regret:
+      "FirebaseやNext.jsの動作原理をより完璧に理解するためにもっと時間を費やすべきでした。例えば、Next.jsを使用してバックエンドコードを書くことができたかどうか、またはDispatchやReduxのようなものを使わずに実装できたかもしれません。また、設計した機能を完全に実装できなかったこともあり、それらのロジックを実装するためのリソースと知識の不足が原因でした。",
+    growth:
+      "フレームワークの使用、チームでの主要なエンジニアとしての経験、デザイナーとしてのアクティブな参加により、多くのスキルと洞察を得ました。リーダーシップや意思決定のスキルも向上させ、ユーザーエクスペリエンスを重視したアプリケーション開発において成長しました。",
   },
 
   {
@@ -132,7 +135,7 @@ const works = [
     page: ["Web Application Link", "GitHub Link"],
     link: [
       "https://attendance-checker-three.vercel.app/",
-      "https://github.com/jasmix555/attendance_checker ",
+      "https://github.com/jasmix555/attendance_checker",
     ],
     summary: "従業員の出退勤を管理するウェブアプリ",
     thumbnail: "/works/attendance.png",
