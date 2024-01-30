@@ -15,8 +15,11 @@ export default function Project() {
         <Carousel
           swipeable={true}
           infiniteLoop={true}
-          autoPlay={true} // set the autoplay interval (in milliseconds)
+          autoPlay={true}
           emulateTouch={true}
+          stopOnHover={true}
+          showStatus={false}
+          interval={4000}
         >
           <div>
             <img src="/projects/1.png" />
