@@ -4,10 +4,13 @@ import style from "@/styles/Modal.module.scss";
 import { FaXmark } from "react-icons/fa6";
 import Link from "next/link";
 
+type Award = string;
+
 type Props = {
   selectedWork: any;
   about: any;
   closeModal: () => void;
+  awards?: Award[];
 };
 
 const Modal = ({ selectedWork, closeModal, about }: Props) => {
@@ -41,9 +44,19 @@ const Modal = ({ selectedWork, closeModal, about }: Props) => {
                     backgroundImage: `url(${selectedWork.thumbnail})`,
                   }}
                 >
-                  <div
-                    className={selectedWork.awards ? style.awards : " "}
-                  ></div>
+                  {selectedWork.awards && selectedWork.awards.length > 0 && (
+                    <div className={style.awards}>
+                      {selectedWork.awards.map(
+                        (award: any, awardIdx: number) => (
+                          <div
+                            key={awardIdx}
+                            className={style.awardItem}
+                            style={{ backgroundImage: `url(${award})` }}
+                          ></div>
+                        )
+                      )}
+                    </div>
+                  )}
                 </div>
 
                 <div className={style.details}>
