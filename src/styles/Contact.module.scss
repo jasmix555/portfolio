@@ -73,11 +73,15 @@
 
 .footer {
   position: absolute;
-  font-size: 2rem;
+  font-size: 1.4rem;
   width: 100%;
   bottom: 0;
-  border-top: 2px solid var(--black);
-  padding: 1rem;
+  border-top: 1px solid var(--black);
+  padding: 1.4rem;
   color: var(--black);
   text-align: center;
+
+  @media screen and (max-width: 768px) {
+    padding: 0.6rem;
+  }
 }

@@ -37,19 +37,15 @@ export default function Project() {
         >
           <div>
             <img src="/projects/1.png" />
-            <p className="legend">SpaceLang</p>
           </div>
           <div>
             <img src="/projects/2.png" />
-            <p className="legend">Sakamachi</p>
           </div>
           <div>
             <img src="/projects/3.png" />
-            <p className="legend">Foodera</p>
           </div>
           <div>
             <img src="/projects/4.png" />
-            <p className="legend">Attendance</p>
           </div>
         </Carousel>
       </div>
