@@ -29,7 +29,7 @@ type Work = {
   when: string[];
   role: string[];
   dateCreated: string;
-  awards: boolean;
+  awards?: string[];
   learnt?: string;
   regret?: string;
   growth?: string;
@@ -40,67 +40,54 @@ const about = {
     {
       name: "HTML",
       icon: SiHtml5,
-      bar: 95,
     },
     {
       name: "SCSS",
       icon: SiSass,
-      bar: 80,
     },
     {
       name: "CSS",
       icon: SiCss3,
-      bar: 95,
     },
     {
       name: "JavaScript",
       icon: SiJavascript,
-      bar: 50,
     },
     {
       name: "Pug",
       icon: SiPug,
-      bar: 80,
     },
     {
       name: "Next.js",
       icon: SiNextdotjs,
-      bar: 60,
     },
     {
       name: "Illustrator",
       icon: SiAdobeillustrator,
-      bar: 80,
     },
     {
       name: "Photoshop",
       icon: SiAdobephotoshop,
-      bar: 80,
     },
     {
       name: "XD",
       icon: SiAdobexd,
-      bar: 60,
     },
     {
       name: "Figma",
       icon: SiFigma,
-      bar: 90,
     },
     {
       name: "Notion",
       icon: SiNotion,
-      bar: 80,
     },
     {
       name: "GitHub",
       icon: SiGithub,
-      bar: 70,
     },
     {
       name: "Firebase",
       icon: SiFirebase,
-      bar: 50,
     },
   ],
 };
@@ -121,7 +108,7 @@ const works = [
     role: ["メインエンジニア", "デザイナー"],
     dateCreated: "2023/10 ~ 現在",
     totalTime: "103 Hours",
-    awards: false,
+    awards: ["/awards/Award2.svg", "/awards/Award3.svg"],
     learnt:
       "このプロジェクトでは、Next.jsとFirebaseを初めて使用しました。フレームワークを使用することが生のJavaScriptでコードを書くよりも効率的であることを学びました。また、初めてのチームでの主要なエンジニアとしての経験もあり、その役割の重さと責任を実感しました。エンジニアとしてだけでなく、デザイナーとしてもプロジェクトに取り組み、チームメンバーと共にページの作成に貢献しました。アイデアを共有し、リーダーとして私はアイデアをどのように実装し、組み合わせてユーザーが本当に使いたいと思う優れたアプリケーションを作成するかについての決定を行いました。",
     regret:
@@ -145,7 +132,7 @@ const works = [
     role: ["メインエンジニア", "メインデザイナー"],
     dateCreated: "2023/12 ~ 2023/12",
     totalTime: "43 Hours",
-    awards: false,
+    awards: [],
     learnt:
       "FirebaseとNext.jsを利用して、時間とユーザーの状態に焦点を当てたアプリを扱うのは初めてでした。また、このアプリの作成期限を2週間に設定し、何に重点を置くべきかに焦点を当てることができました。",
     regret:
@@ -169,7 +156,7 @@ const works = [
     role: ["メインエンジニア", "デザイナー"],
     dateCreated: "2023/04 ~ 2023/06",
     totalTime: "31 Hours",
-    awards: true,
+    awards: ["/awards/Award1.svg"],
     learnt:
       "チームメンバーと共にアプリを開発するためのコーディング環境を構築する方法を学びました。各エンジニアが独自のコーディングの好みを持っているため、他のメンバーとのコーディングスタイルを合わせることが挑戦でした。",
     regret:
@@ -193,7 +180,7 @@ const works = [
     role: ["メインエンジニア", "メインデザイナー"],
     dateCreated: "2023/05 ~ 2023/06",
     totalTime: "47 Hours",
-    awards: false,
+    awards: [],
     learnt:
       "このプロジェクトを通じて、アプリのコンポーネントや部品を作成するスキルを磨くことができ、これにより以前よりもコードをよりクリーンに書くことができるようになりました。PugとSassの学習は、コーディングの経験をよりスムーズでクリーンにしました。",
     regret:
@@ -218,7 +205,7 @@ const works = [
     role: ["メインエンジニア", "デザイナー"],
     dateCreated: "2022/12 ~ 2023/01",
     totalTime: "19 Hours",
-    awards: false,
+    awards: [],
     learnt:
       "レスポンシブなウェブサイトを作成し、ユーザーがコンピュータとモバイルの両方でウェブサイトを使用できるようにする方法を学びました。これはコーディングとデザインの両面での課題であり、レスポンシブデザインを使用する際にユーザーが違和感を感じないように心掛けました。",
     regret:
@@ -242,7 +229,7 @@ const works = [
     role: ["エンジニア", "デザイナー"],
     dateCreated: "2023/02 ~ 2023/02",
     totalTime: "15 Hours",
-    awards: false,
+    awards: [],
     learnt:
       "ユーザーにアニメーションとイラストを使用して、ランディングページがユーザーを引き込み、このアプリについてもっと知りたくなるようなフローを作成する方法を学びました。",
     regret:
@@ -266,7 +253,7 @@ const works = [
     role: ["エンジニア"],
     dateCreated: "2022/09 ~ 2022/09",
     totalTime: "12 Hours",
-    awards: false,
+    awards: [],
     learnt:
       "このランディングページを作成することで、ユーザーにこのアプリをもっと知りたくなったり試してみたくなるような主な目的を持つランディングページを初めて作成しました。また、JavaScriptを使用してウェブサイトにアニメーションを組み込むことも初めての経験でした。",
     regret: "特にありませんでした。",
@@ -276,9 +263,8 @@ const works = [
 ];
 
 export default function Works() {
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState<boolean | Work[]>(false);
   const [selectedWork, setSelectedWork] = useState<Work | null>(null);
-
   const openModal = (work: Work) => {
     setSelectedWork(work);
     setModal(true);
@@ -286,7 +272,7 @@ export default function Works() {
 
   const closeModal = () => {
     setSelectedWork(null);
-    setModal(false);
+    setModal([]);
   };
 
   return (
@@ -317,7 +303,17 @@ export default function Works() {
         {works.map((work, idx) => (
           <AnimatedDiv key={idx} className={` ${style.work}`} index={idx}>
             <div className={style.overlay}>
-              <div className={work.awards ? style.awards : " "}></div>
+              {work.awards && work.awards.length > 0 && (
+                <div className={style.awards}>
+                  {work.awards.map((award, awardIdx) => (
+                    <div
+                      key={awardIdx}
+                      className={style.awardItem}
+                      style={{ backgroundImage: `url(${award})` }}
+                    ></div>
+                  ))}
+                </div>
+              )}
               <div
                 className={style.thumbnail}
                 style={{
