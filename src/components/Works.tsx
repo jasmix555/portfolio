@@ -114,7 +114,7 @@ const works = [
       "https://github.com/jasmix555/space-lang",
     ],
     summary: "現地のスラングを学ぶ人へ向けた言語習得アプリ",
-    thumbnail: "",
+    thumbnail: "/works/spacelang.png",
     method: ["Next.js", "SCSS", "Firebase", "Figma"],
     category: ["App", "Language", "Education"],
     when: ["2年生", "学校", "チーム制作"],
