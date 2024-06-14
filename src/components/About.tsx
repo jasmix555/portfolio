@@ -13,6 +13,7 @@ import {
   SiVercel,
 } from "react-icons/si";
 import AnimatedDiv from "./AnimatedDiv";
+import Image from "next/image";
 
 const about = {
   skills: [
@@ -58,18 +59,21 @@ function About() {
             <h1>My Info</h1>
           </div>
           <div>
-            <p>Name: Jason Ng</p>
-            <p>Birthdate: 2001/11/02</p>
-            <p>Nationality: Indonesian</p>
-            <p>Languages:🇺🇸 🇮🇩 🇯🇵</p>
+            <p>Name : Jason Ng</p>
+            <p>Birthdate : 2001/11/02</p>
+            <p>Nationality : Indonesian</p>
+            <p>Languages : English , Indonesian , Japanese , Chinese</p>
           </div>
         </AnimatedDiv>
 
-        <AnimatedDiv className={style.testimonial}>
-          <div className={style.title}>
-            <h1>My Story</h1>
-          </div>
-          <p>Currently a student studying web design abroad in Japan</p>
+        <AnimatedDiv className={`${style.testimonial} ${style.image}`}>
+          <Image
+            className={style.profile}
+            src="/profile/profile.png"
+            alt="profile"
+            width={200}
+            height={200}
+          />
         </AnimatedDiv>
 
         <AnimatedDiv className={`${style.testimonial} ${style.gridRowSpan2}`}>
@@ -96,15 +100,25 @@ function About() {
           </div>
         </AnimatedDiv>
 
-        <AnimatedDiv className={`${style.testimonial} ${style.image}`}>
-          <div className={style.profile}></div>
+        <AnimatedDiv className={style.testimonial}>
+          <div className={style.title}>
+            <h1>My Story</h1>
+          </div>
+          <p>Currently a student studying web design abroad in Japan</p>
         </AnimatedDiv>
 
         <AnimatedDiv className={style.testimonial}>
+          <div className={style.title}>
+            <h1>My Motto</h1>
+          </div>
           <p>
-            新しいことを探求するのが好きで、好奇心が強く、満足するまで諦めません！
+            新しいことを探求するのが好きで、
             <br />
-            何かに興味を持ったら、それが理解できるまで調べないと、じっとしていられなくなります。
+            好奇心が強く、満足するまで諦めません！
+            <br />
+            何かに興味を持ったら、それが理解できるまで調べないと、
+            <br />
+            じっとしていられなくなります。
           </p>
         </AnimatedDiv>
       </div>

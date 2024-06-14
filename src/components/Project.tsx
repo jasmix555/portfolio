@@ -4,6 +4,7 @@ import BoxComponent from "./Box";
 import style from "@/styles/Project.module.scss";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Image from "next/image";
 
 export default function Project() {
   const [ref, inView] = useInView({
@@ -35,18 +36,30 @@ export default function Project() {
           interval={4000}
           autoPlay={autoplay}
         >
-          <div>
-            <img src="/projects/1.png" />
-          </div>
-          <div>
-            <img src="/projects/2.png" />
-          </div>
-          <div>
-            <img src="/projects/3.png" />
-          </div>
-          <div>
-            <img src="/projects/4.png" />
-          </div>
+          <Image
+            alt="project-1"
+            src="/projects/1.png"
+            width={2000}
+            height={2000}
+          />
+          <Image
+            alt="project-2"
+            src="/projects/2.png"
+            width={2000}
+            height={2000}
+          />
+          <Image
+            alt="project-3"
+            src="/projects/3.png"
+            width={2000}
+            height={2000}
+          />
+          <Image
+            alt="project-4"
+            src="/projects/4.png"
+            width={2000}
+            height={2000}
+          />
         </Carousel>
       </div>
     </BoxComponent>
