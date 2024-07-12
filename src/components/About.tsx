@@ -20,39 +20,43 @@ const about = {
     {
       category: "Coding/Programming",
       items: [
-        { name: "HTML", icon: SiHtml5, duration: "1.5 years" },
-        { name: "SCSS", icon: SiSass, duration: "1.2 year" },
-        { name: "JavaScript", icon: SiJavascript, duration: "9 months" },
-        { name: "Next.js", icon: SiNextdotjs, duration: "4 months" },
+        { name: "HTML", icon: SiHtml5, duration: "2.5 years" },
+        { name: "SCSS", icon: SiSass, duration: "2.3 year" },
+        { name: "JavaScript", icon: SiJavascript, duration: "11 months" },
+        { name: "Next.js", icon: SiNextdotjs, duration: "7 months" },
       ],
     },
 
     {
       category: "Design",
       items: [
-        { name: "Illustrator", icon: SiAdobeillustrator, duration: "2 years" },
-        { name: "Photoshop", icon: SiAdobephotoshop, duration: "2 years" },
-        { name: "Figma", icon: SiFigma, duration: "1 year" },
+        {
+          name: "Illustrator",
+          icon: SiAdobeillustrator,
+          duration: "2.5 years",
+        },
+        { name: "Photoshop", icon: SiAdobephotoshop, duration: "2.6 years" },
+        { name: "Figma", icon: SiFigma, duration: "1.5 year" },
       ],
     },
 
     {
       category: "Hosting",
       items: [
-        { name: "GitHub", icon: SiGithub, duration: "1 year" },
+        { name: "GitHub", icon: SiGithub, duration: "10 months" },
         { name: "Vercel", icon: SiVercel, duration: "4 months" },
       ],
     },
     {
       category: "Backend",
-      items: [{ name: "Firebase", icon: SiFirebase, duration: "3 months" }],
+      items: [{ name: "Firebase", icon: SiFirebase, duration: "4 months" }],
     },
   ],
 };
 
 function About() {
   return (
-    <BoxComponent heading="About" id={"About"} height={"100vh"}>
+    <BoxComponent heading='About' id={"About"} height={"100vh"}>
       <div className={style.testimonialGrid}>
         <AnimatedDiv className={`${style.testimonial} ${style.gridColSpan2}`}>
           <div className={style.title}>
@@ -69,8 +73,8 @@ function About() {
         <AnimatedDiv className={`${style.testimonial} ${style.image}`}>
           <Image
             className={style.profile}
-            src="/profile/profile.png"
-            alt="profile"
+            src='/profile/profile.png'
+            alt='profile'
             width={200}
             height={200}
           />

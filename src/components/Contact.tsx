@@ -28,7 +28,7 @@ const contacts = [
 
 function Contact() {
   return (
-    <BoxComponent heading="Contact" id={"Contact"}>
+    <BoxComponent heading='Contact' id={"Contact"}>
       <div className={style.wrapper}>
         <div className={style.icons}>
           {contacts.map((e, idx) => (
