@@ -11,6 +11,7 @@ import {
   SiGithub,
   SiFirebase,
   SiVercel,
+  SiReact,
 } from "react-icons/si";
 import AnimatedDiv from "./AnimatedDiv";
 import Image from "next/image";
@@ -23,6 +24,7 @@ const about = {
         { name: "HTML", icon: SiHtml5, duration: "2.5 years" },
         { name: "SCSS", icon: SiSass, duration: "2.3 year" },
         { name: "JavaScript", icon: SiJavascript, duration: "11 months" },
+        { name: "React.js", icon: SiReact, duration: "8 months" },
         { name: "Next.js", icon: SiNextdotjs, duration: "7 months" },
       ],
     },
