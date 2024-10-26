@@ -110,7 +110,11 @@ function About() {
           <div className={style.title}>
             <h1>Hobbies</h1>
           </div>
-          <p>Working Out(Home Workout), Drums, Taking Pictures(Canon Eos)</p>
+          <p>
+            Working Out(Home Workout),
+            <br />
+            Drums, Taking Pictures(Canon Eos)
+          </p>
         </AnimatedDiv>
 
         <AnimatedDiv className={style.testimonial}>
