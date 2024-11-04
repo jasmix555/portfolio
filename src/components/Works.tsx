@@ -15,6 +15,11 @@ import {
   SiGithub,
   SiFirebase,
   SiAdobexd,
+  SiReact,
+  SiVite,
+  SiVitest,
+  SiSwr,
+  SiAxios,
 } from "react-icons/si";
 import AnimatedDiv from "./AnimatedDiv";
 
@@ -58,8 +63,28 @@ const about = {
       icon: SiPug,
     },
     {
+      name: "React.js",
+      icon: SiReact,
+    },
+    {
       name: "Next.js",
       icon: SiNextdotjs,
+    },
+    {
+      name: "Vite",
+      icon: SiVite,
+    },
+    {
+      name: "SWR",
+      icon: SiSwr,
+    },
+    {
+      name: "Axios",
+      icon: SiAxios,
+    },
+    {
+      name: "Vitest",
+      icon: SiVitest,
     },
     {
       name: "Illustrator",
@@ -101,7 +126,7 @@ const works = [
       "防音ソリューションに特化したWebアプリケーションで、最新のアーキテクチャを用いてユーザー体験、SEO、アニメーションの最適化を実現しました。",
     thumbnail: "/works/bouonroom.png",
     method: ["Next.js", "SCSS", "ヘッドレスCMS", "Jamstack"],
-    category: ["Webサイト", "企業", "Web開発"],
+    category: ["Website", "企業", "Web開発"],
     when: ["2024年", "プロフェッショナル", "パートタイム"],
     role: ["メインエンジニア", "SEOスペシャリスト"],
     dateCreated: "2024/07 ~ 2024/09",
@@ -113,6 +138,28 @@ const works = [
       "SSR技術をさらに深く探求し、パフォーマンスをより向上させることができたかもしれません。クライアントのサーバ設定の制限がある中での工夫もしましたが、今後のプロジェクトでの経験として役立てたいと感じました。",
     growth:
       "SEO最適化を考慮したアプリケーション構築や、レスポンシブで視覚的に優れたアニメーションの作成を通じ、多くの技術的成長を実感しました。また、モジュール化されたコードの構成の理解も深まり、アプリケーションのスケーラビリティと保守性が向上しました。",
+  },
+  {
+    title: "日本人口グラフ (株式会社ゆめみ 選考課題)",
+    page: ["Website Link", "GitHub リンク"],
+    link: [
+      "https://population-graph-kappa.vercel.app/",
+      "https://github.com/jasmix555/population-graph",
+    ],
+    summary: "日本の人口データを視覚化したグラフWebサイト",
+    thumbnail: "/works/population-graph.png",
+    method: ["React.js", "Vite", "SWR", "Axios", "MSW", "Vitest", "Highcharts"],
+    category: ["Website", "Data Visualization", "Coding Environment"],
+    when: ["株式会社ゆめみ 選考課題", "独自学習", "個人制作"],
+    role: ["メインエンジニア"],
+    dateCreated: "2024/5 ~ 2024/6",
+    totalTime: "72 時間",
+    learnt:
+      "このプロジェクトを通じて、APIデータの取得と管理の難しさ、SWRとAxiosを使った非同期処理、リアルタイムデータ処理、初めてのテストコード作成、MSWでのモックサーバー構築、グラフライブラリの操作方法を学びました。特にGitやGitHubでのコーディング環境整備、プルリクエスト、Issueを使った開発管理について、AIやドキュメントの助けを借りながら習得しました。",
+    regret:
+      "初めてのAPIやテストコードに多くの時間を費やしたため、さらに効率よく開発を進める方法を学んでおけば良かったと感じました。MSWやSWRの実装やテストコードに関する知識を深め、コード品質の向上と開発効率の改善を図りたいと思います。",
+    growth:
+      "APIとの連携、テスト環境の整備、GitHubでの開発管理を行い、コーディング環境構築やプロジェクト管理の重要性を学びました。新しいライブラリやツールの導入方法を理解し、自己学習とAIサポートを通じて、開発者としての成長を実感しました。",
   },
   {
     title: "SpaceLang",
