@@ -21,11 +21,11 @@ const about = {
     {
       category: "Coding/Programming",
       items: [
-        { name: "HTML", icon: SiHtml5, duration: "2.5 years" },
-        { name: "SCSS", icon: SiSass, duration: "2.3 year" },
-        { name: "JavaScript", icon: SiJavascript, duration: "11 months" },
-        { name: "React.js", icon: SiReact, duration: "8 months" },
-        { name: "Next.js", icon: SiNextdotjs, duration: "7 months" },
+        { name: "HTML", icon: SiHtml5, duration: "3Years 9Months" },
+        { name: "SCSS", icon: SiSass, duration: "3Years 2Months" },
+        { name: "JavaScript", icon: SiJavascript, duration: "2Years" },
+        { name: "React.js", icon: SiReact, duration: "1Year 5Months" },
+        { name: "Next.js", icon: SiNextdotjs, duration: "1Year 2Months" },
       ],
     },
 
@@ -35,30 +35,30 @@ const about = {
         {
           name: "Illustrator",
           icon: SiAdobeillustrator,
-          duration: "2.5 years",
+          duration: "2Years 6Months",
         },
-        { name: "Photoshop", icon: SiAdobephotoshop, duration: "2.6 years" },
-        { name: "Figma", icon: SiFigma, duration: "1.5 year" },
+        { name: "Photoshop", icon: SiAdobephotoshop, duration: "2Years 7Months" },
+        { name: "Figma", icon: SiFigma, duration: "1Year 6Months" },
       ],
     },
 
     {
       category: "Hosting",
       items: [
-        { name: "GitHub", icon: SiGithub, duration: "10 months" },
-        { name: "Vercel", icon: SiVercel, duration: "4 months" },
+        { name: "GitHub", icon: SiGithub, duration: "1Year 2Months" },
+        { name: "Vercel", icon: SiVercel, duration: "9Months" },
       ],
     },
     {
       category: "Backend",
-      items: [{ name: "Firebase", icon: SiFirebase, duration: "4 months" }],
+      items: [{ name: "Firebase", icon: SiFirebase, duration: "8Months" }],
     },
   ],
 };
 
 function About() {
   return (
-    <BoxComponent heading='About' id={"About"} height={"100vh"}>
+    <BoxComponent heading='About' id={"About"} height={"fit-content"}>
       <div className={style.testimonialGrid}>
         <AnimatedDiv className={`${style.testimonial} ${style.gridColSpan2}`}>
           <div className={style.title}>
@@ -122,13 +122,7 @@ function About() {
             <h1>My Motto</h1>
           </div>
           <p>
-            新しいことを探求するのが好きで、
-            <br />
-            好奇心が強く、満足するまで諦めません！
-            <br />
-            何かに興味を持ったら、それが理解できるまで調べないと、
-            <br />
-            じっとしていられなくなります。
+            まず行動し、経験から学び、成長し続ける。
           </p>
         </AnimatedDiv>
       </div>

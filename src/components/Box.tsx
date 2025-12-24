@@ -30,7 +30,7 @@ function BoxComponent({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        paddingTop: " 6rem ",
+        padding: " 6rem 0",
       }}
     >
       <p

@@ -24,7 +24,7 @@ export default function Project() {
       heading='Project'
       id={"Project"}
       bgc={"#f5f5f5"}
-      height={"100vh"}
+      height={"fit-content"}
     >
       <div ref={ref} className={style.wrapper}>
         <Carousel
