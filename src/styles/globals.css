@@ -1,118 +1,48 @@
-:root {
-  font-family: "Inter", sans-serif;
-  font-size: 62.5%;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  --black: #313638;
-  --white: #efefef;
-  --gray: #373737;
+:root {
+  color-scheme: dark;
 }
 
 html {
-  box-sizing: border-box;
-  overflow-y: scroll; /* All browsers without overlaying scrollbars */
-  -webkit-text-size-adjust: 100%; /* iOS 8+ */
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
-* {
-  background-repeat: no-repeat; /* Set `background-repeat: no-repeat` to all elements */
-  padding: 0; /* Reset `padding` and `margin` of all elements */
-  margin: 0;
-  box-sizing: border-box;
+body {
+  background-color: #0a0b0f;
+  color: #e9ebf0;
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-html::-webkit-scrollbar {
-  display: none;
-}
-
-.slide-in {
+/* Subtle ambient glow behind the 3D canvas */
+body::before {
+  content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #4e4e4e;
-  transform-origin: bottom;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(60rem 40rem at 80% -10%, rgba(139, 123, 255, 0.18), transparent 60%),
+    radial-gradient(50rem 40rem at -10% 20%, rgba(52, 224, 208, 0.10), transparent 55%);
 }
 
-.slide-in-one {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #333;
-  transform-origin: bottom;
+::selection {
+  background: rgba(139, 123, 255, 0.35);
 }
 
-.slide-out {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #4e4e4e;
-  transform-origin: top;
+/* Thin custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
 }
-
-button,
-input,
-optgroup,
-select,
-textarea {
-  font: inherit; /* Specify font inheritance of form elements */
+::-webkit-scrollbar-track {
+  background: #0a0b0f;
 }
-
-optgroup {
-  font-weight: bold; /* Restore the font weight unset by the previous rule */
-}
-
-button {
-  overflow: visible; /* Address `overflow` set to `hidden` in IE 8/9/10/11 */
-}
-
-button,
-select {
-  text-transform: none; /* Firefox 40+, Internet Explorer 11- */
-}
-
-/* Apply cursor pointer to button elements */
-button,
-[type="button"],
-[type="reset"],
-[type="submit"],
-[role="button"] {
-  cursor: pointer;
-}
-
-/* Remove inner padding and border in Firefox 4+ */
-button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
-}
-
-/* Replace focus style removed in the border reset above */
-button:-moz-focusring,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
-  outline: 1px dotted ButtonText;
-}
-
-button,
-html [type='button'], /* Prevent a WebKit bug where (2) destroys native `audio` and `video`controls in Android 4 */
-[type='reset'],
-[type='submit'] {
-  -webkit-appearance: button; /* Correct the inability to style clickable types in iOS */
-}
-
-/* Remove the default button styling in all browsers */
-button,
-input,
-select,
-textarea {
-  background-color: transparent;
-  border-style: none;
+::-webkit-scrollbar-thumb {
+  background: #2a2e3a;
+  border-radius: 999px;
 }

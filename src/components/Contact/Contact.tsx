@@ -1,50 +1,54 @@
-import BoxComponent from "../Box";
-import style from "./Contact.module.scss";
-import Link from "next/link";
-import { SiWantedly, SiGithub, SiInstagram, SiGmail } from "react-icons/si";
+import Reveal from "../Reveal";
+import { SiGithub, SiInstagram, SiWantedly } from "react-icons/si";
 
-const contacts = [
-  {
-    icon: SiGmail,
-    link: "mailto:Jasmix555@gmail.com",
-    text: "Send Mail",
-  },
+const socials = [
+  { icon: SiGithub, href: "https://github.com/jasmix555", label: "GitHub" },
   {
     icon: SiInstagram,
-    link: "https://www.instagram.com/jason_ng555/",
-    text: "Instagram Profile",
-  },
-  {
-    icon: SiGithub,
-    link: "https://github.com/jasmix555",
-    text: "GitHub Profile",
+    href: "https://www.instagram.com/jason_ng555/",
+    label: "Instagram",
   },
   {
     icon: SiWantedly,
-    link: "https://www.wantedly.com/id/jason_ng555",
-    text: "Wantedly Profile",
+    href: "https://www.wantedly.com/id/jason_ng555",
+    label: "Wantedly",
   },
 ];
 
-function Contact() {
+export default function Contact() {
   return (
-    <BoxComponent heading='Contact' id={"Contact"}>
-      <div className={style.wrapper}>
-        <div className={style.icons}>
-          {contacts.map((e, idx) => (
-            <div key={idx} data-name={`${e.text}`} className={style.box}>
-              <Link href={e.link}>
-                <e.icon />
-              </Link>
-            </div>
+    <section id="contact" className="mx-auto max-w-site px-6 py-28 text-center">
+      <Reveal>
+        <div className="mb-4 inline-flex items-center justify-center gap-2 text-[13px] font-semibold uppercase tracking-[0.12em] text-accent">
+          <span className="h-px w-6 bg-accent" /> Get in touch
+        </div>
+        <h2 className="font-display text-[clamp(32px,5vw,56px)] font-bold">
+          Let&apos;s build something.
+        </h2>
+        <p className="mx-auto mt-4 max-w-md text-muted">
+          Have a project in mind or just want to say hi? My inbox is open.
+        </p>
+        <a
+          href="mailto:Jasmix555@gmail.com"
+          className="mt-7 inline-block border-b-2 border-transparent font-display text-[clamp(20px,3vw,32px)] text-accent transition-colors hover:border-accent"
+        >
+          Jasmix555@gmail.com
+        </a>
+        <div className="mt-9 flex justify-center gap-4">
+          {socials.map((s) => (
+            <a
+              key={s.label}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={s.label}
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 text-xl text-muted transition-all hover:-translate-y-0.5 hover:border-accent hover:bg-accent hover:text-bg"
+            >
+              <s.icon />
+            </a>
           ))}
         </div>
-      </div>
-      <footer className={style.footer}>
-        <p>© 2024 Jason Ng</p>
-      </footer>
-    </BoxComponent>
+      </Reveal>
+    </section>
   );
 }
-
-export default Contact;

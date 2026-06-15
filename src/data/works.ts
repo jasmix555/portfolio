@@ -32,7 +32,7 @@ export const works: Work[] = [
     when: ["2025年", "個人学習", "個人制作"],
     role: ["メインエンジニア", "メインデザイナー"],
     dateCreated: "2025",
-    totalTime: "学習プロジェクト",
+    totalTime: "約8時間（学習）",
     awards: [],
     learnt:
       "PokeAPIからデータを取得し、その結果をオブジェクトとして画面に描画する基本的な流れを学びました。名前による検索や世代によるフィルタリングを実装することで、取得したデータを加工して表示する方法も理解でき、API通信の基礎をある程度つかむことができました。\n\nI learned the basic flow of fetching data from the PokeAPI and rendering the results as objects on screen. By implementing search by name and filtering by generation, I understood how to process and display fetched data, and grasped the basics of API fetching to a reasonable degree.",
@@ -52,12 +52,12 @@ export const works: Work[] = [
     summary:
       "Teams・Notion・Googleカレンダーのような操作感を目指したカレンダーアプリ。複数ユーザーでのカレンダー共有や、Discordのようなコードによる共有機能を実装し、データの保存・管理について学ぶために制作しました。\n\nA calendar app aiming for a feel similar to Teams, Notion, and Google Calendar. I implemented calendar sharing across multiple users and a Discord-like code-based sharing feature, building it to learn about storing and managing data.",
     thumbnail: "/works/gcal.png",
-    method: ["Next.js", "Tailwind", "Firebase"],
+    method: ["Next.js", "Tailwind", "Firebase", "Claude Code"],
     category: ["App", "Calendar", "Productivity"],
     when: ["2026年", "個人学習", "個人制作"],
     role: ["メインエンジニア", "メインデザイナー"],
     dateCreated: "2026",
-    totalTime: "学習プロジェクト",
+    totalTime: "約4〜5時間（Claude Code使用）",
     awards: [],
     learnt:
       "データの保存と管理について深く学ぶことを目的に制作しました。複数ユーザー間でのカレンダー共有や、Discordのようなコードを使った共有機能を実装する中で、ユーザーごとのデータをどのように構造化し、保存・取得するかを考える良い経験になりました。\n\nI built this with the goal of learning deeply about storing and managing data. While implementing calendar sharing across multiple users and a Discord-like code-based sharing feature, it became a great experience in thinking about how to structure, store, and retrieve data for each user.",
