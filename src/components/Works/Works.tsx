@@ -55,6 +55,11 @@ export default function Works() {
                     ★ {work.awards.length > 1 ? `${work.awards.length} Awards` : "Award"}
                   </span>
                 )}
+                {work.status && (
+                  <span className="absolute left-3.5 top-3.5 z-[2] rounded-full border border-white/15 bg-bg/80 px-3 py-1.5 text-xs font-medium text-muted backdrop-blur">
+                    {work.status}
+                  </span>
+                )}
                 <span
                   className="absolute inset-0 flex items-center justify-center font-display text-4xl font-bold"
                   style={{ color: tint }}

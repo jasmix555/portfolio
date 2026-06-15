@@ -9,6 +9,7 @@ export type Work = {
   role: string[];
   dateCreated: string;
   totalTime: string;
+  status?: string;
   awards?: { title: string; link?: string }[];
   learnt?: string;
   regret?: string;
@@ -178,6 +179,7 @@ export const works: Work[] = [
     role: ["メインエンジニア", "デザイナー"],
     dateCreated: "2023/04 ~ 2023/06",
     totalTime: "31 Hours",
+    status: "Concept",
     awards: [{ title: "作品展示会＋E展 2023 コンセプト賞" }],
     learnt:
       "チームメンバーと共にアプリを開発するためのコーディング環境を構築する方法を学びました。各エンジニアが独自のコーディングの好みを持っているため、他のメンバーとのコーディングスタイルを合わせることが挑戦でした。\n\nI learned how to set up a coding environment for developing an app together with team members. Since each engineer has their own coding preferences, matching coding styles with other members was a challenge.",
@@ -202,6 +204,7 @@ export const works: Work[] = [
     role: ["メインエンジニア", "メインデザイナー"],
     dateCreated: "2023/05 ~ 2023/06",
     totalTime: "47 Hours",
+    status: "Concept",
     awards: [],
     learnt:
       "このプロジェクトを通じて、アプリのコンポーネントや部品を作成するスキルを磨くことができ、これにより以前よりもコードをよりクリーンに書くことができるようになりました。PugとSassの学習は、コーディングの経験をよりスムーズでクリーンにしました。\n\nThrough this project I honed my skills in creating app components and parts, which let me write cleaner code than before. Learning Pug and Sass made the coding experience smoother and cleaner.",
@@ -226,6 +229,7 @@ export const works: Work[] = [
     role: ["メインエンジニア", "デザイナー"],
     dateCreated: "2022/12 ~ 2023/01",
     totalTime: "19 Hours",
+    status: "Concept",
     awards: [],
     learnt:
       "レスポンシブなウェブサイトを作成し、ユーザーがコンピュータとモバイルの両方でウェブサイトを使用できるようにする方法を学びました。これはコーディングとデザインの両面での課題であり、レスポンシブデザインを使用する際にユーザーが違和感を感じないように心掛けました。\n\nI learned how to create a responsive website so users can use it on both computer and mobile. This was a challenge in both coding and design, and I was mindful that users shouldn't feel any discomfort when using the responsive design.",
@@ -250,6 +254,7 @@ export const works: Work[] = [
     role: ["エンジニア", "デザイナー"],
     dateCreated: "2023/02 ~ 2023/02",
     totalTime: "15 Hours",
+    status: "Concept",
     awards: [],
     learnt:
       "ユーザーにアニメーションとイラストを使用して、ランディングページがユーザーを引き込み、このアプリについてもっと知りたくなるようなフローを作成する方法を学びました。\n\nI learned how to use animation and illustration to create a flow that draws users into the landing page and makes them want to learn more about the app.",
@@ -274,6 +279,7 @@ export const works: Work[] = [
     role: ["エンジニア"],
     dateCreated: "2022/09 ~ 2022/09",
     totalTime: "12 Hours",
+    status: "Concept",
     awards: [],
     learnt:
       "このランディングページを作成することで、ユーザーにこのアプリをもっと知りたくなったり試してみたくなるような主な目的を持つランディングページを初めて作成しました。また、JavaScriptを使用してウェブサイトにアニメーションを組み込むことも初めての経験でした。\n\nBy creating this landing page, I made my first landing page whose main purpose was to make users want to learn more about and try the app. It was also my first time incorporating animations into a website using JavaScript.",

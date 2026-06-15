@@ -6,6 +6,7 @@ import {
   FaRegCalendar,
   FaRegUser,
   FaAward,
+  FaFlask,
 } from "react-icons/fa6";
 import type { Work } from "@/data/works";
 
@@ -88,6 +89,12 @@ export default function Modal({ selectedWork, onClose }: Props) {
                 <FaRegUser aria-hidden="true" className="text-faint" />
                 {w.role.join(" · ")}
               </span>
+              {w.status && (
+                <span className="inline-flex items-center gap-1.5">
+                  <FaFlask aria-hidden="true" className="text-faint" />
+                  {w.status}
+                </span>
+              )}
             </div>
 
             {w.awards && w.awards.length > 0 && (
