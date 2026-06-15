@@ -35,7 +35,7 @@ body::before {
   background: rgba(139, 123, 255, 0.35);
 }
 
-/* Thin custom scrollbar */
+/* Page scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -45,4 +45,27 @@ body::before {
 ::-webkit-scrollbar-thumb {
   background: #2a2e3a;
   border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3f4f;
+}
+
+/* Themed scrollbar for the project modal */
+.modal-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(155, 141, 255, 0.5) transparent;
+}
+.modal-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.modal-scroll::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 8px 0;
+}
+.modal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(155, 141, 255, 0.45);
+  border-radius: 999px;
+}
+.modal-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(155, 141, 255, 0.75);
 }
