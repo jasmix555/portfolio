@@ -68,7 +68,7 @@ export default function Hero() {
       <div>
         <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-1.5 text-[13px] text-muted">
           <span className="h-2 w-2 rounded-full bg-accent-2 shadow-[0_0_12px_#34e0d0]" />
-          Available for work · Osaka, Japan
+          Open to work · Osaka, Japan
         </div>
         <motion.h1
           variants={headlineContainer}
@@ -94,9 +94,9 @@ export default function Hero() {
           </motion.span>
         </motion.h1>
         <p className="mt-6 max-w-xl text-[clamp(16px,2vw,20px)] text-muted">
-          Hi, I&apos;m Jason — an aspiring full-stack engineer from Osaka. I turn
-          ideas into fast, clean, and delightful interfaces with React, Next.js
-          and a designer&apos;s eye.
+          Hi, I&apos;m Jason — a front-end / full-stack engineer based in Osaka,
+          currently looking for a team where I can build fast, clean, and
+          delightful web apps with React and Next.js.
         </p>
         <div className="mt-9 flex flex-wrap gap-3.5">
           <Magnetic>
@@ -113,7 +113,7 @@ export default function Hero() {
               href="#contact"
               className="inline-flex items-center rounded-full border border-white/15 px-6 py-3.5 font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-surface-2"
             >
-              Get in touch
+              Let&apos;s work together
             </a>
           </Magnetic>
         </div>

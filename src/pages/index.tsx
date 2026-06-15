@@ -2,6 +2,7 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import Intro from "@/components/Intro";
+import MotionToggle from "@/components/MotionToggle";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -20,13 +21,14 @@ export default function Portfolio() {
         <title>Jason Ng — Front-end Engineer</title>
         <meta
           name="description"
-          content="Jason Ng — aspiring front-end / full-stack engineer based in Osaka, Japan. Building modern web apps with React and Next.js."
+          content="Jason Ng — front-end / full-stack engineer based in Osaka, Japan, open to new opportunities. Building modern web apps with React and Next.js."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Background3D />
       <Intro />
+      <MotionToggle />
 
       <motion.div
         initial={{ opacity: 0 }}
