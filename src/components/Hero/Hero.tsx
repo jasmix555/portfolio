@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { FaArrowRightLong } from "react-icons/fa6";
 import Magnetic from "../Magnetic";
 
@@ -7,6 +8,22 @@ const stats = [
   { value: 3, suffix: "+ yrs", label: "Building for the web" },
   { value: 4, suffix: "", label: "Languages spoken" },
 ];
+
+// Headline words bounce in once the page-load intro finishes (~4s).
+const headlineContainer = {
+  hidden: {},
+  show: { transition: { delayChildren: 4, staggerChildren: 0.07 } },
+};
+const headlineWord = {
+  hidden: { y: 30, opacity: 0 },
+  show: {
+    y: 0,
+    opacity: 1,
+    transition: { type: "spring", stiffness: 240, damping: 12 },
+  },
+};
+const gradientWord =
+  "inline-block bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent";
 
 function CountUp({
   value,
@@ -53,15 +70,29 @@ export default function Hero() {
           <span className="h-2 w-2 rounded-full bg-accent-2 shadow-[0_0_12px_#34e0d0]" />
           Available for work · Osaka, Japan
         </div>
-        <h1 className="font-display text-[clamp(40px,7vw,82px)] font-bold leading-[1.08] tracking-tight">
-          Front-end engineer
+        <motion.h1
+          variants={headlineContainer}
+          initial="hidden"
+          animate="show"
+          className="font-display text-[clamp(40px,7vw,82px)] font-bold leading-[1.08] tracking-tight"
+        >
+          <motion.span variants={headlineWord} className="inline-block">
+            Front-end
+          </motion.span>{" "}
+          <motion.span variants={headlineWord} className="inline-block">
+            engineer
+          </motion.span>
           <br />
-          building{" "}
-          <span className="bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent">
+          <motion.span variants={headlineWord} className="inline-block">
+            building
+          </motion.span>{" "}
+          <motion.span variants={headlineWord} className={gradientWord}>
             modern web apps
-          </span>
-          .
-        </h1>
+          </motion.span>
+          <motion.span variants={headlineWord} className="inline-block">
+            .
+          </motion.span>
+        </motion.h1>
         <p className="mt-6 max-w-xl text-[clamp(16px,2vw,20px)] text-muted">
           Hi, I&apos;m Jason — an aspiring full-stack engineer from Osaka. I turn
           ideas into fast, clean, and delightful interfaces with React, Next.js
