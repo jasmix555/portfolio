@@ -1,6 +1,6 @@
-import BoxComponent from "./Box";
+import BoxComponent from "../Box";
 import style from "@/styles/Archive.module.scss";
-import Works from "./Works";
+import Works from "../Works";
 export default function Archive() {
   return (
     <BoxComponent heading="Archive" id={"Archive"}>

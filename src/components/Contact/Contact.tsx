@@ -1,5 +1,5 @@
-import BoxComponent from "./Box";
-import style from "@/styles/Contact.module.scss";
+import BoxComponent from "../Box";
+import style from "./Contact.module.scss";
 import Link from "next/link";
 import { SiWantedly, SiGithub, SiInstagram, SiGmail } from "react-icons/si";
 

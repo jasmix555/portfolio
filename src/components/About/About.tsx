@@ -1,5 +1,5 @@
-import BoxComponent from "./Box";
-import style from "@/styles/About.module.scss";
+import BoxComponent from "../Box";
+import style from "./About.module.scss";
 import {
   SiHtml5,
   SiSass,
@@ -13,7 +13,7 @@ import {
   SiVercel,
   SiReact,
 } from "react-icons/si";
-import AnimatedDiv from "./AnimatedDiv";
+import AnimatedDiv from "../AnimatedDiv";
 import Image from "next/image";
 
 const about = {

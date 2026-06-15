@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import BoxComponent from "./Box";
-import style from "@/styles/Project.module.scss";
+import BoxComponent from "../Box";
+import style from "./Project.module.scss";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Image from "next/image";

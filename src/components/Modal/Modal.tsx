@@ -1,6 +1,6 @@
 // Modal.js
 import { motion, AnimatePresence } from "framer-motion";
-import style from "@/styles/Modal.module.scss";
+import style from "./Modal.module.scss";
 import { FaXmark } from "react-icons/fa6";
 import Link from "next/link";
 

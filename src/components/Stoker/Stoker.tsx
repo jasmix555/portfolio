@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import styles from "@/styles/Stoker.module.scss";
+import styles from "./Stoker.module.scss";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function Stoker() {
