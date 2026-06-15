@@ -81,10 +81,12 @@ export default function Modal({ selectedWork, onClose }: Props) {
                 <FaRegCalendar aria-hidden="true" className="text-faint" />
                 {w.dateCreated}
               </span>
-              <span className="inline-flex items-center gap-1.5">
-                <FaRegClock aria-hidden="true" className="text-faint" />
-                {w.totalTime}
-              </span>
+              {w.totalTime && (
+                <span className="inline-flex items-center gap-1.5">
+                  <FaRegClock aria-hidden="true" className="text-faint" />
+                  {w.totalTime}
+                </span>
+              )}
               <span className="inline-flex items-center gap-1.5">
                 <FaRegUser aria-hidden="true" className="text-faint" />
                 {w.role.join(" · ")}

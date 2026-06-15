@@ -1,6 +1,7 @@
 import Reveal from "../Reveal";
 import RevealText from "../RevealText";
 import Magnetic from "../Magnetic";
+import { FaEnvelope, FaArrowRightLong } from "react-icons/fa6";
 import { SiGithub, SiInstagram, SiWantedly } from "react-icons/si";
 
 const socials = [
@@ -31,12 +32,21 @@ export default function Contact() {
           I&apos;m currently open to front-end / full-stack roles and freelance
           work. If you&apos;re hiring or have a project in mind, my inbox is open.
         </p>
-        <a
-          href="mailto:Jasmix555@gmail.com"
-          className="mt-7 inline-block border-b-2 border-transparent font-display text-[clamp(20px,3vw,32px)] text-accent transition-colors hover:border-accent"
-        >
-          Jasmix555@gmail.com
-        </a>
+        <div className="mt-8">
+          <Magnetic>
+            <a
+              href="mailto:Jasmix555@gmail.com"
+              className="group inline-flex cursor-pointer items-center gap-2.5 rounded-full bg-accent px-7 py-4 text-lg font-semibold text-bg shadow-[0_8px_24px_rgba(139,123,255,0.25)] transition-all hover:-translate-y-0.5 hover:shadow-[0_14px_34px_rgba(139,123,255,0.45)]"
+            >
+              <FaEnvelope aria-hidden="true" />
+              Send me an email
+              <FaArrowRightLong
+                aria-hidden="true"
+                className="transition-transform duration-200 group-hover:translate-x-1"
+              />
+            </a>
+          </Magnetic>
+        </div>
         <div className="mt-9 flex justify-center gap-4">
           {socials.map((s) => (
             <Magnetic key={s.label} strength={0.5}>

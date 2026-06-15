@@ -1,20 +1,36 @@
 import { useState } from "react";
+import Link from "next/link";
 import { FaArrowRightLong } from "react-icons/fa6";
 import Reveal from "../Reveal";
 import RevealText from "../RevealText";
-import Magnetic from "../Magnetic";
+import WorkCard from "../WorkCard";
 import Modal from "../Modal";
 import { works, type Work } from "@/data/works";
 
-const tints = [
-  "#ef6a3d",
-  "#8b7bff",
-  "#34e0d0",
-  "#378add",
-  "#639922",
-  "#d4537e",
-  "#f0a72b",
-  "#5dcaa5",
+const groups: {
+  id: Work["group"];
+  label: string;
+  blurb: string;
+  limit: number;
+}[] = [
+  {
+    id: "work",
+    label: "Professional Work",
+    blurb: "Client campaign & product sites, built for responsive delivery.",
+    limit: 5,
+  },
+  {
+    id: "project",
+    label: "Projects",
+    blurb: "Structured React / Next.js apps with real functionality.",
+    limit: Infinity,
+  },
+  {
+    id: "concept",
+    label: "Concepts",
+    blurb: "Early HTML study & competition builds from college.",
+    limit: Infinity,
+  },
 ];
 
 export default function Works() {
@@ -30,77 +46,56 @@ export default function Works() {
           <RevealText text="Things I've built" />
         </h2>
         <p className="mt-3 max-w-xl text-muted">
-          A collection of projects from my studies and beyond. Click any card for
-          the full story.
+          From professional client sites to React apps and early college
+          concepts. Click any card for the full story.
         </p>
       </Reveal>
 
-      <Reveal className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {works.map((work, idx) => {
-          const tint = tints[idx % tints.length];
-          return (
-            <Magnetic key={idx} strength={0.1} className="block h-full w-full">
-            <button
-              type="button"
-              onClick={() => setSelected(work)}
-              aria-label={`View details for ${work.title}`}
-              className="group flex h-full min-h-[340px] w-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-surface text-left transition-all duration-300 hover:-translate-y-1.5 hover:border-white/20"
-            >
-              <div
-                className="relative h-[200px] overflow-hidden"
-                style={{ background: `linear-gradient(135deg, ${tint}33, ${tint}11)` }}
-              >
-                {work.awards && work.awards.length > 0 && (
-                  <span className="absolute right-3.5 top-3.5 z-[2] rounded-full border border-white/15 bg-bg/80 px-3 py-1.5 text-xs font-medium text-accent-2 backdrop-blur">
-                    ★ {work.awards.length > 1 ? `${work.awards.length} Awards` : "Award"}
+      {groups.map((g) => {
+        const all = works
+          .filter((w) => w.group === g.id)
+          .sort((a, b) => (a.featured ?? Infinity) - (b.featured ?? Infinity));
+        if (all.length === 0) return null;
+        const items = all.slice(0, g.limit);
+        const hidden = all.length - items.length;
+
+        return (
+          <div key={g.id} className="mt-16">
+            <Reveal>
+              <div className="mb-6">
+                <h3 className="flex items-center gap-3 font-display text-2xl font-semibold">
+                  {g.label}
+                  <span className="text-sm font-normal text-faint">
+                    {all.length}
                   </span>
-                )}
-                {work.status && (
-                  <span className="absolute left-3.5 top-3.5 z-[2] rounded-full border border-white/15 bg-bg/80 px-3 py-1.5 text-xs font-medium text-muted backdrop-blur">
-                    {work.status}
-                  </span>
-                )}
-                <span
-                  className="absolute inset-0 flex items-center justify-center font-display text-4xl font-bold"
-                  style={{ color: tint }}
-                >
-                  {work.title.slice(0, 2)}
-                </span>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={work.thumbnail}
-                  alt=""
-                  aria-hidden="true"
-                  onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).style.display = "none";
-                  }}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-              </div>
-              <div className="flex flex-1 flex-col gap-3 p-5">
-                <h3 className="font-display text-xl font-semibold">
-                  {work.title}
                 </h3>
-                <div className="mt-auto flex flex-wrap gap-2">
-                  {work.category.map((c) => (
-                    <span
-                      key={c}
-                      className="rounded-full bg-accent/15 px-2.5 py-1 text-xs font-medium text-[#c4bcff]"
-                    >
-                      {c}
-                    </span>
-                  ))}
-                </div>
-                <span className="mt-1.5 inline-flex items-center gap-2 text-sm font-semibold text-accent transition-transform duration-200 group-hover:gap-3">
-                  View details
-                  <FaArrowRightLong aria-hidden="true" />
-                </span>
+                <p className="mt-1 text-sm text-muted">{g.blurb}</p>
               </div>
-            </button>
-            </Magnetic>
-          );
-        })}
-      </Reveal>
+            </Reveal>
+            <Reveal className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {items.map((work, idx) => (
+                <WorkCard
+                  key={work.title}
+                  work={work}
+                  index={idx}
+                  onSelect={setSelected}
+                />
+              ))}
+            </Reveal>
+            {hidden > 0 && (
+              <div className="mt-8 flex justify-center">
+                <Link
+                  href="/work"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-white transition-all hover:gap-3 hover:border-accent hover:bg-accent hover:text-bg"
+                >
+                  Show all {g.label.toLowerCase()} ({hidden} more)
+                  <FaArrowRightLong aria-hidden="true" />
+                </Link>
+              </div>
+            )}
+          </div>
+        );
+      })}
 
       <Modal selectedWork={selected} onClose={() => setSelected(null)} />
     </section>

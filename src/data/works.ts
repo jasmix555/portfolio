@@ -1,5 +1,7 @@
 export type Work = {
   title: string;
+  group: "work" | "project" | "concept";
+  featured?: number;
   page: string[];
   link: string[];
   summary: string;
@@ -8,7 +10,7 @@ export type Work = {
   category: string[];
   role: string[];
   dateCreated: string;
-  totalTime: string;
+  totalTime?: string;
   status?: string;
   awards?: { title: string; link?: string }[];
   learnt?: string;
@@ -19,6 +21,7 @@ export type Work = {
 export const works: Work[] = [
   {
     title: "Pokédex",
+    group: "project",
     page: ["Web Application Link", "GitHub Link"],
     link: [
       "https://pokedex-orcin-two.vercel.app/",
@@ -43,6 +46,7 @@ export const works: Work[] = [
 
   {
     title: "Calendar App",
+    group: "project",
     page: ["Web Application Link", "GitHub Link"],
     link: [
       "https://gcal-app-tawny.vercel.app/",
@@ -67,6 +71,7 @@ export const works: Work[] = [
 
   {
     title: "防音ルームドットコム",
+    group: "work",
     page: ["Webアプリケーションリンク"],
     link: ["https://bouonroom.com/"],
     summary:
@@ -87,7 +92,275 @@ export const works: Work[] = [
   },
 
   {
+    title: "セコム×大谷翔平 ホーム守備力テスト",
+    group: "work",
+    page: ["Website Link"],
+    link: ["https://www.secom.co.jp/special/home-project/test/"],
+    summary:
+      "セコム×大谷翔平「ホームを全力で守るプロジェクト」の守備力テスト特設サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA special interactive “home defense test” site for Secom × Shohei Ohtani — responsive front-end implementation.",
+    thumbnail: "/works/secom-ohtani.png",
+    featured: 3,
+    totalTime: "約1週間",
+    method: ["HTML", "SCSS", "JavaScript"],
+    category: ["Client Work", "Campaign Site", "Responsive"],
+    role: ["Front-end Engineer"],
+    dateCreated: "2025",
+    awards: [],
+  },
+
+  {
+    title: "日本生命×ユニバーサル・スタジオ・ジャパン",
+    group: "work",
+    page: ["Website Link"],
+    link: ["https://www.nissay.co.jp/enjoy/usj/"],
+    summary:
+      "日本生命×ユニバーサル・スタジオ・ジャパンのキャンペーンサイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA campaign site for Nippon Life × Universal Studios Japan — responsive front-end implementation.",
+    thumbnail: "/works/nissay-usj.png",
+    featured: 5,
+    totalTime: "1〜5日",
+    method: ["HTML", "SCSS", "JavaScript"],
+    category: ["Client Work", "Campaign Site", "Responsive"],
+    role: ["Front-end Engineer"],
+    dateCreated: "2025",
+    awards: [],
+  },
+
+  {
+    title: "マムアップパーク",
+    group: "work",
+    page: ["Website Link"],
+    link: ["https://mamamo-mannaka.jp/momup-park/"],
+    summary:
+      "妊娠・子育てママのコンディションをととのえる「マムアップパーク」。キッズデザイン賞を受賞。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA wellness site for expecting and parenting mothers, Kids Design Award winner — responsive front-end implementation.",
+    thumbnail: "/works/momup-park.png",
+    totalTime: "1〜5日",
+    method: ["HTML", "SCSS", "JavaScript"],
+    category: ["Client Work", "Product Site", "Responsive"],
+    role: ["Front-end Engineer"],
+    dateCreated: "2024",
+    awards: [],
+  },
+
+  {
+    title: "花王 メリット Osolo",
+    group: "work",
+    page: ["Website Link"],
+    link: ["https://www.kao.co.jp/merit/osolo/"],
+    summary:
+      "花王「メリット Osolo」の商品紹介サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product site for Kao's Merit Osolo — responsive front-end implementation.",
+    thumbnail: "/works/kao-osolo.png",
+    featured: 4,
+    totalTime: "1〜5日",
+    method: ["HTML", "SCSS", "JavaScript"],
+    category: ["Client Work", "Product Site", "Responsive"],
+    role: ["Front-end Engineer"],
+    dateCreated: "2025",
+    awards: [],
+  },
+
+  {
+    title: "LUCUA osaka 11th Anniversary",
+    group: "work",
+    page: ["Website Link"],
+    link: ["https://www.lucua.jp/11th-anniversary/"],
+    summary:
+      "ルクア大阪の11周年記念キャンペーンサイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nThe 11th-anniversary campaign site for LUCUA osaka — responsive front-end implementation.",
+    thumbnail: "/works/lucua-11th.png",
+    featured: 1,
+    totalTime: "1〜5日",
+    method: ["HTML", "SCSS", "JavaScript"],
+    category: ["Client Work", "Campaign Site", "Responsive"],
+    role: ["Front-end Engineer"],
+    dateCreated: "2025",
+    awards: [],
+  },
+
+  {
+    title: "LUCUA osaka Night Market",
+    group: "work",
+    page: ["Website Link"],
+    link: ["https://www.lucua.jp/2026nightmarket/"],
+    summary:
+      "ルクア大阪「ナイトマーケット」のキャンペーンサイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA campaign site for LUCUA osaka's Night Market — responsive front-end implementation.",
+    thumbnail: "/works/lucua-nightmarket.png",
+    featured: 2,
+    totalTime: "1〜5日",
+    method: ["HTML", "SCSS", "JavaScript"],
+    category: ["Client Work", "Campaign Site", "Responsive"],
+    role: ["Front-end Engineer"],
+    dateCreated: "2026",
+    awards: [],
+  },
+
+  {
+    title: "ロート製薬 それ目薬、はじめどきっ！",
+    group: "work",
+    page: ["Website Link"],
+    link: ["https://jp.rohto.com/learn-more/eyecare/start/"],
+    summary:
+      "ロート製薬「それ目薬、はじめどきっ！」のアイケア啓発サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nAn eye-care awareness site for Rohto — responsive front-end implementation.",
+    thumbnail: "/works/rohto-eyecare.png",
+    totalTime: "1〜5日",
+    method: ["HTML", "SCSS", "JavaScript"],
+    category: ["Client Work", "Product Site", "Responsive"],
+    role: ["Front-end Engineer"],
+    dateCreated: "2025",
+    awards: [],
+  },
+
+  {
+    title: "エプソン 大判プリンター ポスター内製",
+    group: "work",
+    page: ["Website Link"],
+    link: ["https://www.epson.jp/products/largeprinter/poster-printing/"],
+    summary:
+      "エプソン 大判プリンター「Adobe Expressでポスター内製」の製品情報サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product page for Epson large-format printers — responsive front-end implementation.",
+    thumbnail: "/works/epson-poster.png",
+    totalTime: "約1週間",
+    method: ["HTML", "SCSS", "JavaScript"],
+    category: ["Client Work", "Product Site", "Responsive"],
+    role: ["Front-end Engineer"],
+    dateCreated: "2025",
+    awards: [],
+  },
+
+  {
+    title: "ブレンディ マイボトルスティック",
+    group: "work",
+    page: ["Website Link"],
+    link: ["https://agf.ajinomoto.co.jp/brand/blendy/mybottlestick/"],
+    summary:
+      "味の素AGF「ブレンディ マイボトルスティック」の商品サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product site for AGF Blendy My Bottle Stick — responsive front-end implementation.",
+    thumbnail: "/works/blendy-mybottle.png",
+    totalTime: "1〜5日",
+    method: ["HTML", "SCSS", "JavaScript"],
+    category: ["Client Work", "Product Site", "Responsive"],
+    role: ["Front-end Engineer"],
+    dateCreated: "2025",
+    awards: [],
+  },
+
+  {
+    title: "味の素AGF カフェタイムギフト",
+    group: "work",
+    page: ["Website Link"],
+    link: [
+      "https://agf.ajinomoto.co.jp/brand/gift/fugift/casualgift/cafetimegift/",
+    ],
+    summary:
+      "味の素AGF「カフェタイムギフト」の商品サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA gift product site for Ajinomoto AGF — responsive front-end implementation.",
+    thumbnail: "/works/agf-cafetimegift.png",
+    totalTime: "1〜5日",
+    method: ["HTML", "SCSS", "JavaScript"],
+    category: ["Client Work", "Product Site", "Responsive"],
+    role: ["Front-end Engineer"],
+    dateCreated: "2025",
+    awards: [],
+  },
+
+  {
+    title: "富士フイルム 推し文字プリント",
+    group: "work",
+    page: ["Website Link"],
+    link: [
+      "https://www.fujifilm.com/fb/ja/solutions/wide-variety/multicopy/oshikatu",
+    ],
+    summary:
+      "富士フイルム「推し文字プリント」のサービス紹介サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA service site for Fujifilm's Oshi-Moji Print — responsive front-end implementation.",
+    thumbnail: "/works/fujifilm-oshimoji.png",
+    totalTime: "1〜5日",
+    method: ["HTML", "SCSS", "JavaScript"],
+    category: ["Client Work", "Product Site", "Responsive"],
+    role: ["Front-end Engineer"],
+    dateCreated: "2025",
+    awards: [],
+  },
+
+  {
+    title: "富士フイルム 推し文字プリントメーカー",
+    group: "work",
+    page: ["Website Link"],
+    link: [
+      "https://www.fujifilm.com/fb/ja/solutions/wide-variety/multicopy/oshikatu/oshimojiprintmaker",
+    ],
+    summary:
+      "富士フイルム「推し文字プリントメーカー」のWebツール。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA web tool for Fujifilm's Oshi-Moji Print Maker — responsive front-end implementation.",
+    thumbnail: "/works/fujifilm-oshimoji-maker.png",
+    totalTime: "1〜5日",
+    method: ["HTML", "SCSS", "JavaScript"],
+    category: ["Client Work", "Web Tool", "Responsive"],
+    role: ["Front-end Engineer"],
+    dateCreated: "2025",
+    awards: [],
+  },
+
+  {
+    title: "家ナカまるごと応援キャンペーン",
+    group: "work",
+    page: ["Website Link"],
+    link: ["https://cpn-wv-cl0304.one-zero.jp/ienaka-ouen-20251001/"],
+    summary:
+      "「読書×家事の秋」家ナカまるごと応援キャンペーンサイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA seasonal home-life campaign site — responsive front-end implementation.",
+    thumbnail: "/works/ienaka-ouen.png",
+    totalTime: "1〜5日",
+    method: ["HTML", "SCSS", "JavaScript"],
+    category: ["Client Work", "Campaign Site", "Responsive"],
+    role: ["Front-end Engineer"],
+    dateCreated: "2025",
+    awards: [],
+  },
+
+  {
+    title: "ネイチャーメイド スーパーマルチビタミン&ミネラル (Woman)",
+    group: "work",
+    page: ["Website Link"],
+    link: ["https://www.otsuka.co.jp/nmd/smvm_woman/"],
+    summary:
+      "大塚製薬「ネイチャーメイド スーパーマルチビタミン&ミネラル（女性向け）」の商品サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product site for Otsuka's Nature Made Super Multivitamin & Mineral (for women) — responsive front-end implementation.",
+    thumbnail: "/works/naturemade-woman.png",
+    totalTime: "1〜5日",
+    method: ["HTML", "SCSS", "JavaScript"],
+    category: ["Client Work", "Product Site", "Responsive"],
+    role: ["Front-end Engineer"],
+    dateCreated: "2025",
+    awards: [],
+  },
+
+  {
+    title: "ネイチャーメイド スーパーマルチビタミン&ミネラル (Man)",
+    group: "work",
+    page: ["Website Link"],
+    link: ["https://www.otsuka.co.jp/nmd/smvm_man/"],
+    summary:
+      "大塚製薬「ネイチャーメイド スーパーマルチビタミン&ミネラル（男性向け）」の商品サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product site for Otsuka's Nature Made Super Multivitamin & Mineral (for men) — responsive front-end implementation.",
+    thumbnail: "/works/naturemade-man.png",
+    totalTime: "1〜5日",
+    method: ["HTML", "SCSS", "JavaScript"],
+    category: ["Client Work", "Product Site", "Responsive"],
+    role: ["Front-end Engineer"],
+    dateCreated: "2025",
+    awards: [],
+  },
+
+  {
+    title: "DHC リップクリームシリーズ",
+    group: "work",
+    page: ["Website Link"],
+    link: ["https://top.dhc.co.jp/shop/skin/lipseries_moist_color/"],
+    summary:
+      "DHC「リップクリームシリーズ」の商品紹介サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product site for DHC's Lip Cream series — responsive front-end implementation.",
+    thumbnail: "/works/dhc-lip.png",
+    totalTime: "1〜5日",
+    method: ["HTML", "SCSS", "JavaScript"],
+    category: ["Client Work", "Product Site", "Responsive"],
+    role: ["Front-end Engineer"],
+    dateCreated: "2025",
+    awards: [],
+  },
+
+  {
     title: "Reminiscape",
+    group: "project",
     page: ["Webアプリケーションリンク"],
     link: ["https://reminiscape-zeta.vercel.app/"],
     summary:
@@ -109,6 +382,7 @@ export const works: Work[] = [
 
   {
     title: "SpaceLang",
+    group: "project",
     page: ["Web Application Link", "GitHub Link"],
     link: [
       "https://team-project2023.vercel.app/",
@@ -142,6 +416,7 @@ export const works: Work[] = [
 
   {
     title: "Attendance",
+    group: "project",
     page: ["Web Application Link", "GitHub Link"],
     link: [
       "https://attendance-checker-three.vercel.app/",
@@ -166,6 +441,7 @@ export const works: Work[] = [
 
   {
     title: "Sakamachi (酒街)",
+    group: "concept",
     page: ["Web Application Link", "GitHub Link"],
     link: [
       "https://oh-matchly.vercel.app/",
@@ -191,6 +467,7 @@ export const works: Work[] = [
 
   {
     title: "Foodera",
+    group: "concept",
     page: ["Web Application Link", "GitHub Link"],
     link: [
       "https://foodera-nine.vercel.app/",
@@ -216,6 +493,7 @@ export const works: Work[] = [
 
   {
     title: "Chittle",
+    group: "concept",
     page: ["Website Link", "GitHub Link"],
     link: [
       "https://click.ecc.ac.jp/ecc/json/Chittle/",
@@ -241,6 +519,7 @@ export const works: Work[] = [
 
   {
     title: "XCO Landing Page",
+    group: "concept",
     page: ["Website Link", "GitHub Link"],
     link: [
       "https://click.ecc.ac.jp/ecc/json/XCO-LP/",
@@ -266,6 +545,7 @@ export const works: Work[] = [
 
   {
     title: "Nemu-Nemu Kun Landing Page",
+    group: "concept",
     page: ["Website Link", "GitHub Link"],
     link: [
       "https://click.ecc.ac.jp/ecc/json/Nemu-Nemu-Kun/",
