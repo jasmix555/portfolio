@@ -1,151 +1,96 @@
-// Modal.js
-import { motion, AnimatePresence } from "framer-motion";
-import style from "./Modal.module.scss";
+import { useEffect } from "react";
 import { FaXmark } from "react-icons/fa6";
-import Link from "next/link";
-
-type Award = string;
+import type { Work } from "@/data/works";
 
 type Props = {
-  selectedWork: any;
-  about: any;
-  closeModal: () => void;
-  awards?: Award[];
+  selectedWork: Work | null;
+  onClose: () => void;
 };
 
-const Modal = ({ selectedWork, closeModal, about }: Props) => {
+export default function Modal({ selectedWork, onClose }: Props) {
+  useEffect(() => {
+    if (!selectedWork) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [selectedWork, onClose]);
+
+  if (!selectedWork) return null;
+  const w = selectedWork;
+
   return (
-    <AnimatePresence>
-      {selectedWork && (
-        <motion.div
-          className={`${style.modalWrapper} `}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-        >
-          <motion.div
-            className={style.modalContent}
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
+    <div
+      onClick={(e) => e.target === e.currentTarget && onClose()}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-6 backdrop-blur-md"
+    >
+      <div className="max-h-[88vh] w-full max-w-3xl overflow-y-auto rounded-3xl border border-white/15 bg-surface">
+        <div className="relative h-[180px] rounded-t-3xl bg-gradient-to-br from-accent/30 to-accent/5">
+          <button
+            onClick={onClose}
+            aria-label="Close"
+            className="absolute right-4 top-4 z-[3] flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-bg/70 text-white"
           >
-            <div className={style.wrapper}>
-              <div className={style.header}>
-                <h1>{selectedWork.title}</h1>
-                <div className={`${style.content}`}>
-                  <h2>Summary</h2>
-                  <p>{selectedWork.summary}</p>
-                </div>
-              </div>
-              <div className={style.visual}>
-                <div
-                  className={style.thumbnail}
-                  style={{
-                    backgroundImage: `url(${selectedWork.thumbnail})`,
-                  }}
-                >
-                  {selectedWork.awards && selectedWork.awards.length > 0 && (
-                    <div className={style.awards}>
-                      {selectedWork.awards.map(
-                        (award: any, awardIdx: number) => (
-                          <div
-                            key={awardIdx}
-                            className={style.awardItem}
-                            style={{ backgroundImage: `url(${award})` }}
-                          ></div>
-                        )
-                      )}
-                    </div>
-                  )}
-                </div>
+            <FaXmark />
+          </button>
+        </div>
 
-                <div className={style.details}>
-                  <div className={`${style.content}`}>
-                    <h2>Category</h2>
-                    <p>{selectedWork.category.join(", ")}</p>
-                  </div>
+        <div className="px-8 pb-10 pt-2 sm:px-9">
+          <h2 className="font-display text-3xl font-bold">{w.title}</h2>
 
-                  <div className={style.content}>
-                    <h2>Duration</h2>
-                    <p>{selectedWork.totalTime}</p>
-                  </div>
+          <div className="my-5 flex flex-wrap gap-2.5">
+            {w.category.map((c) => (
+              <span
+                key={c}
+                className="rounded-full border border-white/10 px-3 py-1.5 text-[12.5px] text-muted"
+              >
+                {c}
+              </span>
+            ))}
+            <span className="rounded-full border border-white/10 px-3 py-1.5 text-[12.5px] text-muted">
+              ⏱ {w.totalTime}
+            </span>
+            <span className="rounded-full border border-white/10 px-3 py-1.5 text-[12.5px] text-muted">
+              {w.role.join(" · ")}
+            </span>
+          </div>
 
-                  <div className={`${style.content}`}>
-                    <h2>During</h2>
-                    <p>{selectedWork.when[0]}</p>
-                  </div>
+          <Block title="Summary" text={w.summary} />
+          {w.learnt && <Block title="What I learned" text={w.learnt} />}
+          {w.regret && <Block title="What I'd improve" text={w.regret} />}
+          {w.growth && <Block title="How I grew" text={w.growth} />}
 
-                  <div className={`${style.content}`}>
-                    <h2>Goal</h2>
-                    <p>{selectedWork.when[1]}</p>
-                  </div>
-
-                  <div className={`${style.content}`}>
-                    <h2>Creation Team</h2>
-                    <p>{selectedWork.when[2]}</p>
-                  </div>
-
-                  <div className={`${style.content} ${style.role}`}>
-                    <h2>Role</h2>
-                    <p>{selectedWork.role.join(", ")}</p>
-                  </div>
-
-                  <div className={`${style.content}`}>
-                    <h2>Method</h2>
-                    <div className={style.skills}>
-                      {selectedWork.method.map((tag: any, tagIdx: number) => (
-                        <div key={tagIdx} className={style.tag}>
-                          {about.skills.map((skill: any) =>
-                            skill.name === tag ? (
-                              <span key={skill.name} className={style.icon}>
-                                <skill.icon />
-                              </span>
-                            ) : null
-                          )}
-                          <span className={style.tagText}>{tag}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className={style.content}>
-                    <h2>Links</h2>
-                    <div className={style.links}>
-                      {selectedWork.link.map((link: any, linkIdx: number) => (
-                        <Link key={linkIdx} href={link}>
-                          {selectedWork.page[linkIdx]}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className={style.information}>
-                <div className={style.content}>
-                  <h2>Learnt</h2>
-                  <p>{selectedWork.learnt}</p>
-                </div>
-                <div className={style.content}>
-                  <h2>Regrets</h2>
-                  <p>{selectedWork.regret}</p>
-                </div>
-                <div className={style.content}>
-                  <h2>Growth</h2>
-                  <p>{selectedWork.growth}</p>
-                </div>
-              </div>
-              <button onClick={closeModal} className={style.closeBtn}>
-                <FaXmark />
-              </button>
-            </div>
-          </motion.div>
-
-          <div className={style.modalBackground} onClick={closeModal}></div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+          <div className="mt-7 flex flex-wrap gap-3">
+            {w.link.map((href, i) => (
+              <a
+                key={href}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-accent hover:bg-accent hover:text-bg"
+              >
+                {w.page[i]} ↗
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   );
-};
+}
 
-export default Modal;
+function Block({ title, text }: { title: string; text: string }) {
+  return (
+    <>
+      <h4 className="mb-2 mt-6 text-[13px] font-semibold uppercase tracking-[0.1em] text-accent">
+        {title}
+      </h4>
+      <p className="whitespace-pre-line text-[15.5px] leading-relaxed text-muted">
+        {text}
+      </p>
+    </>
+  );
+}

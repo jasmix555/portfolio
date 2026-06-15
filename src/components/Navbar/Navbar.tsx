@@ -1,62 +1,65 @@
-import React, { useEffect, useState, useCallback } from "react";
-import style from "@/styles/portfolio.module.scss";
+import { useEffect, useState } from "react";
+import { FaBars, FaXmark } from "react-icons/fa6";
 
-function Navbar({ sectionIds }: { sectionIds: string[] }) {
-  const [activeSection, setActiveSection] = useState<string | null>(null);
+const links = [
+  { label: "About", href: "#about" },
+  { label: "Tech", href: "#tech" },
+  { label: "Work", href: "#work" },
+];
 
-  const handleClick = (id: string) => {
-    const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handleScroll = useCallback(() => {
-    const scrollY = window.scrollY;
-
-    // Determine the active section based on scroll position
-    const activeSectionId = sectionIds.find((id) => {
-      const section = document.getElementById(id);
-      if (section) {
-        const sectionTop = section.offsetTop;
-        const sectionBottom = sectionTop + section.clientHeight;
-        return scrollY >= sectionTop && scrollY < sectionBottom;
-      }
-      return false;
-    });
-
-    setActiveSection((prevActiveSection: string | null) => {
-      return activeSectionId !== undefined && activeSectionId !== null
-        ? activeSectionId
-        : prevActiveSection;
-    });
-  }, [sectionIds]);
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    // Initially, determine the active section when the component is mounted.
-    handleScroll();
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [sectionIds, handleScroll]);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <div className={style.navbar}>
-      {sectionIds &&
-        sectionIds.map((id) => (
-          <div
-            key={id}
-            className={`${style.box} ${
-              activeSection === id ? style.active : ""
-            }`}
-            onClick={() => handleClick(id)}
+    <nav
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled ? "border-b border-white/10 bg-bg/70 backdrop-blur-xl" : ""
+      }`}
+    >
+      <div className="mx-auto flex max-w-site items-center justify-between px-6 py-4">
+        <a href="#top" className="font-display text-lg font-bold tracking-tight">
+          Jason<span className="text-accent">.</span>Ng
+        </a>
+
+        <button
+          onClick={() => setOpen((v) => !v)}
+          aria-label="Toggle menu"
+          className="z-[60] text-2xl md:hidden"
+        >
+          {open ? <FaXmark /> : <FaBars />}
+        </button>
+
+        <div
+          className={`fixed inset-y-0 right-0 z-50 flex w-[min(78vw,320px)] flex-col items-start justify-center gap-6 border-l border-white/10 bg-surface p-10 transition-transform duration-300 md:static md:w-auto md:translate-x-0 md:flex-row md:items-center md:gap-8 md:border-0 md:bg-transparent md:p-0 ${
+            open ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          {links.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={() => setOpen(false)}
+              className="text-sm font-medium text-muted transition-colors hover:text-white"
+            >
+              {l.label}
+            </a>
+          ))}
+          <a
+            href="#contact"
+            onClick={() => setOpen(false)}
+            className="rounded-full border border-white/15 px-5 py-2 text-sm font-medium text-white transition-colors hover:border-accent hover:bg-accent hover:text-bg"
           >
-            {id}
-          </div>
-        ))}
-    </div>
+            Let&apos;s talk
+          </a>
+        </div>
+      </div>
+    </nav>
   );
 }
-
-export default Navbar;
