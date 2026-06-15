@@ -1,12 +1,15 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import { useMotionEnabled } from "../MotionToggle";
 
 export default function Background3D() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const introStartRef = useRef<number | null>(null);
+  const { enabled } = useMotionEnabled();
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas || !enabled) return;
 
     const renderer = new THREE.WebGLRenderer({
       canvas,
@@ -86,8 +89,11 @@ export default function Background3D() {
     window.addEventListener("mousemove", onMouse);
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
+    onScroll(); // initialise scroll position so resuming keeps its place
 
-    const introStart = performance.now();
+    // Only play the fade/dolly intro once; on resume jump straight to settled.
+    if (introStartRef.current === null) introStartRef.current = performance.now();
+    const introStart = introStartRef.current;
     const INTRO_MS = 2400;
 
     const animate = () => {
@@ -128,7 +134,7 @@ export default function Background3D() {
       icoMat.dispose();
       renderer.dispose();
     };
-  }, []);
+  }, [enabled]);
 
   return (
     <canvas

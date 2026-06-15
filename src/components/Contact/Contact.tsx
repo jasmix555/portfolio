@@ -25,10 +25,11 @@ export default function Contact() {
           <span className="h-px w-6 bg-accent" /> Get in touch
         </div>
         <h2 className="font-display text-[clamp(32px,5vw,56px)] font-bold">
-          <RevealText text="Let's build something." />
+          <RevealText text="Let's work together." />
         </h2>
         <p className="mx-auto mt-4 max-w-md text-muted">
-          Have a project in mind or just want to say hi? My inbox is open.
+          I&apos;m currently open to front-end / full-stack roles and freelance
+          work. If you&apos;re hiring or have a project in mind, my inbox is open.
         </p>
         <a
           href="mailto:Jasmix555@gmail.com"
