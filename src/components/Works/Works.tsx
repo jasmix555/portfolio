@@ -52,7 +52,7 @@ export default function Works() {
               >
                 {work.awards && work.awards.length > 0 && (
                   <span className="absolute right-3.5 top-3.5 z-[2] rounded-full border border-white/15 bg-bg/80 px-3 py-1.5 text-xs font-medium text-accent-2 backdrop-blur">
-                    ★ Award
+                    ★ {work.awards.length > 1 ? `${work.awards.length} Awards` : "Award"}
                   </span>
                 )}
                 <span
