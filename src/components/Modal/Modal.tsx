@@ -1,5 +1,11 @@
 import { useEffect } from "react";
-import { FaXmark } from "react-icons/fa6";
+import {
+  FaXmark,
+  FaArrowUpRightFromSquare,
+  FaRegClock,
+  FaRegCalendar,
+  FaRegUser,
+} from "react-icons/fa6";
 import type { Work } from "@/data/works";
 
 type Props = {
@@ -41,19 +47,28 @@ export default function Modal({ selectedWork, onClose }: Props) {
         <div className="px-8 pb-10 pt-2 sm:px-9">
           <h2 className="font-display text-3xl font-bold">{w.title}</h2>
 
-          <div className="my-5 flex flex-wrap gap-2.5">
+          <div className="mb-3 mt-5 flex flex-wrap gap-2">
             {w.category.map((c) => (
               <span
                 key={c}
-                className="rounded-full border border-white/10 px-3 py-1.5 text-[12.5px] text-muted"
+                className="rounded-full bg-accent/15 px-2.5 py-1 text-xs font-medium text-[#c4bcff]"
               >
                 {c}
               </span>
             ))}
-            <span className="rounded-full border border-white/10 px-3 py-1.5 text-[12.5px] text-muted">
-              ⏱ {w.totalTime}
+          </div>
+
+          <div className="mb-6 flex flex-wrap gap-x-5 gap-y-2 text-[13px] text-muted">
+            <span className="inline-flex items-center gap-1.5">
+              <FaRegCalendar aria-hidden="true" className="text-faint" />
+              {w.dateCreated}
             </span>
-            <span className="rounded-full border border-white/10 px-3 py-1.5 text-[12.5px] text-muted">
+            <span className="inline-flex items-center gap-1.5">
+              <FaRegClock aria-hidden="true" className="text-faint" />
+              {w.totalTime}
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <FaRegUser aria-hidden="true" className="text-faint" />
               {w.role.join(" · ")}
             </span>
           </div>
@@ -70,9 +85,10 @@ export default function Modal({ selectedWork, onClose }: Props) {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-accent hover:bg-accent hover:text-bg"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-accent hover:bg-accent hover:text-bg"
               >
-                {w.page[i]} ↗
+                {w.page[i]}
+                <FaArrowUpRightFromSquare aria-hidden="true" className="text-xs" />
               </a>
             ))}
           </div>

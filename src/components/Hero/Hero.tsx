@@ -1,3 +1,5 @@
+import { FaArrowRightLong } from "react-icons/fa6";
+
 const stats = [
   { num: "10+", label: "Projects shipped" },
   { num: "3+ yrs", label: "Building for the web" },
@@ -32,9 +34,10 @@ export default function Hero() {
         <div className="mt-9 flex flex-wrap gap-3.5">
           <a
             href="#work"
-            className="rounded-full bg-accent px-6 py-3.5 font-semibold text-bg transition-transform hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 font-semibold text-bg transition-transform hover:-translate-y-0.5"
           >
-            View my work →
+            View my work
+            <FaArrowRightLong aria-hidden="true" />
           </a>
           <a
             href="#contact"

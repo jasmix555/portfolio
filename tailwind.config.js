@@ -10,10 +10,10 @@ module.exports = {
         bg: "#0a0b0f",
         surface: "#13151c",
         "surface-2": "#181b24",
-        accent: "#8b7bff",
+        accent: "#9b8dff",
         "accent-2": "#34e0d0",
-        muted: "#9aa1b0",
-        faint: "#6b7280",
+        muted: "#bcc2cf",
+        faint: "#8d94a3",
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],

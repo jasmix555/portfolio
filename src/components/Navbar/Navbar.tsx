@@ -2,19 +2,40 @@ import { useEffect, useState } from "react";
 import { FaBars, FaXmark } from "react-icons/fa6";
 
 const links = [
-  { label: "About", href: "#about" },
-  { label: "Tech", href: "#tech" },
-  { label: "Work", href: "#work" },
+  { label: "About", id: "about" },
+  { label: "Tech", id: "tech" },
+  { label: "Work", id: "work" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const ids = ["about", "tech", "work", "contact"];
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(e.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
+    );
+
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -43,10 +64,13 @@ export default function Navbar() {
         >
           {links.map((l) => (
             <a
-              key={l.href}
-              href={l.href}
+              key={l.id}
+              href={`#${l.id}`}
               onClick={() => setOpen(false)}
-              className="text-sm font-medium text-muted transition-colors hover:text-white"
+              aria-current={active === l.id ? "true" : undefined}
+              className={`text-sm font-medium transition-colors ${
+                active === l.id ? "text-accent" : "text-muted hover:text-white"
+              }`}
             >
               {l.label}
             </a>
@@ -54,7 +78,11 @@ export default function Navbar() {
           <a
             href="#contact"
             onClick={() => setOpen(false)}
-            className="rounded-full border border-white/15 px-5 py-2 text-sm font-medium text-white transition-colors hover:border-accent hover:bg-accent hover:text-bg"
+            className={`rounded-full border px-5 py-2 text-sm font-medium transition-colors ${
+              active === "contact"
+                ? "border-accent bg-accent text-bg"
+                : "border-white/15 text-white hover:border-accent hover:bg-accent hover:text-bg"
+            }`}
           >
             Let&apos;s talk
           </a>

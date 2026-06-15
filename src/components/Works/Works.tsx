@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaArrowRightLong } from "react-icons/fa6";
 import Reveal from "../Reveal";
 import Modal from "../Modal";
 import { works, type Work } from "@/data/works";
@@ -83,8 +84,9 @@ export default function Works() {
                     </span>
                   ))}
                 </div>
-                <span className="mt-1.5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
-                  View details →
+                <span className="mt-1.5 inline-flex items-center gap-2 text-sm font-semibold text-accent transition-transform duration-200 group-hover:gap-3">
+                  View details
+                  <FaArrowRightLong aria-hidden="true" />
                 </span>
               </div>
             </button>

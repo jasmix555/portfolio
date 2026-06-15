@@ -1,6 +1,14 @@
 import Reveal from "../Reveal";
 import { techGroups } from "@/data/tech";
 
+// Convert a duration label ("3y 9m", "8m", "learning") to months for sorting.
+function durationToMonths(d: string): number {
+  if (!d || /learn/i.test(d)) return -1;
+  const y = /(\d+)\s*y/i.exec(d);
+  const m = /(\d+)\s*m/i.exec(d);
+  return (y ? +y[1] : 0) * 12 + (m ? +m[1] : 0);
+}
+
 export default function TechStack() {
   return (
     <section id="tech" className="mx-auto max-w-site px-6 py-28">
@@ -26,13 +34,23 @@ export default function TechStack() {
               {g.group}
             </h3>
             <ul>
-              {g.items.map((it) => (
+              {[...g.items]
+                .sort(
+                  (a, b) => durationToMonths(b.duration) - durationToMonths(a.duration)
+                )
+                .map((it) => (
                 <li
                   key={it.name}
                   className="flex items-center justify-between border-b border-white/10 py-3 last:border-0"
                 >
                   <span className="flex items-center gap-3 font-medium">
-                    <i className={`${it.icon} text-[22px]`} aria-hidden="true" />
+                    {it.icon ? (
+                      <i className={`${it.icon} text-[22px]`} aria-hidden="true" />
+                    ) : (
+                      <span className="grid h-[22px] w-[22px] place-items-center rounded bg-white/10 text-[11px] font-semibold text-muted">
+                        {it.name.slice(0, 2)}
+                      </span>
+                    )}
                     {it.name}
                   </span>
                   <span className="text-[13px] text-faint">{it.duration}</span>
