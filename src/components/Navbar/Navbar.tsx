@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaBars, FaXmark } from "react-icons/fa6";
+import Magnetic from "../Magnetic";
 
 const links = [
   { label: "About", id: "about" },
@@ -75,17 +76,19 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            onClick={() => setOpen(false)}
-            className={`rounded-full border px-5 py-2 text-sm font-medium transition-colors ${
-              active === "contact"
-                ? "border-accent bg-accent text-bg"
-                : "border-white/15 text-white hover:border-accent hover:bg-accent hover:text-bg"
-            }`}
-          >
-            Let&apos;s talk
-          </a>
+          <Magnetic>
+            <a
+              href="#contact"
+              onClick={() => setOpen(false)}
+              className={`inline-block rounded-full border px-5 py-2 text-sm font-medium transition-colors ${
+                active === "contact"
+                  ? "border-accent bg-accent text-bg"
+                  : "border-white/15 text-white hover:border-accent hover:bg-accent hover:text-bg"
+              }`}
+            >
+              Let&apos;s talk
+            </a>
+          </Magnetic>
         </div>
       </div>
     </nav>

@@ -87,17 +87,31 @@ export default function Background3D() {
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
 
+    const introStart = performance.now();
+    const INTRO_MS = 2400;
+
     const animate = () => {
       raf = requestAnimationFrame(animate);
       const t = performance.now() * 0.0002;
+
+      // intro: ease 0 → 1 over the first ~1.7s
+      const p = Math.min((performance.now() - introStart) / INTRO_MS, 1);
+      const ease = 1 - Math.pow(1 - p, 3); // easeOutCubic
+
       points.rotation.y = t + scrollP * 1.4;
       points.rotation.x = scrollP * 0.7;
       ico.rotation.x += 0.0016;
       ico.rotation.y += 0.0022;
       ico.position.y = -scrollP * 9;
-      ico.scale.setScalar(1 + scrollP * 0.7);
+      ico.scale.setScalar((1 + scrollP * 0.7) * (0.55 + 0.45 * ease));
+
+      // fade the field in, dolly the camera back so it "settles" into the bg
+      pMat.opacity = 0.85 * ease;
+      icoMat.opacity = 0.22 * ease;
       camera.position.x += (mx * 2.4 - camera.position.x) * 0.05;
       camera.position.y += (-my * 2.4 - camera.position.y) * 0.05;
+      camera.position.z = 7 + 7 * ease;
+
       camera.lookAt(0, 0, 0);
       renderer.render(scene, camera);
     };
