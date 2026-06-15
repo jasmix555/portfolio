@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { FaBars, FaXmark } from "react-icons/fa6";
 import Magnetic from "../Magnetic";
 
@@ -7,6 +8,26 @@ const links = [
   { label: "Tech", id: "tech" },
   { label: "Work", id: "work" },
 ];
+
+const logoChars = [
+  { c: "J" },
+  { c: "a" },
+  { c: "s" },
+  { c: "o" },
+  { c: "n" },
+  { c: ".", accent: true },
+  { c: "N" },
+  { c: "g" },
+];
+
+const letterVariants = {
+  rest: { y: 0, rotateX: 0 },
+  hover: {
+    y: [0, -7, 0],
+    rotateX: [0, -45, 0],
+    transition: { duration: 0.45, ease: "easeInOut" },
+  },
+};
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -46,9 +67,26 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto flex max-w-site items-center justify-between px-6 py-4">
-        <a href="#top" className="font-display text-lg font-bold tracking-tight">
-          Jason<span className="text-accent">.</span>Ng
-        </a>
+        <motion.a
+          href="#top"
+          aria-label="Jason Ng — home"
+          initial="rest"
+          animate="rest"
+          whileHover="hover"
+          variants={{ hover: { transition: { staggerChildren: 0.045 } } }}
+          className="inline-flex font-display text-lg font-bold tracking-tight"
+          style={{ perspective: 500 }}
+        >
+          {logoChars.map((l, idx) => (
+            <motion.span
+              key={idx}
+              variants={letterVariants}
+              className={`inline-block ${l.accent ? "text-accent" : ""}`}
+            >
+              {l.c}
+            </motion.span>
+          ))}
+        </motion.a>
 
         <button
           onClick={() => setOpen((v) => !v)}
