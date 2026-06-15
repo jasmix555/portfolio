@@ -1,4 +1,5 @@
 import Reveal from "../Reveal";
+import RevealText from "../RevealText";
 
 const facts = [
   { k: "Based in", v: "Osaka, Japan" },
@@ -15,7 +16,7 @@ export default function About() {
           <span className="h-px w-6 bg-accent" /> About me
         </div>
         <h2 className="font-display text-[clamp(28px,4vw,42px)] font-bold">
-          A bit about who I am
+          <RevealText text="A bit about who I am" />
         </h2>
       </Reveal>
 

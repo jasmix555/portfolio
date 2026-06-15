@@ -1,5 +1,7 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
+import Intro from "@/components/Intro";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -24,18 +26,26 @@ export default function Portfolio() {
       </Head>
 
       <Background3D />
-      <Navbar />
+      <Intro />
 
-      <main className="relative">
-        <Hero />
-        <About />
-        <TechStack />
-        <Works />
-        <Contact />
-        <footer className="border-t border-white/10 py-9 text-center text-[13px] text-faint">
-          © 2026 Jason Ng — designed &amp; built with care.
-        </footer>
-      </main>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 4, ease: "easeOut" }}
+      >
+        <Navbar />
+
+        <main className="relative">
+          <Hero />
+          <About />
+          <TechStack />
+          <Works />
+          <Contact />
+          <footer className="border-t border-white/10 py-9 text-center text-[13px] text-faint">
+            © 2026 Jason Ng — designed &amp; built with care.
+          </footer>
+        </main>
+      </motion.div>
     </>
   );
 }

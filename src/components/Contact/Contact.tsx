@@ -1,4 +1,6 @@
 import Reveal from "../Reveal";
+import RevealText from "../RevealText";
+import Magnetic from "../Magnetic";
 import { SiGithub, SiInstagram, SiWantedly } from "react-icons/si";
 
 const socials = [
@@ -23,7 +25,7 @@ export default function Contact() {
           <span className="h-px w-6 bg-accent" /> Get in touch
         </div>
         <h2 className="font-display text-[clamp(32px,5vw,56px)] font-bold">
-          Let&apos;s build something.
+          <RevealText text="Let's build something." />
         </h2>
         <p className="mx-auto mt-4 max-w-md text-muted">
           Have a project in mind or just want to say hi? My inbox is open.
@@ -36,16 +38,17 @@ export default function Contact() {
         </a>
         <div className="mt-9 flex justify-center gap-4">
           {socials.map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={s.label}
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 text-xl text-muted transition-all hover:-translate-y-0.5 hover:border-accent hover:bg-accent hover:text-bg"
-            >
-              <s.icon />
-            </a>
+            <Magnetic key={s.label} strength={0.5}>
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 text-xl text-muted transition-colors hover:border-accent hover:bg-accent hover:text-bg"
+              >
+                <s.icon />
+              </a>
+            </Magnetic>
           ))}
         </div>
       </Reveal>

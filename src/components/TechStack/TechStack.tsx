@@ -1,4 +1,5 @@
 import Reveal from "../Reveal";
+import RevealText from "../RevealText";
 import { techGroups } from "@/data/tech";
 
 // Convert a duration label ("3y 9m", "8m", "learning") to months for sorting.
@@ -17,7 +18,7 @@ export default function TechStack() {
           <span className="h-px w-6 bg-accent" /> Tech stack
         </div>
         <h2 className="font-display text-[clamp(28px,4vw,42px)] font-bold">
-          Tools I build with
+          <RevealText text="Tools I build with" />
         </h2>
         <p className="mt-3 max-w-xl text-muted">
           A mix of front-end, design and a growing back-end toolkit.

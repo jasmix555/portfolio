@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import Reveal from "../Reveal";
+import RevealText from "../RevealText";
 import Modal from "../Modal";
 import { works, type Work } from "@/data/works";
 
@@ -25,7 +26,7 @@ export default function Works() {
           <span className="h-px w-6 bg-accent" /> Selected work
         </div>
         <h2 className="font-display text-[clamp(28px,4vw,42px)] font-bold">
-          Things I&apos;ve built
+          <RevealText text="Things I've built" />
         </h2>
         <p className="mt-3 max-w-xl text-muted">
           A collection of projects from my studies and beyond. Click any card for
