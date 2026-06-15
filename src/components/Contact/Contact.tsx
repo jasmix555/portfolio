@@ -44,7 +44,7 @@ export default function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 text-xl text-muted transition-colors hover:border-accent hover:bg-accent hover:text-bg"
+                className="flex h-16 w-16 items-center justify-center rounded-full border border-white/15 text-2xl text-muted transition-colors hover:border-accent hover:bg-accent hover:text-bg"
               >
                 <s.icon />
               </a>
