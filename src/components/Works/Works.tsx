@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import Reveal from "../Reveal";
 import RevealText from "../RevealText";
+import Magnetic from "../Magnetic";
 import Modal from "../Modal";
 import { works, type Work } from "@/data/works";
 
@@ -38,12 +39,12 @@ export default function Works() {
         {works.map((work, idx) => {
           const tint = tints[idx % tints.length];
           return (
+            <Magnetic key={idx} strength={0.1} className="block h-full w-full">
             <button
-              key={idx}
               type="button"
               onClick={() => setSelected(work)}
               aria-label={`View details for ${work.title}`}
-              className="group flex min-h-[340px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-surface text-left transition-all duration-300 hover:-translate-y-1.5 hover:border-white/20"
+              className="group flex h-full min-h-[340px] w-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-surface text-left transition-all duration-300 hover:-translate-y-1.5 hover:border-white/20"
             >
               <div
                 className="relative h-[200px] overflow-hidden"
@@ -91,6 +92,7 @@ export default function Works() {
                 </span>
               </div>
             </button>
+            </Magnetic>
           );
         })}
       </Reveal>

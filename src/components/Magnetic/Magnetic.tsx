@@ -10,7 +10,7 @@ type Props = {
 export default function Magnetic({
   children,
   strength = 0.35,
-  className = "",
+  className = "inline-block",
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
@@ -37,7 +37,7 @@ export default function Magnetic({
       onMouseMove={onMove}
       onMouseLeave={reset}
       style={{ x: sx, y: sy }}
-      className={`inline-block ${className}`}
+      className={className}
     >
       {children}
     </motion.div>
