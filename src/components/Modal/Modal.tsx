@@ -56,7 +56,7 @@ export default function Modal({ selectedWork, onClose }: Props) {
               onError={(e) => {
                 (e.currentTarget as HTMLImageElement).style.display = "none";
               }}
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover object-top"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent" />
           </div>
