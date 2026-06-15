@@ -5,6 +5,7 @@ import {
   FaRegClock,
   FaRegCalendar,
   FaRegUser,
+  FaAward,
 } from "react-icons/fa6";
 import type { Work } from "@/data/works";
 
@@ -88,6 +89,39 @@ export default function Modal({ selectedWork, onClose }: Props) {
                 {w.role.join(" · ")}
               </span>
             </div>
+
+            {w.awards && w.awards.length > 0 && (
+              <div className="mb-6 rounded-2xl border border-accent/25 bg-accent/10 p-4">
+                <h4 className="mb-3 flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.1em] text-accent">
+                  <FaAward aria-hidden="true" /> Awards
+                </h4>
+                <ul className="flex flex-col gap-2.5">
+                  {w.awards.map((a, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                      {a.link ? (
+                        <a
+                          href={a.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-[15px] font-medium text-white underline-offset-4 hover:text-accent hover:underline"
+                        >
+                          {a.title}
+                          <FaArrowUpRightFromSquare
+                            aria-hidden="true"
+                            className="text-[11px]"
+                          />
+                        </a>
+                      ) : (
+                        <span className="text-[15px] font-medium text-white">
+                          {a.title}
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             <Block title="Summary" text={w.summary} />
             {w.learnt && <Block title="What I learned" text={w.learnt} />}

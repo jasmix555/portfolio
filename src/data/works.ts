@@ -9,7 +9,7 @@ export type Work = {
   role: string[];
   dateCreated: string;
   totalTime: string;
-  awards?: string[];
+  awards?: { title: string; link?: string }[];
   learnt?: string;
   regret?: string;
   growth?: string;
@@ -97,7 +97,7 @@ export const works: Work[] = [
     role: ["メインエンジニア", "メインデザイナー"],
     dateCreated: "2024/11 ~ 2025/2",
     totalTime: "約200〜300時間",
-    awards: ["企業賞（株式会社裸）"],
+    awards: [{ title: "作品展示会＋E展 企業賞（裸賞）" }],
     learnt:
       "企業レベルの開発フローを意識した環境構築を一から整え、Git の push / pull、コンベンショナルコミット、Husky を活用した運用など、チーム開発を前提とした仕組みを構築できるようになった。また、Firebase を本格的に組み込むことで、デザインだけのフロントエンドではなく、実際にバックエンド機能を持つ Web アプリとして成立させる経験を得られた。\n\nI built an environment from scratch with an enterprise-level development flow in mind, learning to set up workflows premised on team development — Git push/pull, conventional commits, and Husky-based operations. By fully integrating Firebase, I gained experience making it work as a real web app with actual backend features, not just a design-only front end.",
     regret:
@@ -121,7 +121,16 @@ export const works: Work[] = [
     role: ["メインエンジニア", "デザイナー"],
     dateCreated: "2023/10 ~ 現在",
     totalTime: "103 Hours",
-    awards: ["/awards/Award2.svg", "/awards/Award3.svg"],
+    awards: [
+      {
+        title: "HTML5作品アワード 2023 デザイン賞",
+        link: "https://html5award.com/award2023",
+      },
+      {
+        title: "HTML5作品アワード 2023 IMAKE賞",
+        link: "https://html5award.com/award2023",
+      },
+    ],
     learnt:
       "このプロジェクトでは、Next.jsとFirebaseを初めて使用しました。フレームワークを使用することが生のJavaScriptでコードを書くよりも効率的であることを学びました。また、初めてのチームでの主要なエンジニアとしての経験もあり、その役割の重さと責任を実感しました。エンジニアとしてだけでなく、デザイナーとしてもプロジェクトに取り組み、チームメンバーと共にページの作成に貢献しました。アイデアを共有し、リーダーとして私はアイデアをどのように実装し、組み合わせてユーザーが本当に使いたいと思う優れたアプリケーションを作成するかについての決定を行いました。\n\nIn this project I used Next.js and Firebase for the first time. I learned that using a framework is more efficient than writing raw JavaScript. It was also my first experience as the lead engineer on a team, and I felt the weight and responsibility of that role. I worked not only as an engineer but also as a designer, contributing to page creation alongside teammates. Sharing ideas and, as the leader, deciding how to implement and combine ideas to create an app users would genuinely want to use.",
     regret:
@@ -169,7 +178,7 @@ export const works: Work[] = [
     role: ["メインエンジニア", "デザイナー"],
     dateCreated: "2023/04 ~ 2023/06",
     totalTime: "31 Hours",
-    awards: ["/awards/Award1.svg"],
+    awards: [{ title: "作品展示会＋E展 2023 コンセプト賞" }],
     learnt:
       "チームメンバーと共にアプリを開発するためのコーディング環境を構築する方法を学びました。各エンジニアが独自のコーディングの好みを持っているため、他のメンバーとのコーディングスタイルを合わせることが挑戦でした。\n\nI learned how to set up a coding environment for developing an app together with team members. Since each engineer has their own coding preferences, matching coding styles with other members was a challenge.",
     regret:
