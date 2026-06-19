@@ -2,10 +2,15 @@ import Reveal from "../Reveal";
 import RevealText from "../RevealText";
 import Magnetic from "../Magnetic";
 import { FaEnvelope, FaArrowRightLong } from "react-icons/fa6";
-import { SiGithub, SiInstagram, SiWantedly } from "react-icons/si";
+import { SiGithub, SiInstagram, SiWantedly, SiLinkedin } from "react-icons/si";
 
 const socials = [
   { icon: SiGithub, href: "https://github.com/jasmix555", label: "GitHub" },
+  {
+    icon: SiLinkedin,
+    href: "https://www.linkedin.com/in/jason-ng-6bb43a29a/",
+    label: "LinkedIn",
+  },
   {
     icon: SiInstagram,
     href: "https://www.instagram.com/jason_ng555/",
