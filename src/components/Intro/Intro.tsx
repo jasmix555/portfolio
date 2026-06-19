@@ -1,29 +1,47 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // A greeting in each language Jason speaks: EN, JP, ID, ZH.
 const greetings = ["Hello", "こんにちは", "Halo", "你好"];
 
-// Every greeting is shown for exactly this long.
-const WORD_MS = 600;
+const WORD_MS = 600; // time each greeting is shown
+const PAUSE_MS = 1100; // text fade + "just the 3D" beat before content
 
-export default function Intro() {
+export default function Intro({ onDone }: { onDone: () => void }) {
   const [i, setI] = useState(0);
-  const [done, setDone] = useState(false);
+  const [textGone, setTextGone] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const finished = useRef(false);
+
+  const finish = () => {
+    if (finished.current) return;
+    finished.current = true;
+    setTextGone(true);
+    setHidden(true);
+    onDone();
+  };
 
   useEffect(() => {
-    const t = setTimeout(() => {
-      if (i < greetings.length - 1) setI(i + 1);
-      else setDone(true);
-    }, WORD_MS);
-    return () => clearTimeout(t);
-  }, [i]);
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    for (let k = 1; k < greetings.length; k++) {
+      timers.push(setTimeout(() => setI(k), k * WORD_MS));
+    }
+    // fade the text out after the last greeting, then reveal content after a beat
+    timers.push(setTimeout(() => setTextGone(true), greetings.length * WORD_MS));
+    timers.push(setTimeout(finish, greetings.length * WORD_MS + PAUSE_MS));
+    return () => timers.forEach(clearTimeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <AnimatePresence>
-      {!done && (
+      {!hidden && (
         <motion.div
-          className="pointer-events-none fixed inset-0 z-[80] grid place-items-center"
+          onClick={finish}
+          role="button"
+          tabIndex={0}
+          aria-label="Skip intro"
+          className="fixed inset-0 z-[80] grid cursor-pointer place-items-center"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.7, ease: "easeInOut" }}
@@ -36,20 +54,26 @@ export default function Intro() {
             />
             <div className="grid place-items-center">
               <AnimatePresence>
-                <motion.span
-                  key={i}
-                  style={{ gridArea: "1 / 1" }}
-                  className="whitespace-nowrap font-display text-4xl font-bold text-white md:text-6xl"
-                  initial={{ opacity: 0, y: 14 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -14 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                >
-                  {greetings[i]}
-                </motion.span>
+                {!textGone && (
+                  <motion.span
+                    key={i}
+                    style={{ gridArea: "1 / 1" }}
+                    className="whitespace-nowrap font-display text-4xl font-bold text-white md:text-6xl"
+                    initial={{ opacity: 0, y: 14 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -14 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                  >
+                    {greetings[i]}
+                  </motion.span>
+                )}
               </AnimatePresence>
             </div>
           </div>
+
+          <span className="absolute bottom-10 left-1/2 -translate-x-1/2 text-xs text-faint">
+            Click anywhere to skip
+          </span>
         </motion.div>
       )}
     </AnimatePresence>

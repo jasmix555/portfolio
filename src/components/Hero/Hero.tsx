@@ -9,10 +9,10 @@ const stats = [
   { value: 4, suffix: "", label: "Languages spoken" },
 ];
 
-// Headline words bounce in once the page-load intro finishes (~4s).
+// Headline words bounce in once the intro finishes (driven by the `start` prop).
 const headlineContainer = {
   hidden: {},
-  show: { transition: { delayChildren: 4, staggerChildren: 0.07 } },
+  show: { transition: { delayChildren: 0.15, staggerChildren: 0.07 } },
 };
 const headlineWord = {
   hidden: { y: 30, opacity: 0 },
@@ -30,15 +30,18 @@ function CountUp({
   suffix = "",
   duration = 1.4,
   delay = 0,
+  run = false,
 }: {
   value: number;
   suffix?: string;
   duration?: number;
   delay?: number;
+  run?: boolean;
 }) {
   const [n, setN] = useState(0);
 
   useEffect(() => {
+    if (!run) return;
     let raf = 0;
     const start = performance.now() + delay * 1000;
     const tick = (now: number) => {
@@ -49,7 +52,7 @@ function CountUp({
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [value, duration, delay]);
+  }, [run, value, duration, delay]);
 
   return (
     <>
@@ -59,7 +62,7 @@ function CountUp({
   );
 }
 
-export default function Hero() {
+export default function Hero({ start = false }: { start?: boolean }) {
   return (
     <header
       id="top"
@@ -73,7 +76,7 @@ export default function Hero() {
         <motion.h1
           variants={headlineContainer}
           initial="hidden"
-          animate="show"
+          animate={start ? "show" : "hidden"}
           className="font-display text-[clamp(40px,7vw,82px)] font-bold leading-[1.08] tracking-tight"
         >
           <motion.span variants={headlineWord} className="inline-block">
@@ -121,7 +124,12 @@ export default function Hero() {
           {stats.map((s, i) => (
             <div key={s.label}>
               <div className="font-display text-3xl font-bold">
-                <CountUp value={s.value} suffix={s.suffix} delay={4.1 + i * 0.15} />
+                <CountUp
+                  value={s.value}
+                  suffix={s.suffix}
+                  run={start}
+                  delay={i * 0.12}
+                />
               </div>
               <div className="text-[13px] text-faint">{s.label}</div>
             </div>

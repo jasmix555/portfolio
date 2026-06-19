@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
@@ -15,6 +16,8 @@ const Background3D = dynamic(() => import("@/components/Background3D"), {
 });
 
 export default function Portfolio() {
+  const [introDone, setIntroDone] = useState(false);
+
   return (
     <>
       <Head>
@@ -27,18 +30,18 @@ export default function Portfolio() {
       </Head>
 
       <Background3D />
-      <Intro />
+      <Intro onDone={() => setIntroDone(true)} />
       <MotionToggle />
 
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 4, ease: "easeOut" }}
+        animate={{ opacity: introDone ? 1 : 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
       >
         <Navbar />
 
         <main className="relative">
-          <Hero />
+          <Hero start={introDone} />
           <About />
           <TechStack />
           <Works />
