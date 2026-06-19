@@ -100,7 +100,7 @@ export const works: Work[] = [
       "セコム×大谷翔平「ホームを全力で守るプロジェクト」の守備力テスト特設サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA special interactive “home defense test” site for Secom × Shohei Ohtani — responsive front-end implementation.",
     thumbnail: "/works/secom-ohtani.png",
     featured: 3,
-    totalTime: "約1週間",
+    totalTime: "約2週間",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Campaign Site", "Responsive"],
     role: ["Front-end Engineer"],
