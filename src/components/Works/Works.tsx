@@ -17,7 +17,7 @@ const groups: {
     id: "work",
     label: "Professional Work",
     blurb: "Client campaign & product sites, built for responsive delivery.",
-    limit: 5,
+    limit: 6,
   },
   {
     id: "project",
@@ -37,15 +37,15 @@ export default function Works() {
   const [selected, setSelected] = useState<Work | null>(null);
 
   return (
-    <section id="work" className="mx-auto max-w-site px-6 py-28">
+    <section id="work" className="px-6 mx-auto max-w-site py-28">
       <Reveal>
         <div className="mb-4 inline-flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.12em] text-accent">
-          <span className="h-px w-6 bg-accent" /> Selected work
+          <span className="w-6 h-px bg-accent" /> Selected work
         </div>
         <h2 className="font-display text-[clamp(28px,4vw,42px)] font-bold">
           <RevealText text="Things I've built" />
         </h2>
-        <p className="mt-3 max-w-xl text-muted">
+        <p className="max-w-xl mt-3 text-muted">
           From professional client sites to React apps and early college
           concepts. Click any card for the full story.
         </p>
@@ -63,7 +63,7 @@ export default function Works() {
           <div key={g.id} className="mt-16">
             <Reveal>
               <div className="mb-6">
-                <h3 className="flex items-center gap-3 font-display text-2xl font-semibold">
+                <h3 className="flex items-center gap-3 text-2xl font-semibold font-display">
                   {g.label}
                   <span className="text-sm font-normal text-faint">
                     {all.length}
@@ -83,10 +83,10 @@ export default function Works() {
               ))}
             </Reveal>
             {hidden > 0 && (
-              <div className="mt-8 flex justify-center">
+              <div className="flex justify-center mt-8">
                 <Link
                   href="/work"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-white transition-all hover:gap-3 hover:border-accent hover:bg-accent hover:text-bg"
+                  className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white transition-all border rounded-full border-white/15 hover:gap-3 hover:border-accent hover:bg-accent hover:text-bg"
                 >
                   Show all {g.label.toLowerCase()} ({hidden} more)
                   <FaArrowRightLong aria-hidden="true" />
