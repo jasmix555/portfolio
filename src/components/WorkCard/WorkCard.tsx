@@ -28,10 +28,10 @@ export default function WorkCard({ work, index, onSelect }: Props) {
         type="button"
         onClick={() => onSelect(work)}
         aria-label={`View details for ${work.title}`}
-        className="group flex h-full min-h-[340px] w-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-surface text-left transition-all duration-300 hover:-translate-y-1.5 hover:border-white/20"
+        className="group flex h-full min-h-[340px] w-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-surface text-left transition-all duration-300 will-change-transform hover:-translate-y-1.5 hover:border-white/20"
       >
         <div
-          className="relative h-[200px] overflow-hidden"
+          className="relative h-[200px] overflow-hidden will-change-transform"
           style={{ background: `linear-gradient(135deg, ${tint}33, ${tint}11)` }}
         >
           {work.awards && work.awards.length > 0 && (
