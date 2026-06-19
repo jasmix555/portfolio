@@ -1,7 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import { FaArrowLeftLong, FaMagnifyingGlass } from "react-icons/fa6";
+import {
+  FaArrowLeftLong,
+  FaArrowUpLong,
+  FaMagnifyingGlass,
+} from "react-icons/fa6";
 import WorkCard from "@/components/WorkCard";
 import Modal from "@/components/Modal";
 import { works, type Work } from "@/data/works";
@@ -176,16 +180,16 @@ export default function WorkPage() {
           </div>
         )}
 
-        {!loading && !hasMore && visible > BATCH && (
-          <div className="mt-10 flex justify-center">
+        {!loading && !hasMore && (
+          <div className="mt-12 flex justify-center">
             <button
-              onClick={() => {
-                setVisible(BATCH);
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-              className="rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-muted transition-colors hover:text-white"
+              onClick={() =>
+                window.scrollTo({ top: 0, behavior: "smooth" })
+              }
+              className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-bg transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_28px_rgba(139,123,255,0.4)]"
             >
-              Show less
+              <FaArrowUpLong aria-hidden="true" />
+              Back to top
             </button>
           </div>
         )}
