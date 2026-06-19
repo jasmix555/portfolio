@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { FaArrowLeftLong, FaMagnifyingGlass } from "react-icons/fa6";
@@ -63,6 +63,22 @@ export default function WorkPage() {
 
   const shown = filtered.slice(0, visible);
   const hasMore = filtered.length > shown.length;
+
+  // Auto-load the next batch when the sentinel scrolls into view.
+  const sentinelRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (loading || !hasMore) return;
+    const el = sentinelRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) setVisible((v) => v + BATCH);
+      },
+      { rootMargin: "300px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [loading, hasMore, filtered.length]);
 
   return (
     <>
@@ -150,24 +166,27 @@ export default function WorkPage() {
           </p>
         )}
 
-        {!loading && (hasMore || visible > BATCH) && (
-          <div className="mt-10 flex justify-center gap-3">
-            {hasMore && (
-              <button
-                onClick={() => setVisible((v) => v + BATCH)}
-                className="rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-accent hover:bg-accent hover:text-bg"
-              >
-                Load more
-              </button>
-            )}
-            {visible > BATCH && (
-              <button
-                onClick={() => setVisible(BATCH)}
-                className="rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-muted transition-colors hover:text-white"
-              >
-                Show less
-              </button>
-            )}
+        {!loading && hasMore && (
+          <div
+            ref={sentinelRef}
+            className="mt-10 flex items-center justify-center gap-2 text-sm text-faint"
+          >
+            <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/20 border-t-accent" />
+            Loading more…
+          </div>
+        )}
+
+        {!loading && !hasMore && visible > BATCH && (
+          <div className="mt-10 flex justify-center">
+            <button
+              onClick={() => {
+                setVisible(BATCH);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className="rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-muted transition-colors hover:text-white"
+            >
+              Show less
+            </button>
           </div>
         )}
       </main>
