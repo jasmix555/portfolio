@@ -38,6 +38,11 @@ const shots = [
   { file: "naturemade-woman.png", url: "https://www.otsuka.co.jp/nmd/smvm_woman/" },
   { file: "naturemade-man.png", url: "https://www.otsuka.co.jp/nmd/smvm_man/" },
   { file: "dhc-lip.png", url: "https://top.dhc.co.jp/shop/skin/lipseries_moist_color/" },
+  { file: "minon-haircare.png", url: "https://www.daiichisankyo-hc.co.jp/site_minon-body/product/hair_lp.html" },
+  { file: "minon-hairkids.png", url: "https://www.daiichisankyo-hc.co.jp/site_minon-body/product/hair_kids.html" },
+  { file: "minon-aminomoist.png", url: "https://www.daiichisankyo-hc.co.jp/site_minon-aminomoist/products/" },
+  { file: "hythiol.png", url: "https://www.ssp.co.jp/hythiol/" },
+  { file: "epson-kbpk2025.png", url: "https://www.epson.jp/ec/event/kbpk2025/" },
 ];
 
 const headers = {

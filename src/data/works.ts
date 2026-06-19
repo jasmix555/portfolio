@@ -209,6 +209,76 @@ export const works: Work[] = [
   },
 
   {
+    title: "ミノン薬用ヘアケア",
+    group: "work",
+    page: ["Website Link"],
+    link: [
+      "https://www.daiichisankyo-hc.co.jp/site_minon-body/product/hair_lp.html",
+    ],
+    summary:
+      "第一三共ヘルスケア「ミノン薬用ヘアケア」の商品LP。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product landing page for Daiichi Sankyo Healthcare's MINON medicated hair care — responsive front-end implementation.",
+    thumbnail: "/works/minon-haircare.png",
+    totalTime: "1〜5日",
+    method: ["HTML", "SCSS", "JavaScript"],
+    category: ["Client Work", "Product Site", "Responsive"],
+    role: ["Front-end Engineer"],
+    dateCreated: "2025",
+    awards: [],
+  },
+
+  {
+    title: "ミノン 薬用ヘアシャンプー（キッズ）",
+    group: "work",
+    page: ["Website Link"],
+    link: [
+      "https://www.daiichisankyo-hc.co.jp/site_minon-body/product/hair_kids.html",
+    ],
+    summary:
+      "第一三共ヘルスケア「ミノン リンスがいらない薬用ヘアシャンプー（キッズ）」の商品サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product site for MINON's rinse-free medicated kids' shampoo — responsive front-end implementation.",
+    thumbnail: "/works/minon-hairkids.png",
+    totalTime: "1〜5日",
+    method: ["HTML", "SCSS", "JavaScript"],
+    category: ["Client Work", "Product Site", "Responsive"],
+    role: ["Front-end Engineer"],
+    dateCreated: "2025",
+    awards: [],
+  },
+
+  {
+    title: "ミノン アミノモイスト 製品一覧",
+    group: "work",
+    page: ["Website Link"],
+    link: [
+      "https://www.daiichisankyo-hc.co.jp/site_minon-aminomoist/products/",
+    ],
+    summary:
+      "第一三共ヘルスケア「ミノン アミノモイスト」の製品一覧サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nThe product index for MINON AminoMoist — responsive front-end implementation.",
+    thumbnail: "/works/minon-aminomoist.png",
+    totalTime: "1〜5日",
+    method: ["HTML", "SCSS", "JavaScript"],
+    category: ["Client Work", "Product Site", "Responsive"],
+    role: ["Front-end Engineer"],
+    dateCreated: "2025",
+    awards: [],
+  },
+
+  {
+    title: "ハイチオール（エスエス製薬）",
+    group: "work",
+    page: ["Website Link"],
+    link: ["https://www.ssp.co.jp/hythiol/"],
+    summary:
+      "エスエス製薬「ハイチオール」のブランドサイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nThe brand site for SSP's Hythiol — responsive front-end implementation.",
+    thumbnail: "/works/hythiol.png",
+    totalTime: "1〜5日",
+    method: ["HTML", "SCSS", "JavaScript"],
+    category: ["Client Work", "Product Site", "Responsive"],
+    role: ["Front-end Engineer"],
+    dateCreated: "2025",
+    awards: [],
+  },
+
+  {
     title: "エプソン 大判プリンター ポスター内製",
     group: "work",
     page: ["Website Link"],
@@ -219,6 +289,22 @@ export const works: Work[] = [
     totalTime: "約1週間",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Product Site", "Responsive"],
+    role: ["Front-end Engineer"],
+    dateCreated: "2025",
+    awards: [],
+  },
+
+  {
+    title: "エプソン 氣志團万博2025 推し活応援部",
+    group: "work",
+    page: ["Website Link"],
+    link: ["https://www.epson.jp/ec/event/kbpk2025/"],
+    summary:
+      "エプソン「氣志團万博2025 推し活応援部」のイベント特設サイト。グッズ制作・プリント活用を訴求。レスポンシブ対応のフロントエンド実装を担当しました。\n\nAn event campaign site for Epson at Kishidan Banpaku 2025 — responsive front-end implementation.",
+    thumbnail: "/works/epson-kbpk2025.png",
+    totalTime: "1〜5日",
+    method: ["HTML", "SCSS", "JavaScript"],
+    category: ["Client Work", "Campaign Site", "Responsive"],
     role: ["Front-end Engineer"],
     dateCreated: "2025",
     awards: [],
