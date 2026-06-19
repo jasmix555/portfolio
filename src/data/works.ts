@@ -34,7 +34,7 @@ export const works: Work[] = [
     category: ["Frontend", "API Integration", "Solo Project"],
     role: ["メインエンジニア", "メインデザイナー"],
     dateCreated: "2025",
-    totalTime: "約8時間（学習）",
+    totalTime: "8 Hours",
     awards: [],
     learnt:
       "PokeAPIからデータを取得し、その結果をオブジェクトとして画面に描画する基本的な流れを学びました。名前による検索や世代によるフィルタリングを実装することで、取得したデータを加工して表示する方法も理解でき、API通信の基礎をある程度つかむことができました。\n\nI learned the basic flow of fetching data from the PokeAPI and rendering the results as objects on screen. By implementing search by name and filtering by generation, I understood how to process and display fetched data, and grasped the basics of API fetching to a reasonable degree.",
@@ -59,7 +59,7 @@ export const works: Work[] = [
     category: ["Full-Stack", "Productivity Tool", "Realtime Sharing"],
     role: ["メインエンジニア", "メインデザイナー"],
     dateCreated: "2026",
-    totalTime: "約4〜5時間（Claude Code使用）",
+    totalTime: "4 Hours",
     awards: [],
     learnt:
       "データの保存と管理について深く学ぶことを目的に制作しました。複数ユーザー間でのカレンダー共有や、Discordのようなコードを使った共有機能を実装する中で、ユーザーごとのデータをどのように構造化し、保存・取得するかを考える良い経験になりました。\n\nI built this with the goal of learning deeply about storing and managing data. While implementing calendar sharing across multiple users and a Discord-like code-based sharing feature, it became a great experience in thinking about how to structure, store, and retrieve data for each user.",
@@ -81,7 +81,7 @@ export const works: Work[] = [
     category: ["Corporate Website", "Client Work", "SEO"],
     role: ["メインエンジニア", "SEOスペシャリスト"],
     dateCreated: "2024/07 ~ 2024/09",
-    totalTime: "64.75時間",
+    totalTime: "64.75 Hours",
     awards: [],
     learnt:
       "このプロジェクトで、JamstackアーキテクチャやSEOの技術を習得しました。また、クライアントサイドレンダリングを活用し、サーバの制約がある環境でも効果的に対応する方法を学びました。ヘッドレスCMSを利用したことや、カスタムアニメーションの実装もスキルの幅を広げ、フロントエンドデザインのスキルも向上しました。\n\nIn this project I learned Jamstack architecture and SEO techniques. I also learned how to respond effectively even in environments with server constraints by leveraging client-side rendering. Using a headless CMS and implementing custom animations broadened my skill set and improved my front-end design skills.",
@@ -100,7 +100,7 @@ export const works: Work[] = [
       "セコム×大谷翔平「ホームを全力で守るプロジェクト」の守備力テスト特設サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA special interactive “home defense test” site for Secom × Shohei Ohtani — responsive front-end implementation.",
     thumbnail: "/works/secom-ohtani.png",
     featured: 3,
-    totalTime: "約2週間",
+    totalTime: "~40–80 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Campaign Site", "Responsive"],
     role: ["Front-end Engineer"],
@@ -117,7 +117,7 @@ export const works: Work[] = [
       "日本生命×ユニバーサル・スタジオ・ジャパンのキャンペーンサイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA campaign site for Nippon Life × Universal Studios Japan — responsive front-end implementation.",
     thumbnail: "/works/nissay-usj.png",
     featured: 5,
-    totalTime: "1〜5日",
+    totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Campaign Site", "Responsive"],
     role: ["Front-end Engineer"],
@@ -133,7 +133,7 @@ export const works: Work[] = [
     summary:
       "妊娠・子育てママのコンディションをととのえる「マムアップパーク」。キッズデザイン賞を受賞。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA wellness site for expecting and parenting mothers, Kids Design Award winner — responsive front-end implementation.",
     thumbnail: "/works/momup-park.png",
-    totalTime: "1〜5日",
+    totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Product Site", "Responsive"],
     role: ["Front-end Engineer"],
@@ -150,7 +150,7 @@ export const works: Work[] = [
       "花王「メリット Osolo」の商品紹介サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product site for Kao's Merit Osolo — responsive front-end implementation.",
     thumbnail: "/works/kao-osolo.png",
     featured: 4,
-    totalTime: "1〜5日",
+    totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Product Site", "Responsive"],
     role: ["Front-end Engineer"],
@@ -167,7 +167,7 @@ export const works: Work[] = [
       "ルクア大阪の11周年記念キャンペーンサイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nThe 11th-anniversary campaign site for LUCUA osaka — responsive front-end implementation.",
     thumbnail: "/works/lucua-11th.png",
     featured: 1,
-    totalTime: "1〜5日",
+    totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Campaign Site", "Responsive"],
     role: ["Front-end Engineer"],
@@ -184,7 +184,7 @@ export const works: Work[] = [
       "ルクア大阪「ナイトマーケット」のキャンペーンサイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA campaign site for LUCUA osaka's Night Market — responsive front-end implementation.",
     thumbnail: "/works/lucua-nightmarket.png",
     featured: 2,
-    totalTime: "1〜5日",
+    totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Campaign Site", "Responsive"],
     role: ["Front-end Engineer"],
@@ -200,7 +200,7 @@ export const works: Work[] = [
     summary:
       "ロート製薬「それ目薬、はじめどきっ！」のアイケア啓発サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nAn eye-care awareness site for Rohto — responsive front-end implementation.",
     thumbnail: "/works/rohto-eyecare.png",
-    totalTime: "1〜5日",
+    totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Product Site", "Responsive"],
     role: ["Front-end Engineer"],
@@ -218,7 +218,7 @@ export const works: Work[] = [
     summary:
       "第一三共ヘルスケア「ミノン薬用ヘアケア」の商品LP。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product landing page for Daiichi Sankyo Healthcare's MINON medicated hair care — responsive front-end implementation.",
     thumbnail: "/works/minon-haircare.png",
-    totalTime: "1〜5日",
+    totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Product Site", "Responsive"],
     role: ["Front-end Engineer"],
@@ -236,7 +236,7 @@ export const works: Work[] = [
     summary:
       "第一三共ヘルスケア「ミノン リンスがいらない薬用ヘアシャンプー（キッズ）」の商品サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product site for MINON's rinse-free medicated kids' shampoo — responsive front-end implementation.",
     thumbnail: "/works/minon-hairkids.png",
-    totalTime: "1〜5日",
+    totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Product Site", "Responsive"],
     role: ["Front-end Engineer"],
@@ -254,7 +254,7 @@ export const works: Work[] = [
     summary:
       "第一三共ヘルスケア「ミノン アミノモイスト」の製品一覧サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nThe product index for MINON AminoMoist — responsive front-end implementation.",
     thumbnail: "/works/minon-aminomoist.png",
-    totalTime: "1〜5日",
+    totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Product Site", "Responsive"],
     role: ["Front-end Engineer"],
@@ -270,7 +270,7 @@ export const works: Work[] = [
     summary:
       "エスエス製薬「ハイチオール」のブランドサイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nThe brand site for SSP's Hythiol — responsive front-end implementation.",
     thumbnail: "/works/hythiol.png",
-    totalTime: "1〜5日",
+    totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Product Site", "Responsive"],
     role: ["Front-end Engineer"],
@@ -286,7 +286,7 @@ export const works: Work[] = [
     summary:
       "エプソン 大判プリンター「Adobe Expressでポスター内製」の製品情報サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product page for Epson large-format printers — responsive front-end implementation.",
     thumbnail: "/works/epson-poster.png",
-    totalTime: "約1週間",
+    totalTime: "~20–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Product Site", "Responsive"],
     role: ["Front-end Engineer"],
@@ -302,7 +302,7 @@ export const works: Work[] = [
     summary:
       "エプソン「氣志團万博2025 推し活応援部」のイベント特設サイト。グッズ制作・プリント活用を訴求。レスポンシブ対応のフロントエンド実装を担当しました。\n\nAn event campaign site for Epson at Kishidan Banpaku 2025 — responsive front-end implementation.",
     thumbnail: "/works/epson-kbpk2025.png",
-    totalTime: "1〜5日",
+    totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Campaign Site", "Responsive"],
     role: ["Front-end Engineer"],
@@ -318,7 +318,7 @@ export const works: Work[] = [
     summary:
       "味の素AGF「ブレンディ マイボトルスティック」の商品サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product site for AGF Blendy My Bottle Stick — responsive front-end implementation.",
     thumbnail: "/works/blendy-mybottle.png",
-    totalTime: "1〜5日",
+    totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Product Site", "Responsive"],
     role: ["Front-end Engineer"],
@@ -336,7 +336,7 @@ export const works: Work[] = [
     summary:
       "味の素AGF「カフェタイムギフト」の商品サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA gift product site for Ajinomoto AGF — responsive front-end implementation.",
     thumbnail: "/works/agf-cafetimegift.png",
-    totalTime: "1〜5日",
+    totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Product Site", "Responsive"],
     role: ["Front-end Engineer"],
@@ -354,7 +354,7 @@ export const works: Work[] = [
     summary:
       "富士フイルム「推し文字プリント」のサービス紹介サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA service site for Fujifilm's Oshi-Moji Print — responsive front-end implementation.",
     thumbnail: "/works/fujifilm-oshimoji.png",
-    totalTime: "1〜5日",
+    totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Product Site", "Responsive"],
     role: ["Front-end Engineer"],
@@ -372,7 +372,7 @@ export const works: Work[] = [
     summary:
       "富士フイルム「推し文字プリントメーカー」のWebツール。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA web tool for Fujifilm's Oshi-Moji Print Maker — responsive front-end implementation.",
     thumbnail: "/works/fujifilm-oshimoji-maker.png",
-    totalTime: "1〜5日",
+    totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Web Tool", "Responsive"],
     role: ["Front-end Engineer"],
@@ -388,7 +388,7 @@ export const works: Work[] = [
     summary:
       "「読書×家事の秋」家ナカまるごと応援キャンペーンサイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA seasonal home-life campaign site — responsive front-end implementation.",
     thumbnail: "/works/ienaka-ouen.png",
-    totalTime: "1〜5日",
+    totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Campaign Site", "Responsive"],
     role: ["Front-end Engineer"],
@@ -404,7 +404,7 @@ export const works: Work[] = [
     summary:
       "大塚製薬「ネイチャーメイド スーパーマルチビタミン&ミネラル（女性向け）」の商品サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product site for Otsuka's Nature Made Super Multivitamin & Mineral (for women) — responsive front-end implementation.",
     thumbnail: "/works/naturemade-woman.png",
-    totalTime: "1〜5日",
+    totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Product Site", "Responsive"],
     role: ["Front-end Engineer"],
@@ -420,7 +420,7 @@ export const works: Work[] = [
     summary:
       "大塚製薬「ネイチャーメイド スーパーマルチビタミン&ミネラル（男性向け）」の商品サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product site for Otsuka's Nature Made Super Multivitamin & Mineral (for men) — responsive front-end implementation.",
     thumbnail: "/works/naturemade-man.png",
-    totalTime: "1〜5日",
+    totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Product Site", "Responsive"],
     role: ["Front-end Engineer"],
@@ -436,7 +436,7 @@ export const works: Work[] = [
     summary:
       "DHC「リップクリームシリーズ」の商品紹介サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product site for DHC's Lip Cream series — responsive front-end implementation.",
     thumbnail: "/works/dhc-lip.png",
-    totalTime: "1〜5日",
+    totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
     category: ["Client Work", "Product Site", "Responsive"],
     role: ["Front-end Engineer"],
@@ -456,7 +456,7 @@ export const works: Work[] = [
     category: ["Full-Stack Web App", "Geolocation", "Award-Winning"],
     role: ["メインエンジニア", "メインデザイナー"],
     dateCreated: "2024/11 ~ 2025/2",
-    totalTime: "約200〜300時間",
+    totalTime: "~300–400 Hours",
     awards: [{ title: "作品展示会＋E展 企業賞（裸賞）" }],
     learnt:
       "企業レベルの開発フローを意識した環境構築を一から整え、Git の push / pull、コンベンショナルコミット、Husky を活用した運用など、チーム開発を前提とした仕組みを構築できるようになった。また、Firebase を本格的に組み込むことで、デザインだけのフロントエンドではなく、実際にバックエンド機能を持つ Web アプリとして成立させる経験を得られた。\n\nI built an environment from scratch with an enterprise-level development flow in mind, learning to set up workflows premised on team development — Git push/pull, conventional commits, and Husky-based operations. By fully integrating Firebase, I gained experience making it work as a real web app with actual backend features, not just a design-only front end.",
@@ -464,6 +464,31 @@ export const works: Work[] = [
       "当初の理想形まで完全に作りきることはできず、必要な機能の実装に留まってしまった点は悔いが残る。また、デザイン面も黒・白・灰・青を基調としたシンプルな構成になり、十分に色を使いこなせなかった。ページ構成も最小限で、フレンド（CRUD）、アカウント設定、Mapbox を用いたタイムカプセル投稿機能に必要な画面のみとなってしまった。\n\nI couldn't fully build it to my original ideal and ended up implementing only the necessary features, which I regret. The design also became a simple composition based on black, white, gray, and blue, and I couldn't make full use of color. The page structure was minimal too — only the screens needed for friends (CRUD), account settings, and the Mapbox-based time-capsule posting feature.",
     growth:
       "これまでで最も ‘アプリケーションとして成立している’ 作品を作ることができ、たとえ100%完成に届いていなくても、自分の手で最後まで形にできたことは大きな自信につながった。Next.js や TypeScript の理解もさらに深まり、一人で企画・設計・実装まで進める力が確実に成長したと実感している。\n\nI created my most “complete-as-an-application” work to date, and even if it didn't reach 100% completion, being able to bring it to form with my own hands until the end became a great source of confidence. My understanding of Next.js and TypeScript deepened further, and I truly feel my ability to handle planning, design, and implementation on my own has grown.",
+  },
+
+  {
+    title: "Tiny Taskers",
+    group: "project",
+    page: ["Web Application Link", "GitHub Link"],
+    link: [
+      "https://tiny-taskers.vercel.app/",
+      "https://github.com/jasmix555/tiny_taskers",
+    ],
+    summary:
+      "子供と親のための「お手伝いアプリ」。親がミッションを作成して子供に割り当て、完了するとポイントが貯まり、親が用意したウェブショップで好きなものと交換できます。UI設計からコーディングまで、ほぼすべてを担当しながらチームメンバーへの指導も行いました。\n\nA family task app where parents create missions for their kids, who earn points on completion and can redeem them in a parent-curated web shop. I handled virtually everything — from concept and UI design to structure and code — while also mentoring junior teammates who were new to the stack.",
+    thumbnail: "/works/tiny-taskers.png",
+    method: ["Next.js", "TypeScript", "Firebase", "Tailwind", "Figma"],
+    category: ["Full-Stack", "EdTech", "Team Project"],
+    role: ["メインエンジニア", "メインデザイナー", "チームリード"],
+    dateCreated: "2024",
+    totalTime: "83 Hours",
+    awards: [],
+    learnt:
+      "アプリの概念自体を一から考え、それをUIとコードに落とし込む経験を積みました。子供・親・管理者という複数のロールを持つアプリの設計は、状態管理やFirebaseのデータ構造を考える良い訓練になりました。また、後輩に対してReact・Next.js・Firebaseの基礎を教えながら進めたことで、自分自身の理解も深まりました。\n\nI gained experience thinking up the app concept from scratch and translating it into UI and code. Designing an app with multiple roles — child, parent, and admin — was great practice for thinking about state management and Firebase data structure. Teaching juniors the basics of React, Next.js, and Firebase as we went also deepened my own understanding.",
+    regret:
+      "チームプロジェクトでありながら実質的に一人でこなす形になったため、本来のチーム開発の良さを活かしきれませんでした。また、ショップ機能やポイント管理まわりの実装は最低限に留まり、理想の完成形には届きませんでした。\n\nAlthough it was a team project, I effectively carried most of it alone, so I couldn't fully enjoy what real team development has to offer. The shop and point-management features also ended up minimal — nowhere near the ideal I had in mind.",
+    growth:
+      "アイデア出し・デザイン・構造設計・コーディングまでを一貫して担当し、フロントエンドエンジニアとして必要なプロセス全体を経験できたことは大きな成長でした。後輩を指導したことで、技術を言語化して伝える力も鍛えられ、リードとしての自覚が生まれました。\n\nTaking ownership of the entire process — ideation, design, structure, and coding — was a big step in my growth as a front-end engineer. Mentoring juniors trained me to articulate technical concepts clearly, and it gave me a real sense of what it means to lead.",
   },
 
   {
