@@ -107,6 +107,19 @@ export default function Modal({ selectedWork, onClose }: Props) {
               )}
             </div>
 
+            {w.metrics && w.metrics.length > 0 && (
+              <div className="mb-6 flex flex-wrap gap-2">
+                {w.metrics.map((m) => (
+                  <span
+                    key={m}
+                    className="rounded-lg border border-accent/25 bg-accent/10 px-3 py-1.5 text-[13px] font-medium text-accent-2"
+                  >
+                    {m}
+                  </span>
+                ))}
+              </div>
+            )}
+
             {w.awards && w.awards.length > 0 && (
               <div className="mb-6 rounded-2xl border border-accent/25 bg-accent/10 p-4">
                 <h4 className="mb-3 flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.1em] text-accent">
@@ -143,7 +156,6 @@ export default function Modal({ selectedWork, onClose }: Props) {
             <Block title="Summary" text={w.summary} />
             {w.highlight && <Block title="What I focused on" text={w.highlight} />}
             {w.learnt && <Block title="What I learned" text={w.learnt} />}
-            {w.regret && <Block title="What I'd improve" text={w.regret} />}
             {w.growth && <Block title="How I grew" text={w.growth} />}
 
             <div className="mt-7 flex flex-wrap gap-3">

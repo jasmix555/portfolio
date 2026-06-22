@@ -14,6 +14,7 @@ export type Work = {
   status?: string;
   awards?: { title: string; link?: string }[];
   highlight?: string;
+  metrics?: string[];
   learnt?: string;
   regret?: string;
   growth?: string;
@@ -55,6 +56,11 @@ export const works: Work[] = [
     ],
     summary:
       "Teams・Notion・Googleカレンダーのような操作感を目指したカレンダーアプリ。複数ユーザーでのカレンダー共有や、Discordのようなコードによる共有機能を実装し、データの保存・管理について学ぶために制作しました。\n\nA calendar app aiming for a feel similar to Teams, Notion, and Google Calendar. I implemented calendar sharing across multiple users and a Discord-like code-based sharing feature, building it to learn about storing and managing data.",
+    metrics: [
+      "Realtime multi-user sharing",
+      "Code-based sharing (Discord-style)",
+      "Next.js · Firebase",
+    ],
     thumbnail: "/works/gcal.png",
     method: ["Next.js", "Tailwind", "Firebase", "Claude Code"],
     category: ["Full-Stack", "Productivity Tool", "Realtime Sharing"],
@@ -496,6 +502,12 @@ export const works: Work[] = [
     link: ["https://reminiscape-zeta.vercel.app/"],
     summary:
       "大切な人の記憶やメッセージを、ゆかりの場所にそっと残し、いつかまたそこを訪れた時に“再会”できる。過ぎ去った人の足跡も、未来のあなたへ届く記憶として残せます。\n\nA place to quietly leave the memories and messages of someone important in a location tied to them, so that one day when you return you can be “reunited” with them. Even the footprints of those who have passed can remain as memories delivered to the future you.",
+    metrics: [
+      "Solo end-to-end build",
+      "~300–400 hrs",
+      "Geolocation time-capsules (Mapbox)",
+      "Conventional-commit + Husky CI",
+    ],
     thumbnail: "/works/reminiscape.png",
     method: ["Next.js", "SCSS", "Firebase", "Mapbox"],
     category: ["Full-Stack Web App", "Geolocation", "Award-Winning"],
@@ -521,6 +533,11 @@ export const works: Work[] = [
     ],
     summary:
       "子供と親のための「お手伝いアプリ」。親がミッションを作成して子供に割り当て、完了するとポイントが貯まり、親が用意したウェブショップで好きなものと交換できます。UI設計からコーディングまで、ほぼすべてを担当しながらチームメンバーへの指導も行いました。\n\nA family task app where parents create missions for their kids, who earn points on completion and can redeem them in a parent-curated web shop. I handled virtually everything — from concept and UI design to structure and code — while also mentoring junior teammates who were new to the stack.",
+    metrics: [
+      "Team lead — mentored junior devs",
+      "Multi-role app: kid / parent / admin",
+      "~83 hrs",
+    ],
     thumbnail: "/works/tiny-taskers.png",
     method: ["Next.js", "TypeScript", "Firebase", "Tailwind", "Figma"],
     category: ["Full-Stack", "EdTech", "Team Project"],
@@ -546,6 +563,11 @@ export const works: Work[] = [
     ],
     summary:
       "現地のスラングを学ぶ人へ向けた言語習得アプリ\n\nA language-learning app for people who want to learn local slang.",
+    metrics: [
+      "Lead engineer on a team",
+      "First Next.js + Firebase build",
+      "~103 hrs",
+    ],
     thumbnail: "/works/spacelang.png",
     method: ["Next.js", "SCSS", "Firebase", "Figma"],
     category: ["EdTech", "Full-Stack", "Team Project"],
@@ -621,106 +643,4 @@ export const works: Work[] = [
       "GitHubを使用してチームメンバーと協力してコーディングする経験を積むことができました。これにより、整理されていないコーディングを避けるための新しいコーディングアプローチについて考えることができました。また、他のメンバーがコードに変更を加えた場合の管理方法も学びました。\n\nI gained experience collaborating and coding with team members using GitHub. This let me think about new coding approaches to avoid disorganized code, and I also learned how to manage changes other members made to the code.",
   },
 
-  {
-    title: "Foodera",
-    group: "concept",
-    page: ["Web Application Link", "GitHub Link"],
-    link: [
-      "https://foodera-nine.vercel.app/",
-      "https://github.com/jasmix555/Foodera",
-    ],
-    summary:
-      "流行してる料理や新しい料理の経験を簡単で探せるアプリ\n\nAn app for easily discovering trending dishes and new culinary experiences.",
-    thumbnail: "/works/foodera.jpg",
-    method: ["Pug", "SCSS", "JavaScript", "Illustrator", "Figma"],
-    category: ["Frontend", "FoodTech", "Solo Project"],
-    role: ["メインエンジニア", "メインデザイナー"],
-    dateCreated: "2023/05 ~ 2023/06",
-    totalTime: "47 Hours",
-    status: "Concept",
-    awards: [],
-    learnt:
-      "このプロジェクトを通じて、アプリのコンポーネントや部品を作成するスキルを磨くことができ、これにより以前よりもコードをよりクリーンに書くことができるようになりました。PugとSassの学習は、コーディングの経験をよりスムーズでクリーンにしました。\n\nThrough this project I honed my skills in creating app components and parts, which let me write cleaner code than before. Learning Pug and Sass made the coding experience smoother and cleaner.",
-    regret:
-      "実際にはバックエンドのコーディングができなかったため、このアプリは本来のポテンシャルを発揮できませんでした。投稿や新しいストーリーをアップロードする機能を実装できなかったことが残念です。\n\nSince I couldn't actually write backend code, this app couldn't reach its full potential. I regret not being able to implement features for posting or uploading new stories.",
-    growth:
-      "シンプルで清潔なデザインを使用してアプリを構築する方法を学びました。派手な色を使わずにクリーンなデザインを取り入れることで、アプリの外観を整えるだけでなく、グリッドボックスを使ったスムーズなコーディングも可能になりました。\n\nI learned how to build an app using a simple, clean design. Adopting a clean design without flashy colors not only polished the app's appearance but also enabled smooth coding using grid boxes.",
-  },
-
-  {
-    title: "Chittle",
-    group: "concept",
-    page: ["Website Link", "GitHub Link"],
-    link: [
-      "https://click.ecc.ac.jp/ecc/json/Chittle/",
-      "https://github.com/jasmix555/Chittle",
-    ],
-    summary:
-      "食品ロスを増やさないためサイズを小さくした調味料の販売に力を入れているサイト\n\nA site focused on selling smaller-sized seasonings to help reduce food waste.",
-    thumbnail: "/works/chittle.jpg",
-    method: ["HTML", "SCSS", "JavaScript", "Illustrator", "Figma"],
-    category: ["Web Design", "E-commerce", "Responsive"],
-    role: ["メインエンジニア", "デザイナー"],
-    dateCreated: "2022/12 ~ 2023/01",
-    totalTime: "19 Hours",
-    status: "Concept",
-    awards: [],
-    learnt:
-      "レスポンシブなウェブサイトを作成し、ユーザーがコンピュータとモバイルの両方でウェブサイトを使用できるようにする方法を学びました。これはコーディングとデザインの両面での課題であり、レスポンシブデザインを使用する際にユーザーが違和感を感じないように心掛けました。\n\nI learned how to create a responsive website so users can use it on both computer and mobile. This was a challenge in both coding and design, and I was mindful that users shouldn't feel any discomfort when using the responsive design.",
-    regret:
-      "プロジェクトのコンセプトに対するさらなる研究や分析ができなかったため、プロジェクトが未完成のように感じられることがありました。ウェブサイトのフローに関する多くの質問があり、それらに対する検討が不足していたと後悔しています。\n\nBecause I couldn't do further research and analysis on the project's concept, it sometimes felt unfinished. I had many questions about the website's flow and regret not examining them enough.",
-    growth:
-      "よりシンプルなコードを作成する方法を学び、ウェブサイトに余分なタグや要素を多く使用せず、軽量な印象を与えることができました。\n\nI learned how to write simpler code, giving the website a lightweight feel without using too many extra tags or elements.",
-  },
-
-  {
-    title: "XCO Landing Page",
-    group: "concept",
-    page: ["Website Link", "GitHub Link"],
-    link: [
-      "https://click.ecc.ac.jp/ecc/json/XCO-LP/",
-      "https://github.com/jasmix555/XCO0-LP",
-    ],
-    summary:
-      "いらない服を持ってる人同士が服を交換をするアプリ\n\nAn app for people with unwanted clothes to exchange them with each other.",
-    thumbnail: "/works/xco.jpg",
-    method: ["HTML", "CSS", "JavaScript", "Illustrator"],
-    category: ["Landing Page", "UI/UX", "Team Project"],
-    role: ["エンジニア", "デザイナー"],
-    dateCreated: "2023/02 ~ 2023/02",
-    totalTime: "15 Hours",
-    status: "Concept",
-    awards: [],
-    learnt:
-      "ユーザーにアニメーションとイラストを使用して、ランディングページがユーザーを引き込み、このアプリについてもっと知りたくなるようなフローを作成する方法を学びました。\n\nI learned how to use animation and illustration to create a flow that draws users into the landing page and makes them want to learn more about the app.",
-    regret:
-      "全体的にデザインが不足しており、このアプリケーションが提供する機能や特長を十分に表現できなかったことを後悔しています。\n\nI regret that the design was lacking overall and couldn't fully express the features and strengths this application offers.",
-    growth:
-      "JavaScriptスキルを向上させ、既存のアニメーションライブラリを活用してHTMLとCSSにアニメーションを組み込む方法を学びました。\n\nI improved my JavaScript skills and learned how to incorporate animations into HTML and CSS using existing animation libraries.",
-  },
-
-  {
-    title: "Nemu-Nemu Kun Landing Page",
-    group: "concept",
-    page: ["Website Link", "GitHub Link"],
-    link: [
-      "https://click.ecc.ac.jp/ecc/json/Nemu-Nemu-Kun/",
-      "https://github.com/jasmix555/Nemu-Nemu-Kun",
-    ],
-    summary:
-      "睡眠時間を確保できるように、就寝時間の管理とサポートをするアプリ\n\nAn app that manages and supports bedtime so you can secure enough sleep.",
-    thumbnail: "/works/nemu.jpg",
-    method: ["HTML", "CSS", "JavaScript"],
-    category: ["Landing Page", "HealthTech", "Animation"],
-    role: ["エンジニア"],
-    dateCreated: "2022/09 ~ 2022/09",
-    totalTime: "12 Hours",
-    status: "Concept",
-    awards: [],
-    learnt:
-      "このランディングページを作成することで、ユーザーにこのアプリをもっと知りたくなったり試してみたくなるような主な目的を持つランディングページを初めて作成しました。また、JavaScriptを使用してウェブサイトにアニメーションを組み込むことも初めての経験でした。\n\nBy creating this landing page, I made my first landing page whose main purpose was to make users want to learn more about and try the app. It was also my first time incorporating animations into a website using JavaScript.",
-    regret: "特にありませんでした。\n\nNothing in particular.",
-    growth:
-      "ユーザーにアプリケーションを引き込むランディングページを作成するスキルを向上させました。また、JavaScriptを使用してウェブサイトにアニメーションを組み込むことで、新しい技術や手法を学ぶ機会を得ました。\n\nI improved my skills in creating landing pages that draw users into an application. I also got the chance to learn new techniques and methods by incorporating animations into a website using JavaScript.",
-  },
 ];
