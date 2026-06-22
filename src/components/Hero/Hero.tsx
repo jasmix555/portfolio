@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { FaArrowRightLong } from "react-icons/fa6";
+import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { FaArrowRightLong, FaChevronDown } from "react-icons/fa6";
 import Magnetic from "../Magnetic";
+import { useMotionEnabled } from "../MotionToggle";
+import { useAnchorScroll } from "../SmoothScroll/useAnchorScroll";
 
 const stats = [
   { value: 10, suffix: "+", label: "Projects shipped" },
@@ -63,12 +65,42 @@ function CountUp({
 }
 
 export default function Hero({ start = false }: { start?: boolean }) {
+  const { enabled } = useMotionEnabled();
+  const onAnchor = useAnchorScroll();
+  const ref = useRef<HTMLElement>(null);
+
+  // Drift/fade only on desktop — on mobile the hero is taller, so the fade would
+  // gray out the stats while they're still on screen.
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const driftY = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const cueOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
+
   return (
     <header
+      ref={ref}
       id="top"
-      className="mx-auto flex min-h-screen max-w-site items-center px-6 pt-20"
+      className="relative mx-auto flex min-h-screen max-w-site items-center px-6 pt-20"
     >
-      <div>
+      <motion.div
+        className="text-center md:text-left"
+        style={
+          enabled && isDesktop
+            ? { y: driftY, opacity: contentOpacity }
+            : undefined
+        }
+      >
         <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-1.5 text-[13px] text-muted">
           <span className="h-2 w-2 rounded-full bg-accent-2 shadow-[0_0_12px_#34e0d0]" />
           Open to work · Osaka, Japan
@@ -96,15 +128,16 @@ export default function Hero({ start = false }: { start?: boolean }) {
             .
           </motion.span>
         </motion.h1>
-        <p className="mt-6 max-w-xl text-[clamp(16px,2vw,20px)] text-muted">
+        <p className="mx-auto mt-6 max-w-xl text-[clamp(16px,2vw,20px)] text-muted md:mx-0">
           Hi, I&apos;m Jason — a front-end / full-stack engineer based in Osaka,
           currently looking for a team where I can build fast, clean, and
           delightful web apps with React and Next.js.
         </p>
-        <div className="mt-9 flex flex-wrap gap-3.5">
+        <div className="mt-9 flex flex-wrap justify-center gap-3.5 md:justify-start">
           <Magnetic>
             <a
               href="#work"
+              onClick={(e) => onAnchor(e, "work")}
               className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 font-semibold text-bg transition-transform hover:-translate-y-0.5"
             >
               View my work
@@ -114,13 +147,14 @@ export default function Hero({ start = false }: { start?: boolean }) {
           <Magnetic>
             <a
               href="#contact"
+              onClick={(e) => onAnchor(e, "contact")}
               className="inline-flex items-center rounded-full border border-white/15 px-6 py-3.5 font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-surface-2"
             >
               Let&apos;s work together
             </a>
           </Magnetic>
         </div>
-        <div className="mt-16 flex flex-wrap gap-12">
+        <div className="mt-16 flex flex-wrap justify-center gap-12 md:justify-start">
           {stats.map((s, i) => (
             <div key={s.label}>
               <div className="font-display text-3xl font-bold">
@@ -135,7 +169,25 @@ export default function Hero({ start = false }: { start?: boolean }) {
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
+
+      {enabled && (
+        <motion.a
+          href="#about"
+          onClick={(e) => onAnchor(e, "about")}
+          aria-label="Scroll to about section"
+          style={{ opacity: cueOpacity }}
+          className="absolute inset-x-0 bottom-8 mx-auto flex w-fit flex-col items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.2em] text-faint"
+        >
+          Scroll
+          <motion.span
+            animate={{ y: [0, 7, 0] }}
+            transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
+          >
+            <FaChevronDown aria-hidden="true" />
+          </motion.span>
+        </motion.a>
+      )}
     </header>
   );
 }

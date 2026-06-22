@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
+import { useLenis } from "@studio-freight/react-lenis";
 import Intro from "@/components/Intro";
 import MotionToggle from "@/components/MotionToggle";
 import Navbar from "@/components/Navbar";
@@ -17,6 +18,18 @@ const Background3D = dynamic(() => import("@/components/Background3D"), {
 
 export default function Portfolio() {
   const [introDone, setIntroDone] = useState(false);
+  const lenis = useLenis();
+
+  // Lock scrolling while the intro animation plays (covers Lenis + native).
+  useEffect(() => {
+    if (introDone) return;
+    document.documentElement.style.overflow = "hidden";
+    lenis?.stop();
+    return () => {
+      document.documentElement.style.overflow = "";
+      lenis?.start();
+    };
+  }, [introDone, lenis]);
 
   return (
     <>

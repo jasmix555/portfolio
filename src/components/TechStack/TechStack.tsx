@@ -13,14 +13,14 @@ function durationToMonths(d: string): number {
 export default function TechStack() {
   return (
     <section id="tech" className="mx-auto max-w-site px-6 py-28">
-      <Reveal>
+      <Reveal className="text-center md:text-left">
         <div className="mb-4 inline-flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.12em] text-accent">
           <span className="h-px w-6 bg-accent" /> Tech stack
         </div>
         <h2 className="font-display text-[clamp(28px,4vw,42px)] font-bold">
           <RevealText text="Tools I build with" />
         </h2>
-        <p className="mt-3 max-w-xl text-muted">
+        <p className="mx-auto mt-3 max-w-xl text-muted md:mx-0">
           A mix of front-end, design and a growing back-end toolkit.
         </p>
       </Reveal>

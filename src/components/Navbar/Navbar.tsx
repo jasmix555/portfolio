@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaBars, FaXmark } from "react-icons/fa6";
 import Magnetic from "../Magnetic";
+import { useAnchorScroll } from "../SmoothScroll/useAnchorScroll";
 
 const links = [
   { label: "About", id: "about" },
@@ -33,6 +34,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
+  const onAnchor = useAnchorScroll();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -66,9 +68,10 @@ export default function Navbar() {
         scrolled ? "border-b border-white/10 bg-bg/70 backdrop-blur-xl" : ""
       }`}
     >
-      <div className="mx-auto flex max-w-site items-center justify-between px-6 py-4">
+      <div className="mx-auto flex h-14 max-w-site items-center justify-between px-6">
         <motion.a
           href="#top"
+          onClick={(e) => onAnchor(e, "top")}
           aria-label="Jason Ng — home"
           initial="rest"
           animate="rest"
@@ -105,7 +108,10 @@ export default function Navbar() {
             <a
               key={l.id}
               href={`#${l.id}`}
-              onClick={() => setOpen(false)}
+              onClick={(e) => {
+                setOpen(false);
+                onAnchor(e, l.id);
+              }}
               aria-current={active === l.id ? "true" : undefined}
               className={`text-sm font-medium transition-colors ${
                 active === l.id ? "text-accent" : "text-muted hover:text-white"
@@ -117,7 +123,10 @@ export default function Navbar() {
           <Magnetic>
             <a
               href="#contact"
-              onClick={() => setOpen(false)}
+              onClick={(e) => {
+                setOpen(false);
+                onAnchor(e, "contact");
+              }}
               className={`inline-block rounded-full border px-5 py-2 text-sm font-medium transition-colors ${
                 active === "contact"
                   ? "border-accent bg-accent text-bg"

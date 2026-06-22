@@ -1,5 +1,6 @@
 import Reveal from "../Reveal";
 import RevealText from "../RevealText";
+import Parallax from "../Parallax";
 
 const facts = [
   { k: "Based in", v: "Osaka, Japan" },
@@ -11,7 +12,7 @@ const facts = [
 export default function About() {
   return (
     <section id="about" className="mx-auto max-w-site px-6 py-28">
-      <Reveal>
+      <Reveal className="text-center md:text-left">
         <div className="mb-4 inline-flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.12em] text-accent">
           <span className="h-px w-6 bg-accent" /> About me
         </div>
@@ -21,13 +22,15 @@ export default function About() {
       </Reveal>
 
       <Reveal className="mt-14 grid grid-cols-1 items-center gap-14 md:grid-cols-[340px_1fr]">
-        <div className="relative aspect-[4/5] max-w-[300px] overflow-hidden rounded-3xl border border-white/10 bg-surface-2 md:max-w-none">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/profile/profile.png"
-            alt="Jason Ng"
-            className="h-full w-full object-cover"
-          />
+        <div className="relative mx-auto aspect-[4/5] w-full max-w-[200px] overflow-hidden rounded-3xl border border-white/10 bg-surface-2 md:mx-0 md:max-w-none">
+          <Parallax speed={24} className="absolute inset-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/profile/profile.png"
+              alt="Jason Ng"
+              className="h-[112%] w-full object-cover"
+            />
+          </Parallax>
         </div>
         <div>
           <p className="mb-5 text-[17px] text-muted">
