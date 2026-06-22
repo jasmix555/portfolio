@@ -15,21 +15,22 @@ const groups: {
   limit: number;
 }[] = [
   {
-    id: "work",
-    label: "Professional Work",
-    blurb: "Client campaign & product sites, built for responsive delivery.",
-    limit: 6,
+    id: "project",
+    label: "Product Projects",
+    blurb:
+      "Full-stack React / Next.js apps I designed and built end-to-end — auth, real data, and sharing.",
+    limit: Infinity,
   },
   {
-    id: "project",
-    label: "Projects",
-    blurb: "Structured React / Next.js apps with real functionality.",
-    limit: Infinity,
+    id: "work",
+    label: "Professional Work",
+    blurb: "Client campaign & product sites shipped for recognizable brands.",
+    limit: 6,
   },
   {
     id: "concept",
     label: "Concepts",
-    blurb: "Early HTML study & competition builds from college.",
+    blurb: "Award-winning concept build from my college days.",
     limit: Infinity,
   },
 ];
@@ -145,8 +146,9 @@ export default function Works() {
           <RevealText text="Things I've built" />
         </h2>
         <p className="max-w-xl mx-auto mt-3 text-muted md:mx-0">
-          From professional client sites to React apps and early college
-          concepts. Click any card for the full story.
+          Full-stack apps I&apos;ve designed and built end-to-end, plus client
+          sites shipped for recognizable brands. Click any card for the full
+          story.
         </p>
       </Reveal>
 
