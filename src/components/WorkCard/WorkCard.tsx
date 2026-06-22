@@ -21,6 +21,8 @@ type Props = {
 
 export default function WorkCard({ work, index, onSelect }: Props) {
   const tint = tints[index % tints.length];
+  // Card teaser: the English part of the bilingual summary (after the blank line).
+  const teaser = work.summary.split("\n\n").pop() ?? work.summary;
 
   return (
     <Magnetic strength={0.1} className="block h-full w-full">
@@ -63,6 +65,9 @@ export default function WorkCard({ work, index, onSelect }: Props) {
         </div>
         <div className="flex flex-1 flex-col gap-3 p-5">
           <h3 className="font-display text-xl font-semibold">{work.title}</h3>
+          <p className="line-clamp-2 text-sm leading-relaxed text-muted">
+            {teaser}
+          </p>
           <div className="mt-auto flex flex-wrap gap-2">
             {work.category.map((c) => (
               <span

@@ -13,6 +13,7 @@ export type Work = {
   totalTime?: string;
   status?: string;
   awards?: { title: string; link?: string }[];
+  highlight?: string;
   learnt?: string;
   regret?: string;
   growth?: string;
@@ -75,7 +76,9 @@ export const works: Work[] = [
     page: ["Webアプリケーションリンク"],
     link: ["https://bouonroom.com/"],
     summary:
-      "防音ソリューションに特化したWebアプリケーションで、最新のアーキテクチャを用いてユーザー体験、SEO、アニメーションの最適化を実現しました。\n\nA web application specialized in soundproofing solutions, built with a modern architecture to optimize user experience, SEO, and animations.",
+      "楽器演奏や音楽制作を自宅で気兼ねなく楽しみたい人に向けた、防音賃貸物件専門の検索・紹介サイト。最低D-60相当の遮音性能で厳選した物件をシリーズ別に掲載し、構造別の遮音比較やデシベル換算をビジュアルで示しながら、LINE公式アカウント連携で物件通知を受け取れます。\n\nA search-and-listing platform dedicated to soundproof rental apartments for people who want to play instruments or make music at home. Properties are curated to a minimum D-60 isolation standard and organized by series, with visual construction comparisons, decibel-conversion examples, and LINE-integrated property alerts.",
+    highlight:
+      "遮音性能の比較表やデシベル換算のグラフをレスポンシブで崩れなく見せる実装と、複数シリーズの物件一覧やLINE登録への導線（CTA）を全ページで滑らかに機能させるフロントエンド構築に注力しました。\n\nI focused on the front-end build for the responsive performance-comparison tables and decibel graphics, plus smooth series listings and LINE-registration CTAs working consistently across every page.",
     thumbnail: "/works/bouonroom.png",
     method: ["Next.js", "SCSS", "ヘッドレスCMS", "Jamstack"],
     category: ["Corporate Website", "Client Work", "SEO"],
@@ -97,7 +100,9 @@ export const works: Work[] = [
     page: ["Website Link"],
     link: ["https://www.secom.co.jp/special/home-project/test/"],
     summary:
-      "セコム×大谷翔平「ホームを全力で守るプロジェクト」の守備力テスト特設サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA special interactive “home defense test” site for Secom × Shohei Ohtani — responsive front-end implementation.",
+      "セコムが大谷翔平を起用し、災害・事故・犯罪から「ホーム（家）」を守る知識をクイズ形式で学べるキャンペーンサイト。スマホセキュリティと防犯の2カテゴリー全5問に挑戦し、全問正解すると描き下ろしイラストの認定証（壁紙）が手に入ります。ニックネームを入力して自分だけの認定証を作れる、参加体験型の作りが特徴です。\n\nA quiz-format campaign site by Secom featuring Shohei Ohtani, teaching how to protect your “home” from disasters, accidents, and crime. Users take a five-question test across two categories, and a perfect score unlocks a certificate wallpaper with original manga-artist illustrations — personalized with the player's nickname.",
+    highlight:
+      "複数画面を進行するクイズの状態管理と分岐（正解数による結果の出し分け・リトライ）、ニックネームを反映した認定証画像の生成・ダウンロード機能のフロントエンド実装に注力しました。\n\nI focused on the multi-screen quiz flow with state management and branching (score-based results and retry), plus generating and downloading the personalized certificate image from the user's nickname.",
     thumbnail: "/works/secom-ohtani.png",
     featured: 3,
     totalTime: "~40–80 Hours",
@@ -114,7 +119,9 @@ export const works: Work[] = [
     page: ["Website Link"],
     link: ["https://www.nissay.co.jp/enjoy/usj/"],
     summary:
-      "日本生命×ユニバーサル・スタジオ・ジャパンのキャンペーンサイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA campaign site for Nippon Life × Universal Studios Japan — responsive front-end implementation.",
+      "USJのオフィシャル・マーケティング・パートナーである日本生命が、契約者向けの特別特典を案内するキャンペーンサイト。スヌーピーをテーマにした新アトラクションや、ドリンク付き・優先搭乗付きの契約者専用ラウンジ特典を、キャラクターや地図、利用手順のステップ表示で紹介します。\n\nA campaign site where Nippon Life, USJ's official marketing partner, presents exclusive benefits for its policyholders. It introduces a Snoopy-themed attraction and a policyholder-only lounge (complimentary drink, priority boarding) through character graphics, a map, and step-by-step usage guidance.",
+    highlight:
+      "キャラクターを散りばめたキービジュアルや特典詳細のモーダル表示、利用手順をステップで見せるレイアウトを、スマホ最適化のレスポンシブで構築する点に注力しました。\n\nI focused on responsive, mobile-optimized implementation of the character-rich key visuals, the modal panels for benefit details, and the step-by-step usage layout.",
     thumbnail: "/works/nissay-usj.png",
     featured: 5,
     totalTime: "~8–40 Hours",
@@ -131,7 +138,9 @@ export const works: Work[] = [
     page: ["Website Link"],
     link: ["https://mamamo-mannaka.jp/momup-park/"],
     summary:
-      "妊娠・子育てママのコンディションをととのえる「マムアップパーク」。キッズデザイン賞を受賞。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA wellness site for expecting and parenting mothers, Kids Design Award winner — responsive front-end implementation.",
+      "妊娠・出産期の母親に向けて、心身のコンディショニングを支援するセルフケアプログラムのサイト。「うごく・学ぶ・つながる」の3要素を軸に、全国対応のオンラインクラスと対面スタジオを提供し、専門家・保健師・助産師が指導します。2025年キッズデザイン賞を受賞。\n\nA site for a self-care program supporting mothers' physical and mental conditioning through pregnancy and the postpartum period. Built around three pillars — Move, Learn, Connect — it offers nationwide online classes and in-person studios led by professionals, public health nurses, and midwives. A 2025 Kids Design Award winner.",
+    highlight:
+      "画像カルーセルのアニメーション、講師カードのカテゴリー（うごく・学ぶ・つながる）絞り込み、プロフィールを展開するモーダルなど、やわらかな世界観を保ちながら動くUIの実装に注力しました。\n\nI focused on the front-end for animated carousels, category filtering of instructor cards (Move/Learn/Connect), and expandable profile modals — interactive UI that keeps the program's soft, approachable tone.",
     thumbnail: "/works/momup-park.png",
     totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
@@ -147,7 +156,9 @@ export const works: Work[] = [
     page: ["Website Link"],
     link: ["https://www.kao.co.jp/merit/osolo/"],
     summary:
-      "花王「メリット Osolo」の商品紹介サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product site for Kao's Merit Osolo — responsive front-end implementation.",
+      "花王メリットの新ライン「オソロ（Osolo）」の、親子で“おそろい”に使えるヘアケアを紹介するブランドサイト。ホホバ油やアボカドエキスなど植物由来・サルフェートフリーの処方を、「You and Me」をテーマにした情緒的な動画とミニマルなビジュアルで訴求します。\n\nA brand site for Kao Merit's new “Osolo” line — hair care that parent and child can share. It highlights plant-derived, sulfate-free formulas (jojoba oil, avocado extract) through emotional “You and Me” campaign videos and a minimalist visual design.",
+    highlight:
+      "大きな商品ビジュアルと情緒的なコンセプトを見せるスクロール演出、動画プレイヤーの制御、開閉式のQ&Aや販売店への購入導線を、ミニマルなトーンを崩さずレスポンシブで実装することに注力しました。\n\nI focused on the scroll-driven presentation of large product visuals and concept messaging, the video player controls, the expandable Q&A, and retailer links — all responsive and faithful to the minimalist tone.",
     thumbnail: "/works/kao-osolo.png",
     featured: 4,
     totalTime: "~8–40 Hours",
@@ -164,7 +175,9 @@ export const works: Work[] = [
     page: ["Website Link"],
     link: ["https://www.lucua.jp/11th-anniversary/"],
     summary:
-      "ルクア大阪の11周年記念キャンペーンサイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nThe 11th-anniversary campaign site for LUCUA osaka — responsive front-end implementation.",
+      "ルクア大阪の11周年を「HAPPY BLOOMING!!」のテーマで祝う記念キャンペーンサイト。オリジナルギフト配布、フォトスポット、マスコット「ルクアーノ」のシール交換、購入額に応じた抽選会など多数のイベントを、花が咲き誇るビジュアルとフロア別の限定商品紹介、WESPOアプリ連携とともに案内します。\n\nAn anniversary site celebrating LUCUA osaka's 11th year under the theme “HAPPY BLOOMING!!”. It presents many events — gift giveaways, a photo wall, a mascot sticker-exchange, and purchase-based lucky draws — alongside blooming-flower visuals, floor-by-floor merchandise, and WESPO app integration.",
+    highlight:
+      "花が咲くキービジュアルと「HAPPY BLOOMING」モチーフのアニメーション、多数のイベント・フロア別商品を整理して見せる情報設計、各SNS／アプリ登録への導線を、レスポンシブで構築する点に注力しました。\n\nI focused on the blooming-flower key visuals and motif animations, the information architecture organizing many events and floor-by-floor products, and the links to social and app registration — all responsive.",
     thumbnail: "/works/lucua-11th.png",
     featured: 1,
     totalTime: "~8–40 Hours",
@@ -181,7 +194,9 @@ export const works: Work[] = [
     page: ["Website Link"],
     link: ["https://www.lucua.jp/2026nightmarket/"],
     summary:
-      "ルクア大阪「ナイトマーケット」のキャンペーンサイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA campaign site for LUCUA osaka's Night Market — responsive front-end implementation.",
+      "ルクア大阪が会員向けに開催する夜のショッピングイベントの告知サイト。1F〜9Fを夜桜（よざくら）テーマのナイトマーケットに変え、淡い光と舞い散る花びらで満たした幻想的な空間を演出します。フォトスポットやアカペラライブ、「Something Pink」のドレスコード、事前登録など、没入感のある体験設計が特徴です。\n\nAn announcement site for a members-only evening shopping event at LUCUA osaka. Floors 1F–9F transform into a “yozakura” (night cherry blossom) night market — a dreamlike space of pale light and falling petals. It features an immersive experience design: a photo spot, a cappella performances, a “Something Pink” dress code, and pre-registration.",
+    highlight:
+      "夜桜の世界観を伝えるキービジュアルと花びらが舞う演出、フロア別の見どころやドレスコード・同伴登録などのイベント情報をわかりやすく見せる構成を、レスポンシブで実装することに注力しました。\n\nI focused on responsive implementation of the key visuals and falling-petal effects conveying the night-blossom atmosphere, plus a clear layout for floor highlights and event details like the dress code and companion registration.",
     thumbnail: "/works/lucua-nightmarket.png",
     featured: 2,
     totalTime: "~8–40 Hours",
@@ -198,7 +213,9 @@ export const works: Work[] = [
     page: ["Website Link"],
     link: ["https://jp.rohto.com/learn-more/eyecare/start/"],
     summary:
-      "ロート製薬「それ目薬、はじめどきっ！」のアイケア啓発サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nAn eye-care awareness site for Rohto — responsive front-end implementation.",
+      "ロート製薬が SixTONES を起用し、6種類の目薬を「かるた」形式で紹介する目のケア啓発キャンペーンサイト。ゲーム・コンタクト・メイクなど日常のシーンに合った目薬を選べるよう、症状別の比較カードと6つのシナリオ導線を用意。メンバーのビジュアルを大胆に使った色分け構成が特徴です。\n\nAn eye-care awareness campaign site by Rohto featuring SixTONES, introducing six eye-drop products in a Japanese “karuta” card-game format. Symptom-based comparison cards and six scenario paths help users pick the right product for everyday situations like gaming, contacts, and makeup, in a bold, color-coded layout built around the members' visuals.",
+    highlight:
+      "シーン別の6つのシナリオ選択と症状別の商品レコメンド（出し分け）のインタラクション、メンバーのビジュアルを活かしたフルワイドのレスポンシブレイアウトとアイコン主導のナビゲーション実装に注力しました。\n\nI focused on the interaction for the six scenario selectors and symptom-based product recommendations, plus the full-width responsive layout built around the members' visuals and the icon-driven navigation.",
     thumbnail: "/works/rohto-eyecare.png",
     totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
@@ -216,7 +233,9 @@ export const works: Work[] = [
       "https://www.daiichisankyo-hc.co.jp/site_minon-body/product/hair_lp.html",
     ],
     summary:
-      "第一三共ヘルスケア「ミノン薬用ヘアケア」の商品LP。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product landing page for Daiichi Sankyo Healthcare's MINON medicated hair care — responsive front-end implementation.",
+      "第一三共ヘルスケア「ミノン」の、敏感な頭皮向け薬用ヘアケア（薬用シャンプー・コンディショナー）のランディングページ。「敏感な頭皮のうるおいを守りながら洗う」をコンセプトに、過度な洗浄が頭皮のバリアを傷める課題を提示し、アミノ酸系洗浄を解決策として打ち出します。大人用・キッズ用のタブ切り替えや調査データのビジュアル化が特徴です。\n\nA landing page for MINON medicated hair care (shampoo and conditioner) for sensitive scalps by Daiichi Sankyo Healthcare. Built on the idea of “washing while protecting the moisture of sensitive scalps,” it frames over-cleansing as a cause of barrier damage and positions amino-acid cleansing as the answer, with tabbed adult/kids switching and visualized survey data.",
+    highlight:
+      "大人用・キッズ用を切り替えるタブUI、調査データの図解、ステップごとの洗髪手順、PC/SP出し分け画像によるレスポンシブ表示を、デザイナーの意図どおりに崩さず実装することに注力しました。\n\nI focused on faithfully implementing the adult/kids tab switching, the data-visualization diagrams, the step-by-step washing guides, and responsive PC/SP image swapping exactly as the designer intended.",
     thumbnail: "/works/minon-haircare.png",
     totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
@@ -234,7 +253,9 @@ export const works: Work[] = [
       "https://www.daiichisankyo-hc.co.jp/site_minon-body/product/hair_kids.html",
     ],
     summary:
-      "第一三共ヘルスケア「ミノン リンスがいらない薬用ヘアシャンプー（キッズ）」の商品サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product site for MINON's rinse-free medicated kids' shampoo — responsive front-end implementation.",
+      "第一三共ヘルスケア「ミノン」の、リンスがいらない泡タイプの薬用ヘアシャンプー（キッズ向け）の製品ページ。弱酸性・低刺激性・植物性アミノ酸洗浄で「赤ちゃんから使える」点を訴求し、各種皮膚テストの結果やリンス不要の利便性を順を追って説明する構成が特徴です。\n\nA product page for MINON's rinse-free, foam-type medicated kids' shampoo by Daiichi Sankyo Healthcare. It promotes weakly-acidic, low-irritant, plant-based amino-acid cleansing suitable “from infancy,” walking through dermatological test results and the convenience of needing no separate rinse.",
+    highlight:
+      "製品の特長・成分・使い方を段階的に見せるセクション構成、関連製品のカルーセル、折りたたみ式ナビゲーション、画像ギャラリーをレスポンシブに動作させる実装にこだわりました。\n\nI focused on the staged feature/ingredient/usage sections, the related-product carousel, collapsible navigation, and image galleries so they all behave cleanly across screen sizes.",
     thumbnail: "/works/minon-hairkids.png",
     totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
@@ -252,7 +273,9 @@ export const works: Work[] = [
       "https://www.daiichisankyo-hc.co.jp/site_minon-aminomoist/products/",
     ],
     summary:
-      "第一三共ヘルスケア「ミノン アミノモイスト」の製品一覧サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nThe product index for MINON AminoMoist — responsive front-end implementation.",
+      "第一三共ヘルスケアの敏感肌向けスキンケア「ミノン アミノモイスト」の製品一覧ページ。アミノ酸処方と「貯水肌」のコンセプトを軸に、クレンジング・化粧水・乳液・美容液・クリーム・シートマスクなどをカテゴリで絞り込んで探せます。乾燥肌・混合肌・エイジングケアなどライン別表示や「肌タイプCHECK」提案機能が特徴です。\n\nThe product index for MINON Amino Moist, Daiichi Sankyo Healthcare's skincare for sensitive skin. Built around amino-acid formulation and a “water-retaining skin” concept, it lets users filter by category — cleansers, toners, serums, creams, sheet masks — with line-based organization (dry, combination, anti-aging) and a “skin type check” recommendation tool.",
+    highlight:
+      "製品タイプによるカテゴリ絞り込みと「肌タイプCHECK」「お手入れ早見表」への導線を含む一覧UI、レスポンシブなグリッド／ナビゲーションの実装に注力しました。\n\nI focused on the listing UI with category filtering by product type plus pathways into the skin-type check and care chart, building the grid and navigation to adapt responsively.",
     thumbnail: "/works/minon-aminomoist.png",
     totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
@@ -268,7 +291,9 @@ export const works: Work[] = [
     page: ["Website Link"],
     link: ["https://www.ssp.co.jp/hythiol/"],
     summary:
-      "エスエス製薬「ハイチオール」のブランドサイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nThe brand site for SSP's Hythiol — responsive front-end implementation.",
+      "エスエス製薬のブランド「ハイチオール」の公式サイト。L-システインと「新陳代謝」を軸に、肌・体の悩みに応える製品群を紹介します。「代謝するかぎり、肌は変われる」というコピーと製品スライダーが印象的で、内服・外用あわせて6製品を悩み別に整理。多言語対応や「肌タイプ診断」を備えるのが特徴です。\n\nThe official site for SS Pharmaceutical's Hythiol brand, presenting products centered on L-cysteine and “metabolism” for skin and body concerns. The hero pairs the tagline “as long as metabolism continues, skin can change” with a product slider, organizing six internal/topical products by concern, with multi-language support and a skin-type questionnaire.",
+    highlight:
+      "製品スライダーや展開式の悩み別カテゴリ、チェックボックス式の「肌タイプ診断」、PC/SP出し分け画像によるレスポンシブ表示、固定ヘッダーの挙動を、多言語切替も含めて実装することに注力しました。\n\nI focused on the product slider, expandable concern-based categories, the checkbox-driven skin-type questionnaire, responsive PC/SP image swapping, and sticky-header behavior — including multi-language switching.",
     thumbnail: "/works/hythiol.png",
     totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
@@ -284,7 +309,9 @@ export const works: Work[] = [
     page: ["Website Link"],
     link: ["https://www.epson.jp/products/largeprinter/poster-printing/"],
     summary:
-      "エプソン 大判プリンター「Adobe Expressでポスター内製」の製品情報サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product page for Epson large-format printers — responsive front-end implementation.",
+      "エプソンのSureColor大判プリンターとAdobe Expressを組み合わせ、ポスターを社内で内製する方法を紹介するページ。コスト・スピード・修正の課題提起から、テンプレート選び・テキスト変更・写真追加の3ステップ解説へと進むストーリー仕立ての縦構成が特徴で、A1ポスター1枚「約55円」といった具体的なコスト提示で内製のメリットを訴求します。\n\nA page showing how businesses can produce posters in-house by pairing Epson SureColor large-format printers with Adobe Express. It uses a story-driven vertical structure that moves from pain points (cost, speed, edits) into a three-step tutorial, with concrete cost framing such as “about 55 yen” per A1 poster.",
+    highlight:
+      "課題提起から3ステップのチュートリアル、製品比較までを順に読み進めさせる縦長の物語構成と、「_sp.png」による出し分けを含むレスポンシブ表示を、デザインの意図どおりに実装することに注力しました。\n\nI focused on the long-form narrative flow from pain points through the three-step tutorial to the product comparison, with responsive layout including dedicated mobile imagery, exactly as designed.",
     thumbnail: "/works/epson-poster.png",
     totalTime: "~20–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
@@ -300,7 +327,9 @@ export const works: Work[] = [
     page: ["Website Link"],
     link: ["https://www.epson.jp/ec/event/kbpk2025/"],
     summary:
-      "エプソン「氣志團万博2025 推し活応援部」のイベント特設サイト。グッズ制作・プリント活用を訴求。レスポンシブ対応のフロントエンド実装を担当しました。\n\nAn event campaign site for Epson at Kishidan Banpaku 2025 — responsive front-end implementation.",
+      "エプソンが音楽フェス「氣志團万博2025」とコラボした「推し活応援部」キャンペーンページ。会場での企画動画、家庭で印刷できるDL素材（しおりやポップアップカード）、プリンターが当たるプレゼント企画を展開。SNSフォローと指定ハッシュタグ投稿による2ステップ応募やPDFダウンロードが特徴です。\n\nA campaign page for Epson's “Fan Support Division,” tying in with the Kishidan Banpaku 2025 music festival. It features event videos, printable downloadable content (bookmarks, pop-up cards), and a printer giveaway, with a two-step SNS entry (follow plus a hashtagged post) and PDF downloads.",
+    highlight:
+      "複数の埋め込み動画、DL素材のグリッド、SNS連携による2ステップ応募導線、PDFダウンロードボタン、画像ボタンとテキストリンクを併用するレスポンシブナビゲーションの実装に注力しました。\n\nI focused on the multiple embedded videos, the downloadable-content grid, the two-step SNS entry flow, PDF download buttons, and responsive navigation combining image buttons with text links.",
     thumbnail: "/works/epson-kbpk2025.png",
     totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
@@ -316,7 +345,9 @@ export const works: Work[] = [
     page: ["Website Link"],
     link: ["https://agf.ajinomoto.co.jp/brand/blendy/mybottlestick/"],
     summary:
-      "味の素AGF「ブレンディ マイボトルスティック」の商品サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product site for AGF Blendy My Bottle Stick — responsive front-end implementation.",
+      "味の素AGF「ブレンディ マイボトルスティック」の製品紹介ページ。水に溶かすだけで作れるマイボトル向けスティック飲料を、「水に溶けてすぐできる」「持ち運べる」「1箱でマイボトル6本分」「味を選べる」の4つの特長と、ピーチルイボスやジャスミンなど7種のラインナップで訴求します。\n\nA product page for Ajinomoto AGF's “Blendy My Bottle Stick,” drinks you make by simply dissolving a stick in your water bottle. It presents four selling points — dissolves instantly, portable, “6 bottles per box,” and a choice of flavors — across a seven-flavor lineup including peach rooibos and jasmine.",
+    highlight:
+      "4つの特長を見せるモジュール構成、お茶系／水分補給系で分類したフレーバー一覧、埋め込み動画ギャラリー、各ECへの購入ボタンを、レスポンシブに崩れなく実装することに注力しました。\n\nI focused on the four-point feature modules, the flavor lineup categorized into tea and hydration types, the embedded video gallery, and the e-commerce purchase buttons so they hold up responsively.",
     thumbnail: "/works/blendy-mybottle.png",
     totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
@@ -334,7 +365,9 @@ export const works: Work[] = [
       "https://agf.ajinomoto.co.jp/brand/gift/fugift/casualgift/cafetimegift/",
     ],
     summary:
-      "味の素AGF「カフェタイムギフト」の商品サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA gift product site for Ajinomoto AGF — responsive front-end implementation.",
+      "味の素AGFのギフトブランド「CAFÉ TIME GIFT」を紹介するキャンペーンサイト。「もっと気軽にギフトしよ！」をテーマに、ドリップコーヒーやスティックのアソートギフトを訴求します。ブルーのアーガイル柄を基調とした上品で可愛らしいパッケージと、相手別のメッセージカードが特徴で、応募型モニターキャンペーンの入口も兼ねています。\n\nA campaign site introducing Ajinomoto AGF's “CAFÉ TIME GIFT” line under the theme “Let's gift more casually,” promoting assorted drip-coffee and stick gift sets. It features stylish, cute argyle-patterned packaging and recipient-specific message cards, and doubles as the entry point for a survey-based monitor campaign.",
+    highlight:
+      "複数のメッセージカードを回転表示するカルーセル、ヘッダーのカテゴリ・ブランド展開メニュー、応募状況に応じて表示が切り替わる条件分岐UIの実装に注力しました。\n\nI focused on the rotating message-card carousel, the expandable category/brand header navigation, and conditional UI that swaps content based on campaign status.",
     thumbnail: "/works/agf-cafetimegift.png",
     totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
@@ -352,7 +385,9 @@ export const works: Work[] = [
       "https://www.fujifilm.com/fb/ja/solutions/wide-variety/multicopy/oshikatu",
     ],
     summary:
-      "富士フイルム「推し文字プリント」のサービス紹介サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA service site for Fujifilm's Oshi-Moji Print — responsive front-end implementation.",
+      "富士フイルムのコンビニプリントサービス「推し文字プリント」の紹介サイト。うちわ・ボード・アルバム用の「推し活」デザインをセブン-イレブンのマルチコピー機で手軽に印刷できることを訴求します。30種類以上の日本語・韓国語テンプレート、10色のカラー展開、A4/A3対応を、パステル基調のkawaiiなビジュアルで紹介します。\n\nThe promo site for Fujifilm's convenience-store service “Oshi-Moji Print,” letting fans easily print uchiwa, board, and album designs at Seven-Eleven copiers. It offers 30+ Japanese and Korean templates, 10 colors, and A4/A3 sizes, all in a pastel, kawaii visual style aimed at fans.",
+    highlight:
+      "カラー・サイズ選択のタブナビゲーション、色に連動するデザインギャラリー、「もっと見る」展開セクション、デザイン詳細のモーダル、レスポンシブなグリッド表示の実装に注力しました。\n\nI focused on the color/size tabbed navigation, a color-linked design gallery, a “see more” expandable section, modal detail views, and a responsive grid layout.",
     thumbnail: "/works/fujifilm-oshimoji.png",
     totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
@@ -370,7 +405,9 @@ export const works: Work[] = [
       "https://www.fujifilm.com/fb/ja/solutions/wide-variety/multicopy/oshikatu/oshimojiprintmaker",
     ],
     summary:
-      "富士フイルム「推し文字プリントメーカー」のWebツール。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA web tool for Fujifilm's Oshi-Moji Print Maker — responsive front-end implementation.",
+      "「推し文字プリント」のための自作デザインツール「推し文字プリントメーカー」。ひらがなテキストやスタンプを配置してオリジナルのうちわ・ボード用デザインを生成できるWebアプリで、最大14色までのカスタムカラー作成やA4/A3サイズ選択に対応。生成したデザインはQRコードや予約番号でセブン-イレブンで印刷できます。\n\n“Oshi-Moji Print Maker,” the custom design tool for the Oshi-Moji Print service — a web app where users place hiragana text and stamps to generate original uchiwa and board designs. It supports custom color creation (up to 14 colors) and A4/A3 sizing, with finished designs printable at Seven-Eleven via QR code or reservation number.",
+    highlight:
+      "テキスト入力・スタンプ配置・カスタムカラー作成といったインタラクティブな生成UIと、ステップ式の操作ガイド、印刷方法のタブ切り替え、デスクトップ/スマホ/タブレット対応のレスポンシブ実装に注力しました。\n\nI focused on the interactive generator UI (text input, stamp placement, custom color creation), step-by-step usage guides, the tabbed printing-method switcher, and responsive support across desktop, smartphone, and tablet.",
     thumbnail: "/works/fujifilm-oshimoji-maker.png",
     totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
@@ -386,7 +423,9 @@ export const works: Work[] = [
     page: ["Website Link"],
     link: ["https://cpn-wv-cl0304.one-zero.jp/ienaka-ouen-20251001/"],
     summary:
-      "「読書×家事の秋」家ナカまるごと応援キャンペーンサイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA seasonal home-life campaign site — responsive front-end implementation.",
+      "花王グループカスタマーマーケティングとアムタスによる共同キャンペーンサイト。「読書×家事の秋⁉ 10月の家ナカまるごと応援キャンペーン」として、LINE経由の2つの応募コースで賞品が当たる企画です。2列のカードレイアウトと、ピンク／グリーンで色分けしたSTEP1〜3のビジュアル手順、マスコットキャラクターが特徴です。\n\nA joint campaign site by Kao Group Customer Marketing and Amutus — the “Reading × Housework Autumn?!” October home-support campaign — offering prizes via two LINE-based entry tracks. It features a two-column card layout, color-coded (pink/green) STEP 1-3 visual instructions, and a mascot character.",
+    highlight:
+      "コース切り替えのタブナビゲーション、FAQアコーディオン、応募状況で表示が変わる条件分岐、LINEへキーワードを受け渡すディープリンク連携、スマホファーストのレスポンシブ実装に注力しました。\n\nI focused on the course-switching tabbed navigation, an FAQ accordion, conditional display based on campaign status, LINE deep-linking that passes keywords into the chat, and a smartphone-first responsive layout.",
     thumbnail: "/works/ienaka-ouen.png",
     totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
@@ -402,7 +441,9 @@ export const works: Work[] = [
     page: ["Website Link"],
     link: ["https://www.otsuka.co.jp/nmd/smvm_woman/"],
     summary:
-      "大塚製薬「ネイチャーメイド スーパーマルチビタミン&ミネラル（女性向け）」の商品サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product site for Otsuka's Nature Made Super Multivitamin & Mineral (for women) — responsive front-end implementation.",
+      "大塚製薬のサプリメント「ネイチャーメイド スーパーマルチビタミン&ミネラル」の女性向けブランドサイト。12種のビタミンと7種のミネラルを1粒に凝縮した製品を訴求します。野菜不足や不規則な食生活を送る20〜30代女性をターゲットに、摂取不足のデータや「樽（おけ）」の例えで栄養バランスを分かりやすく伝える構成が特徴です。\n\nOtsuka Pharmaceutical's women-focused brand site for “Nature Made Super Multivitamin & Mineral,” promoting a daily tablet packing 12 vitamins and 7 minerals. Targeting women in their 20s-30s with busy or veggie-deficient diets, it uses intake-deficit data and a “barrel” analogy to clearly explain nutritional balance.",
+    highlight:
+      "セクションへのアンカーナビゲーション、栄養概念を伝えるインフォグラフィック、Instagramフィードのカルーセル埋め込み、PC/SP別の画像出し分けによるレスポンシブ実装に注力しました。\n\nI focused on in-page anchor navigation, infographics explaining the nutritional concepts, the embedded Instagram feed carousel, and responsive image-swapping between desktop and mobile.",
     thumbnail: "/works/naturemade-woman.png",
     totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
@@ -418,7 +459,9 @@ export const works: Work[] = [
     page: ["Website Link"],
     link: ["https://www.otsuka.co.jp/nmd/smvm_man/"],
     summary:
-      "大塚製薬「ネイチャーメイド スーパーマルチビタミン&ミネラル（男性向け）」の商品サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product site for Otsuka's Nature Made Super Multivitamin & Mineral (for men) — responsive front-end implementation.",
+      "大塚製薬「ネイチャーメイド スーパーマルチビタミン&ミネラル」の男性向けブランドサイト。女性版と対をなす構成で、20〜30代男性の野菜摂取不足にフォーカスします。マルチビタミン国内シェアNo.1（2024-2025）や約4ヶ月分という容量、人工添加物不使用といったベネフィットを、ヒーロー画像と番号付きポイントで明快に伝えます。\n\nThe men-focused counterpart of Otsuka's “Nature Made Super Multivitamin & Mineral” site, mirroring the women's version while focusing on the vegetable shortfall among men in their 20s-30s. It highlights its No.1 multivitamin market share in Japan (2024-2025), a roughly four-month supply, and additive-free formulation through hero imagery and numbered key points.",
+    highlight:
+      "女性版と共通設計を保ちつつ男性向けにビジュアルを差し替える展開で、セクションアンカーナビ、番号付きポイントのレイアウト、Instagram埋め込み、レスポンシブ対応の実装に注力しました。\n\nI focused on adapting the shared design with male-oriented visuals while keeping it consistent with the women's version — the section anchor nav, numbered key-point layouts, Instagram embeds, and responsive behavior.",
     thumbnail: "/works/naturemade-man.png",
     totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],
@@ -434,7 +477,9 @@ export const works: Work[] = [
     page: ["Website Link"],
     link: ["https://top.dhc.co.jp/shop/skin/lipseries_moist_color/"],
     summary:
-      "DHC「リップクリームシリーズ」の商品紹介サイト。レスポンシブ対応のフロントエンド実装を担当しました。\n\nA product site for DHC's Lip Cream series — responsive front-end implementation.",
+      "DHCのリップクリームシリーズを紹介するブランドサイト。累計20億本を売り上げた定番の薬用リップから、SPF22 PA++のカラーリップ、敏感肌用、ナイトケア用、植物オイル配合のボタニカルまで幅広いラインアップを訴求します。パステル基調の清潔感あるデザインと、オリーブバージンオイルという共通成分の打ち出しが特徴です。\n\nDHC's brand site for its lip cream series, promoting a broad lineup from the flagship medicated lip cream (2 billion units sold) to SPF22 PA++ color lips, a sensitive-skin variant, a nighttime balm, and botanical oil-blend versions. It features a clean pastel design and olive virgin oil as the shared signature ingredient.",
+    highlight:
+      "好みで製品をおすすめする分岐式の「リップ診断」、アイコン付きの横並びナビゲーション、技術解説のモーダルポップアップ、製品カードのレスポンシブグリッド、スクロール連動のセクションナビの実装に注力しました。\n\nI focused on the branching “lip diagnosis” that recommends products by preference, the icon-based horizontal navigation, modal popups explaining the product technology, a responsive product-card grid, and scroll-linked section navigation.",
     thumbnail: "/works/dhc-lip.png",
     totalTime: "~8–40 Hours",
     method: ["HTML", "SCSS", "JavaScript"],

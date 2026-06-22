@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useLenis } from "@studio-freight/react-lenis";
 import {
   FaXmark,
   FaArrowUpRightFromSquare,
@@ -16,16 +17,20 @@ type Props = {
 };
 
 export default function Modal({ selectedWork, onClose }: Props) {
+  const lenis = useLenis();
+
   useEffect(() => {
     if (!selectedWork) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     document.body.style.overflow = "hidden";
+    lenis?.stop(); // freeze Lenis smooth scroll behind the modal
     window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
+      lenis?.start();
       window.removeEventListener("keydown", onKey);
     };
-  }, [selectedWork, onClose]);
+  }, [selectedWork, onClose, lenis]);
 
   if (!selectedWork) return null;
   const w = selectedWork;
@@ -44,7 +49,10 @@ export default function Modal({ selectedWork, onClose }: Props) {
           <FaXmark />
         </button>
 
-        <div className="modal-scroll max-h-[88vh] overflow-y-auto">
+        <div
+          data-lenis-prevent
+          className="modal-scroll max-h-[88vh] overflow-y-auto"
+        >
           <div className="relative h-[220px] overflow-hidden bg-gradient-to-br from-accent/25 to-accent/5">
             <span className="absolute inset-0 flex items-center justify-center font-display text-5xl font-bold text-accent/60">
               {w.title.slice(0, 2)}
@@ -133,6 +141,7 @@ export default function Modal({ selectedWork, onClose }: Props) {
             )}
 
             <Block title="Summary" text={w.summary} />
+            {w.highlight && <Block title="What I focused on" text={w.highlight} />}
             {w.learnt && <Block title="What I learned" text={w.learnt} />}
             {w.regret && <Block title="What I'd improve" text={w.regret} />}
             {w.growth && <Block title="How I grew" text={w.growth} />}

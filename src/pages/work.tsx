@@ -4,7 +4,10 @@ import Link from "next/link";
 import {
   FaArrowLeftLong,
   FaArrowUpLong,
+  FaCheck,
+  FaChevronDown,
   FaMagnifyingGlass,
+  FaXmark,
 } from "react-icons/fa6";
 import WorkCard from "@/components/WorkCard";
 import Modal from "@/components/Modal";
@@ -32,12 +35,94 @@ function SkeletonCard() {
   );
 }
 
-const chip = (active: boolean) =>
-  `rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors ${
-    active
-      ? "border-accent bg-accent text-bg"
-      : "border-white/15 text-muted hover:text-white"
-  }`;
+function CategoryFilter({
+  value,
+  onChange,
+  options,
+}: {
+  value: string | null;
+  onChange: (v: string | null) => void;
+  options: string[];
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onDoc = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("mousedown", onDoc);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDoc);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  const items: { label: string; val: string | null }[] = [
+    { label: "All categories", val: null },
+    ...options.map((c) => ({ label: c, val: c as string | null })),
+  ];
+
+  return (
+    <div ref={ref} className="relative w-full sm:max-w-[220px]">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        className="flex w-full items-center justify-between rounded-full border border-white/15 bg-surface py-3 pl-5 pr-4 text-sm transition-colors hover:border-white/25 focus:border-accent focus:outline-none"
+      >
+        <span className={value ? "text-white" : "text-muted"}>
+          {value ?? "All categories"}
+        </span>
+        <FaChevronDown
+          aria-hidden="true"
+          className={`text-xs text-faint transition-transform ${
+            open ? "rotate-180" : ""
+          }`}
+        />
+      </button>
+
+      {open && (
+        <ul
+          role="listbox"
+          data-lenis-prevent
+          className="absolute z-30 mt-2 max-h-72 w-full overflow-auto rounded-2xl border border-white/15 bg-surface p-1.5 shadow-[0_16px_40px_rgba(0,0,0,0.5)]"
+        >
+          {items.map(({ label, val }) => {
+            const active = value === val;
+            return (
+              <li key={label}>
+                <button
+                  type="button"
+                  role="option"
+                  aria-selected={active}
+                  onClick={() => {
+                    onChange(val);
+                    setOpen(false);
+                  }}
+                  className={`flex w-full items-center justify-between gap-2 rounded-xl px-4 py-2.5 text-left text-sm transition-colors ${
+                    active
+                      ? "bg-accent/15 text-white"
+                      : "text-muted hover:bg-white/5 hover:text-white"
+                  }`}
+                >
+                  {label}
+                  {active && (
+                    <FaCheck aria-hidden="true" className="text-xs text-accent" />
+                  )}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </div>
+  );
+}
 
 export default function WorkPage() {
   const [loading, setLoading] = useState(true);
@@ -57,6 +142,7 @@ export default function WorkPage() {
       const matchesQuery =
         !q ||
         w.title.toLowerCase().includes(q) ||
+        w.summary.toLowerCase().includes(q) ||
         w.category.some((c) => c.toLowerCase().includes(q));
       const matchesFilter = !filter || w.category.includes(filter);
       return matchesQuery && matchesFilter;
@@ -117,38 +203,40 @@ export default function WorkPage() {
         </header>
 
         <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="relative w-full sm:max-w-xs">
-            <FaMagnifyingGlass
-              aria-hidden="true"
-              className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-faint"
-            />
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search work…"
-              aria-label="Search work"
-              className="w-full rounded-full border border-white/15 bg-surface py-3 pl-11 pr-4 text-sm text-white placeholder:text-faint focus:border-accent focus:outline-none"
+          <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="relative w-full sm:max-w-xs">
+              <FaMagnifyingGlass
+                aria-hidden="true"
+                className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-faint"
+              />
+              <input
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search work…"
+                aria-label="Search work"
+                className="w-full rounded-full border border-white/15 bg-surface py-3 pl-11 pr-10 text-sm text-white placeholder:text-faint focus:border-accent focus:outline-none"
+              />
+              {query && (
+                <button
+                  type="button"
+                  onClick={() => setQuery("")}
+                  aria-label="Clear search"
+                  className="absolute right-3 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full text-faint transition-colors hover:bg-white/10 hover:text-white"
+                >
+                  <FaXmark className="text-xs" />
+                </button>
+              )}
+            </div>
+            <CategoryFilter
+              value={filter}
+              onChange={setFilter}
+              options={categories}
             />
           </div>
-          <p className="text-sm text-faint">
+          <p className="shrink-0 text-sm text-faint">
             {filtered.length} result{filtered.length !== 1 ? "s" : ""}
           </p>
-        </div>
-
-        <div className="mt-5 flex flex-wrap gap-2">
-          <button onClick={() => setFilter(null)} className={chip(!filter)}>
-            All
-          </button>
-          {categories.map((c) => (
-            <button
-              key={c}
-              onClick={() => setFilter(filter === c ? null : c)}
-              className={chip(filter === c)}
-            >
-              {c}
-            </button>
-          ))}
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
