@@ -7,7 +7,8 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* Smooth scroll is handled by Lenis (see SmoothScroll); native smooth would
+     conflict with it. Reduced-motion / paused users fall back to instant native scroll. */
   -webkit-text-size-adjust: 100%;
 }
 
