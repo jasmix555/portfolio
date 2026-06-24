@@ -3,24 +3,28 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { useLenis } from "@studio-freight/react-lenis";
-import Intro from "@/components/Intro";
-import MotionToggle from "@/components/MotionToggle";
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import About from "@/components/About";
-import TechStack from "@/components/TechStack";
-import Works from "@/components/Works";
-import Contact from "@/components/Contact";
+import {
+  CustomCursor,
+  EditorialNav,
+  IntroLoader,
+  Hero,
+  WorkScroll,
+  Projects,
+  Ideas,
+  Profile,
+  EditorialFooter,
+} from "@/components/editorial";
 
-const Background3D = dynamic(() => import("@/components/Background3D"), {
-  ssr: false,
-});
+const LivingBackground = dynamic(
+  () => import("@/components/editorial/LivingBackground"),
+  { ssr: false }
+);
 
 export default function Portfolio() {
   const [introDone, setIntroDone] = useState(false);
   const lenis = useLenis();
 
-  // Lock scrolling while the intro animation plays (covers Lenis + native).
+  // Lock scrolling (Lenis + native) until the intro finishes.
   useEffect(() => {
     if (introDone) return;
     document.documentElement.style.overflow = "hidden";
@@ -37,33 +41,40 @@ export default function Portfolio() {
         <title>Jason Ng — Front-end Engineer</title>
         <meta
           name="description"
-          content="Jason Ng — front-end / full-stack engineer based in Osaka, Japan, open to new opportunities. Building modern web apps with React and Next.js."
+          content="Jason Ng — front-end / full-stack-leaning engineer based in Osaka, Japan. Editorial, motion-driven web interfaces. Open to new opportunities."
         />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="theme-color" content="#ECE5D6" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Jason Ng — Front-end Engineer" />
+        <meta
+          property="og:description"
+          content="Front-end / full-stack-leaning engineer in Osaka, Japan. Editorial, motion-driven web interfaces."
+        />
+        <meta property="og:image" content="/og.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Jason Ng — Front-end Engineer" />
+        <meta name="twitter:image" content="/og.png" />
       </Head>
 
-      <Background3D />
-      <Intro onDone={() => setIntroDone(true)} />
-      <MotionToggle />
+      <LivingBackground />
+      <IntroLoader onDone={() => setIntroDone(true)} />
+      <CustomCursor />
+      <EditorialNav />
 
-      <motion.div
+      <motion.main
+        className="relative"
         initial={{ opacity: 0 }}
         animate={{ opacity: introDone ? 1 : 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
+        transition={{ duration: 0.9, ease: "easeOut" }}
       >
-        <Navbar />
-
-        <main className="relative">
-          <Hero start={introDone} />
-          <About />
-          <TechStack />
-          <Works />
-          <Contact />
-          <footer className="border-t border-white/10 py-9 text-center text-[13px] text-faint">
-            © 2026 Jason Ng — designed &amp; built with care.
-          </footer>
-        </main>
-      </motion.div>
+        <Hero />
+        <WorkScroll />
+        <Projects />
+        <Ideas />
+        <Profile />
+        <EditorialFooter />
+      </motion.main>
     </>
   );
 }

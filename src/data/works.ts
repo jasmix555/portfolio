@@ -498,8 +498,11 @@ export const works: Work[] = [
   {
     title: "Reminiscape",
     group: "project",
-    page: ["Webアプリケーションリンク"],
-    link: ["https://reminiscape-zeta.vercel.app/"],
+    page: ["Web Application Link", "GitHub Link"],
+    link: [
+      "https://reminiscape-zeta.vercel.app/",
+      "https://github.com/jasmix555/reminiscape",
+    ],
     summary:
       "大切な人の記憶やメッセージを、ゆかりの場所にそっと残し、いつかまたそこを訪れた時に“再会”できる。過ぎ去った人の足跡も、未来のあなたへ届く記憶として残せます。\n\nA place to quietly leave the memories and messages of someone important in a location tied to them, so that one day when you return you can be “reunited” with them. Even the footprints of those who have passed can remain as memories delivered to the future you.",
     metrics: [
