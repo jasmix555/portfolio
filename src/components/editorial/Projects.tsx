@@ -23,7 +23,7 @@ export default function Projects() {
     <section id="projects" className="px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto max-w-editorial">
         <div className="mb-3 flex items-center gap-3 font-mono text-[11px] uppercase tracking-label text-clay">
-          <span className="h-px w-8 bg-clay" /> 02 — {t(ui.projects.kicker, lang)}
+          <span className="h-px w-8 bg-clay" /> 01 — {t(ui.projects.kicker, lang)}
         </div>
         <h2 className="heading-wrap max-w-3xl font-serif text-[clamp(34px,6vw,76px)] font-semibold leading-[0.95] text-ink">
           {t(ui.projects.title, lang)}
