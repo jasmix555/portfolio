@@ -1,1 +1,1 @@
-export { default, MotionProvider, useMotionEnabled } from "./MotionToggle";
+export { MotionProvider, useMotionEnabled } from "./MotionToggle";
