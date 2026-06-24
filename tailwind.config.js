@@ -4,9 +4,26 @@ module.exports = {
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
+  // hover: utilities only apply on devices that actually hover, so touch
+  // screens never get stuck in a hover state on first tap.
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     extend: {
       colors: {
+        // — Paper / editorial system (homepage) —
+        paper: "#ECE5D6", // warm beige base
+        "paper-2": "#E4DBC7", // deeper paper for alternating sections
+        "paper-3": "#F3EEE2", // lifted paper (cards / highlights)
+        ink: "#1C1A16", // near-black primary type
+        "ink-soft": "#5B544A", // muted body / meta
+        "ink-faint": "#6F6657", // captions / hairline labels (AA-contrast on paper)
+        clay: "#B0432B", // desaturated vermilion / clay-red accent
+        "clay-deep": "#8E3520",
+        line: "rgba(28,26,22,0.16)", // hairlines
+
+        // — Legacy dark tokens (kept so /work page survives until restyled) —
         bg: "#0a0b0f",
         surface: "#13151c",
         "surface-2": "#181b24",
@@ -16,11 +33,21 @@ module.exports = {
         faint: "#8d94a3",
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["'Space Grotesk'", "sans-serif"],
+        // Editorial high-contrast serif for display
+        serif: ["Fraunces", "'Noto Serif JP'", "Georgia", "serif"],
+        // Clean sans for body (JP falls through to Noto Sans JP)
+        sans: ["Inter", "'Noto Sans JP'", "system-ui", "sans-serif"],
+        // Monospace for index numbers / meta labels
+        mono: ["'Space Mono'", "ui-monospace", "monospace"],
+        // legacy alias
+        display: ["Fraunces", "'Noto Serif JP'", "serif"],
       },
       maxWidth: {
         site: "1120px",
+        editorial: "1320px",
+      },
+      letterSpacing: {
+        label: "0.22em",
       },
       keyframes: {
         "fade-up": {
