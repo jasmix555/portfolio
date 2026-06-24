@@ -18,7 +18,7 @@ module.exports = {
         "paper-3": "#F3EEE2", // lifted paper (cards / highlights)
         ink: "#1C1A16", // near-black primary type
         "ink-soft": "#5B544A", // muted body / meta
-        "ink-faint": "#6F6657", // captions / hairline labels (AA-contrast on paper)
+        "ink-faint": "#5F5747", // captions / hairline labels (AA-contrast on paper + paper-2)
         clay: "#B0432B", // desaturated vermilion / clay-red accent
         "clay-deep": "#8E3520",
         line: "rgba(28,26,22,0.16)", // hairlines

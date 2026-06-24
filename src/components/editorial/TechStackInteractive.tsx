@@ -1,8 +1,48 @@
+import type { IconType } from "react-icons";
+import {
+  SiHtml5,
+  SiSass,
+  SiJavascript,
+  SiReact,
+  SiNextdotjs,
+  SiPhp,
+  SiAdobeillustrator,
+  SiAdobephotoshop,
+  SiFigma,
+  SiAdobexd,
+  SiGithub,
+  SiVercel,
+  SiFirebase,
+  SiSupabase,
+  SiPrisma,
+  SiMysql,
+  SiXampp,
+} from "react-icons/si";
 import { motion } from "framer-motion";
 import { useMotionEnabled } from "../MotionToggle";
 import { techGroups, type TechItem } from "@/data/tech";
 
-// Rough months of experience from the duration string ("3 Year", "8 Months").
+// Map tech names → react-icons (self-contained SVGs, no external icon-font CSS).
+const ICONS: Record<string, IconType> = {
+  HTML: SiHtml5,
+  SCSS: SiSass,
+  JavaScript: SiJavascript,
+  React: SiReact,
+  "Next.js": SiNextdotjs,
+  PHP: SiPhp,
+  Illustrator: SiAdobeillustrator,
+  Photoshop: SiAdobephotoshop,
+  Figma: SiFigma,
+  "Adobe XD": SiAdobexd,
+  GitHub: SiGithub,
+  Vercel: SiVercel,
+  Firebase: SiFirebase,
+  Supabase: SiSupabase,
+  Prisma: SiPrisma,
+  SQL: SiMysql,
+  XAMPP: SiXampp,
+};
+
 function months(d: string): number {
   let total = 0;
   const y = /([\d.]+)\s*year/i.exec(d);
@@ -11,11 +51,12 @@ function months(d: string): number {
   if (m) total += parseFloat(m[1]);
   return total || 1;
 }
-const CAP = 36; // 3 years = full bar
+const CAP = 36;
 
 function StackRow({ it, i }: { it: TechItem; i: number }) {
   const { enabled } = useMotionEnabled();
   const pct = Math.min(100, Math.round((months(it.duration) / CAP) * 100));
+  const Icon = ICONS[it.name];
 
   return (
     <motion.li
@@ -27,10 +68,9 @@ function StackRow({ it, i }: { it: TechItem; i: number }) {
     >
       <div className="flex items-center gap-4 rounded-lg px-2 py-2 transition-colors duration-300 hover:bg-ink/[0.04] active:bg-ink/[0.06]">
         <span
-          data-cursor
-          className="flex h-9 w-9 shrink-0 items-center justify-center text-[26px] leading-none transition-transform duration-300 ease-[cubic-bezier(.2,1.4,.4,1)] group-hover:-rotate-6 group-hover:scale-125 group-active:scale-110"
+          className="flex h-9 w-9 shrink-0 items-center justify-center text-[22px] text-ink/70 transition-[transform,color] duration-300 ease-[cubic-bezier(.2,1.4,.4,1)] group-hover:-rotate-6 group-hover:scale-125 group-hover:text-clay group-active:scale-110"
         >
-          <i className={it.icon} aria-hidden="true" />
+          {Icon && <Icon aria-hidden="true" />}
         </span>
         <div className="min-w-0 flex-1">
           <div className="flex items-baseline justify-between gap-3">
@@ -64,7 +104,7 @@ export default function TechStackInteractive() {
     <div className="mt-8 grid gap-x-14 gap-y-12 md:grid-cols-2">
       {techGroups.map((g) => (
         <div key={g.group}>
-          <h4 className="font-serif text-xl text-ink">{g.group}</h4>
+          <h3 className="font-serif text-xl text-ink">{g.group}</h3>
           <ul className="mt-5 space-y-1">
             {g.items.map((it, i) => (
               <StackRow key={it.name} it={it} i={i} />
