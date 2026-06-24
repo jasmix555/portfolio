@@ -90,6 +90,14 @@ export default function LivingBackground() {
 
     const mobile = window.matchMedia("(max-width: 767px)").matches;
     const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const saveData =
+      (navigator as { connection?: { saveData?: boolean } }).connection
+        ?.saveData === true;
+
+    // Skip WebGL entirely on phones / data-saver: a continuous rAF render loop
+    // is brutal on low-end mobile CPUs (huge TBT). The paper body color is the
+    // fallback. Desktop keeps the living field.
+    if (mobile || saveData) return;
 
     let renderer: THREE.WebGLRenderer;
     try {

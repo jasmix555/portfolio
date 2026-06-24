@@ -130,7 +130,7 @@ export default function Profile() {
                   data-cursor
                   className="flex h-14 w-14 items-center justify-center rounded-full border border-ink/20 text-xl text-ink-soft transition-colors hover:border-clay hover:bg-clay hover:text-paper"
                 >
-                  <s.icon />
+                  <s.icon aria-hidden="true" />
                 </a>
               </Magnetic>
             ))}

@@ -15,9 +15,9 @@ function Block({ label, body }: { label: string; body: string }) {
   if (!body) return null;
   return (
     <div className="border-t border-line pt-5">
-      <h4 className="font-mono text-[11px] uppercase tracking-label text-clay">
+      <h3 className="font-mono text-[11px] uppercase tracking-label text-clay">
         {label}
-      </h4>
+      </h3>
       <p className="mt-3 whitespace-pre-line text-[15px] leading-relaxed text-ink-soft">
         {body}
       </p>
@@ -149,9 +149,9 @@ export default function ProjectOverlay({
                   {/* meta rail */}
                   <aside className="space-y-8">
                     <div>
-                      <h4 className="font-mono text-[11px] uppercase tracking-label text-ink-faint">
+                      <h3 className="font-mono text-[11px] uppercase tracking-label text-ink-faint">
                         {t(ui.projects.role, lang)}
-                      </h4>
+                      </h3>
                       <ul className="mt-3 space-y-1 text-[15px] text-ink">
                         {work.role.map((r) => (
                           <li key={r}>{role(r, lang)}</li>
@@ -159,9 +159,9 @@ export default function ProjectOverlay({
                       </ul>
                     </div>
                     <div>
-                      <h4 className="font-mono text-[11px] uppercase tracking-label text-ink-faint">
+                      <h3 className="font-mono text-[11px] uppercase tracking-label text-ink-faint">
                         {t(ui.projects.stack, lang)}
-                      </h4>
+                      </h3>
                       <div className="mt-3 flex flex-wrap gap-2">
                         {work.method.map((m) => (
                           <span
@@ -175,9 +175,9 @@ export default function ProjectOverlay({
                     </div>
                     {work.awards && work.awards.length > 0 && (
                       <div>
-                        <h4 className="font-mono text-[11px] uppercase tracking-label text-ink-faint">
+                        <h3 className="font-mono text-[11px] uppercase tracking-label text-ink-faint">
                           {lang === "en" ? "Awards" : "受賞"}
-                        </h4>
+                        </h3>
                         <ul className="mt-3 space-y-1 font-serif text-[15px] italic text-clay">
                           {work.awards.map((a) => (
                             <li key={a.title}>{a.title}</li>
