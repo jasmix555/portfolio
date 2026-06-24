@@ -641,4 +641,8 @@ export const works: Work[] = [
     learnt:
       "チームメンバーと共にアプリを開発するためのコーディング環境を構築する方法を学びました。各エンジニアが独自のコーディングの好みを持っているため、他のメンバーとのコーディングスタイルを合わせることが挑戦でした。\n\nI learned how to set up a coding environment for developing an app together with team members. Since each engineer has their own coding preferences, matching coding styles with other members was a challenge.",
     regret:
-      "実際にはマップAPIを統合できず、リアルな店舗情報を取得して特定の店舗を検索できるようにすることができませんでした。また、必要なタグやカテゴリによって店舗をフィルタリングするためのフィルターボタンを作成できませんでした。\n\nWe weren't actually able to integrate a map API to fetch real store information and search for specific shops. We also couldn't create filter buttons to f
+      "実際にはマップAPIを統合できず、リアルな店舗情報を取得して特定の店舗を検索できるようにすることができませんでした。また、必要なタグやカテゴリによって店舗をフィルタリングするためのフィルターボタンを作成できませんでした。\n\nWe weren't actually able to integrate a map API to fetch real store information and search for specific shops. We also couldn't create filter buttons to filter shops by the necessary tags or categories.",
+    growth:
+      "GitHubを使用してチームメンバーと協力してコーディングする経験を積むことができました。これにより、整理されていないコーディングを避けるための新しいコーディングアプローチについて考えることができました。また、他のメンバーがコードに変更を加えた場合の管理方法も学びました。\n\nI gained experience collaborating and coding with team members using GitHub. This let me think about new coding approaches to avoid disorganized code, and I also learned how to manage changes other members made to the code.",
+  },
+];
