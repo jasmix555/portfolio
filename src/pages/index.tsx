@@ -8,7 +8,6 @@ import {
   EditorialNav,
   IntroLoader,
   Hero,
-  WorkScroll,
   Projects,
   Ideas,
   Profile,
@@ -107,7 +106,6 @@ export default function Portfolio() {
         transition={{ duration: 0.9, ease: "easeOut" }}
       >
         <Hero />
-        <WorkScroll />
         <Projects />
         <Ideas />
         <Profile />

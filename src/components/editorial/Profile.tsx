@@ -36,7 +36,7 @@ export default function Profile() {
     <section id="profile" className="px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto max-w-editorial">
         <div className="mb-3 flex items-center gap-3 font-mono text-[11px] uppercase tracking-label text-clay">
-          <span className="h-px w-8 bg-clay" /> 04 — {t(ui.profile.kicker, lang)}
+          <span className="h-px w-8 bg-clay" /> 03 — {t(ui.profile.kicker, lang)}
         </div>
 
         <div className="grid gap-12 md:grid-cols-[320px_1fr] md:gap-16">

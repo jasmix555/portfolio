@@ -5,10 +5,9 @@ import { useLang } from "./LanguageProvider";
 import { ui, t } from "./i18n";
 
 const links = [
-  { key: "work", id: "work", n: "01" },
-  { key: "projects", id: "projects", n: "02" },
-  { key: "ideas", id: "ideas", n: "03" },
-  { key: "profile", id: "profile", n: "04" },
+  { key: "projects", id: "projects", n: "01" },
+  { key: "ideas", id: "ideas", n: "02" },
+  { key: "profile", id: "profile", n: "03" },
 ] as const;
 
 function LangSwitch({ className = "" }: { className?: string }) {
