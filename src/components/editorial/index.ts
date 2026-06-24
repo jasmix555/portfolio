@@ -1,6 +1,4 @@
 export { default as CustomCursor } from "./CustomCursor";
-export { default as KineticText } from "./KineticText";
-export { default as Marquee } from "./Marquee";
 export { default as EditorialNav } from "./EditorialNav";
 export { default as IntroLoader } from "./IntroLoader";
 export { default as Hero } from "./Hero";

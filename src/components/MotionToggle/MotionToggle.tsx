@@ -6,7 +6,6 @@ import {
   useState,
   ReactNode,
 } from "react";
-import { FaPause, FaPlay } from "react-icons/fa6";
 
 type MotionState = { enabled: boolean; toggle: () => void };
 
@@ -40,22 +39,5 @@ export function MotionProvider({ children }: { children: ReactNode }) {
     <MotionContext.Provider value={{ enabled, toggle }}>
       {children}
     </MotionContext.Provider>
-  );
-}
-
-export default function MotionToggle() {
-  const { enabled, toggle } = useMotionEnabled();
-
-  return (
-    <button
-      onClick={toggle}
-      aria-pressed={!enabled}
-      aria-label={enabled ? "Pause animations" : "Resume animations"}
-      title={enabled ? "Pause animations" : "Resume animations"}
-      data-cursor
-      className="fixed bottom-5 right-5 z-[70] flex h-11 w-11 items-center justify-center rounded-full border border-ink/20 bg-paper/80 text-ink-soft backdrop-blur transition-colors hover:border-clay hover:text-clay"
-    >
-      {enabled ? <FaPause /> : <FaPlay />}
-    </button>
   );
 }

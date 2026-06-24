@@ -44,7 +44,7 @@ export default function Profile() {
             <div className="relative mx-auto aspect-[4/5] w-full max-w-[240px] overflow-hidden bg-paper-3 md:max-w-none">
               <Parallax speed={20} className="absolute inset-0 h-[112%]">
                 <RevealImage
-                  src="/profile/profile.png"
+                  src="/profile/profile.webp"
                   alt="Jason Ng"
                   className="h-full w-full"
                 />
