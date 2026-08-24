@@ -38,18 +38,19 @@ body::after {
 }
 
 /* layer 1 — 6px halftone screen, drifts down at 0.06× scroll */
-/* Halftone. It reads *over* the column rules, not under them: at 0.05 against
-   rules at 0.08 the ground was 60% brighter in lines than in dots, so the whole
-   field looked ruled and the screen was invisible. The dot also carries a
-   slightly wider solid core before it feathers — 1px of ink at this alpha
-   disappears into the ground on anything but a good display. */
+/* Halftone. A coarse screen, not a fine one: fewer dots, each with enough ink
+   to be seen. At a 6px pitch the field turned to texture and read as noise, so
+   the tile is 10px and the dot carries a wider solid core before it feathers —
+   about a third less ink overall, in marks you can actually resolve.
+   It also has to out-weigh the column rules, or the whole ground reads as
+   ruling and the screen disappears behind it. */
 body::before {
   inset: 0;
   background-image: radial-gradient(
-    rgba(242, 240, 235, 0.11) 1.1px,
-    transparent 1.5px
+    rgba(242, 240, 235, 0.11) 1.5px,
+    transparent 2px
   );
-  background-size: 6px 6px;
+  background-size: 10px 10px;
   background-position: 0 var(--dot-y, 0px);
 }
 
