@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
-  --paper: #ece5d6;
-  --ink: #1c1a16;
-  --clay: #b0432b;
+  color-scheme: dark;
+  --ground: #0b0b0b;
+  --bone: #f2f0eb;
+  --signal: #e5390a;
 }
 
 html {
@@ -14,127 +14,91 @@ html {
 }
 
 body {
-  background-color: var(--paper);
-  color: var(--ink);
-  font-family: "Inter", "Noto Sans JP", system-ui, sans-serif;
+  background-color: var(--ground);
+  color: var(--bone);
+  font-family: Archivo, "Zen Kaku Gothic New", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
 
-/* Persistent WebGL background canvas (z-index -2): painted above the body
-   paper fallback but behind the grain and all content. #__next is left as a
-   non-stacking-context so this negative layer resolves against the root. */
-.living-bg {
+/* — Identity layer — the scroll-driven field that replaces the WebGL wave.
+   Two of its three layers live here; ScrollField.tsx feeds them --dot-y and
+   --col-x and draws the third (the signal scan rule). Both offsets arrive
+   pre-wrapped to their tile, so background-position and transform are the only
+   things that ever change and the work stays on the compositor. With no JS —
+   or under reduced motion — both default to 0 and the ground is a static
+   print, which is a legitimate state of the design rather than a fallback. */
+body::before,
+body::after {
+  content: "";
   position: fixed;
-  inset: 0;
-  z-index: -2;
+  z-index: -1;
   pointer-events: none;
 }
 
-/* Paper grain — a faint fibrous texture over the WebGL field, still behind
-   content (z-index -1). */
+/* layer 1 — 6px halftone screen, drifts down at 0.06× scroll */
 body::before {
-  content: "";
-  position: fixed;
   inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0.35;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.22'/%3E%3C/svg%3E");
+  background-image: radial-gradient(
+    rgba(242, 240, 235, 0.05) 1px,
+    transparent 1.3px
+  );
+  background-size: 6px 6px;
+  background-position: 0 var(--dot-y, 0px);
+}
+
+/* layer 2 — 96px column rules, slide sideways at −0.12× so the page reads as
+   film moving behind a fixed frame. Overscanned by one tile each side. */
+body::after {
+  top: 0;
+  bottom: 0;
+  left: -96px;
+  right: -96px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(242, 240, 235, 0.08) 0 1px,
+    transparent 1px 96px
+  );
+  transform: translateX(var(--col-x, 0px));
 }
 
 ::selection {
-  background: rgba(176, 67, 43, 0.22);
-  color: var(--ink);
+  background: var(--signal);
+  color: var(--ground);
 }
 
-/* No focus box on mouse/touch interaction; keep a tasteful clay ring for
-   keyboard users only (accessibility). */
+/* Focus is never animated and never removed. 2px signal, offset 2px. */
 :focus:not(:focus-visible) {
   outline: none;
 }
 :focus-visible {
-  outline: 2px solid var(--clay);
-  outline-offset: 3px;
-  border-radius: 2px;
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
 }
 
-/* — Editorial scrollbar — */
+/* — Archive scrollbar: ground track, g3 thumb, no radius — */
 ::-webkit-scrollbar {
   width: 11px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--paper);
+  background: var(--ground);
 }
 ::-webkit-scrollbar-thumb {
-  background: #c9bfa9;
-  border: 3px solid var(--paper);
-  border-radius: 999px;
+  background: #2e2e2e;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #b3a88f;
+  background: #4a4a4a;
 }
 
-/* — Custom ink cursor (desktop pointer devices only) — */
-@media (hover: hover) and (pointer: fine) {
-  .has-ink-cursor,
-  .has-ink-cursor * {
-    cursor: none;
-  }
-}
-
-.ink-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  pointer-events: none;
-  border-radius: 999px;
-  mix-blend-mode: multiply;
-  will-change: transform;
-}
-
-/* Headline wrapping — balance line lengths and, in browsers that support it,
-   break Japanese at natural phrase (bunsetsu) boundaries instead of mid-word.
-   Unknown values fall back to normal wrapping. */
-.heading-wrap {
-  text-wrap: balance;
+/* Break Japanese at natural phrase boundaries where the browser supports it. */
+.jp-wrap {
   line-break: strict;
   word-break: auto-phrase;
 }
 
-/* Hairline rule used across editorial sections */
-.rule {
-  height: 1px;
-  width: 100%;
-  background: rgba(28, 26, 22, 0.16);
-}
-
-/* Infinite marquee band (translate the duplicated track by half its width) */
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-.marquee-paused:hover .animate-marquee {
-  animation-play-state: paused;
-}
-
-/* Vertical writing for JP index labels where used */
-.vertical-rl {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-}
-
-/* Respect reduced-motion / paused users: kill transforms + transitions. */
+/* Reduced motion is the same document with the wipes removed, not a degraded
+   one — every element still paints at its final state. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -146,22 +110,104 @@ body::before {
   }
 }
 
-/* Themed scrollbar for the legacy project modal (dark) */
-.modal-scroll {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(155, 141, 255, 0.5) transparent;
+/* — Reveals — clip-path wipes, never fades. The final state is the element's
+   own default and the "from" lives only inside the keyframe, so a wipe that
+   never runs leaves the content visible instead of clipped away. Stagger is
+   set per element with --delay. */
+@keyframes wipe-down {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
 }
-.modal-scroll::-webkit-scrollbar {
-  width: 8px;
+@keyframes wipe-right {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
 }
-.modal-scroll::-webkit-scrollbar-track {
-  background: transparent;
-  margin: 8px 0;
+.wipe-down {
+  animation: wipe-down 420ms cubic-bezier(0.2, 0, 0, 1) var(--delay, 0ms) both;
 }
-.modal-scroll::-webkit-scrollbar-thumb {
-  background: rgba(155, 141, 255, 0.45);
-  border-radius: 999px;
+.wipe-right {
+  animation: wipe-right 180ms cubic-bezier(0.2, 0, 0, 1) var(--delay, 0ms) both;
 }
-.modal-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(155, 141, 255, 0.75);
+
+/* — Modal — the page behind stops scrolling while a record is open. The panel
+   itself carries `data-lenis-prevent`, so a wheel inside it scrolls the panel
+   natively instead of being intercepted by Lenis and going nowhere. */
+html.modal-open,
+html.modal-open body {
+  overflow: hidden;
+}
+
+/* The scrim is the one thing on the site that fades — it is not content, it is
+   the absence of content, and a wipe would read as a shutter. */
+@keyframes scrim-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.scrim-in {
+  animation: scrim-in 420ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+/* Press-and-hold progress rule. Linear on purpose: it is a timer, and an eased
+   timer lies about how much of the hold is left. */
+@keyframes hold-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.hold-fill {
+  animation: hold-fill 600ms linear both;
+}
+
+/* Two containers take focus without being controls: the modal panel, so the
+   focus trap has an anchor, and a section after a nav jump, so the keyboard
+   carries on from where the page landed. Neither should draw a ring for it.
+   Every real control inside them still does. */
+[tabindex="-1"]:focus,
+[role="dialog"]:focus,
+[tabindex="-1"]:focus-visible,
+[role="dialog"]:focus-visible {
+  outline: none;
+}
+
+/* Anchor targets clear the fixed 56px bar. Without this, `#records` scrolls
+   its own `01 / RECORDS` label under the nav and the section looks decapitated. */
+:target,
+section[id],
+footer[id] {
+  scroll-margin-top: 72px;
+}
+
+/* No 300ms tap delay on anything that responds to a tap. */
+a,
+button,
+[role="button"] {
+  touch-action: manipulation;
+}
+
+/* — Wrapping, both scripts —
+   `keep-all` + `line-break: strict` make Japanese obey kinsoku: no line may
+   start with a small kana or a closing bracket, and a compound is not split
+   mid-word. `break-word` is the escape hatch for a token with no break
+   opportunity at all (a long URL), and `pretty` stops Latin headings leaving
+   a single word stranded on the last line. */
+html {
+  word-break: keep-all;
+  line-break: strict;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
 }

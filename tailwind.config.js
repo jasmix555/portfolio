@@ -3,6 +3,10 @@ module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
+    // `src/data` too: the stack chart picks its recency band in profile.ts, so
+    // those class names only exist in a data file. Left out of the scan they
+    // fail silently — the bars just don't paint.
+    "./src/data/**/*.{js,ts}",
   ],
   // hover: utilities only apply on devices that actually hover, so touch
   // screens never get stuck in a hover state on first tap.
@@ -10,53 +14,90 @@ module.exports = {
     hoverOnlyWhenSupported: true,
   },
   theme: {
+    // REC ARCHIVE is a print system: radius 0 everywhere, no shadows.
+    // Separation is hairlines, never softness. Overriding (not extending)
+    // makes `rounded-*` / `shadow-*` impossible to reach for by accident.
+    borderRadius: { none: "0", DEFAULT: "0", full: "0" },
+    boxShadow: { none: "none", DEFAULT: "none" },
     extend: {
       colors: {
-        // — Paper / editorial system (homepage) —
-        paper: "#ECE5D6", // warm beige base
-        "paper-2": "#E4DBC7", // deeper paper for alternating sections
-        "paper-3": "#F3EEE2", // lifted paper (cards / highlights)
-        ink: "#1C1A16", // near-black primary type
-        "ink-soft": "#5B544A", // muted body / meta
-        "ink-faint": "#5F5747", // captions / hairline labels (AA-contrast on paper + paper-2)
-        clay: "#B0432B", // desaturated vermilion / clay-red accent
-        "clay-deep": "#8E3520",
-        line: "rgba(28,26,22,0.16)", // hairlines
-
-        // — Legacy dark tokens (kept so /work page survives until restyled) —
-        bg: "#0a0b0f",
-        surface: "#13151c",
-        "surface-2": "#181b24",
-        accent: "#8b7bff",
-        "accent-2": "#34e0d0",
-        muted: "#bcc2cf",
-        faint: "#8d94a3",
+        // — Monochrome ramp. Contrast is measured against ground / bone. —
+        ground: "#0B0B0B", // page base (not pure black — hairlines + grain must stay visible)
+        g1: "#141414", // panel fill / expanded row
+        g2: "#1E1E1E", // row hover
+        g3: "#2E2E2E", // solid hairline
+        g4: "#4A4A4A", // disabled type
+        g5: "#6E6E6E", // UI borders (3.86:1 — passes 3:1)
+        g6: "#9A9A9A", // labels / meta on ground (6.99:1)
+        g7: "#C7C4BD", // body copy (11.3:1)
+        bone: "#F2F0EB", // primary type (17.3:1)
+        rule: "rgba(242,240,235,0.18)", // default 1px hairline
+        // — The one signal. 4.6:1 on ground. No second hue anywhere, ever. —
+        signal: "#E5390A", // OXIDE
       },
       fontFamily: {
-        // Editorial high-contrast serif for display
-        serif: ["Fraunces", "'Noto Serif JP'", "Georgia", "serif"],
-        // Clean sans for body (JP falls through to Noto Sans JP)
-        sans: ["Inter", "'Noto Sans JP'", "system-ui", "sans-serif"],
-        // Monospace for index numbers / meta labels
-        mono: ["'Space Mono'", "ui-monospace", "monospace"],
-        // legacy alias
-        display: ["Fraunces", "'Noto Serif JP'", "serif"],
+        sans: ["Archivo", "'Zen Kaku Gothic New'", "system-ui", "sans-serif"],
+        // Plex Mono carries no CJK — Zen Kaku picks up the JP inside labels.
+        mono: [
+          "'IBM Plex Mono'",
+          "'Zen Kaku Gothic New'",
+          "ui-monospace",
+          "monospace",
+        ],
+        jp: ["'Zen Kaku Gothic New'", "system-ui", "sans-serif"],
+        mincho: ["'Zen Old Mincho'", "Georgia", "serif"],
       },
-      maxWidth: {
-        site: "1120px",
-        editorial: "1320px",
+      // Nothing exists between 15 and 34px. The scale gap is the design.
+      fontSize: {
+        "display-xl": [
+          "280px",
+          { lineHeight: "0.82", letterSpacing: "-0.05em", fontWeight: "800" },
+        ],
+        "display-l": [
+          "160px",
+          { lineHeight: "0.86", letterSpacing: "-0.04em", fontWeight: "800" },
+        ],
+        head: [
+          "96px",
+          { lineHeight: "0.86", letterSpacing: "-0.045em", fontWeight: "800" },
+        ],
+        sub: [
+          "56px",
+          { lineHeight: "0.98", letterSpacing: "-0.03em", fontWeight: "700" },
+        ],
+        title: [
+          "34px",
+          { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" },
+        ],
+        "jp-accent": ["34px", { lineHeight: "1.3" }],
+        body: ["15px", { lineHeight: "1.7" }],
+        // +0.2 line-height over EN so both lock to the same 8px grid.
+        "body-jp": ["15px", { lineHeight: "1.9", letterSpacing: "0.01em" }],
+        data: ["13px", { lineHeight: "1.5", letterSpacing: "0.12em" }],
+        // 12px floor: 11px mono at 0.22em tracking is legible on a design board and
+        // not on a laptop at arm’s length. Nothing on the site prints smaller.
+        label: ["12px", { lineHeight: "1.55", letterSpacing: "0.2em" }],
       },
       letterSpacing: {
         label: "0.22em",
+        data: "0.12em",
+        btn: "0.16em",
+        meta: "0.14em",
       },
-      keyframes: {
-        "fade-up": {
-          "0%": { opacity: "0", transform: "translateY(26px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
+      maxWidth: {
+        content: "1248px", // 1440 − 2 × 96 margin
+        prose: "62ch", // body copy never runs longer
       },
-      animation: {
-        "fade-up": "fade-up .7s cubic-bezier(.2,.7,.2,1) both",
+      // 3 curves, 4 durations. No springs, no bounce — mechanical, not bouncy.
+      transitionTimingFunction: {
+        snap: "cubic-bezier(.2,0,0,1)", // block wipes, reveals
+        drive: "cubic-bezier(.65,0,.35,1)", // position, scrub, nav
+        cut: "steps(6,end)", // counters, mono glyph swaps
+      },
+      transitionDuration: {
+        flick: "80ms", // hover, focus
+        quick: "180ms", // wipes, toggles
+        move: "420ms", // record expand
       },
     },
   },
