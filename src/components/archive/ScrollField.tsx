@@ -29,8 +29,13 @@ export default function ScrollField() {
       raf = 0;
       const y = window.scrollY;
       // Halftone drifts down at 0.06×, column rules slide at −0.12×.
-      root.style.setProperty("--dot-y", `${((y * 0.06) % 6).toFixed(2)}px`);
-      root.style.setProperty("--col-x", `${((y * -0.12) % 96).toFixed(2)}px`);
+      //
+      // Deliberately not wrapped to the tile size. Both patterns repeat on
+      // their own, so a modulo bought nothing but a copy of the halftone pitch
+      // and the rule pitch living over here in JS — where they silently go
+      // wrong the moment the CSS that owns them changes.
+      root.style.setProperty("--dot-y", `${(y * 0.06).toFixed(2)}px`);
+      root.style.setProperty("--col-x", `${(y * -0.12).toFixed(2)}px`);
     };
 
     const onScroll = () => {
