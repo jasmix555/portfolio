@@ -38,11 +38,16 @@ body::after {
 }
 
 /* layer 1 — 6px halftone screen, drifts down at 0.06× scroll */
+/* Halftone. It reads *over* the column rules, not under them: at 0.05 against
+   rules at 0.08 the ground was 60% brighter in lines than in dots, so the whole
+   field looked ruled and the screen was invisible. The dot also carries a
+   slightly wider solid core before it feathers — 1px of ink at this alpha
+   disappears into the ground on anything but a good display. */
 body::before {
   inset: 0;
   background-image: radial-gradient(
-    rgba(242, 240, 235, 0.05) 1px,
-    transparent 1.3px
+    rgba(242, 240, 235, 0.11) 1.1px,
+    transparent 1.5px
   );
   background-size: 6px 6px;
   background-position: 0 var(--dot-y, 0px);
