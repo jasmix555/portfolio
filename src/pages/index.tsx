@@ -2,12 +2,12 @@ import Head from "next/head";
 import {
   ArchiveNav,
   Contact,
+  DotField,
   Hero,
   Ideas,
   Modal,
   Profile,
   Records,
-  ScrollField,
   useArchiveRoute,
   useLang,
 } from "@/components/archive";
@@ -96,7 +96,7 @@ export default function Portfolio() {
         />
       </Head>
 
-      <ScrollField />
+      <DotField />
       <ArchiveNav />
 
       <main id="main">
