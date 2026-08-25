@@ -22,6 +22,33 @@ export type Work = {
 
 export const works: Work[] = [
   {
+    title: "React Guide",
+    group: "project",
+    page: ["Web Application Link", "GitHub Link"],
+    link: [
+      "https://react-guide-mu.vercel.app/",
+      "https://github.com/jasmix555/react_guide",
+    ],
+    summary:
+      "公式ドキュメントで迷った人のための React 実践ガイド。「どう書くか」の前に「どれを選ぶか」を決められるように、社内標準に沿って自分でコンポーネントを書けるようになるまでを案内する、EN / 日本語 併記の学習サイト。\n\nA practical React guide for people who got lost in the official docs. It settles “which one do I pick” before “how do I write it”, walking an LP coder through writing components themselves — in line with our house standards — rather than leaning on AI. Bilingual English and Japanese.",
+    // No capture filed yet — the index prints a NO CAP placeholder in its place.
+    thumbnail: "",
+    method: ["React", "Next.js", "Tailwind", "TypeScript"],
+    category: ["Frontend", "Documentation", "Solo Project"],
+    role: ["メインエンジニア", "メインデザイナー"],
+    dateCreated: "2026 ~ 現在",
+    status: "Live",
+    totalTime: "~8–16 Hours",
+    awards: [],
+    learnt:
+      "公式ドキュメントは、読み始めた瞬間にReactの世界へ放り込まれる。だから多くの人が迷子になる。このガイドは「どう書くか」より先に「なぜそれを選ぶのか」を置き、自分が理解している順序と、自分が良いと思う組み立て方をそのまま書き出したもの。周りの同僚からは「こちらの方が分かりやすい」「目指す形が見えて、そこまで連れて行ってもらえる」と言われた。人に伝わる形にするには、自分の理解を一度ちゃんと言葉にする必要があるのだと分かった。\n\nThe official docs drop you into the React world the moment you start reading, which is why so many people get lost. This guide puts “why you would pick this” before “how you write it”, laid out in the order I actually understand it and the way I think it should be built. Coworkers around me said this version is easier to follow — that they can finally see the goal and be walked to it. Making it land for someone else meant putting my own mental model into words first.",
+    regret:
+      "結局これは自分が知っている範囲のガイドであって、経験を積んだシニアエンジニアが書いたものではない。抜けている情報もあるはずで、その点は正直に認めておきたい。それでも、始めるための入り口としては十分に使えるものになったと思っている。\n\nIt is a guide built from what I know, not one written by a senior engineer with years behind them — there will be gaps in it, and I would rather say so than pretend otherwise. Even with that, I think it holds up as a starting point worth handing someone.",
+    growth:
+      "自分の理解を人に渡せる形に変換する作業そのものが学びだった。曖昧なまま使っていた部分は、説明しようとした瞬間に書けなくなる。書けたところが本当に分かっているところだった。\n\nTurning my own understanding into something I could hand over was the lesson itself. Anything I was using without really understanding stopped dead the moment I tried to explain it — the parts I could write were the parts I actually knew.",
+  },
+
+  {
     title: "Pokédex",
     group: "project",
     page: ["Web Application Link", "GitHub Link"],

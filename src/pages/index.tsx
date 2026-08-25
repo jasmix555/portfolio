@@ -1,68 +1,70 @@
-import { useEffect, useState } from "react";
 import Head from "next/head";
-import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
-import { useLenis } from "@studio-freight/react-lenis";
 import {
-  CustomCursor,
-  EditorialNav,
-  IntroLoader,
+  ArchiveNav,
+  Contact,
   Hero,
-  Projects,
   Ideas,
+  Modal,
   Profile,
-  EditorialFooter,
-} from "@/components/editorial";
+  Records,
+  ScrollField,
+  useArchiveRoute,
+  useLang,
+} from "@/components/archive";
 
 // Update this if you move to a custom domain — used for canonical + OG URLs.
 const SITE = "https://portfolio-v2-one-ecru.vercel.app";
 
-const LivingBackground = dynamic(
-  () => import("@/components/editorial/LivingBackground"),
-  { ssr: false }
-);
+const OG_LOCALE = { en: "en_US", jp: "ja_JP" } as const;
 
+/**
+ * The whole archive is one page. `/records/[slug]`, `/ideas/[slug]` and
+ * `/timeline/[year]` render this same component with a modal open over it, so
+ * a shared link server-renders the index behind the record rather than a
+ * detached detail page.
+ */
 export default function Portfolio() {
-  const [introDone, setIntroDone] = useState(false);
-  const lenis = useLenis();
-
-  // Lock scrolling (Lenis + native) until the intro finishes.
-  useEffect(() => {
-    if (introDone) return;
-    document.documentElement.style.overflow = "hidden";
-    lenis?.stop();
-    return () => {
-      document.documentElement.style.overflow = "";
-      lenis?.start();
-    };
-  }, [introDone, lenis]);
+  const { target, query, open, step, close, patchQuery } = useArchiveRoute();
+  const { lang } = useLang();
 
   return (
     <>
       <Head>
-        <title>Jason Ng — Front-end Engineer</title>
+        <title>Jason Ng — REC ARCHIVE</title>
         <meta
           name="description"
-          content="Jason Ng — front-end / full-stack-leaning engineer based in Osaka, Japan. Editorial, motion-driven web interfaces. Open to new opportunities."
+          content="Jason Ng — front-end / full-stack-leaning engineer based in Osaka, Japan. An engineering record archive: every project filed with its stack, its hours, and its postmortem."
         />
-        <meta name="theme-color" content="#ECE5D6" />
+        <meta name="theme-color" content="#0B0B0B" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href={`${SITE}/`} />
+        {/* Canonical follows the locale. hreflang only counts when each version
+            is canonical to itself — point them all at `/` and the alternates
+            below are declared and then ignored. */}
+        <link rel="canonical" href={`${SITE}/?lang=${lang}`} />
+        {/* `ja`, not `jp`: `jp` is the country code. `jp` is only ever this
+            codebase’s internal shorthand for the locale. */}
+        <link rel="alternate" hrefLang="en" href={`${SITE}/?lang=en`} />
+        <link rel="alternate" hrefLang="ja" href={`${SITE}/?lang=jp`} />
+        {/* Unparameterised: the version that picks itself from the visitor. */}
+        <link rel="alternate" hrefLang="x-default" href={`${SITE}/`} />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Jason Ng" />
-        <meta property="og:url" content={`${SITE}/`} />
-        <meta property="og:title" content="Jason Ng — Front-end Engineer" />
+        <meta property="og:url" content={`${SITE}/?lang=${lang}`} />
+        <meta property="og:title" content="Jason Ng — REC ARCHIVE" />
         <meta
           property="og:description"
-          content="Front-end / full-stack-leaning engineer in Osaka, Japan. Editorial, motion-driven web interfaces."
+          content="Front-end / full-stack-leaning engineer in Osaka, Japan. Every record ships its postmortem."
         />
         <meta property="og:image" content={`${SITE}/og.png`} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:locale:alternate" content="ja_JP" />
+        <meta property="og:locale" content={OG_LOCALE[lang]} />
+        <meta
+          property="og:locale:alternate"
+          content={OG_LOCALE[lang === "en" ? "jp" : "en"]}
+        />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Jason Ng — Front-end Engineer" />
+        <meta name="twitter:title" content="Jason Ng — REC ARCHIVE" />
         <meta
           name="twitter:description"
           content="Front-end / full-stack-leaning engineer in Osaka, Japan."
@@ -94,23 +96,26 @@ export default function Portfolio() {
         />
       </Head>
 
-      <LivingBackground />
-      <IntroLoader onDone={() => setIntroDone(true)} />
-      <CustomCursor />
-      <EditorialNav />
+      <ScrollField />
+      <ArchiveNav />
 
-      <motion.main
-        className="relative"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: introDone ? 1 : 0 }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
-      >
+      <main id="main">
         <Hero />
-        <Projects />
-        <Ideas />
-        <Profile />
-        <EditorialFooter />
-      </motion.main>
+        <Records onOpen={open} query={query} onQuery={patchQuery} />
+        <Ideas onOpen={open} />
+        <Profile onOpen={open} />
+      </main>
+
+      <Contact />
+
+      {target && (
+        <Modal
+          target={target}
+          onClose={close}
+          onStep={step}
+          onOpen={open}
+        />
+      )}
     </>
   );
 }
