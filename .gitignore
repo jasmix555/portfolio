@@ -34,3 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# design handoff bundles and Claude Code prompts — local only, never pushed
+/docs/design_handoff_rec_archive/
