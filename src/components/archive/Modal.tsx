@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Head from "next/head";
 import { bySlug, ideas, records } from "@/data/records";
 import { byPhase, phases } from "@/data/profile";
@@ -11,6 +11,9 @@ import YearBody from "./YearBody";
 
 const FOCUSABLE =
   'a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])';
+
+/** Matches the `.wipe-close` / `.scrim-close` keyframes in globals.css. */
+const EXIT_MS = 420;
 
 /**
  * — One modal, three kinds —
@@ -39,13 +42,54 @@ export default function Modal({
   const { lang } = useLang();
   const panel = useRef<HTMLDivElement>(null);
 
+  /**
+   * The panel leaves the way it arrived, which means it has to outlive the
+   * decision to close it. Every close affordance — ESC, the backdrop, CLOSE ✕
+   * — sets this instead of calling `onClose`, so the component stays mounted
+   * for the length of the wipe and only then tells the route to drop it.
+   *
+   * The one close this cannot animate is the browser's own back button: that
+   * unmounts through `popstate` before this component hears about it. Fair
+   * enough — a browser navigation is not the panel's move to make.
+   */
+  const [closing, setClosing] = useState(false);
+  // Also a ref, because the key handler must not re-register when it flips —
+  // that effect returns focus to the row on cleanup, so re-running it mid-exit
+  // would pull focus out of the panel before the wipe has finished.
+  const closingRef = useRef(false);
+  const requestClose = useCallback(() => {
+    closingRef.current = true;
+    setClosing(true);
+  }, []);
+
+  useEffect(() => {
+    if (!closing) return;
+    // Motion off means the wipe is 0.001ms, so waiting 420ms would just be a
+    // frozen panel. Leave immediately instead.
+    if (!enabled) {
+      onClose();
+      return;
+    }
+    const id = setTimeout(onClose, EXIT_MS);
+    return () => clearTimeout(id);
+  }, [closing, enabled, onClose]);
+
   // Siblings for `← →`. Each kind steps within its own run, never across.
-  const ids =
-    target.kind === "record"
-      ? records.map((r) => r.slug)
-      : target.kind === "concept"
-        ? ideas.map((r) => r.slug)
-        : phases.map((p) => p.id);
+  //
+  // Memoised because `step` closes over it and the focus effect depends on
+  // `step`: a fresh array every render makes that effect re-run on every
+  // render, and its cleanup hands focus back to the row. Any render while the
+  // panel is open — a locale toggle, the close flag — would bounce focus out
+  // of the panel and back in.
+  const ids = useMemo(
+    () =>
+      target.kind === "record"
+        ? records.map((r) => r.slug)
+        : target.kind === "concept"
+          ? ideas.map((r) => r.slug)
+          : phases.map((p) => p.id),
+    [target.kind]
+  );
   const index = ids.indexOf(target.id);
 
   const step = useCallback(
@@ -59,9 +103,22 @@ export default function Modal({
 
   // Page scroll is locked while the panel is open; the panel itself carries
   // `data-lenis-prevent` so a wheel inside it scrolls the panel, not the page.
+  //
+  // Locking collapses the document to viewport height, and everything that
+  // remembers where the page was reads 0 off that collapsed document: the
+  // browser saves 0 as the history entry's scroll position, and Lenis syncs
+  // its own position to 0 on the scroll event the collapse fires. Closing then
+  // hands scroll back at the top of the archive instead of at the row you
+  // opened. So the position is taken before the lock and put back after it;
+  // Lenis re-syncs from the native scroll event that restore fires.
   useEffect(() => {
-    document.documentElement.classList.add("modal-open");
-    return () => document.documentElement.classList.remove("modal-open");
+    const y = window.scrollY;
+    const root = document.documentElement;
+    root.classList.add("modal-open");
+    return () => {
+      root.classList.remove("modal-open");
+      window.scrollTo(0, y);
+    };
   }, []);
 
   useEffect(() => {
@@ -69,12 +126,18 @@ export default function Modal({
     if (!el) return;
     // Whatever opened the modal gets focus back when it closes — the row.
     const opener = document.activeElement as HTMLElement | null;
-    el.focus();
+    // `preventScroll` on both: the panel is fixed and the row is restored to
+    // its own scroll position on close, so neither focus call has any business
+    // moving the page under it.
+    el.focus({ preventScroll: true });
 
     const onKey = (e: KeyboardEvent) => {
+      // On its way out the panel answers to nothing: stepping to another
+      // record while it wipes away would swap the content mid-exit.
+      if (closingRef.current) return;
       if (e.key === "Escape") {
         e.preventDefault();
-        onClose();
+        requestClose();
         return;
       }
       if (e.key === "ArrowLeft") return step(-1);
@@ -100,9 +163,9 @@ export default function Modal({
     document.addEventListener("keydown", onKey);
     return () => {
       document.removeEventListener("keydown", onKey);
-      opener?.focus?.();
+      opener?.focus?.({ preventScroll: true });
     };
-  }, [onClose, step]);
+  }, [requestClose, step]);
 
   const record =
     target.kind === "year" ? undefined : bySlug(target.id);
@@ -142,9 +205,14 @@ export default function Modal({
       // that used to sit here was a `<button>` with `aria-hidden` — a control
       // that is not a control — where ESC and CLOSE ✕ are the real affordances.
       onClick={(e) => {
-        if (e.target === e.currentTarget) onClose();
+        if (e.target === e.currentTarget) requestClose();
       }}
-      className="fixed inset-0 z-[100] flex items-start justify-center overflow-hidden p-5 pt-10 lg:p-10"
+      // Once it is leaving it stops taking clicks: the panel is still on
+      // screen for another 420ms, and a row underneath it must not be
+      // reachable through a panel that is on its way out.
+      className={`fixed inset-0 z-[100] flex items-start justify-center overflow-hidden p-5 pt-10 lg:p-10 ${
+        closing ? "pointer-events-none" : ""
+      }`}
       role="presentation"
     >
       <Head>
@@ -155,7 +223,7 @@ export default function Modal({
       <div
         aria-hidden
         className={`pointer-events-none absolute inset-0 bg-[rgba(11,11,11,0.82)] bg-[radial-gradient(rgba(11,11,11,0.6)_1px,transparent_1.4px)] bg-[length:6px_6px] ${
-          enabled ? "scrim-in" : ""
+          enabled ? (closing ? "scrim-close" : "scrim-in") : ""
         }`}
       />
 
@@ -167,7 +235,7 @@ export default function Modal({
         tabIndex={-1}
         data-lenis-prevent
         className={`relative flex max-h-[calc(100vh-80px)] w-full max-w-[1288px] flex-col border border-bone bg-ground px-5 pb-10 pt-6 outline-none lg:px-16 lg:pb-14 lg:pt-9 ${
-          enabled ? "wipe-down" : ""
+          enabled ? (closing ? "wipe-close" : "wipe-down") : ""
         }`}
       >
         {/* Modal bar — fixed while the record body scrolls under it. */}
@@ -184,7 +252,7 @@ export default function Modal({
             </span>
             <button
               type="button"
-              onClick={onClose}
+              onClick={requestClose}
               className="bg-bone px-2.5 py-1 font-semibold tracking-btn text-ground transition-colors duration-flick ease-snap hover:bg-signal"
             >
               {t(ui.modal.close, lang)}
