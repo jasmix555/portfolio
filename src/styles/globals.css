@@ -7,6 +7,9 @@
   --ground: #0b0b0b;
   --bone: #f2f0eb;
   --signal: #e5390a;
+  /* The one reveal curve. Named here so the token classes below and the
+     assembly cannot drift apart. */
+  --snap: cubic-bezier(0.2, 0, 0, 1);
 }
 
 html {
@@ -22,51 +25,29 @@ body {
   overflow-x: hidden;
 }
 
-/* — Identity layer — the scroll-driven field that replaces the WebGL wave.
-   Two of its three layers live here; ScrollField.tsx feeds them --dot-y and
-   --col-x and draws the third (the signal scan rule). Both offsets arrive
-   pre-wrapped to their tile, so background-position and transform are the only
-   things that ever change and the work stays on the compositor. With no JS —
-   or under reduced motion — both default to 0 and the ground is a static
-   print, which is a legitimate state of the design rather than a fallback. */
-body::before,
-body::after {
+/* — Identity layer — the ground behind the archive.
+   The dots are a canvas (DotField.tsx). All that lives here is the static
+   halftone print, and it only ever shows when the canvas is not mounted: with
+   no JS, or under reduced motion. That print is a legitimate state of the
+   design rather than a fallback — the same ground, not reading.
+
+   The 96px column rules that used to slide across this layer are gone. */
+body::before {
   content: "";
   position: fixed;
   z-index: -1;
   pointer-events: none;
-}
-
-/* layer 1 — 6px halftone screen, drifts down at 0.06× scroll */
-/* Halftone. A coarse screen, not a fine one: fewer dots, each with enough ink
-   to be seen. At a 6px pitch the field turned to texture and read as noise, so
-   the tile is 10px and the dot carries a wider solid core before it feathers —
-   about a third less ink overall, in marks you can actually resolve.
-   It also has to out-weigh the column rules, or the whole ground reads as
-   ruling and the screen disappears behind it. */
-body::before {
   inset: 0;
+  /* Same 18px pitch and same 4.4px dot as the canvas lattice, so the moving
+     ground and the still one are the same grain. The canvas paints its own
+     opaque ground fill over this when it mounts, which is what hides it —
+     same negative z-index, later in tree order. Nothing has to co-ordinate
+     and there is no class to keep in sync. */
   background-image: radial-gradient(
-    rgba(242, 240, 235, 0.11) 1.5px,
-    transparent 2px
+    rgba(242, 240, 235, 0.026) 2.2px,
+    transparent 2.8px
   );
-  background-size: 10px 10px;
-  background-position: 0 var(--dot-y, 0px);
-}
-
-/* layer 2 — 96px column rules, slide sideways at −0.12× so the page reads as
-   film moving behind a fixed frame. Overscanned by one tile each side. */
-body::after {
-  top: 0;
-  bottom: 0;
-  left: -96px;
-  right: -96px;
-  background-image: repeating-linear-gradient(
-    90deg,
-    rgba(242, 240, 235, 0.08) 0 1px,
-    transparent 1px 96px
-  );
-  transform: translateX(var(--col-x, 0px));
+  background-size: 18px 18px;
 }
 
 ::selection {
@@ -143,6 +124,143 @@ body::after {
   animation: wipe-right 180ms cubic-bezier(0.2, 0, 0, 1) var(--delay, 0ms) both;
 }
 
+/* — Scroll reveal — seven tokens, and the only three moves they make —
+
+   Everything on the page reveals. What stops that feeling like a page you are
+   waiting on is that duration is proportional to ink: display type is the
+   slowest thing here and body copy the fastest, fired 140px before it can be
+   read. One reveal per thought — a paragraph clips as one block, the ledger as
+   one strip, never line by line or cell by cell.
+
+   Direction carries meaning: horizontal along rows, vertical down through
+   blocks and display type. */
+@keyframes rv-down {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+@keyframes rv-right {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+@keyframes rv-scale {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Biggest ink, longest travel. */
+.rv-display {
+  animation: rv-down 620ms var(--snap) var(--delay, 0ms) both;
+}
+/* The 3px rule draws first, always; its head follows 80ms behind. */
+.rv-rule {
+  transform-origin: left center;
+  animation: rv-scale 620ms var(--snap) var(--delay, 0ms) both;
+}
+.rv-head {
+  animation: rv-down 620ms var(--snap) calc(80ms + var(--delay, 0ms)) both;
+}
+/* A register is one object. Cell by cell would make it a list of numbers. */
+.rv-strip {
+  animation: rv-down 560ms var(--snap) var(--delay, 0ms) both;
+}
+/* The one earned stagger on the site. */
+.rv-row {
+  animation: rv-right 260ms var(--snap) var(--delay, 0ms) both;
+}
+/* The number beside a bar is printed from frame 0 — only the bar moves, so
+   the value is never information living inside an animation. */
+.rv-bar {
+  transform-origin: left center;
+  animation: rv-scale 520ms var(--snap) var(--delay, 0ms) both;
+}
+/* Fastest token on the page, and it trails its own heading. */
+.rv-text {
+  animation: rv-down 280ms var(--snap) calc(160ms + var(--delay, 0ms)) both;
+}
+
+/* Waiting its turn. A scroll reveal on something already on the page is not a
+   reveal, so anything the driver is holding starts here and swaps to its token
+   class when its turn comes.
+
+   The guard is the whole point of writing it this way. `scripting: enabled` is
+   false without JS, and `no-preference` is false for a reader who asked for
+   less motion — in either case these rules never apply and the content is
+   simply on the page, because a reveal that cannot run must not be able to
+   hide anything. A browser too old for the `scripting` feature also falls
+   through to visible. No class to set, no script to run before paint, and
+   nothing to go wrong between the server's HTML and the first frame. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .reveal-down {
+    clip-path: inset(0 0 100% 0);
+  }
+  .reveal-right {
+    clip-path: inset(0 100% 0 0);
+  }
+  .reveal-scale {
+    transform: scaleX(0);
+  }
+}
+.reveal-scale {
+  transform-origin: left center;
+}
+
+/* — First open — assembly —
+
+   No slate, no logo, no spinner, and no overlay element of any kind: the
+   layers already on the page arrive in order. A stalled frame loop, a failed
+   bundle or a crawler gets a finished page, because every element's final
+   state is its own default and the whole sequence is CSS.
+
+   940ms end to end. The classes are printed by the server on the index only —
+   `useArchiveRoute` knows from the path whether a modal is named, and someone
+   who followed a link to a record asked for that record, not for the intro —
+   and the media query is what excludes a reader who wants less motion. No JS
+   decides anything, so nothing can paint the page and then take it away. */
+@keyframes pl-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  /* 0—640ms: the ground comes up under everything else. */
+  .load-ground {
+    animation: pl-fade 560ms var(--snap) 80ms both;
+  }
+  /* 180—600ms: the header hairline draws from the left. */
+  .load-rule {
+    transform-origin: left center;
+    animation: rv-scale 420ms var(--snap) 180ms both;
+  }
+  /* 300—940ms: nav, meta + headline, ledger, spine — 60ms steps. */
+  .load-1 {
+    animation: rv-down 420ms var(--snap) 300ms both;
+  }
+  .load-2 {
+    animation: rv-down 420ms var(--snap) 360ms both;
+  }
+  .load-3 {
+    animation: rv-down 420ms var(--snap) 460ms both;
+  }
+  .load-4 {
+    animation: rv-down 420ms var(--snap) 520ms both;
+  }
+}
+
 /* — Modal — the page behind stops scrolling while a record is open. The panel
    itself carries `data-lenis-prevent`, so a wheel inside it scrolls the panel
    natively instead of being intercepted by Lenis and going nowhere. */
@@ -163,6 +281,36 @@ html.modal-open body {
 }
 .scrim-in {
   animation: scrim-in 420ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+/* — Closing the panel — the open run backwards, not a different move. The
+   panel retracts to the top edge it came out of and the scrim goes with it.
+   `both` holds the end state, so the last frame is an empty overlay rather
+   than a flash of the panel at full size before React unmounts it.
+
+   Under reduced motion the global rule above collapses these to 0.001ms and
+   the JS drops the wait to match, so the close stays instant. */
+@keyframes wipe-close {
+  from {
+    clip-path: inset(0);
+  }
+  to {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+.wipe-close {
+  animation: wipe-close 420ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+@keyframes scrim-close {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.scrim-close {
+  animation: scrim-close 420ms cubic-bezier(0.2, 0, 0, 1) both;
 }
 
 /* Press-and-hold progress rule. Linear on purpose: it is a timer, and an eased
