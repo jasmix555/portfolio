@@ -5,7 +5,7 @@ export { default as Ideas } from "./Ideas";
 export { default as Profile } from "./Profile";
 export { default as Contact } from "./Contact";
 export { default as Modal } from "./Modal";
-export { default as ScrollField } from "./ScrollField";
+export { default as DotField } from "./DotField";
 export { default as Stamp } from "./Stamp";
 export { default as GlyphResolve } from "./GlyphResolve";
 export { LanguageProvider, useLang } from "./LanguageProvider";
