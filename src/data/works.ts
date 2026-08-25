@@ -31,8 +31,7 @@ export const works: Work[] = [
     ],
     summary:
       "公式ドキュメントで迷った人のための React 実践ガイド。「どう書くか」の前に「どれを選ぶか」を決められるように、社内標準に沿って自分でコンポーネントを書けるようになるまでを案内する、EN / 日本語 併記の学習サイト。\n\nA practical React guide for people who got lost in the official docs. It settles “which one do I pick” before “how do I write it”, walking an LP coder through writing components themselves — in line with our house standards — rather than leaning on AI. Bilingual English and Japanese.",
-    // No capture filed yet — the index prints a NO CAP placeholder in its place.
-    thumbnail: "",
+    thumbnail: "/works/react-guide.webp",
     method: ["React", "Next.js", "Tailwind", "TypeScript"],
     category: ["Frontend", "Documentation", "Solo Project"],
     role: ["メインエンジニア", "メインデザイナー"],
@@ -71,6 +70,33 @@ export const works: Work[] = [
       "データ取得や状態管理の最適化(キャッシュやローディング処理など)をもっと深く扱えたと思います。また、ページネーションや詳細表示など、図鑑としての機能をさらに充実させる余地がありました。\n\nI think I could have gone deeper into optimizing data fetching and state management (caching, loading states, etc.). There was also room to enrich the Pokédex's features further, such as pagination and detail views.",
     growth:
       "外部APIからのデータ取得、検索・フィルタリングといった実用的な機能を一通り実装できたことで、フロントエンドでのデータの扱い方に自信が持てるようになりました。\n\nBy implementing practical features such as fetching data from an external API and search/filtering, I gained confidence in handling data on the front end.",
+  },
+
+  {
+    title: "Sakaemachi Gallery",
+    group: "work",
+    page: ["GitHub Link"],
+    // No deployment filed — the record prints CODE only, and the index prints
+    // a NO CAP placeholder where the capture would go.
+    link: ["", "https://github.com/jasmix555/sakaemachi_gallery"],
+    summary:
+      "「ECサイトって作れる？」と聞かれて、そのまま形にしたストアフロント。神戸・栄町の食料品店をサンプルに、商品一覧とカテゴリ絞り込み、カート、クーポン対応の購入フロー、特定商取引法・返品・FAQ の各ページ、ニュースと店舗情報までを一通り実装しました。ECサイトに何が要って、買い物がどういう流れで終わるのか——その理解だけを頼りに 4〜6 時間で組み上げています。表示する内容はすべて src/data/ にまとめてあるので、別の店舗にも差し替えて使えます。\n\nA storefront built straight off the question “can you make an EC site?”. Using a Kobe food shop as the sample content, it covers the product list and category filtering, the cart, a checkout flow with coupon support, the Japanese commercial-law, returns and FAQ pages, and the news and store-info sections. Four to six hours, built from nothing but my own understanding of what an EC site needs and how a purchase actually ends. Everything it displays lives in src/data/, so the same build can be pointed at another shop.",
+    thumbnail: "",
+    method: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "SCSS Modules",
+      "React Router",
+      "Framer Motion",
+    ],
+    category: ["Frontend", "E-Commerce", "Solo Project"],
+    role: ["メインエンジニア", "メインデザイナー"],
+    dateCreated: "2026/07 ~ 2026/08",
+    totalTime: "~4–6 Hours",
+    awards: [],
+    // learnt / regret / growth are Jason's own — left empty on purpose, so the
+    // record prints "Not written yet." rather than something he did not say.
   },
 
   {
