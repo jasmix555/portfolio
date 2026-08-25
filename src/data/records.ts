@@ -97,6 +97,29 @@ export const records: RecordRow[] = [
   },
   {
     rec: "02",
+    slug: "sakaemachi-gallery",
+    // Named for what it is once deployed, not for the repository it lives in:
+    // the storefront calls itself 栄町食品店 / SAKAEMACHI GROCERY, and that is
+    // what the LIVE link opens. The slug still follows the repo.
+    title: { en: "Sakaemachi Grocery", jp: "栄町食品店" },
+    subtitle: {
+      en: "EC STOREFRONT, ASKED FOR · SOLO BUILD",
+      jp: "依頼されたECストアフロント・単独制作",
+    },
+    stack: "REACT · TS · VITE · SCSS",
+    period: "2026/07—08 — LIVE",
+    year: 2026,
+    // Stated as four to six hours rather than clocked, so it counts at the
+    // midpoint and keeps the ledger total honest as a floor.
+    hours: "4—6",
+    hoursValue: 5,
+    unmeasured: true,
+    role: { en: "SOLO — ENG + DESIGN", jp: "単独 — 実装 + デザイン" },
+    award: NONE,
+    work: byTitle("Sakaemachi Grocery"),
+  },
+  {
+    rec: "03",
     slug: "calendar-app",
     title: { en: "Calendar App", jp: "カレンダー共有" },
     subtitle: {
@@ -113,7 +136,7 @@ export const records: RecordRow[] = [
     work: byTitle("Calendar App"),
   },
   {
-    rec: "03",
+    rec: "04",
     slug: "pokedex",
     title: { en: "Pokédex", jp: "図鑑アプリ" },
     subtitle: {
@@ -130,7 +153,7 @@ export const records: RecordRow[] = [
     work: byTitle("Pokédex"),
   },
   {
-    rec: "04",
+    rec: "05",
     slug: "reminiscape",
     title: { en: "Reminiscape", jp: "記憶のタイムカプセル" },
     subtitle: {
@@ -151,7 +174,7 @@ export const records: RecordRow[] = [
     work: byTitle("Reminiscape"),
   },
   {
-    rec: "05",
+    rec: "06",
     slug: "tiny-taskers",
     title: { en: "Tiny Taskers", jp: "お手伝いアプリ" },
     subtitle: {
@@ -168,7 +191,7 @@ export const records: RecordRow[] = [
     work: byTitle("Tiny Taskers"),
   },
   {
-    rec: "06",
+    rec: "07",
     slug: "spacelang",
     title: { en: "SpaceLang", jp: "スラング学習アプリ" },
     subtitle: {
@@ -195,7 +218,7 @@ export const records: RecordRow[] = [
     work: byTitle("SpaceLang"),
   },
   {
-    rec: "07",
+    rec: "08",
     slug: "attendance",
     title: { en: "Attendance", jp: "出退勤管理" },
     subtitle: {
@@ -212,7 +235,7 @@ export const records: RecordRow[] = [
     work: byTitle("Attendance"),
   },
   {
-    rec: "08",
+    rec: "09",
     slug: "sakamachi",
     title: { en: "Sakamachi", jp: "酒街" },
     subtitle: {
@@ -256,10 +279,6 @@ export const review = (r: RecordRow) => ({
 /** Case-study prose lives in `caseStudies.ts`; the rest fall back to summary. */
 export const summary = (r: RecordRow) => split(r.work.summary, `${r.slug}.summary`);
 
-/** A record counts as reviewed once all three review fields are written. */
-export const hasReview = (r: RecordRow) =>
-  Boolean(r.work.learnt && r.work.regret && r.work.growth);
-
 export const awardCount = (r: RecordRow) => r.work.awards?.length ?? 0;
 
 export const links = (r: RecordRow) => ({
@@ -274,7 +293,6 @@ export const ledger = {
   hoursOpen: records.some((r) => r.unmeasured),
   records: records.length,
   awards: records.reduce((n, r) => n + awardCount(r), 0),
-  reviews: records.filter(hasReview).length,
   years: "2022—26",
 };
 

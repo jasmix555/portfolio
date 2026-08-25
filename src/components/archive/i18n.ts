@@ -80,8 +80,6 @@ export const ui = {
     recordsShort: { en: "RECORDS", jp: "作品数" },
     awards: { en: "AWARDS", jp: "受賞" },
     awardsShort: { en: "AWARDS", jp: "受賞" },
-    reviews: { en: "REVIEWS WRITTEN", jp: "振り返り記入数" },
-    reviewsShort: { en: "REVIEWS", jp: "振り返り" },
     years: { en: "YEARS ON RECORD", jp: "活動期間" },
     yearsShort: { en: "YEARS", jp: "活動期間" },
   },
@@ -210,11 +208,17 @@ export const ui = {
 
   contact: {
     label: { en: "END OF ARCHIVE", jp: "記録終わり" },
-    head: { en: "HIRE ME.", jp: "採用してください。" },
+    // Not 採用してください。— as a headline that is a plea, and Japanese reads
+    // a bare 〜してください imperative at display size as either begging or an
+    // order. The confident register for this is an invitation; the ask itself
+    // is carried by the line under it.
+    head: { en: "HIRE ME.", jp: "一緒に働きませんか。" },
     // Third line lifts to bone — it is the one that answers "can I hire him".
+    // 募集中 is what the company posting the role says, not the person after
+    // it; from this side it is 求職中.
     open: {
       en: "OPEN TO FRONTEND AND\nFULL-STACK ROLES.",
-      jp: "フロントエンド・\nフルスタック職を募集中。",
+      jp: "フロントエンド・\nフルスタック職で求職中。",
     },
     openEmph: { en: "JAPAN OR OVERSEAS.", jp: "日本国内・海外どちらも。" },
     colophon: {

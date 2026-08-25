@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { ArchiveNav, ScrollField } from "@/components/archive";
+import { ArchiveNav, DotField } from "@/components/archive";
 import { useLang } from "@/components/archive/LanguageProvider";
 import { bodyFace, headline, t, ui } from "@/components/archive/i18n";
 
@@ -20,7 +20,7 @@ export default function NotFiled() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <ScrollField />
+      <DotField />
       <ArchiveNav />
 
       <main id="main" className="flex min-h-svh flex-col justify-between px-5 pb-10 pt-20 lg:px-24 lg:pb-14 lg:pt-[120px]">
