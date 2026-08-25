@@ -80,8 +80,6 @@ export const ui = {
     recordsShort: { en: "RECORDS", jp: "作品数" },
     awards: { en: "AWARDS", jp: "受賞" },
     awardsShort: { en: "AWARDS", jp: "受賞" },
-    reviews: { en: "REVIEWS WRITTEN", jp: "振り返り記入数" },
-    reviewsShort: { en: "REVIEWS", jp: "振り返り" },
     years: { en: "YEARS ON RECORD", jp: "活動期間" },
     yearsShort: { en: "YEARS", jp: "活動期間" },
   },

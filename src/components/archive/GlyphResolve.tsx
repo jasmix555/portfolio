@@ -17,11 +17,17 @@ import { useMotionEnabled } from "../MotionToggle";
  */
 const GLYPHS = "▚▞▓▒░#%&$@*+=-<>/|01";
 
-// First load: 6 × 70 = 420ms. A route change runs 3 × 60 = 180ms with at most
-// three glyphs live at once, so the incoming heading resolves without the page
-// reading as though it reloaded.
-const STEPS = 6;
-const STEP_MS = 70;
+// First load: 8 × 80 = 640ms. Longer than the 420ms clip it rides under, so
+// the last couple of steps land on a wordmark that is fully on screen — at
+// 6 × 70 the word was locked at the moment the clip finished and the lock was
+// the first thing you could have seen. More steps also means a finer band: the
+// letters give way in eight groups rather than six.
+//
+// A route change still runs 3 × 60 = 180ms with at most three glyphs live at
+// once, so the incoming heading resolves without the page reading as though it
+// reloaded.
+const STEPS = 8;
+const STEP_MS = 80;
 
 // Pre-paint on the client, no-op on the server — so the server (and anything
 // without JS) keeps the finished wordmark and the client can drop straight
@@ -36,6 +42,13 @@ export default function GlyphResolve({
   total = text.length,
   steps = STEPS,
   stepMs = STEP_MS,
+  /**
+   * Hold scrambled this long before the first step. For the first open, the
+   * wordmark is behind a clip until the assembly reaches it — without this the
+   * resolve runs and finishes under the curtain, and the word is simply
+   * already locked by the time anyone can see it.
+   */
+  delayMs = 0,
   /** Cap on how many glyphs scramble at once — a sweeping band, not a wall. */
   maxBlocks,
   className = "",
@@ -45,6 +58,7 @@ export default function GlyphResolve({
   total?: number;
   steps?: number;
   stepMs?: number;
+  delayMs?: number;
   maxBlocks?: number;
   className?: string;
 }) {
@@ -60,14 +74,21 @@ export default function GlyphResolve({
     setStep(0);
 
     let n = 0;
-    const id = window.setInterval(() => {
-      n += 1;
-      setStep(n);
-      setSeed((s) => s + 1);
-      if (n >= steps) window.clearInterval(id);
-    }, stepMs);
-    return () => window.clearInterval(id);
-  }, [enabled, text, steps, stepMs]);
+    let id = 0;
+    // Scrambled from the first frame either way; the delay only holds it there.
+    const begin = window.setTimeout(() => {
+      id = window.setInterval(() => {
+        n += 1;
+        setStep(n);
+        setSeed((s) => s + 1);
+        if (n >= steps) window.clearInterval(id);
+      }, stepMs);
+    }, delayMs);
+    return () => {
+      window.clearTimeout(begin);
+      window.clearInterval(id);
+    };
+  }, [enabled, text, steps, stepMs, delayMs]);
 
   // Once every character has locked there is nothing to stage: render the
   // word as plain text so the served markup, selection and assistive tech all
