@@ -97,6 +97,26 @@ export const records: RecordRow[] = [
   },
   {
     rec: "02",
+    slug: "sakaemachi-gallery",
+    title: { en: "Sakaemachi Gallery", jp: "栄町ギャラリー" },
+    subtitle: {
+      en: "EC STOREFRONT, ASKED FOR · SOLO BUILD",
+      jp: "依頼されたECストアフロント・単独制作",
+    },
+    stack: "REACT · TS · VITE · SCSS",
+    period: "2026/07—08",
+    year: 2026,
+    // Stated as four to six hours rather than clocked, so it counts at the
+    // midpoint and keeps the ledger total honest as a floor.
+    hours: "4—6",
+    hoursValue: 5,
+    unmeasured: true,
+    role: { en: "SOLO — ENG + DESIGN", jp: "単独 — 実装 + デザイン" },
+    award: NONE,
+    work: byTitle("Sakaemachi Gallery"),
+  },
+  {
+    rec: "03",
     slug: "calendar-app",
     title: { en: "Calendar App", jp: "カレンダー共有" },
     subtitle: {
@@ -113,7 +133,7 @@ export const records: RecordRow[] = [
     work: byTitle("Calendar App"),
   },
   {
-    rec: "03",
+    rec: "04",
     slug: "pokedex",
     title: { en: "Pokédex", jp: "図鑑アプリ" },
     subtitle: {
@@ -130,7 +150,7 @@ export const records: RecordRow[] = [
     work: byTitle("Pokédex"),
   },
   {
-    rec: "04",
+    rec: "05",
     slug: "reminiscape",
     title: { en: "Reminiscape", jp: "記憶のタイムカプセル" },
     subtitle: {
@@ -151,7 +171,7 @@ export const records: RecordRow[] = [
     work: byTitle("Reminiscape"),
   },
   {
-    rec: "05",
+    rec: "06",
     slug: "tiny-taskers",
     title: { en: "Tiny Taskers", jp: "お手伝いアプリ" },
     subtitle: {
@@ -168,7 +188,7 @@ export const records: RecordRow[] = [
     work: byTitle("Tiny Taskers"),
   },
   {
-    rec: "06",
+    rec: "07",
     slug: "spacelang",
     title: { en: "SpaceLang", jp: "スラング学習アプリ" },
     subtitle: {
@@ -195,7 +215,7 @@ export const records: RecordRow[] = [
     work: byTitle("SpaceLang"),
   },
   {
-    rec: "07",
+    rec: "08",
     slug: "attendance",
     title: { en: "Attendance", jp: "出退勤管理" },
     subtitle: {
@@ -212,7 +232,7 @@ export const records: RecordRow[] = [
     work: byTitle("Attendance"),
   },
   {
-    rec: "08",
+    rec: "09",
     slug: "sakamachi",
     title: { en: "Sakamachi", jp: "酒街" },
     subtitle: {
