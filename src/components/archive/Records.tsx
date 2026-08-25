@@ -10,7 +10,7 @@ import {
 import { useMotionEnabled } from "../MotionToggle";
 import { useLang } from "./LanguageProvider";
 import { headline, t, ui, type Lang, type Pair } from "./i18n";
-import { dur, ease, stagger, useInView } from "./motion";
+import { dur, ease, useReveal } from "./motion";
 import type { ModalTarget, Query } from "./useArchiveRoute";
 
 const COLS =
@@ -121,13 +121,12 @@ export default function Records({
     return r; // file order
   }, [sort, filter, lang]);
 
-  // Rows wipe in once, 40ms apart. Nothing fades — and nothing is hidden while
-  // it waits: the wipe class is only ever added, never the clipped state.
-  const table = useInView<HTMLDivElement>();
-  const stack = useInView<HTMLDivElement>();
-  const wipe = (shown: boolean) => (shown && enabled ? "wipe-right" : "");
-  const delay = (i: number) =>
-    ({ "--delay": `${i * stagger.row}ms` } as CSSProperties);
+  // Three groups. Inside the header nothing carries an explicit delay: the
+  // token classes already order themselves — rule at 0, head at 80ms, label
+  // and meta at 160ms — so the sequence lives in one place, in the CSS.
+  const head = useReveal<HTMLElement>();
+  const table = useReveal<HTMLDivElement>();
+  const stack = useReveal<HTMLDivElement>();
 
   // Reordering is a FLIP on y only — Framer's `layout` is exactly that.
   const flip = enabled
@@ -150,9 +149,18 @@ export default function Records({
       className="px-5 pb-16 pt-16 lg:px-24 lg:pb-[72px] lg:pt-16"
     >
       <div className="mx-auto w-full max-w-content">
-        <header className="flex flex-col border-b-[3px] border-bone pb-3.5 lg:flex-row lg:items-end lg:justify-between lg:gap-6">
+        {/* The 3px rule is an element rather than a border because it draws
+            itself: scaleX from the left, with the head 80ms behind it. A
+            border cannot be animated from nothing, and the rule arriving
+            first is what makes the head look filed rather than dropped. */}
+        <header
+          ref={head.ref}
+          className="flex flex-col pb-3.5 lg:flex-row lg:items-end lg:justify-between lg:gap-6"
+        >
           <div className="min-w-0">
-            <div className="font-mono text-label text-signal">
+            <div
+              className={`font-mono text-label text-signal ${head.rv("text")}`}
+            >
               {t(ui.records.label, lang)}
             </div>
             {/* At 1440 the head and the meta column together fill the content
@@ -162,7 +170,7 @@ export default function Records({
                 lang,
                 "text-sub leading-[0.9] lg:text-head lg:leading-[0.86]",
                 "text-[32px] leading-[1.2] lg:text-[60px] lg:leading-[1.06]"
-              )} min-[1440px]:whitespace-nowrap`}
+              )} min-[1440px]:whitespace-nowrap ${head.rv("head")}`}
             >
               {t(ui.records.head, lang)}
             </h2>
@@ -172,7 +180,7 @@ export default function Records({
           <div
             className={`mt-2 text-label leading-[1.9] tracking-meta text-g6 lg:mt-0 lg:text-right min-[1440px]:shrink-0 min-[1440px]:whitespace-nowrap ${
               lang === "jp" ? "font-jp" : "font-mono"
-            }`}
+            } ${head.rv("text")}`}
           >
             <div className="hidden lg:block">
               {lang === "jp"
@@ -182,6 +190,10 @@ export default function Records({
             <div>{t(ui.records.nda, lang)}</div>
           </div>
         </header>
+        <span
+          aria-hidden
+          className={`block h-[3px] bg-bone ${head.rv("rule")}`}
+        />
 
         {/* — Sort / filter control bar — */}
         <div className="mt-8 hidden items-center justify-between gap-10 border-b border-rule border-t-g5 py-3.5 lg:flex lg:border-t">
@@ -282,10 +294,10 @@ export default function Records({
                 type="button"
                 onClick={() => open(r)}
                 {...flip}
-                style={delay(i)}
+                style={table.delay(i)}
                 className={`group relative grid ${COLS} w-full items-center gap-5 border-b py-3.5 text-left transition-colors duration-flick ease-snap hover:bg-g2 ${
                   i === rows.length - 1 ? "border-g5" : "border-rule"
-                } ${wipe(table.shown)}`}
+                } ${table.rv("row")}`}
               >
                 <span className="font-mono text-[12px] text-g5 transition-colors duration-flick ease-snap group-hover:text-signal">
                   {r.rec}
@@ -351,12 +363,10 @@ export default function Records({
               type="button"
               onClick={() => open(r)}
               {...flip}
-              style={delay(i)}
+              style={stack.delay(i)}
               className={`grid w-full grid-cols-[minmax(0,1fr)_64px] gap-3 border-t py-3.5 text-left ${
                 i === 0 ? "border-g5" : "border-rule"
-              } ${i === rows.length - 1 ? "border-b border-b-g5" : ""} ${wipe(
-                stack.shown
-              )}`}
+              } ${i === rows.length - 1 ? "border-b border-b-g5" : ""} ${stack.rv("row")}`}
             >
               <div className="min-w-0">
                 <div

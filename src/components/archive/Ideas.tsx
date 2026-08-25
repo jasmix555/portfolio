@@ -1,6 +1,7 @@
 import { ideas } from "@/data/records";
 import { useLang } from "./LanguageProvider";
 import { headline, t, ui } from "./i18n";
+import { useReveal } from "./motion";
 import type { ModalTarget } from "./useArchiveRoute";
 
 /**
@@ -21,43 +22,62 @@ export default function Ideas({
   onOpen: (next: NonNullable<ModalTarget>) => void;
 }) {
   const { lang } = useLang();
+  // Two groups, because the entries sit a screen below the heading: one
+  // observer on the section would have played both before either was read.
+  const head = useReveal<HTMLDivElement>();
+  const grid = useReveal<HTMLDivElement>();
 
   return (
     <section id="ideas" className="px-5 py-14 lg:px-24 lg:pb-16 lg:pt-14">
       <div className="mx-auto w-full max-w-content">
-        <div className="flex justify-between gap-6 font-mono text-label text-g6">
+        <div
+          ref={head.ref}
+          className={`flex justify-between gap-6 font-mono text-label text-g6 ${head.rv(
+            "text"
+          )}`}
+        >
           <span className="text-signal">{t(ui.ideas.label, lang)}</span>
           <span className={`text-right ${lang === "jp" ? "font-jp" : ""}`}>
             {ideas.length} {t(ui.ideas.count, lang)}
           </span>
         </div>
 
-        <div className="mt-8 grid items-end gap-6 border-b-[3px] border-bone pb-6 lg:grid-cols-[1fr_420px] lg:gap-20">
+        <div className="mt-8 grid items-end gap-6 pb-6 lg:grid-cols-[1fr_420px] lg:gap-20">
           <h2
             className={`whitespace-pre-line ${headline(
               lang,
               "text-[44px] leading-[0.9] lg:text-[88px] lg:leading-[0.88]",
               "text-[32px] leading-[1.15] lg:text-[60px] lg:leading-[1.06]"
-            )}`}
+            )} ${head.rv("head")}`}
           >
             {t(ui.ideas.head, lang)}
           </h2>
           <p
             className={`text-[17px] leading-[1.5] tracking-[-0.01em] text-g7 lg:text-[19px] ${
               lang === "jp" ? "font-jp jp-wrap leading-[1.8]" : ""
-            }`}
+            } ${head.rv("text")}`}
           >
             {t(ui.ideas.standfirst, lang)}
           </p>
         </div>
+        <span
+          aria-hidden
+          className={`block h-[3px] bg-bone ${head.rv("rule")}`}
+        />
 
-        <div className="mt-10 grid gap-12 lg:grid-cols-2 lg:gap-[72px]">
-          {ideas.map((r) => (
+        <div
+          ref={grid.ref}
+          className="mt-10 grid gap-12 lg:grid-cols-2 lg:gap-[72px]"
+        >
+          {ideas.map((r, i) => (
             <button
               key={r.slug}
               type="button"
               onClick={() => onOpen({ kind: "concept", id: r.slug })}
-              className="group flex flex-col gap-4 text-left"
+              style={grid.delay(i)}
+              className={`group flex flex-col gap-4 text-left ${grid.rv(
+                "strip"
+              )}`}
             >
               {r.work.thumbnail && (
                 // eslint-disable-next-line @next/next/no-img-element
