@@ -27,6 +27,11 @@ export default function Portfolio() {
   const { target, query, open, step, close, patchQuery } = useArchiveRoute();
   const { lang } = useLang();
 
+  // First open assembles; a shared record link does not. `target` is parsed
+  // from the path during render, so this is decided on the server and the
+  // whole sequence is CSS that never has to be taken back.
+  const assemble = !target;
+
   return (
     <>
       <Head>
@@ -96,11 +101,11 @@ export default function Portfolio() {
         />
       </Head>
 
-      <DotField />
-      <ArchiveNav />
+      <DotField assemble={assemble} />
+      <ArchiveNav assemble={assemble} />
 
       <main id="main">
-        <Hero />
+        <Hero assemble={assemble} />
         <Records onOpen={open} query={query} onQuery={patchQuery} />
         <Ideas onOpen={open} />
         <Profile onOpen={open} />

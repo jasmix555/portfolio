@@ -50,7 +50,11 @@ function LangToggle({ compact = false }: { compact?: boolean }) {
   );
 }
 
-export default function ArchiveNav() {
+export default function ArchiveNav({
+  assemble = false,
+}: {
+  assemble?: boolean;
+}) {
   const [menuOpen, setMenuOpen] = useState(false);
   const { enabled } = useMotionEnabled();
   const { lang } = useLang();
@@ -105,7 +109,11 @@ export default function ArchiveNav() {
         {t(ui.nav.skip, lang)}
       </a>
 
-      <div className="flex h-[52px] items-center justify-between border-b border-rule px-5 tracking-btn lg:h-14 lg:px-24 lg:tracking-label">
+      <div
+        className={`relative flex h-[52px] items-center justify-between px-5 tracking-btn lg:h-14 lg:px-24 lg:tracking-label ${
+          assemble ? "load-1" : ""
+        }`}
+      >
         {/* Compact lockup — the stamp plus the wordmark, which drops entirely
             on the narrowest phones so the stamp never gets crowded. */}
         <a
@@ -212,6 +220,12 @@ export default function ArchiveNav() {
           </a>
         </div>
       )}
+      {/* The bar's own hairline, as an element so it can draw itself from
+          the left on first open. A border cannot animate from nothing. */}
+      <span
+        aria-hidden
+        className={`block h-px bg-rule ${assemble ? "load-rule" : ""}`}
+      />
     </header>
   );
 }
