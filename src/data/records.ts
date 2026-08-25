@@ -98,13 +98,16 @@ export const records: RecordRow[] = [
   {
     rec: "02",
     slug: "sakaemachi-gallery",
-    title: { en: "Sakaemachi Gallery", jp: "栄町ギャラリー" },
+    // Named for what it is once deployed, not for the repository it lives in:
+    // the storefront calls itself 栄町食品店 / SAKAEMACHI GROCERY, and that is
+    // what the LIVE link opens. The slug still follows the repo.
+    title: { en: "Sakaemachi Grocery", jp: "栄町食品店" },
     subtitle: {
       en: "EC STOREFRONT, ASKED FOR · SOLO BUILD",
       jp: "依頼されたECストアフロント・単独制作",
     },
     stack: "REACT · TS · VITE · SCSS",
-    period: "2026/07—08",
+    period: "2026/07—08 — LIVE",
     year: 2026,
     // Stated as four to six hours rather than clocked, so it counts at the
     // midpoint and keeps the ledger total honest as a floor.
@@ -113,7 +116,7 @@ export const records: RecordRow[] = [
     unmeasured: true,
     role: { en: "SOLO — ENG + DESIGN", jp: "単独 — 実装 + デザイン" },
     award: NONE,
-    work: byTitle("Sakaemachi Gallery"),
+    work: byTitle("Sakaemachi Grocery"),
   },
   {
     rec: "03",

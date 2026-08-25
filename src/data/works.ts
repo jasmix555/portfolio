@@ -73,15 +73,16 @@ export const works: Work[] = [
   },
 
   {
-    title: "Sakaemachi Gallery",
+    title: "Sakaemachi Grocery",
     group: "work",
-    page: ["GitHub Link"],
-    // No deployment filed — the record prints CODE only, and the index prints
-    // a NO CAP placeholder where the capture would go.
-    link: ["", "https://github.com/jasmix555/sakaemachi_gallery"],
+    page: ["Web Application Link", "GitHub Link"],
+    link: [
+      "https://sakaemachi-gallery.vercel.app/",
+      "https://github.com/jasmix555/sakaemachi_gallery",
+    ],
     summary:
       "「ECサイトって作れる？」と聞かれて、そのまま形にしたストアフロント。神戸・栄町の食料品店をサンプルに、商品一覧とカテゴリ絞り込み、カート、クーポン対応の購入フロー、特定商取引法・返品・FAQ の各ページ、ニュースと店舗情報までを一通り実装しました。ECサイトに何が要って、買い物がどういう流れで終わるのか——その理解だけを頼りに 4〜6 時間で組み上げています。表示する内容はすべて src/data/ にまとめてあるので、別の店舗にも差し替えて使えます。\n\nA storefront built straight off the question “can you make an EC site?”. Using a Kobe food shop as the sample content, it covers the product list and category filtering, the cart, a checkout flow with coupon support, the Japanese commercial-law, returns and FAQ pages, and the news and store-info sections. Four to six hours, built from nothing but my own understanding of what an EC site needs and how a purchase actually ends. Everything it displays lives in src/data/, so the same build can be pointed at another shop.",
-    thumbnail: "",
+    thumbnail: "/works/sakaemachi-gallery.webp",
     method: [
       "React",
       "TypeScript",
@@ -94,6 +95,7 @@ export const works: Work[] = [
     role: ["メインエンジニア", "メインデザイナー"],
     dateCreated: "2026/07 ~ 2026/08",
     totalTime: "~4–6 Hours",
+    status: "Live",
     awards: [],
     // learnt / regret / growth are Jason's own — left empty on purpose, so the
     // record prints "Not written yet." rather than something he did not say.
