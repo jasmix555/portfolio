@@ -1,7 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#B0432B"/>
-  <text x="32" y="45" text-anchor="middle"
-        font-family="Georgia, 'Times New Roman', serif"
-        font-size="34" font-weight="700" fill="#ECE5D6"
-        letter-spacing="-1">JN</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges">
+  <!-- Accession stamp, mark-only at 16: bone box on ground, 1px rule, 3px bar.
+       Never inverted, never rounded, never without the bar. -->
+  <rect width="16" height="16" fill="#0B0B0B"/>
+  <rect x="0.5" y="2.5" width="15" height="11" fill="none" stroke="#F2F0EB"/>
+  <rect x="12" y="3" width="3" height="10" fill="#E5390A"/>
+  <text x="6" y="11.4" text-anchor="middle"
+        font-family="Archivo, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        font-size="8" font-weight="800" letter-spacing="-0.32"
+        fill="#F2F0EB">JN</text>
 </svg>
