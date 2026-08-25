@@ -26,21 +26,25 @@ const CELLS = [
     short: ui.ledger.awardsShort,
     value: ledger.awards,
     pad: 2,
-  },
-  {
-    label: ui.ledger.reviews,
-    short: ui.ledger.reviewsShort,
-    value: ledger.reviews,
-    pad: 2,
+    // The one cell in signal: four awards is the only figure here that is a
+    // judgement rather than a count of what the archive holds.
     signal: true,
   },
   {
     label: ui.ledger.years,
     short: ui.ledger.yearsShort,
     value: ledger.years,
-    wide: true,
   },
 ];
+
+/**
+ * When the headline's own clip starts, in ms — the delay on `.load-2` in
+ * globals.css. The glyph resolve is held until then so the two run together:
+ * the resolve runs 640ms against a 420ms clip, so it is still going when the
+ * wordmark is fully on screen — which is what the board means by the wordmark
+ * resolving *alongside* the assembly rather than before it.
+ */
+const HEADLINE_AT = 360;
 
 /** Printed at its final value — the ledger never counts and never animates. */
 function Figure({
@@ -61,7 +65,7 @@ function Figure({
 
   return (
     <div
-      className={`mt-0 font-mono text-title font-bold leading-none tabular-nums lg:mt-2 lg:text-sub ${
+      className={`mt-0 whitespace-nowrap font-mono text-title font-bold leading-none tabular-nums lg:mt-2 lg:text-sub ${
         signal ? "text-signal" : "text-bone"
       }`}
     >
@@ -70,7 +74,7 @@ function Figure({
   );
 }
 
-export default function Hero() {
+export default function Hero({ assemble = false }: { assemble?: boolean }) {
   const { lang } = useLang();
   const { enabled } = useMotionEnabled();
 
@@ -83,6 +87,13 @@ export default function Hero() {
   lines.reduce((n, l) => (offsets.push(n), n + l.length), 0);
 
   const metaFace = lang === "jp" ? "font-jp" : "font-mono";
+  // First open only. The classes are printed by the server, so the assembly is
+  // pure CSS from the first frame — nothing decides anything after paint, and
+  // there is no state in which the page is shown and then taken away.
+  // Named `load-*`, not `pl-*`: `pl-2` is Tailwind's padding-left utility and
+  // would silently indent the hero the moment anything else in the project used
+  // it.
+  const pl = (n: 2 | 3 | 4) => (assemble ? ` load-${n}` : "");
 
   return (
     <section
@@ -90,37 +101,19 @@ export default function Hero() {
       className="flex min-h-svh flex-col px-5 pb-6 pt-20 lg:min-h-[900px] lg:px-24 lg:pb-9 lg:pt-[120px]"
     >
       <div className="relative flex flex-col flex-1 w-full mx-auto max-w-content">
-        {/* The two visible column rules — the grid, admitted. Two things keep
-            them part of the ground rather than marks on top of it:
 
-            `-z-10` — an absolutely positioned element paints *above* its static
-            siblings whatever the DOM order, so without it these hairlines drew
-            across the wordmark, the ledger and the CTA row instead of behind
-            them. Negative z puts them back with the scroll field.
-
-            Both sit on a multiple of 96 — x=96 and x=1056 (`right-72`) — so
-            each lands on the scroll field's own 96px lattice and reads as one
-            emphasised column. The original x=1044 was off-lattice: it printed
-            a second hairline 12px from a background rule, which reads as a
-            stray line rather than a column. */}
-        <span
-          aria-hidden
-          className="absolute -top-[64px] bottom-0 left-0 -z-10 hidden w-px bg-[rgba(242,240,235,0.10)] lg:block"
-        />
-        <span
-          aria-hidden
-          className="absolute -top-[64px] bottom-0 right-72 -z-10 hidden w-px bg-[rgba(242,240,235,0.10)] lg:block"
-        />
 
         <div
-          className={`flex flex-col text-label leading-[1.9] text-g6 lg:flex-row lg:gap-10 lg:leading-[1.6] ${metaFace}`}
+          className={`flex flex-col text-label leading-[1.9] text-g6 lg:flex-row lg:gap-10 lg:leading-[1.6] ${metaFace}${pl(2)}`}
         >
           <span>{t(ui.hero.role, lang)}</span>
           <span>{t(ui.hero.place, lang)}</span>
           <span className="text-signal">{t(ui.hero.open, lang)}</span>
         </div>
 
-        <div className="mt-7 lg:mt-[52px] lg:grid lg:grid-cols-[1fr_340px] lg:items-start lg:gap-16">
+        <div
+          className={`mt-7 lg:mt-[52px] lg:grid lg:grid-cols-[1fr_340px] lg:items-start lg:gap-16${pl(2)}`}
+        >
           <h1
             className={`${lang === "jp" ? "lg:-ml-2" : "lg:-ml-3.5"} ${headline(
               lang,
@@ -131,13 +124,18 @@ export default function Hero() {
             {lines.map((line, i) => (
               <span
                 key={line}
-                className={`block ${enabled ? "wipe-down" : ""}`}
+                // During the assembly the wordmark's own wipe would run under
+                // the headline's, so the parent owns the entrance and the lines
+                // just sit inside it. Off the assembly — a shared record link —
+                // this is still the hero's entrance.
+                className={`block ${enabled && !assemble ? "wipe-down" : ""}`}
                 style={{ "--delay": `${i * stagger.row}ms` } as CSSProperties}
               >
                 <GlyphResolve
                   text={line}
                   startAt={offsets[i]}
                   total={wordLength}
+                  delayMs={assemble ? HEADLINE_AT : 0}
                 />
               </span>
             ))}
@@ -157,15 +155,31 @@ export default function Hero() {
 
         {/* Ledger — only real numbers, all of them derived from the records.
             Every cell is boxed: the 1px gap draws the rules between them and
-            `border-x` closes the two outer edges, so it reads as a complete
-            register rather than a strip that trails off at the margins. */}
-        <div className="mt-8 grid grid-cols-2 gap-px border border-x-rule border-y-g5 bg-rule lg:mt-auto lg:grid-cols-5">
+            the border closes the outer edges, so it reads as a complete
+            register rather than a strip that trails off at the margins. One
+            grey for the frame and the divisions alike — the g5 top and bottom
+            it used to carry made the outer edge a different rule from the
+            inner ones, which is a hierarchy the register does not have.
+            Four cells, each a distinct fact: `REVIEWS WRITTEN` was
+            `records.filter(hasReview).length`, identical to `RECORDS FILED`
+            for as long as every published record is reviewed, so it printed
+            the same fact twice. Four also divides on a phone, where five left
+            a cell stranded and the years had to be hidden to hide it. */}
+        <div
+          className={`mt-8 grid grid-cols-2 border border-rule lg:mt-auto lg:grid-cols-4${pl(3)}`}
+        >
           {CELLS.map((c) => (
             <div
               key={c.label.en}
-              className={`bg-ground px-3 py-3.5 text-center lg:py-[18px] ${
-                c.wide ? "hidden lg:block" : ""
-              }`}
+              // The divisions are borders on the cells, not a 1px grid gap with
+              // the container's colour showing through. 1248px of content less
+              // the frame is 1246, and four `1fr` columns with three 1px gaps
+              // put the middle divider at x=622.5: half its alpha on each of
+              // two device pixels, which at 0.18 is nothing at all. The outer
+              // two land on .75 and .25 and survive, which is why exactly one
+              // line went missing. Borders get snapped to whole device pixels,
+              // so they cannot evaporate at a fractional offset.
+              className="border-rule bg-ground px-5 py-3.5 text-center [&:nth-child(2n)]:border-l [&:nth-child(n+3)]:border-t lg:border-l lg:border-t-0 lg:first:border-l-0"
             >
               <div
                 className={`text-label ${metaFace} ${
@@ -185,7 +199,9 @@ export default function Hero() {
           ))}
         </div>
 
-        <div className="mt-auto lg:mt-12 lg:flex lg:items-end lg:justify-between lg:gap-10">
+        <div
+          className={`mt-auto lg:mt-12 lg:flex lg:items-end lg:justify-between lg:gap-10${pl(4)}`}
+        >
           <div className="lg:flex lg:items-end lg:gap-16">
             {/* The concept line is typeset in each locale, never transliterated:
                 Mincho carries the JP, Archivo sets the English. */}

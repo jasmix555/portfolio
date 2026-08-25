@@ -256,10 +256,6 @@ export const review = (r: RecordRow) => ({
 /** Case-study prose lives in `caseStudies.ts`; the rest fall back to summary. */
 export const summary = (r: RecordRow) => split(r.work.summary, `${r.slug}.summary`);
 
-/** A record counts as reviewed once all three review fields are written. */
-export const hasReview = (r: RecordRow) =>
-  Boolean(r.work.learnt && r.work.regret && r.work.growth);
-
 export const awardCount = (r: RecordRow) => r.work.awards?.length ?? 0;
 
 export const links = (r: RecordRow) => ({
@@ -274,7 +270,6 @@ export const ledger = {
   hoursOpen: records.some((r) => r.unmeasured),
   records: records.length,
   awards: records.reduce((n, r) => n + awardCount(r), 0),
-  reviews: records.filter(hasReview).length,
   years: "2022—26",
 };
 
