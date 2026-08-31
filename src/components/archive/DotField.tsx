@@ -125,15 +125,29 @@ function Field({ assemble }: { assemble: boolean }) {
     let cells = buildCells(1, 1);
     let w = 0;
     let h = 0;
+    // The loop's clock, declared up here because `size` repaints off it.
+    let last = 0;
 
     const size = () => {
-      w = window.innerWidth;
-      h = window.innerHeight;
+      // `clientWidth`, not `innerWidth`: the canvas box is `fixed inset-0`,
+      // which stops at the scrollbar. Sizing the backing store to the window
+      // instead leaves the field squashed by the scrollbar's width and out of
+      // register with the CSS halftone it paints over.
+      w = document.documentElement.clientWidth;
+      h = document.documentElement.clientHeight;
       const dpr = Math.min(2, window.devicePixelRatio || 1);
       canvas.width = Math.round(w * dpr);
       canvas.height = Math.round(h * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       cells = buildCells(w, h);
+      // Writing `canvas.width` clears the canvas, and the loop only paints
+      // every 33ms — so a drag-resize, which fires this every frame, leaves the
+      // ground blank for most of the drag. What shows through is the much
+      // fainter static halftone, and the strip the drag just exposed on the
+      // right reads as a hole in the field. Repaint on the spot instead: the
+      // whole point of the 30fps gate is the wave, and a resize is not the
+      // wave.
+      draw(last / 1000);
     };
 
     // Scroll position drives the flare; velocity decides how much of it fires.
@@ -214,7 +228,6 @@ function Field({ assemble }: { assemble: boolean }) {
     };
 
     let raf = 0;
-    let last = 0;
     const loop = (now: number) => {
       raf = requestAnimationFrame(loop);
       if (now - last < FRAME_MS) return;
