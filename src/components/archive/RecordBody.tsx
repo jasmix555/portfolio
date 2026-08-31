@@ -11,7 +11,11 @@ const ROUTE_RESOLVE = { steps: 3, stepMs: 60, maxBlocks: 3 };
 /** `PERIOD` / `2024/11—2025/02` — one cell of the metadata strip. */
 function Cell({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="bg-ground px-4 py-4 lg:first:pl-0 lg:last:pr-0">
+    // `min-w-0`: a grid item defaults to `min-width: auto`, and with the
+    // global `word-break: keep-all` a Japanese award or role is one
+    // unbreakable run — the track would size to it and push the strip past the
+    // panel on a phone.
+    <div className="min-w-0 bg-ground px-4 py-4 lg:first:pl-0 lg:last:pr-0">
       <div className="font-mono text-label text-g6">{label}</div>
       <div className="mt-1.5 font-mono text-[13px] text-bone">{children}</div>
     </div>

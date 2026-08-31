@@ -86,13 +86,20 @@ export default function YearBody({
                   i === filed.length - 1 ? "border-b border-b-g5" : ""
                 }`}
               >
-                <span className="flex min-w-0 items-baseline gap-4">
-                  <span className="font-mono text-[12px] text-g5 transition-colors duration-flick ease-snap group-hover:text-signal">
+                <span className="flex min-w-0 items-baseline gap-3 lg:gap-4">
+                  <span className="shrink-0 font-mono text-[12px] text-g5 transition-colors duration-flick ease-snap group-hover:text-signal">
                     {r.rec}
                   </span>
+                  {/* `min-w-0`, or the row cannot shrink below the width of the
+                      title: `word-break: keep-all` is set globally for kinsoku,
+                      which leaves a Japanese title one unbreakable run as far as
+                      intrinsic sizing is concerned, and a flex item at
+                      `min-width: auto` sizes to exactly that. */}
                   <span
-                    className={`border-b-2 border-transparent pb-px text-title transition-colors duration-flick ease-snap group-hover:border-signal ${
-                      lang === "jp" ? "font-jp font-bold" : ""
+                    className={`min-w-0 border-b-2 border-transparent pb-px transition-colors duration-flick ease-snap group-hover:border-signal ${
+                      lang === "jp"
+                        ? "font-jp jp-wrap text-[19px] font-bold leading-[1.4] sm:text-[24px] lg:text-title"
+                        : "text-[22px] font-semibold leading-[1.2] sm:text-[26px] lg:text-title"
                     }`}
                   >
                     {t(r.title, lang)}

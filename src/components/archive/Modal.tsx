@@ -210,7 +210,7 @@ export default function Modal({
       // Once it is leaving it stops taking clicks: the panel is still on
       // screen for another 420ms, and a row underneath it must not be
       // reachable through a panel that is on its way out.
-      className={`fixed inset-0 z-[100] flex items-start justify-center overflow-hidden p-5 pt-10 lg:p-10 ${
+      className={`fixed inset-0 z-[100] flex items-start justify-center overflow-hidden p-3 pt-6 lg:p-10 ${
         closing ? "pointer-events-none" : ""
       }`}
       role="presentation"
@@ -234,7 +234,7 @@ export default function Modal({
         aria-label={`${kindLabel} ${counter} — ${heading}`}
         tabIndex={-1}
         data-lenis-prevent
-        className={`relative flex max-h-[calc(100vh-80px)] w-full max-w-[1288px] flex-col border border-bone bg-ground px-5 pb-10 pt-6 outline-none lg:px-16 lg:pb-14 lg:pt-9 ${
+        className={`relative flex max-h-[calc(100dvh-40px)] w-full max-w-[1288px] flex-col border border-bone bg-ground px-4 pb-8 pt-5 outline-none lg:max-h-[calc(100vh-80px)] lg:px-16 lg:pb-14 lg:pt-9 ${
           enabled ? (closing ? "wipe-close" : "wipe-down") : ""
         }`}
       >
