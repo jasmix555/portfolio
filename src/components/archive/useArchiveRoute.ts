@@ -68,6 +68,22 @@ export function useArchiveRoute() {
   const pushed = useRef(0);
 
   useEffect(() => {
+    // The archive owns its own history, and two things have to be told so.
+    //
+    // Next's router still listens for popstate, and the entry it finds on the
+    // way back is its own — so it runs a route change to `/`, which remounts
+    // the page and scrolls it to the top. `beforePopState` returning false is
+    // the documented way to say this app is handling the event itself.
+    router.beforePopState(() => false);
+    // And the browser restores its own saved scroll for the entry it lands on.
+    // That position was saved while `modal-open` held the document at
+    // `overflow: hidden` — a document with nowhere to scroll saves 0. The
+    // modal puts the real position back as it unmounts; this stops the browser
+    // overwriting it with the collapsed one.
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
     // A statically generated page hydrates before Next has filled in the
     // query, so the real one is read off the location once on mount. Without
     // this, a shared `/?sort=hours` link renders unsorted.
@@ -81,8 +97,11 @@ export function useArchiveRoute() {
       setQuery(readQuery());
     };
     window.addEventListener("popstate", onPop);
-    return () => window.removeEventListener("popstate", onPop);
-  }, []);
+    return () => {
+      window.removeEventListener("popstate", onPop);
+      router.beforePopState(() => true);
+    };
+  }, [router]);
 
   // Every writer re-reads the URL: the locale toggle writes `lang` into this
   // same query string without going through this hook, so a cached copy here
@@ -91,8 +110,13 @@ export function useArchiveRoute() {
     (next: ModalTarget, mode: "push" | "replace") => {
       const live = readQuery();
       const url = buildUrl(next, live);
-      if (mode === "push") window.history.pushState(null, "", url);
-      else window.history.replaceState(null, "", url);
+      // Empty but not null, and that is the point: Next reads `__N` off the
+      // state to recognise its own entries, and a *null* state sends it down a
+      // different branch that rewrites the address bar to its own idea of the
+      // route. An object without `__N` it leaves alone.
+      const state = { archive: true };
+      if (mode === "push") window.history.pushState(state, "", url);
+      else window.history.replaceState(state, "", url);
       setTarget(next);
       setQuery(live);
     },

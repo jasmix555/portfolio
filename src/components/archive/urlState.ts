@@ -57,7 +57,9 @@ export const merge = (
 export const patchUrl = (patch: Record<string, string | null>): Query => {
   const next = merge(readQuery(), patch);
   window.history.replaceState(
-    null,
+    // Not null — see the note in `useArchiveRoute`: Next's popstate handler
+    // treats a null state as "not mine" and rewrites the address bar.
+    { archive: true },
     "",
     window.location.pathname + toSearch(next) + window.location.hash
   );

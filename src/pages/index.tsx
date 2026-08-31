@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Head from "next/head";
 import {
   ArchiveNav,
@@ -30,7 +31,12 @@ export default function Portfolio() {
   // First open assembles; a shared record link does not. `target` is parsed
   // from the path during render, so this is decided on the server and the
   // whole sequence is CSS that never has to be taken back.
-  const assemble = !target;
+  //
+  // Frozen at mount rather than read live: `target` returns to null every time
+  // a modal closes, and a live read hands the nav, hero and ground their load
+  // classes back — the whole 940ms assembly replaying behind a panel that is
+  // still wiping away.
+  const [assemble] = useState(() => !target);
 
   return (
     <>
