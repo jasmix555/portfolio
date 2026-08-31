@@ -35,5 +35,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# design handoff bundles and Claude Code prompts — local only, never pushed
+# design handoff bundles — local only, never pushed
 /docs/design_handoff_rec_archive/
