@@ -1,4 +1,10 @@
-import { useCallback, useState, type MouseEvent } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type MouseEvent,
+} from "react";
 import { motion } from "framer-motion";
 import { useLenis } from "@studio-freight/react-lenis";
 import { useMotionEnabled } from "../MotionToggle";
@@ -56,6 +62,7 @@ export default function ArchiveNav({
   assemble?: boolean;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const bar = useRef<HTMLElement>(null);
   const { enabled } = useMotionEnabled();
   const { lang } = useLang();
   // Underscore follows whichever section owns at least half the viewport.
@@ -96,8 +103,30 @@ export default function ArchiveNav({
     [lenis]
   );
 
+  /**
+   * A tap outside closes the menu.
+   *
+   * The boundary is the whole bar rather than the panel, because the trigger
+   * sits in the bar and already toggles: count it as outside and a tap would
+   * close the menu on the way down and reopen it on the way up.
+   *
+   * `pointerdown` rather than `click`, and nothing is prevented — the panel is
+   * a disclosure, not a modal, so a tap on the page below should close the menu
+   * *and* still do what it was going to do. Swallowing the first tap is what
+   * makes a menu feel like it is holding the page hostage.
+   */
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onDown = (e: PointerEvent) => {
+      if (!bar.current?.contains(e.target as Node)) setMenuOpen(false);
+    };
+    document.addEventListener("pointerdown", onDown);
+    return () => document.removeEventListener("pointerdown", onDown);
+  }, [menuOpen]);
+
   return (
     <header
+      ref={bar}
       className={`fixed inset-x-0 top-0 z-50 bg-ground text-label ${face}`}
     >
       {/* Off-screen until it takes focus — the first stop for a keyboard user,
