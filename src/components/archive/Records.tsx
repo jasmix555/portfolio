@@ -163,14 +163,15 @@ export default function Records({
             >
               {t(ui.records.label, lang)}
             </div>
-            {/* At 1440 the head and the meta column together fill the content
-                width exactly, so the head only earns its single line there. */}
+            {/* Two lines at every width. It was forced onto one at 1440, but the
+                head plus the meta column is wider than the 1248 content box
+                there, so the last letter ran out under the meta. */}
             <h2
               className={`mt-2.5 whitespace-pre-line ${headline(
                 lang,
                 "text-sub leading-[0.9] lg:text-head lg:leading-[0.86]",
                 "text-[32px] leading-[1.2] lg:text-[60px] lg:leading-[1.06]"
-              )} min-[1440px]:whitespace-nowrap ${head.rv("head")}`}
+              )} ${head.rv("head")}`}
             >
               {t(ui.records.head, lang)}
             </h2>
@@ -196,7 +197,7 @@ export default function Records({
         />
 
         {/* — Sort / filter control bar — */}
-        <div className="mt-8 hidden items-center justify-between gap-10 border-b border-rule border-t-g5 py-3.5 lg:flex lg:border-t">
+        <div className="mt-8 hidden items-center justify-between gap-10 border-b border-rule border-t-g5 py-3.5 min-[1024px]:flex min-[1024px]:border-t">
           <div className="flex items-center gap-5">
             <span
               className={`text-label text-g6 ${

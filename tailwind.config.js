@@ -20,6 +20,12 @@ module.exports = {
     borderRadius: { none: "0", DEFAULT: "0", full: "0" },
     boxShadow: { none: "none", DEFAULT: "none" },
     extend: {
+      // `lg` is where the two-column desktop layouts start, and they are drawn
+      // for 1440: below ~1280 the profile's fixed 620px column leaves the bio
+      // 110px, the ledger's last figure spills out of its cell, and a Japanese
+      // display word is wider than its column. Those widths take the stacked
+      // layout instead.
+      screens: { lg: "1280px" },
       colors: {
         // — Monochrome ramp. Contrast is measured against ground / bone. —
         ground: "#0B0B0B", // page base (not pure black — hairlines + grain must stay visible)

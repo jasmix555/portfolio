@@ -100,7 +100,12 @@ body::before {
 /* — Reveals — clip-path wipes, never fades. The final state is the element's
    own default and the "from" lives only inside the keyframe, so a wipe that
    never runs leaves the content visible instead of clipped away. Stagger is
-   set per element with --delay. */
+   set per element with --delay.
+
+   Every clip-path wipe fills `backwards`, never `both`: `both` would hold the
+   last keyframe, `inset(0)`, for as long as the page is open — a permanent clip
+   at the element's border box that cuts off anything hanging outside it (the
+   last glyph of a tight-tracked headline, a thumbnail scaling up on hover). */
 @keyframes wipe-down {
   from {
     clip-path: inset(0 0 100% 0);
@@ -118,10 +123,10 @@ body::before {
   }
 }
 .wipe-down {
-  animation: wipe-down 420ms cubic-bezier(0.2, 0, 0, 1) var(--delay, 0ms) both;
+  animation: wipe-down 420ms cubic-bezier(0.2, 0, 0, 1) var(--delay, 0ms) backwards;
 }
 .wipe-right {
-  animation: wipe-right 180ms cubic-bezier(0.2, 0, 0, 1) var(--delay, 0ms) both;
+  animation: wipe-right 180ms cubic-bezier(0.2, 0, 0, 1) var(--delay, 0ms) backwards;
 }
 
 /* — Scroll reveal — seven tokens, and the only three moves they make —
@@ -161,7 +166,7 @@ body::before {
 
 /* Biggest ink, longest travel. */
 .rv-display {
-  animation: rv-down 620ms var(--snap) var(--delay, 0ms) both;
+  animation: rv-down 620ms var(--snap) var(--delay, 0ms) backwards;
 }
 /* The 3px rule draws first, always; its head follows 80ms behind. */
 .rv-rule {
@@ -169,15 +174,15 @@ body::before {
   animation: rv-scale 620ms var(--snap) var(--delay, 0ms) both;
 }
 .rv-head {
-  animation: rv-down 620ms var(--snap) calc(80ms + var(--delay, 0ms)) both;
+  animation: rv-down 620ms var(--snap) calc(80ms + var(--delay, 0ms)) backwards;
 }
 /* A register is one object. Cell by cell would make it a list of numbers. */
 .rv-strip {
-  animation: rv-down 560ms var(--snap) var(--delay, 0ms) both;
+  animation: rv-down 560ms var(--snap) var(--delay, 0ms) backwards;
 }
 /* The one earned stagger on the site. */
 .rv-row {
-  animation: rv-right 260ms var(--snap) var(--delay, 0ms) both;
+  animation: rv-right 260ms var(--snap) var(--delay, 0ms) backwards;
 }
 /* The number beside a bar is printed from frame 0 — only the bar moves, so
    the value is never information living inside an animation. */
@@ -187,7 +192,7 @@ body::before {
 }
 /* Fastest token on the page, and it trails its own heading. */
 .rv-text {
-  animation: rv-down 280ms var(--snap) calc(160ms + var(--delay, 0ms)) both;
+  animation: rv-down 280ms var(--snap) calc(160ms + var(--delay, 0ms)) backwards;
 }
 
 /* Waiting its turn. A scroll reveal on something already on the page is not a
@@ -248,16 +253,16 @@ body::before {
   }
   /* 300—940ms: nav, meta + headline, ledger, spine — 60ms steps. */
   .load-1 {
-    animation: rv-down 420ms var(--snap) 300ms both;
+    animation: rv-down 420ms var(--snap) 300ms backwards;
   }
   .load-2 {
-    animation: rv-down 420ms var(--snap) 360ms both;
+    animation: rv-down 420ms var(--snap) 360ms backwards;
   }
   .load-3 {
-    animation: rv-down 420ms var(--snap) 460ms both;
+    animation: rv-down 420ms var(--snap) 460ms backwards;
   }
   .load-4 {
-    animation: rv-down 420ms var(--snap) 520ms both;
+    animation: rv-down 420ms var(--snap) 520ms backwards;
   }
 }
 

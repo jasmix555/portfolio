@@ -85,9 +85,11 @@ export default function Ideas({
                   src={r.work.thumbnail}
                   alt=""
                   width={620}
-                  height={200}
+                  height={349}
                   loading="lazy"
-                  className="block h-[200px] w-full object-cover brightness-[0.85] contrast-125 grayscale outline-bone transition-[transform,filter] duration-quick ease-snap group-hover:scale-[1.04] group-hover:outline group-hover:outline-1 group-hover:brightness-100 group-hover:contrast-[1.06] group-hover:saturate-[1.04] group-hover:grayscale-0"
+                  // The captures are 16:9; a fixed 200px height cropped a third
+                  // of each one away, logo and headline included.
+                  className="block aspect-video w-full object-coverbrightness-[0.85] contrast-125 grayscale outline-bone transition-[transform,filter] duration-quick ease-snap group-hover:scale-[1.04] group-hover:outline group-hover:outline-1 group-hover:brightness-100 group-hover:contrast-[1.06] group-hover:saturate-[1.04] group-hover:grayscale-0"
                 />
               )}
 

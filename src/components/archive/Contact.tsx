@@ -28,7 +28,7 @@ export default function Contact() {
     >
       <div
         ref={ask.ref}
-        className="mx-auto grid w-full max-w-content items-end gap-8 lg:grid-cols-[1fr_320px] lg:gap-16"
+        className="mx-auto grid w-full max-w-content items-end gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16"
       >
         <div>
           <div
@@ -36,11 +36,14 @@ export default function Contact() {
           >
             {t(ui.contact.label, lang)}
           </div>
+          {/* JP size follows the column: 働きませんか。 is seven characters and
+              the column is the viewport less margins, aside and gap — 104px
+              only once there is room for it. */}
           <h2
-            className={`mt-3 ${headline(
+            className={`mt-3 whitespace-pre-line ${headline(
               lang,
               "text-[52px] leading-[0.86] lg:text-[150px] lg:leading-[0.84]",
-              "text-[34px] leading-[1.15] lg:text-[104px] lg:leading-[1.04]"
+              "text-[34px] leading-[1.15] lg:text-[clamp(72px,calc((100vw-620px)/7),104px)] lg:leading-[1.04]"
             )} ${ask.rv("head")}`}
           >
             {t(ui.contact.head, lang)}

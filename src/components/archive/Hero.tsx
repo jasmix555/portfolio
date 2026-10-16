@@ -117,7 +117,10 @@ export default function Hero({ assemble = false }: { assemble?: boolean }) {
           <h1
             className={`${lang === "jp" ? "lg:-ml-2" : "lg:-ml-3.5"} ${headline(
               lang,
-              "text-[88px] leading-[0.84] tracking-[-0.05em] lg:text-[196px] lg:tracking-[-0.055em]",
+              // 196px is for 1440. JASON is ~3.8 × its size wide and its column
+              // is the viewport less margins, aside and gap, so below ~1350 it
+              // follows the column instead of pushing the aside past the margin.
+              "text-[88px] leading-[0.84] tracking-[-0.05em] lg:text-[clamp(120px,calc((100vw-640px)/3.8),196px)] lg:tracking-[-0.055em]",
               "text-[44px] leading-[1.15] lg:text-[136px] lg:leading-[1.04]"
             )}`}
           >
@@ -202,12 +205,12 @@ export default function Hero({ assemble = false }: { assemble?: boolean }) {
         <div
           className={`mt-auto lg:mt-12 lg:flex lg:items-end lg:justify-between lg:gap-10${pl(4)}`}
         >
-          <div className="lg:flex lg:items-end lg:gap-16">
+          <div className="lg:flex lg:items-end lg:gap-10 min-[1440px]:gap-16">
             {/* The concept line is typeset in each locale, never transliterated:
                 Mincho carries the JP, Archivo sets the English. */}
             <p
               lang={lang === "jp" ? "ja" : "en"}
-              className={`text-[21px] leading-[1.5] text-g7 lg:text-jp-accent ${
+              className={`text-[21px] leading-[1.5] text-g7 lg:text-[28px] lg:leading-[1.3] min-[1440px]:text-jp-accent ${
                 lang === "jp"
                   ? "font-mincho"
                   : "font-semibold tracking-[-0.02em]"

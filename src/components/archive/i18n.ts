@@ -212,7 +212,9 @@ export const ui = {
     // a bare 〜してください imperative at display size as either begging or an
     // order. The confident register for this is an invitation; the ask itself
     // is carried by the line under it.
-    head: { en: "HIRE ME.", jp: "一緒に働きませんか。" },
+    // Broken after 一緒に by hand: with `keep-all` the line has no other place
+    // to give, and ten characters at display size are wider than the column.
+    head: { en: "HIRE ME.", jp: "一緒に\n働きませんか。" },
     // Third line lifts to bone — it is the one that answers "can I hire him".
     // 募集中 is what the company posting the role says, not the person after
     // it; from this side it is 求職中.
