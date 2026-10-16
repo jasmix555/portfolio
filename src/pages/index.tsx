@@ -66,7 +66,7 @@ export default function Portfolio() {
           property="og:description"
           content="Front-end / full-stack-leaning engineer in Osaka, Japan. Every record ships its postmortem."
         />
-        <meta property="og:image" content={`${SITE}/og.png`} />
+        <meta property="og:image" content={`${SITE}/og-archive.png`} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:locale" content={OG_LOCALE[lang]} />
@@ -80,7 +80,7 @@ export default function Portfolio() {
           name="twitter:description"
           content="Front-end / full-stack-leaning engineer in Osaka, Japan."
         />
-        <meta name="twitter:image" content={`${SITE}/og.png`} />
+        <meta name="twitter:image" content={`${SITE}/og-archive.png`} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
