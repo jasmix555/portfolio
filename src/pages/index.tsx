@@ -44,7 +44,7 @@ export default function Portfolio() {
         <title>Jason Ng — REC ARCHIVE</title>
         <meta
           name="description"
-          content="Jason Ng — front-end / full-stack-leaning engineer based in Osaka, Japan. An engineering record archive: every project filed with its stack, its hours, and its postmortem."
+          content="Front-end engineer in Osaka, Japan, leaning full-stack. Every project filed with its stack, hours, and lessons learned."
         />
         <meta name="theme-color" content="#0B0B0B" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

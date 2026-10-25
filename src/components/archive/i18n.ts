@@ -63,7 +63,7 @@ export const ui = {
     wordmark: { en: "JASON\nNG", jp: "記録の棚" },
     fileLabel: { en: "FILE", jp: "概要" },
     file: {
-      en: "Frontend engineer in Osaka. Contract work on corporate promotional sites; personal builds from geolocation memory apps to realtime calendars. This site is the archive — every record ships its postmortem.",
+      en: "Frontend engineer in Osaka. Contract work on corporate promotional sites; personal builds from geolocation memory apps to realtime calendars. This site is the archive — every record comes with what I learned building it.",
       jp: "大阪のフロントエンドエンジニア。受託では企業のプロモーションサイトを、個人では位置情報アプリからリアルタイムカレンダーまで作ってきました。このサイトは記録です。全ての作品に反省まで載せています。",
     },
     spine: {
